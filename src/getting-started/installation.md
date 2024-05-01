@@ -11,16 +11,29 @@ For most use cases it is recommended to use the [`alloy`](https://github.com/all
 It is recommended to pin to a specific commit hash as follows until `alloy` releases its first official version of all crates:
 
 ```toml
-alloy = { git = "https://github.com/alloy-rs/alloy", rev = "<COMMIT_HASH>", features = [
-"providers",
-"..."
-] }
+alloy = {
+  git = "https://github.com/alloy-rs/alloy",
+  rev = "<COMMIT_HASH>",
+  features = [
+    "contract",
+    "providers",
+    "..."
+  ]
+}
 ```
 
 Alternatively one can directly use individual crates as follows:
 
 ```toml
-alloy-provider = { git = "https://github.com/alloy-rs/alloy", rev = "<COMMIT_HASH>" }
+alloy-provider = {
+  git = "https://github.com/alloy-rs/alloy",
+  rev = "<COMMIT_HASH>"
+  features = [
+    "ws",
+    "ipc",
+    "..."
+  ]
+}
 ```
 
 After `alloy` as a dependency you can now import `alloy` as follows:
