@@ -91,11 +91,13 @@ Commit messages should follow the
 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 specification.
 
-### Cargo Commands
+### Usage
 
 This section lists some commonly needed commands.
 
 The book is build with [mdbook](https://github.com/rust-lang/mdBook), which you can get by running `cargo install mdbook`.
+
+The book also requires [`mdbook-external-links`](https://github.com/jonahgoldwastaken/mdbook-external-links): `cargo install mdbook-external-links`.
 
 To see the book change live run:
 

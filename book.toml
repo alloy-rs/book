@@ -6,6 +6,11 @@ src = "src"
 title = "Alloy Book"
 description = "A book on all things Alloy"
 
+[build]
+create-missing = false
+
+[preprocessor.external-links]
+
 [output.html]
 git-repository-url = "https://github.com/alloy-rs/book"
 edit-url-template = "https://github.com/alloy-rs/book/edit/main/{path}"

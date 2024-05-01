@@ -1,4 +1,4 @@
-<img src="images/banner.png" style="border-radius: 20px">
+<img src="images/banner.png">
 
 Introduction text
 
