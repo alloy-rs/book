@@ -18,16 +18,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
+
       - name: Install mdbook-external-links
         run: cargo install mdbook-external-links
+
       - name: Install mdbook
         run: |
           mkdir mdbook
           curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.37/mdbook-v0.4.37-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=./mdbook
           echo $(pwd)/mdbook >> $GITHUB_PATH
-      - uses: Swatinem/rust-cache@v2
-        with:
-          cache-on-failure: true
 
       - name: Run tests
         run: mdbook test
@@ -56,14 +55,17 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+
       - uses: dtolnay/rust-toolchain@stable
       - name: Install mdbook-external-links
         run: cargo install mdbook-external-links
+
       - name: Install mdbook
         run: |
           mkdir mdbook
           curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.37/mdbook-v0.4.37-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=./mdbook
           echo $(pwd)/mdbook >> $GITHUB_PATH
+
       - name: Install mdbook-linkcheck
         run: |
           mkdir mdbook-linkcheck
@@ -71,35 +73,17 @@ jobs:
           unzip mdbook-linkcheck.zip -d ./mdbook-linkcheck
           chmod +x $(pwd)/mdbook-linkcheck/mdbook-linkcheck
           echo $(pwd)/mdbook-linkcheck >> $GITHUB_PATH
-      - uses: Swatinem/rust-cache@v2
-        with:
-          cache-on-failure: true
 
       - name: Build book
         run: mdbook build
 
-      - name: Archive artifact
-        shell: sh
-        run: |
-          chmod -c -R +rX "book" |
-          while read line; do
-             echo "::warning title=Invalid file permissions automatically fixed::$line"
-          done
-          tar \
-            --dereference --hard-dereference \
-            --directory "book" \
-            -cvf "$RUNNER_TEMP/artifact.tar" \
-            --exclude=.git \
-            --exclude=.github \
-            .
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v4
         with:
-          name: github-pages
-          path: ${{ runner.temp }}/artifact.tar
-          retention-days: 1
-          if-no-files-found: error
+          path: "book"
 
   deploy:
     # Only deploy if a push to main
