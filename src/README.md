@@ -2,22 +2,22 @@
 
 Introduction text
 
-### Sections
+## Sections
 
-**[Getting Started](getting-started/installation.md)**
+### Getting Started
 
-**[Tutorials](tutorials/best-practices.md)**
+### Tutorials
 
-**[Migrating from Ethers](migrating-from-ethers/helper-traits-for-conversions.md)**
+### Migrating from Ethers
 
-**[Building with Alloy](building-with-alloy/basic-building-blocks.md)**
+### Building with Alloy
 
-**Contributing**
+### Contributing
 
 Thanks for your help improving the project! We are so happy to have you! We have
-[a contributing guide](../CONTRIBUTING.md) to help you get involved in the
+[a contributing guide](https://github.com/alloy-rs/book/tree/main/CONTRIBUTING.md) to help you get involved in the
 Alloy project.
 
-**Appendix**
+### Appendix
 
 References, troubleshooting, and more.
