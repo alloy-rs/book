@@ -8,7 +8,7 @@ Alloy is a high performance rewrite of [`ethers-rs`](https://github.com/gakonst/
 features.
 
 > 📖 **Documentation**
-> 
+>
 > You can find the official `alloy` documentation [here](https://alloy-rs.github.io/alloy/).
 
 > ✨ **Contributing**
@@ -19,7 +19,7 @@ features.
 
 ### [Getting Started](./getting-started/installation.md)
 
-To get started with Alloy, install Alloy and learn about the terminology used.
+To get started with Alloy, install Alloy and take your first steps.
 
 ### Tutorials
 
@@ -27,12 +27,12 @@ To get started with Alloy, install Alloy and learn about the terminology used.
 
 ### Building with Alloy
 
-### Contributing
+### [Contributing](https://github.com/alloy-rs/book/tree/main/CONTRIBUTING.md)
 
 Thanks for your help improving the project! We are so happy to have you! We have
 [a contributing guide](https://github.com/alloy-rs/book/tree/main/CONTRIBUTING.md) to help you get involved in the
 Alloy project.
 
-### Appendix
+### [Appendix](./appendix/glossary.md)
 
-References, troubleshooting, and more.
+Glossary, references, troubleshooting, and more.
