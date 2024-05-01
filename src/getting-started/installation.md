@@ -12,57 +12,75 @@ It is recommended to pin to a specific commit hash as follows until `alloy` rele
 
 ```toml
 alloy = { git = "https://github.com/alloy-rs/alloy", rev = "<COMMIT_HASH>", features = [
-    "providers",
-    "..."
+"providers",
+"..."
 ] }
 ```
-
-### Features
-
-The [feature flags](https://github.com/alloy-rs/alloy/blob/main/crates/alloy/src/lib.rs) for `alloy` are as follows:
-
-| Feature flag       | Description |
-|--------------------|-------------|
-| `dyn-abi`          | TODO        |
-| `json-abi`         | TODO        |
-| `sol-types`        | TODO        |
-| `rlp`              | TODO        |
-| `reqwest`          | TODO        |
-| `hyper`            | TODO        |
-| `contract`         | TODO        |
-| `consensus`        | TODO        |
-| `eips`             | TODO        |
-| `network`          | TODO        |
-| `genesis`          | TODO        |
-| `node-bindings`    | TODO        |
-| `providers`        | TODO        |
-| `pubsub`           | TODO        |
-| `rpc`              | TODO        |
-| `rpc-client`       | TODO        |
-| `json-rpc`         | TODO        |
-| `rpc-types`        | TODO        |
-| `rpc-types-eth`    | TODO        |
-| `rpc-types-engine` | TODO        |
-| `rpc-types-trace`  | TODO        |
-| `serde`            | TODO        |
-| `signers`          | TODO        |
-| `signer-aws`       | TODO        |
-| `signer-gcp`       | TODO        |
-| `signer-ledger`    | TODO        |
-| `signer-trezor`    | TODO        |
-| `signer-wallet`    | TODO        |
-| `transports`       | TODO        |
-| `transport-http`   | TODO        |
-| `transport-ipc`    | TODO        |
-| `transport-ws`     | TODO        |
-
-### Crates
 
 Alternatively one can directly use individual crates as follows:
 
 ```toml
 alloy-provider = { git = "https://github.com/alloy-rs/alloy", rev = "<COMMIT_HASH>" }
 ```
+
+### Features
+
+The [`alloy`](https://github.com/alloy-rs/alloy/tree/main/crates/alloy) meta-crate defines a number of feature flags.
+
+The main [feature flags](https://github.com/alloy-rs/alloy/blob/main/crates/alloy/Cargo.toml) for the `alloy` meta-crate are:
+
+Default
+- `std`
+- `reqwest`
+
+General
+- `contract`
+- `consensus`
+- `eips`
+- `network`
+- `genesis`
+- `node-bindings`
+
+Providers
+- `providers`
+- `provider-http`
+- `provider-ipc`
+- `provider-ws`
+
+RPC
+- `rpc`
+- `json-rpc`
+- `rpc-client`
+- `rpc-client-ipc`
+- `rpc-client-ws`
+- `rpc-types`
+- `rpc-types-eth`
+- `rpc-types-engine`
+- `rpc-types-json`
+- `rpc-types-trace`
+
+Signers
+- `signers`
+- `signer-aws`
+- `signer-gcp`
+- `signer-ledger`
+- `signer-ledger`
+- `signer-trezor-browser`
+- `signer-trezor-node`
+- `signer-wallet`
+- `signer-keystore`
+- `signer-mnemonic`
+- `signer-mnemonic-all-languages`
+- `signer-yubihsm`
+
+By default `alloy` uses [`reqwest`](https://crates.io/crates/reqwest) as HTTP client. Alternatively one can switch to [`hyper`](https://crates.io/crates/hyper).
+The `reqwest` and `hyper` feature flags are mutually exclusive.
+  
+For a complete overview of `alloy` feature flags refer to [`alloy's Cargo.toml`](https://github.com/alloy-rs/alloy/blob/main/crates/alloy/Cargo.toml)
+
+The feature flags largely correspond and enable the following individual crates.
+
+### Crates
 
 `alloy` consists out of the following crates:
 
@@ -86,9 +104,9 @@ alloy-provider = { git = "https://github.com/alloy-rs/alloy", rev = "<COMMIT_HAS
   - [alloy-signer-aws]( https://github.com/alloy-rs/alloy/tree/main/crates/signer-aws) - `AWS KMS` signer implementation
   - [alloy-signer-gcp](https://github.com/alloy-rs/alloy/tree/main/crates/signer-gcp) - `GCP KMS` signer implementation
   - [alloy-signer-ledger](https://github.com/alloy-rs/alloy/tree/main/crates/signer-ledger) - `Ledger` signer implementation
-  - [alloy-signer-trezor](https://github.com/alloy-rs/alloy/tree/main/crates/signer-trezor) - `Trezor` signer implementation
-  - [alloy-signer-wallet](https://github.com/alloy-rs/alloy/tree/main/crates/signer-wallet) - `sepc256k1 ECDSA` and `YubiHSM` signer implementations
-- [alloy-transport](https://github.com/alloy-rs/alloy/tree/main/crates/transport) - Low-level Ethereum JSON-RPC transport abstraction
+  - [alloy-signer-trezor](https://github.com/alloy-rs/alloy/tree/main/crates/signer-trezor)  - `Trezor` signer implementation
+  - [alloy-signer-wallet](https://github.com/alloy-rs/alloy/tree/main/crates/signer-wallet)  - `sepc256k1 ECDSA` and `YubiHSM` signer implementations
+- [alloy-transport](https://github.com/alloy-rs/alloy/tree/main/crates/transport) - Low level Ethereum JSON-RPC transport abstraction
   - [alloy-transport-http](https://github.com/alloy-rs/alloy/tree/main/crates/transport-http) - HTTP transport implementation
   - [alloy-transport-ipc](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ipc) - IPC transport implementation
   - [alloy-transport-ws](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ws) - WS transport implementation
