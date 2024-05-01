@@ -1,12 +1,12 @@
 ## Installation
 
-To install [`alloy](https://github.com/alloy-rs/alloy) run the following command:
+To install [`alloy`](https://github.com/alloy-rs/alloy) run the following command:
 
 ```sh
 cargo add --git https://github.com/alloy-rs/alloy
 ```
 
-For most use cases it is recommended to use the [`alloy](https://github.com/alloy-rs/alloy/tree/main/crates/alloy) meta-crate and enabling feature flags.
+For most use cases it is recommended to use the [`alloy`](https://github.com/alloy-rs/alloy/tree/main/crates/alloy) meta-crate and enabling feature flags.
 
 It is recommended to pin to a specific commit hash as follows until `alloy` releases its first official version of all crates:
 
@@ -21,6 +21,19 @@ Alternatively one can directly use individual crates as follows:
 
 ```toml
 alloy-provider = { git = "https://github.com/alloy-rs/alloy", rev = "<COMMIT_HASH>" }
+```
+
+After `alloy` as a dependency you can now import `alloy` as follows:
+
+```rust,ignore
+use alloy::{
+    network::{eip2718::Encodable2718, EthereumSigner, TransactionBuilder},
+    node_bindings::Anvil,
+    primitives::U256,
+    providers::{Provider, ProviderBuilder},
+    rpc::types::eth::TransactionRequest,
+    signers::wallet::LocalWallet,
+};
 ```
 
 ### Features
@@ -78,7 +91,7 @@ The `reqwest` and `hyper` feature flags are mutually exclusive.
   
 For a complete overview of `alloy` feature flags refer to [`alloy's Cargo.toml`](https://github.com/alloy-rs/alloy/blob/main/crates/alloy/Cargo.toml)
 
-The feature flags largely correspond and enable the following individual crates.
+The feature flags largely correspond with and enable features from the following individual crates.
 
 ### Crates
 

@@ -8,7 +8,7 @@ use alloy::providers::{Provider, ProviderBuilder};
 
 ### An example
 
-Let's using create an example of using the HTTP provider and fetching the latest block number.
+Let's create an example of using the HTTP provider and fetching the latest block number.
 
 Install [`tokio`](https://crates.io/crates/tokio) and [`eyre`](https://crates.io/crates/eyre) as dependencies and define the body as follows:
 
