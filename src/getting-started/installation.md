@@ -147,4 +147,4 @@ The feature flags largely correspond with and enable features from the following
 - [alloy-sol-macro](https://github.com/alloy-rs/core/tree/main/crates/sol-macro) - The `sol!` procedural macro
 - [alloy-sol-type-parser](https://github.com/alloy-rs/core/tree/main/crates/sol-type-parser) - A simple parser for Solidity type strings
 - [alloy-sol-types](https://github.com/alloy-rs/core/tree/main/crates/sol-types) - Compile-time `ABI` and `EIP-712` implementations
-- [syn-solidity](https://github.com/alloy-rs/core/tree/main/crates/syn-solidity) - [syn`]-powered Solidity parser
+- [syn-solidity](https://github.com/alloy-rs/core/tree/main/crates/syn-solidity) - `syn`-powered Solidity parser
