@@ -1,6 +1,13 @@
 <img src="images/banner.png">
 
-Introduction text
+Alloy connects applications to blockchains.
+
+Alloy is a rewrite of [`ethers-rs`](https://github.com/gakonst/ethers-rs) from the ground up, with exciting new
+features, high performance, and excellent [docs](https://alloy-rs.github.io/alloy/).
+
+> 📖 **Contributing**
+>
+> You can contribute to this book on [GitHub](https://github.com/alloy-rs/book).
 
 ## Sections
 
