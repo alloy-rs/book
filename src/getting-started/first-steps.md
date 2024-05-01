@@ -1,8 +1,19 @@
 ## First steps
 
+Alloy allows applications to connect the blockchain using providers. Providers act as an interface between applications and an Ethereum node, allowing you to send requests and receive responses via JSON-RPC messages.
+
+Some common actions you can perform using a provider include:
+
+- Getting the current block number
+- Getting the balance of an Ethereum address
+- Sending a transaction to the blockchain
+- Calling a smart contract function
+- Subscribe logs and smart contract events
+- Getting the transaction history of an address
+
 After [installing](./installation.md) `alloy` let's create an example of using the HTTP provider and fetching the latest block number.
 
-First of all, install [`tokio`](https://crates.io/crates/tokio) and [`eyre`](https://crates.io/crates/eyre) as dependencies and define the body as follows:
+Install [`tokio`](https://crates.io/crates/tokio) and [`eyre`](https://crates.io/crates/eyre) as dependencies and define the body as follows:
 
 ```rust,ignore
 use alloy::providers::{Provider, ProviderBuilder};
@@ -37,3 +48,5 @@ Finally we fetch the latest block number using the provider:
 ```
 
 The complete and runnable example can be found [here](https://github.com/alloy-rs/examples/blob/main/examples/providers/examples/http.rs), one of the [many runnable examples of Alloy](https://github.com/alloy-rs/examples/blob/main/README.md#overview) to explore.
+
+To get familiar with the terminology used by Alloy it is recommended to have a brief look at the [glossary](../appendix/glossary.md).

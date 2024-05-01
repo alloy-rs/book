@@ -11,16 +11,29 @@ For most use cases it is recommended to use the [`alloy`](https://github.com/all
 It is recommended to pin to a specific commit hash as follows until `alloy` releases its first official version of all crates:
 
 ```toml
-alloy = { git = "https://github.com/alloy-rs/alloy", rev = "<COMMIT_HASH>", features = [
-"providers",
-"..."
-] }
+alloy = {
+  git = "https://github.com/alloy-rs/alloy",
+  rev = "<COMMIT_HASH>",
+  features = [
+    "contract",
+    "providers",
+    "..."
+  ]
+}
 ```
 
 Alternatively one can directly use individual crates as follows:
 
 ```toml
-alloy-provider = { git = "https://github.com/alloy-rs/alloy", rev = "<COMMIT_HASH>" }
+alloy-provider = {
+  git = "https://github.com/alloy-rs/alloy",
+  rev = "<COMMIT_HASH>"
+  features = [
+    "ws",
+    "ipc",
+    "..."
+  ]
+}
 ```
 
 After `alloy` as a dependency you can now import `alloy` as follows:
@@ -134,4 +147,4 @@ The feature flags largely correspond with and enable features from the following
 - [alloy-sol-macro](https://github.com/alloy-rs/core/tree/main/crates/sol-macro) - The `sol!` procedural macro
 - [alloy-sol-type-parser](https://github.com/alloy-rs/core/tree/main/crates/sol-type-parser) - A simple parser for Solidity type strings
 - [alloy-sol-types](https://github.com/alloy-rs/core/tree/main/crates/sol-types) - Compile-time `ABI` and `EIP-712` implementations
-- [syn-solidity](https://github.com/alloy-rs/core/tree/main/crates/syn-solidity) - [syn`]-powered Solidity parser
+- [syn-solidity](https://github.com/alloy-rs/core/tree/main/crates/syn-solidity) - `syn`-powered Solidity parser
