@@ -11,7 +11,9 @@ features, high performance, and excellent [docs](https://alloy-rs.github.io/allo
 
 ## Sections
 
-### Getting Started
+### [Getting Started](./getting-started/installation.md)
+
+To get started with Alloy, install Alloy and learn about the terminology used.
 
 ### Tutorials
 
