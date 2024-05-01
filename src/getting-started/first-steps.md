@@ -1,16 +1,8 @@
 ## First steps
 
-After [installing](./installation.md) `alloy` as a dependency you can now import `alloy` as follows:
+After [installing](./installation.md) `alloy` let's create an example of using the HTTP provider and fetching the latest block number.
 
-```rust,ignore
-use alloy::providers::{Provider, ProviderBuilder};
-```
-
-### An example
-
-Let's create an example of using the HTTP provider and fetching the latest block number.
-
-Install [`tokio`](https://crates.io/crates/tokio) and [`eyre`](https://crates.io/crates/eyre) as dependencies and define the body as follows:
+First of all, install [`tokio`](https://crates.io/crates/tokio) and [`eyre`](https://crates.io/crates/eyre) as dependencies and define the body as follows:
 
 ```rust,ignore
 use alloy::providers::{Provider, ProviderBuilder};
