@@ -4,6 +4,10 @@
 
 # Getting Started
 
+- [Installation](./getting-started/installation.md)
+- [First steps with Alloy](./getting-started/first-steps.md)
+- [Common terminology](./getting-started/common-terminology.md)
+
 # Tutorials
 
 # Migrating from Ethers
