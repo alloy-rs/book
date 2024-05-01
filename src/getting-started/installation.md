@@ -21,38 +21,40 @@ alloy = { git = "https://github.com/alloy-rs/alloy", rev = "<COMMIT_HASH>", feat
 
 The [feature flags](https://github.com/alloy-rs/alloy/blob/main/crates/alloy/src/lib.rs) for `alloy` are as follows:
 
-- `dyn-abi`
-- `json-abi`
-- `sol-types`
-- `rlp`
-- `reqwest`
-- `hyper`
-- `contract`
-- `consensus`
-- `eips`
-- `network`
-- `genesis`
-- `node-bindings`
-- `providers`
-- `pubsub`
-- `rpc`
-- `rpc-client`
-- `json-rpc`
-- `rpc-types`
-- `rpc-types-eth`
-- `rpc-types-engine`
-- `rpc-types-trace`
-- `serde`
-- `signers`
-- `signer-aws`
-- `signer-gcp`
-- `signer-ledger`
-- `signer-trezor`
-- `signer-wallet`
-- `transports`
-- `transport-http`
-- `transport-ipc`
-- `transport-ws`
+| Feature flag       | Description |
+|--------------------|-------------|
+| `dyn-abi`          | TODO        |
+| `json-abi`         | TODO        |
+| `sol-types`        | TODO        |
+| `rlp`              | TODO        |
+| `reqwest`          | TODO        |
+| `hyper`            | TODO        |
+| `contract`         | TODO        |
+| `consensus`        | TODO        |
+| `eips`             | TODO        |
+| `network`          | TODO        |
+| `genesis`          | TODO        |
+| `node-bindings`    | TODO        |
+| `providers`        | TODO        |
+| `pubsub`           | TODO        |
+| `rpc`              | TODO        |
+| `rpc-client`       | TODO        |
+| `json-rpc`         | TODO        |
+| `rpc-types`        | TODO        |
+| `rpc-types-eth`    | TODO        |
+| `rpc-types-engine` | TODO        |
+| `rpc-types-trace`  | TODO        |
+| `serde`            | TODO        |
+| `signers`          | TODO        |
+| `signer-aws`       | TODO        |
+| `signer-gcp`       | TODO        |
+| `signer-ledger`    | TODO        |
+| `signer-trezor`    | TODO        |
+| `signer-wallet`    | TODO        |
+| `transports`       | TODO        |
+| `transport-http`   | TODO        |
+| `transport-ipc`    | TODO        |
+| `transport-ws`     | TODO        |
 
 ### Crates
 
