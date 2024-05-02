@@ -21,11 +21,12 @@ The following is a reference guide for finding the migration path for your speci
 - Middleware [`ethers::middleware`](https://github.com/gakonst/ethers-rs/tree/master/ethers-middleware) `->` Fillers [`alloy::provider::{fillers, layers}`](https://github.com/alloy-rs/alloy/tree/main/crates/provider/src)
   - Gas oracle [`ethers::middleware::GasOracleMiddleware`](https://github.com/gakonst/ethers-rs/blob/master/ethers-middleware/src/gas_oracle/middleware.rs) `->` Gas filler [`alloy::provider::GasFiller`](https://github.com/alloy-rs/examples/blob/main/examples/fillers/examples/gas_filler.rs)
   - Nonce manager [`ethers::middleware::NonceManagerMiddleware`](https://github.com/gakonst/ethers-rs/tree/master/ethers-middleware/src/nonce_manager.rs) `->` Nonce filler [`alloy::provider::NonceFiller`](https://github.com/alloy-rs/alloy/tree/main/crates/provider/src/fillers/nonce.rs)
+  - Signer [`ethers::middleware::Signer`](https://github.com/gakonst/ethers-rs/blob/master/ethers-middleware/src/signer.rs) `->` Signer filler [`alloy::provider::SignerFiller`](https://github.com/alloy-rs/alloy/blob/main/crates/provider/src/fillers/signer.rs)
 - Providers [`ethers::providers`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers) `->` Provider [`alloy-provider`](https://github.com/alloy-rs/alloy/tree/main/crates/provider)
 - Transports [`ethers::providers`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports) `->` Transport [`alloy-transport`](https://github.com/alloy-rs/alloy/tree/main/crates/transport)
   - HTTP [`ethers::providers::Http`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/http.rs) `->` [`alloy-transport-http`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-http)
-  - IPC [`ethers::providers`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/ipc.rs) `->` [`alloy-transport-ipc`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ipc)
-  - WS [`ethers::providers`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/ws) `->` [`alloy-transport-ws`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ws)
+  - IPC [`ethers::providers::Ipc`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/ipc.rs) `->` [`alloy-transport-ipc`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ipc)
+  - WS [`ethers::providers::Ws`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/ws) `->` [`alloy-transport-ws`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ws)
 - Signers [`ethers::signers`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers) `->` Signer [`alloy-signer`](https://github.com/alloy-rs/alloy/tree/main/crates/signer)
   - AWS [`ethers::signers::aws`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/aws) `->` [`alloy-signer-aws`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-aws)
   - GCP `x` `->` [`alloy-signer-gcp`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-gcp)
@@ -43,5 +44,8 @@ The following is a reference guide for finding the migration path for your speci
 
 <!-- 
 // https://github.com/gakonst/ethers-rs/issues/2667#issue-1982077921
--->
 
+// TODO:
+// - abigen
+// 
+-->
