@@ -12,7 +12,7 @@ The following is a reference guide for finding the migration path for your speci
 
 - Examples: [`ethers-rs/examples`](https://github.com/gakonst/ethers-rs/tree/master/examples) `->` [`alloy-rs/examples`](https://github.com/alloy-rs/examples)
 
-### Alloy
+### Crates
 
 - Meta-crate: [`ethers`](https://github.com/gakonst/ethers-rs/tree/master/ethers) `->` [`alloy`](https://github.com/alloy-rs/alloy/tree/main/crates/alloy)
 - Address book: [`ethers::addressbook`](https://github.com/gakonst/ethers-rs/tree/master/ethers-addressbook) `->` Not planned
@@ -27,18 +27,40 @@ The following is a reference guide for finding the migration path for your speci
   - Nonce manager [`ethers::middleware::NonceManagerMiddleware`](https://github.com/gakonst/ethers-rs/tree/master/ethers-middleware/src/nonce_manager.rs) `->` Nonce filler [`alloy::provider::NonceFiller`](https://github.com/alloy-rs/alloy/tree/main/crates/provider/src/fillers/nonce.rs)
   - Signer [`ethers::middleware::Signer`](https://github.com/gakonst/ethers-rs/blob/master/ethers-middleware/src/signer.rs) `->` Signer filler [`alloy::provider::SignerFiller`](https://github.com/alloy-rs/alloy/blob/main/crates/provider/src/fillers/signer.rs)
 - Providers [`ethers::providers`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers) `->` Provider [`alloy-provider`](https://github.com/alloy-rs/alloy/tree/main/crates/provider)
-- Transports [`ethers::providers::transports`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports) `->` Transport [`alloy-transport`](https://github.com/alloy-rs/alloy/tree/main/crates/transport)
-  - HTTP [`ethers::providers::Http`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/http.rs) `->` [`alloy-transport-http`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-http)
-  - IPC [`ethers::providers::Ipc`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/ipc.rs) `->` [`alloy-transport-ipc`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ipc)
-  - WS [`ethers::providers::Ws`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/ws) `->` [`alloy-transport-ws`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ws)
-- Signers [`ethers::signers`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers) `->` Signer [`alloy-signer`](https://github.com/alloy-rs/alloy/tree/main/crates/signer)
-  - AWS [`ethers::signers::aws::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/aws) `->` [`alloy-signer-aws`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-aws)
-  - Ledger [`ethers::signers::ledger::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/ledger) `->` [`alloy-signer-ledger`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-ledger)
-  - Trezor [`ethers::signers::trezor::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/trezor) `->` [`alloy-signer-trezor`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-trezor)
-  - Wallet [`ethers::signers::wallet::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/wallet) `->` [`alloy-signer-wallet`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-wallet)
+- Transports [`ethers::providers::transports`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports) `->` [`alloy::transports`](https://github.com/alloy-rs/alloy/tree/main/crates/transport)
+  - HTTP [`ethers::providers::Http`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/http.rs) `->` [`alloy::transports::http`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-http)
+  - IPC [`ethers::providers::Ipc`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/ipc.rs) `->` [`alloy::transports::ipc`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ipc)
+  - WS [`ethers::providers::Ws`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/ws) `->` [`alloy::transports::ws`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ws)
+- Signers [`ethers::signers`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers) `->` Signer [`alloy::signers`](https://github.com/alloy-rs/alloy/tree/main/crates/signer)
+  - AWS [`ethers::signers::aws::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/aws) `->` [`alloy::signers::aws`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-aws)
+  - Ledger [`ethers::signers::ledger::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/ledger) `->` [`alloy::signers::ledger`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-ledger)
+  - Trezor [`ethers::signers::trezor::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/trezor) `->` [`alloy::signer::trezor`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-trezor)
+  - Wallet [`ethers::signers::wallet::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/wallet) `->` [`alloy::signer::wallet`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-wallet)
 
+### ABI
+
+<!-- https://github.com/alloy-rs/core/tree/main/crates/dyn-abi
+https://github.com/alloy-rs/core/tree/main/crates/json-abi -->
 
 ### Types
+
+#### Primitives
+
+- Address [`ethers::types::Address`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::Address`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
+- U64 [`ethers::types::U64`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::U64`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
+- U128 [`ethers::types::U128`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::U128`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
+- U256 [`ethers::types::U256`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::U256`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
+- U512 [`ethers::types::U512`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::U512`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
+- H32 [`ethers::types::H32`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` ?
+- H64 [`ethers::types::H64`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::B64`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
+- H128 [`ethers::types::H128`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::B128`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
+- H160 [`ethers::types::H160`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::B160`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
+- H256 [`ethers::types::H256`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::B256`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
+- H512 [`ethers::types::H512`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::B512`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
+- Bloom [`ethers::types::Bloom`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::Bloom`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
+- BigEndianHash [`ethers::types::BigEndianHash`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` ?
+
+#### RPC
 
 <!--
 
@@ -60,10 +82,6 @@ https://github.com/alloy-rs/core/tree/main/crates/sol-type-parser
 https://github.com/alloy-rs/core/tree/main/crates/syn-solidity
 
 ### ABI
-
-https://github.com/alloy-rs/core/tree/main/crates/dyn-abi
-https://github.com/alloy-rs/core/tree/main/crates/json-abi
-
 
 // https://github.com/gakonst/ethers-rs/issues/2667#issue-1982077921
 
