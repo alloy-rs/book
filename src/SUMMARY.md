@@ -7,10 +7,13 @@
 - [Installation](./getting-started/installation.md)
 - [First steps with Alloy](./getting-started/first-steps.md)
 
+# Tutorials
+
 # Examples
 
-<!-- MANUALLY MAINTAINED -->
+<!-- To update the examples run `./scripts/update.sh -->
 
+<!-- MANUALLY MAINTAINED -->
 - [Anvil](./examples/anvil/deploy_contract_anvil.md)
   - [Deploy contract](./examples/anvil/deploy_contract_anvil.md)
   - [Fork](./examples/anvil/fork_anvil.md)
@@ -64,7 +67,6 @@
   - [Yubi signer](./examples/wallets/yubi_signer.md)
   - [Keystore signer](./examples/wallets/keystore_signer.md)
   - [Create keystore](./examples/wallets/create_keystore.md)
-
 <!-- MANUALLY MAINTAINED -->
 
 # Migrating from Ethers
