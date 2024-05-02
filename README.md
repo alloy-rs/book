@@ -16,22 +16,6 @@ Thanks for your help improving the project! We are so happy to have you! We have
 [a contributing guide](./CONTRIBUTING.md) to help you get involved in the
 Alloy project.
 
-The book is build with [`mdbook`](https://github.com/rust-lang/mdBook), which you can get by running `cargo install mdbook`.
-
-The book also requires [`mdbook-external-links`](https://github.com/jonahgoldwastaken/mdbook-external-links): `cargo install mdbook-external-links`.
-
-To see the book change live run:
-
-```sh
-mdbook serve
-```
-
-To run the book with docker, run:
-
-```sh
-docker run -p 3000:3000 -v `pwd`:/book peaceiris/mdbook serve
-```
-
 #### License
 
 <sup>

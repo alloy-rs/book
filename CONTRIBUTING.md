@@ -95,6 +95,14 @@ specification.
 
 This section lists some commonly needed commands.
 
+First create a [fork](https://github.com/alloy-rs/book/fork).
+
+Next clone your fork with the `--recurse-submodules` flag:
+
+```sh
+git clone --recurse-submodules $FORK_URL
+```
+
 The book is build with [`mdbook`](https://github.com/rust-lang/mdBook), which you can get by running `cargo install mdbook`.
 
 The book also requires [`mdbook-external-links`](https://github.com/jonahgoldwastaken/mdbook-external-links): `cargo install mdbook-external-links`.
@@ -110,6 +118,8 @@ To run the book with docker, run:
 ```sh
 docker run -p 3000:3000 -v `pwd`:/book peaceiris/mdbook serve
 ```
+
+To perform an update of generated output inspect and run `./scripts/update.sh`.
 
 ### Discuss and update
 

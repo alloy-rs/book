@@ -9,7 +9,7 @@ features.
 
 > 📖 **Documentation**
 >
-> You can find the official `alloy` documentation [here](https://alloy-rs.github.io/alloy/).
+> You can find the official documentation for `alloy` [here](https://alloy-rs.github.io/alloy/) and for `alloy-core` [here](https://docs.rs/alloy-core/latest/alloy_core/).
 
 > ✨ **Contributing**
 >
