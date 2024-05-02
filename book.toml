@@ -21,6 +21,3 @@ enable = true
 level = 0
 
 [output.linkcheck]
-
-[output.html.playground]
-runnable = true
