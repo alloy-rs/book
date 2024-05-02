@@ -1,3 +1,0 @@
-## Best practices
-
-TODO

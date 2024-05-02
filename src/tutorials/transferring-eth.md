@@ -1,3 +1,0 @@
-## Transferring ETH
-
-TODO
