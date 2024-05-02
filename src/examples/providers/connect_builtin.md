@@ -13,4 +13,4 @@ To run this example:
 {{#include ../../../lib/examples/examples/providers/examples/connect_builtin.rs}}
 ```
 
-Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/main/examples/providers/examples/connect_builtin.rs).
+Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/be75c4338d7ec8b185a2cf489f0ea61b5d638b8c/examples/providers/examples/connect_builtin.rs).

@@ -71,7 +71,7 @@ To run this example:
 {{#include $REFERENCE_FILEPATH}}
 \`\`\`
 
-Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/main/examples/$EXAMPLE_DIRNAME/examples/$EXAMPLE_FILENAME.rs).
+Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/$EXAMPLES_COMMIT_HASH/examples/$EXAMPLE_DIRNAME/examples/$EXAMPLE_FILENAME.rs).
 EOF
   done
 done
