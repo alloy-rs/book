@@ -11,6 +11,9 @@
 
 # Building with Alloy
 
+- [Basic building blocks](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
+  - [Using big numbers](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
+
 # Appendix
 
 - [Glossary](./appendix/glossary.md)
