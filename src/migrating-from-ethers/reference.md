@@ -31,10 +31,10 @@ The following is a reference guide for finding the migration path for your speci
   - IPC [`ethers::providers::Ipc`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/ipc.rs) `->` [`alloy-transport-ipc`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ipc)
   - WS [`ethers::providers::Ws`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/ws) `->` [`alloy-transport-ws`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ws)
 - Signers [`ethers::signers`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers) `->` Signer [`alloy-signer`](https://github.com/alloy-rs/alloy/tree/main/crates/signer)
-  - AWS [`ethers::signers::aws`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/aws) `->` [`alloy-signer-aws`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-aws)
-  - Ledger [`ethers::signers::ledger`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/ledger) `->` [`alloy-signer-ledger`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-ledger)
-  - Trezor [`ethers::signers::trezor`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/trezor) `->` [`alloy-signer-trezor`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-trezor)
-  - Wallet [`ethers::signers::wallet`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/wallet) `->` [`alloy-signer-wallet`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-wallet)
+  - AWS [`ethers::signers::aws::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/aws) `->` [`alloy-signer-aws`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-aws)
+  - Ledger [`ethers::signers::ledger::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/ledger) `->` [`alloy-signer-ledger`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-ledger)
+  - Trezor [`ethers::signers::trezor::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/trezor) `->` [`alloy-signer-trezor`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-trezor)
+  - Wallet [`ethers::signers::wallet::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/wallet) `->` [`alloy-signer-wallet`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-wallet)
 
 ### Types
 
