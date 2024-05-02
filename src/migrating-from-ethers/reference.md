@@ -20,6 +20,7 @@ The following is a reference guide for finding the migration path for your speci
 - Contract: [`ethers::contract`](https://github.com/gakonst/ethers-rs/tree/master/ethers-contract) `->` [`alloy::contract`](https://github.com/alloy-rs/alloy/tree/main/crates/contract)
 - Core: [`ethers::core`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core) `->` [`alloy::core`](https://github.com/alloy-rs/core)
   - Chains: [`ethers::core::types::Chain`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/chain.rs) `->` [`alloy-rs/chains`](https://github.com/alloy-rs/chains)
+  - Types: [`ethers::core::types::*](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types) `->` See [Types](#types) section
 - Etherscan [`ethers::etherscan`](https://github.com/gakonst/ethers-rs/tree/master/ethers-etherscan) `->` [`foundry-block-explorers`](https://github.com/foundry-rs/block-explorers)
 - Middleware [`ethers::middleware`](https://github.com/gakonst/ethers-rs/tree/master/ethers-middleware) `->` Fillers [`alloy::provider::{fillers, layers}`](https://github.com/alloy-rs/alloy/tree/main/crates/provider/src)
   - Gas oracle [`ethers::middleware::GasOracleMiddleware`](https://github.com/gakonst/ethers-rs/blob/master/ethers-middleware/src/gas_oracle/middleware.rs) `->` Gas filler [`alloy::provider::GasFiller`](https://github.com/alloy-rs/examples/blob/main/examples/fillers/examples/gas_filler.rs)
@@ -36,12 +37,37 @@ The following is a reference guide for finding the migration path for your speci
   - Trezor [`ethers::signers::trezor::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/trezor) `->` [`alloy-signer-trezor`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-trezor)
   - Wallet [`ethers::signers::wallet::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-signers/src/wallet) `->` [`alloy-signer-wallet`](https://github.com/alloy-rs/alloy/tree/main/crates/signer-wallet)
 
+<!--
+
 ### Types
 
-<!-- 
+[`alloy::rpc::eth`]()
+[`alloy::rpc::types::*`]()
+
+https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types
+https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-anvil
+https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-engine
+https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-trace
+https://github.com/alloy-rs/core/tree/main/crates/sol-types
+https://github.com/alloy-rs/core/tree/main/crates/primitives
+
+### Bindings
+
+https://github.com/alloy-rs/core/tree/main/crates/sol-macro-input
+https://github.com/alloy-rs/core/tree/main/crates/sol-macro
+https://github.com/alloy-rs/core/tree/main/crates/sol-type-parser
+https://github.com/alloy-rs/core/tree/main/crates/syn-solidity
+
+### ABI
+
+https://github.com/alloy-rs/core/tree/main/crates/dyn-abi
+https://github.com/alloy-rs/core/tree/main/crates/json-abi
+
+
 // https://github.com/gakonst/ethers-rs/issues/2667#issue-1982077921
 
 // TODO:
 // - abigen
+// - sol! macro
 // 
 -->
