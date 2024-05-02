@@ -1,4 +1,4 @@
-<img src="images/banner.png">
+<img src="images/banner.jpg">
 
 Welcome to the hands-on guide for getting started with Alloy!
 
