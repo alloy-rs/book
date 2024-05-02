@@ -68,7 +68,9 @@
   - [Create keystore](./examples/wallets/create_keystore.md)
 <!-- MANUALLY MAINTAINED -->
 
-# Migrating from Ethers
+# [Migrating from `ethers-rs`](./migrating-from-ethers/reference.md)
+
+- [Reference](./migrating-from-ethers/reference.md)
 
 # Building with Alloy
 
