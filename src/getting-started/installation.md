@@ -127,11 +127,11 @@ The feature flags largely correspond with and enable features from the following
   - [alloy-rpc-types-trace](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-trace) - Ethereum RPC trace types
 - [alloy-serde](https://github.com/alloy-rs/alloy/tree/main/crates/serde) - `Serde` related helpers
 - [alloy-signer](https://github.com/alloy-rs/alloy/tree/main/crates/signer) - Ethereum signer abstraction
-  - [alloy-signer-aws]( https://github.com/alloy-rs/alloy/tree/main/crates/signer-aws) - `AWS KMS` signer implementation
-  - [alloy-signer-gcp](https://github.com/alloy-rs/alloy/tree/main/crates/signer-gcp) - `GCP KMS` signer implementation
-  - [alloy-signer-ledger](https://github.com/alloy-rs/alloy/tree/main/crates/signer-ledger) - `Ledger` signer implementation
-  - [alloy-signer-trezor](https://github.com/alloy-rs/alloy/tree/main/crates/signer-trezor)  - `Trezor` signer implementation
-  - [alloy-signer-wallet](https://github.com/alloy-rs/alloy/tree/main/crates/signer-wallet)  - `sepc256k1 ECDSA` and `YubiHSM` signer implementations
+  - [alloy-signer-aws]( https://github.com/alloy-rs/alloy/tree/main/crates/signer-aws) - [AWS KMS](https://aws.amazon.com/kms) signer implementation
+  - [alloy-signer-gcp](https://github.com/alloy-rs/alloy/tree/main/crates/signer-gcp) - [GCP KMS](https://cloud.google.com/kms) signer implementation
+  - [alloy-signer-ledger](https://github.com/alloy-rs/alloy/tree/main/crates/signer-ledger) - [Ledger](https://www.ledger.com) signer implementation
+  - [alloy-signer-trezor](https://github.com/alloy-rs/alloy/tree/main/crates/signer-trezor)  - [Trezor](https://trezor.io) signer implementation
+  - [alloy-signer-wallet](https://github.com/alloy-rs/alloy/tree/main/crates/signer-wallet)  - Local wallet (Keystore/Mnemonic/Yubihsm) signer implementation
 - [alloy-transport](https://github.com/alloy-rs/alloy/tree/main/crates/transport) - Low level Ethereum JSON-RPC transport abstraction
   - [alloy-transport-http](https://github.com/alloy-rs/alloy/tree/main/crates/transport-http) - HTTP transport implementation
   - [alloy-transport-ipc](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ipc) - IPC transport implementation

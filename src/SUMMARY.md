@@ -9,6 +9,9 @@
 
 # Tutorials
 
+- [Best practices](./tutorials/best-practices.md)
+- [Transferring ETH](./tutorials/transferring-eth.md)
+
 # Migrating from Ethers
 
 # Building with Alloy
