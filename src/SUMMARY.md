@@ -11,9 +11,8 @@
 
 # Examples
 
-<!-- To update the examples run `./scripts/update.sh -->
-
 <!-- MANUALLY MAINTAINED -->
+<!-- TO UPDATE EXAMPLES RUN: `./scripts/update.sh` AND MAKE MODIFICATIONS IF NECESSARY -->
 - [Anvil](./examples/anvil/deploy_contract_anvil.md)
   - [Deploy contract](./examples/anvil/deploy_contract_anvil.md)
   - [Fork](./examples/anvil/fork_anvil.md)

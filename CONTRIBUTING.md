@@ -119,6 +119,8 @@ To run the book with docker, run:
 docker run -p 3000:3000 -v `pwd`:/book peaceiris/mdbook serve
 ```
 
+To perform an update of generated output inspect and run `./scripts/update.sh`.
+
 ### Discuss and update
 
 You will probably get feedback or requests for changes to your Pull Request.
