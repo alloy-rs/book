@@ -43,10 +43,14 @@ jobs:
       - name: Build book
         run: mdbook build
 
+      # Only deploy if a push to main
       - name: Setup Pages
+        if: github.ref_name == 'main' && github.event_name == 'push'
         uses: actions/configure-pages@v5
 
+      # Only deploy if a push to main
       - name: Upload artifact
+        if: github.ref_name == 'main' && github.event_name == 'push'
         uses: actions/upload-pages-artifact@v3
         with:
           path: "book/html"
@@ -55,6 +59,7 @@ jobs:
     # Only deploy if a push to main
     if: github.ref_name == 'main' && github.event_name == 'push'
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     needs: [build]
 
     permissions:
@@ -64,8 +69,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
-    timeout-minutes: 60
 
     steps:
       - name: Deploy to GitHub Pages
