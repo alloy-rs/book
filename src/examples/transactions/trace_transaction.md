@@ -1,0 +1,12 @@
+## Example: `trace_transaction`
+
+To run this example:
+
+- Clone the [examples](https://github.com/alloy-rs/examples) repository: `git clone git@github.com:alloy-rs/examples.git`
+- Run: `cargo run --example trace_transaction`
+
+```rust,ignore
+{{#include ../../../lib/examples/examples/transactions/examples/trace_transaction.rs}}
+```
+
+Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/main/examples/transactions/examples/trace_transaction.rs).

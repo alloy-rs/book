@@ -18,6 +18,9 @@ default-theme = "ayu"
 
 [output.html.fold]
 enable = true
-level = 1
+level = 0
 
 [output.linkcheck]
+
+[output.html.playground]
+runnable = true
