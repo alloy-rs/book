@@ -1,6 +1,3 @@
-[submodule "lib/alloy"]
-	path = lib/alloy
-	url = git@github.com:alloy-rs/alloy.git
 [submodule "lib/examples"]
 	path = lib/examples
 	url = git@github.com:alloy-rs/examples.git
