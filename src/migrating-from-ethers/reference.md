@@ -19,7 +19,6 @@ The following is a reference guide for finding the migration path for your speci
 - Compilers [`ethers::solc`](https://github.com/gakonst/ethers-rs/tree/master/ethers-solc) `->` [`foundry-compilers`](https://github.com/foundry-rs/compilers)
 - Contract: [`ethers::contract`](https://github.com/gakonst/ethers-rs/tree/master/ethers-contract) `->` [`alloy::contract`](https://github.com/alloy-rs/alloy/tree/main/crates/contract)
 - Core: [`ethers::core`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core) `->` [`alloy::core`](https://github.com/alloy-rs/core)
-  - Chains: [`ethers::core::types::Chain`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/chain.rs) `->` [`alloy-rs/chains`](https://github.com/alloy-rs/chains)
   - Types: [`ethers::core::types::*`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types) `->` See [Types](#types) section
 - Etherscan [`ethers::etherscan`](https://github.com/gakonst/ethers-rs/tree/master/ethers-etherscan) `->` [`foundry-block-explorers`](https://github.com/foundry-rs/block-explorers)
 - Middleware [`ethers::middleware`](https://github.com/gakonst/ethers-rs/tree/master/ethers-middleware) `->` Fillers [`alloy::provider::{fillers, layers}`](https://github.com/alloy-rs/alloy/tree/main/crates/provider/src)
@@ -58,12 +57,11 @@ https://github.com/alloy-rs/core/tree/main/crates/json-abi -->
 - H256 [`ethers::types::H256`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::B256`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
 - H512 [`ethers::types::H512`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::B512`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
 - Bloom [`ethers::types::Bloom`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::Bloom`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
+- TxHash [`ethers::types::TxHash`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::TxHash`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
 
-BigEndianHash [`ethers::types::BigEndianHash`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) can be expressed as follows:
+Due to a [limitation](https://github.com/alloy-rs/core/issues/554#issuecomment-1978620017) in `ruint` BigEndianHash [`ethers::types::BigEndianHash`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) can be expressed as follows:
 
 ```rust,ignore
-// SEE: https://github.com/alloy-rs/core/issues/554
-
 // `U256` => `B256`
 let x = B256::from(u256);
 
@@ -73,6 +71,10 @@ let x = U256::from_be_bytes(b256.to_be_bytes())
 ```
 
 #### RPC
+
+- Chains: [`ethers::types::Chain`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/chain.rs) `->` [`alloy-rs/chains`](https://github.com/alloy-rs/chains)
+- Trace [`ethers::types::trace`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core/src/types/trace) `->` [`alloy::rpc::types::trace`](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-trace)
+- Block [`ethers::types::block`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/block.rs) `->` [`alloy::rpc::types::eth::block`](https://github.com/alloy-rs/alloy/blob/main/crates/rpc-types/src/eth/block.rs)
 
 <!--
 
