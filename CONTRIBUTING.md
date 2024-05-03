@@ -1,6 +1,6 @@
 # Contributing to Alloy
 
-:balloon: Thanks for your help improving the project! We are so happy to have
+🎈 Thanks for your help improving the project! We are so happy to have
 you!
 
 There are opportunities to contribute to Alloy at any level. It doesn't
@@ -121,7 +121,7 @@ docker run -p 3000:3000 -v `pwd`:/book peaceiris/mdbook serve
 
 To perform an update of generated output inspect and run `./scripts/update.sh`.
 
-To add a new section (file) to the book, add it to [`SUMMARY.md`](./src/SUMMARY.md).
+To add a new section (file) to the book, add it to `./src/SUMMARY.md`.
 
 ### Discuss and update
 
