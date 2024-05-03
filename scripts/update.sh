@@ -43,18 +43,18 @@ function main () {
   rm -rf ./src/examples/*
 
   # Create example markdown files
-  for EXAMPLE_DIRPATH in ./lib/examples/examples/*/; do
-    EXAMPLE_DIRNAME=$(basename $EXAMPLE_DIRPATH)
-    BOOK_DIRNAME="./src/examples/$EXAMPLE_DIRNAME"
+  for CODE_DIRPATH in ./lib/examples/examples/*/; do
+    # Get the example category directory name
+    EXAMPLE_DIRNAME=$(basename $CODE_DIRPATH)
 
-    # Create the examples directory in the `src/examples` directory
-    mkdir $BOOK_DIRNAME
+    # Populate the `src/examples` directory with the example category directory
+    mkdir ./src/examples/$EXAMPLE_DIRNAME
 
     # For every example file in the examples directory
     # - Create a markdown file in the src/examples directory
     # - Insert the example code by pointer in the markdown file
     # - Include the template content by pointer if it exists
-    for EXAMPLE_FILEPATH in $EXAMPLE_DIRPATH/examples/*.rs; do
+    for EXAMPLE_FILEPATH in $CODE_DIRPATH/examples/*.rs; do
       EXAMPLE_FILENAME=$(basename $EXAMPLE_FILEPATH .rs)
 
       TEMPLATE_FILEPATH="./src/templates/$EXAMPLE_DIRNAME/$EXAMPLE_FILENAME.md"
@@ -78,7 +78,7 @@ cat << EOF > "$BOOK_FILEPATH"
 
 ## Example: \`$EXAMPLE_FILENAME\`
 $TEMPLATE_CONTENT
-### Usage
+### Example
 
 To run this example:
 
