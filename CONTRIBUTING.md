@@ -123,10 +123,6 @@ To perform an update of generated output inspect and run `./scripts/update.sh`.
 
 To add a new section (file) to the book, add it to `./src/SUMMARY.md`.
 
-To perform any updates to the copy above the `Usage` section in the examples make modifications to `./src/templates/*`.
-
-Make sure to run `./scripts/update.sh` upon creating a new template file.
-
 ### Discuss and update
 
 You will probably get feedback or requests for changes to your Pull Request.
