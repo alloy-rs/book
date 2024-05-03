@@ -72,21 +72,6 @@ let x = U256::from_be_bytes(b256.to_be_bytes())
 - Trace: [`ethers::types::trace::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core/src/types/trace) `->` [`alloy::rpc::types::trace`](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-trace)
 - {Block, Fee, Filter, Log, Syncing, Transaction, TxPool}: [`ethers::types::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core/src/types) `->` [`alloy::rpc::types::eth::*`](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types/src/eth)
 
-<!--
+### ABI 
 
-### ABI
-
-https://github.com/alloy-rs/core/tree/main/crates/dyn-abi
-https://github.com/alloy-rs/core/tree/main/crates/json-abi 
-
-- abigen
-- sol! macro
-
-### Bindings
-
-https://github.com/alloy-rs/core/tree/main/crates/sol-macro-input
-https://github.com/alloy-rs/core/tree/main/crates/sol-macro
-https://github.com/alloy-rs/core/tree/main/crates/sol-type-parser
-https://github.com/alloy-rs/core/tree/main/crates/syn-solidity
-
--->
+- Bindings: [`abigen!`](https://github.com/gakonst/ethers-rs/tree/51fe937f6515689b17a3a83b74a05984ad3a7f11/ethers-contract/ethers-contract-abigen) `->` [`sol!`](https://github.com/alloy-rs/core/tree/main/crates/sol-types), available on [`alloy::sol`](https://github.com/alloy-rs/alloy/blob/aea7e07b4b335a3a35e3870a6c277d397d0f3932/crates/alloy/src/lib.rs#L52-L64).
