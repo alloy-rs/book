@@ -23,7 +23,13 @@ To get started with Alloy, install Alloy and take your first steps.
 
 ### Tutorials
 
-### Migrating from Ethers
+### [Examples](./examples/anvil/deploy_contract_anvil.md)
+
+This section will give you practical examples of how Alloy can be used in your codebase.
+
+### [Migrating from Ethers](./migrating-from-ethers/reference.md)
+
+A practical guide to migrate from Ethers to Alloy.
 
 ### Building with Alloy
 
