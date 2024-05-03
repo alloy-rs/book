@@ -1,6 +1,3 @@
 [submodule "lib/examples"]
 	path = lib/examples
 	url = git@github.com:alloy-rs/examples.git
-[submodule "lib/core"]
-	path = lib/core
-	url = git@github.com:alloy-rs/core.git
