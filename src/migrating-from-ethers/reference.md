@@ -23,9 +23,13 @@ The following is a reference guide for finding the migration path for your speci
 - Etherscan: [`ethers::etherscan`](https://github.com/gakonst/ethers-rs/tree/master/ethers-etherscan) `->` [`foundry-block-explorers`](https://github.com/foundry-rs/block-explorers)
 - Middleware: [`ethers::middleware`](https://github.com/gakonst/ethers-rs/tree/master/ethers-middleware) `->` Fillers [`alloy::provider::{fillers, layers}`](https://github.com/alloy-rs/alloy/tree/main/crates/provider/src)
   - Gas oracle: [`ethers::middleware::GasOracleMiddleware`](https://github.com/gakonst/ethers-rs/tree/master/ethers-middleware/src/gas_oracle/middleware.rs) `->` Gas filler [`alloy::provider::GasFiller`](https://github.com/alloy-rs/examples/tree/main/examples/fillers/examples/gas_filler.rs)
+  - Gas escalator: [`ethers::middleware::GasEscalatorMiddleware`](https://github.com/gakonst/ethers-rs/tree/master/ethers-middleware/src/gas_escalator) `->` Not planned
+  - Transformer: [`ethers::middleware::TransformerMiddleware`](https://github.com/gakonst/ethers-rs/tree/master/ethers-middleware/src/transformer) `->` Not planned
+  - Policy: [`ethers::middleware::policy::*`](https://github.com/gakonst/ethers-rs/blob/master/ethers-middleware/src/policy.rs) `->` Not planned
+  - Timelag: [`ethers::middleware::timelag::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-middleware/src/timelag) `->` Not planned
   - Nonce manager: [`ethers::middleware::NonceManagerMiddleware`](https://github.com/gakonst/ethers-rs/tree/master/ethers-middleware/src/nonce_manager.rs) `->` Nonce filler [`alloy::provider::NonceFiller`](https://github.com/alloy-rs/alloy/tree/main/crates/provider/src/fillers/nonce.rs)
   - Signer: [`ethers::middleware::Signer`](https://github.com/gakonst/ethers-rs/tree/master/ethers-middleware/src/signer.rs) `->` Signer filler [`alloy::provider::SignerFiller`](https://github.com/alloy-rs/alloy/tree/main/crates/provider/src/fillers/signer.rs)
-- Providers: [`ethers::providers`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers) `->` Provider [`alloy-provider`](https://github.com/alloy-rs/alloy/tree/main/crates/provider)
+- Providers: [`ethers::providers`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers) `->` Provider [`alloy::providers`](https://github.com/alloy-rs/alloy/tree/main/crates/provider)
 - Transports: [`ethers::providers::transports`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports) `->` [`alloy::transports`](https://github.com/alloy-rs/alloy/tree/main/crates/transport)
   - HTTP: [`ethers::providers::Http`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/http.rs) `->` [`alloy::transports::http`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-http)
   - IPC: [`ethers::providers::Ipc`](https://github.com/gakonst/ethers-rs/tree/master/ethers-providers/src/rpc/transports/ipc.rs) `->` [`alloy::transports::ipc`](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ipc)
@@ -67,11 +71,16 @@ let x = U256::from_be_bytes(b256.to_be_bytes())
 
 #### RPC
 
-- Bytes: [`ethers::types::bytes::*`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/bytes.rs) `->` [`alloy::primitives::Bytes`](https://github.com/alloy-rs/core/tree/main/crates/primitives/src/lib.rs)
+- Bytes: [`ethers::types::bytes::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core/src/types/bytes.rs) `->` [`alloy::primitives::Bytes`](https://github.com/alloy-rs/core/tree/main/crates/primitives/src/lib.rs)
 - Chains: [`ethers::types::Chain`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core/src/types/chain.rs) `->` [`alloy-rs/chains`](https://github.com/alloy-rs/chains)
+- ENS: [`ethers::types::ens`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core/src/types/ens.rs) `->` [`foundry-common`](https://github.com/foundry-rs/foundry/tree/master/crates/common/src/ens.rs)
 - Trace: [`ethers::types::trace::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core/src/types/trace) `->` [`alloy::rpc::types::trace`](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-trace)
 - {Block, Fee, Filter, Log, Syncing, Transaction, TxPool}: [`ethers::types::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core/src/types) `->` [`alloy::rpc::types::eth::*`](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types/src/eth)
+- Proof: [`ethers::types::proof::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core/src/types/proof.rs) `->` Account [`alloy::rpc::types::eth::account::*`](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types/src/eth/account.rs)
+- Signature: [`ethers::types::signature::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core/src/types/signature.rs) `->` [`alloy::rpc::types::eth::transaction::signature::*`](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types/src/eth/transaction/signature.rs)
+- Withdrawal [`ethers::types::withdrawal::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core/src/types/withdrawal.rs) `->` EIP4895 [`alloy::eips::eip4895`](https://github.com/alloy-rs/alloy/tree/main/crates/eips/src/eip4895.rs)
+- Opcode: [`ethers::types::opcode::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core/src/types/opcode.rs) `->` [`syn-solidity`](https://github.com/alloy-rs/core/tree/main/crates/syn-solidity)
 
-### ABI 
+### ABI
 
 - Bindings: [`abigen!`](https://github.com/gakonst/ethers-rs/tree/51fe937f6515689b17a3a83b74a05984ad3a7f11/ethers-contract/ethers-contract-abigen) `->` [`sol!`](https://github.com/alloy-rs/core/tree/main/crates/sol-types), available on [`alloy::sol`](https://github.com/alloy-rs/alloy/blob/aea7e07b4b335a3a35e3870a6c277d397d0f3932/crates/alloy/src/lib.rs#L52-L64).
