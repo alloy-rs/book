@@ -2,17 +2,17 @@
 <!-- ANY CHANGES MADE TO THIS FILE WILL BE OVERWRITTEN -->
 <!-- LATEST UPDATE: https://github.com/alloy-rs/examples/tree/18184f3caec922bd5ba358f389b5bfea365ef444 -->
 
-## Example: `comparison_equivalence`
+## Example: `builtin`
 
 ### Usage
 
 To run this example:
 
 - Clone the [examples](https://github.com/alloy-rs/examples) repository: `git clone git@github.com:alloy-rs/examples.git`
-- Run: `cargo run --example comparison_equivalence`
+- Run: `cargo run --example builtin`
 
 ```rust,ignore
-{{#include ../../../lib/examples/examples/big-numbers/examples/comparison_equivalence.rs}}
+{{#include ../../../lib/examples/examples/providers/examples/builtin.rs}}
 ```
 
-Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/18184f3caec922bd5ba358f389b5bfea365ef444/examples/big-numbers/examples/comparison_equivalence.rs).
+Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/18184f3caec922bd5ba358f389b5bfea365ef444/examples/providers/examples/builtin.rs).

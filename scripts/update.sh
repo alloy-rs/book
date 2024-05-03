@@ -29,7 +29,9 @@ function main () {
   log $GREEN "Updating..."
 
   # Update submodules
-  git submodule update --init --recursive
+  git submodule update --recursive --remote
+  git submodule foreach git checkout main
+  git submodule foreach git pull origin main
 
   # Get the commit hash of the latest commit in the examples repository
   EXAMPLES_COMMIT_HASH=$(git -C ./lib/examples rev-parse HEAD)
