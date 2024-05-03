@@ -30,8 +30,7 @@ function main () {
 
   # Update submodules
   git submodule update --recursive --remote
-  git submodule foreach git checkout main
-  git submodule foreach git pull origin main
+  git submodule foreach git pull origin
 
   # Get the commit hash of the latest commit in the examples repository
   EXAMPLES_COMMIT_HASH=$(git -C ./lib/examples rev-parse HEAD)
@@ -57,7 +56,7 @@ function main () {
       TEMPLATE_FILEPATH="../../templates/$EXAMPLE_DIRNAME/$EXAMPLE_FILENAME.md"
       BOOK_FILEPATH="./src/examples/$EXAMPLE_DIRNAME/$EXAMPLE_FILENAME.md"
 
-      # Create the template file if it doesn't exist
+      # Create an empty template file if it doesn't exist as placeholder
       mkdir -p ./src/templates/$EXAMPLE_DIRNAME
       touch ./src/templates/$EXAMPLE_DIRNAME/$EXAMPLE_FILENAME.md
 
