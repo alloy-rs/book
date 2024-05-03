@@ -9,6 +9,19 @@
 
 # Tutorials
 
+# [Migrating from `ethers-rs`](./migrating-from-ethers/reference.md)
+
+- [Reference](./migrating-from-ethers/reference.md)
+
+# [Building with Alloy](./building-with-alloy/basic-building-blocks/using-big-numbers)
+
+- [Basic building blocks](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
+  - [Using big numbers](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
+  - [Basic hash and address types](./building-with-alloy/basic-building-blocks/basic-hash-and-address-types.md)
+  - [Common conversions](./building-with-alloy/basic-building-blocks/common-conversions.md)
+  - [Creating instances](./building-with-alloy/basic-building-blocks/creating-instances.md)
+  - [Comparisons and equivalence](./building-with-alloy/basic-building-blocks/comparisons-and-equivalence.md)
+
 # Examples
 
 <!-- MANUALLY MAINTAINED -->
@@ -32,20 +45,22 @@
   - [Nonce management filler](./examples/fillers/nonce_filler.md)
   - [Recommended fillers](./examples/fillers/recommended_fillers.md)
   - [Signer management filler](./examples/fillers/signer_filler.md)
-- [Subscriptions](./examples/subscriptions/subscribe_blocks.md)
-  - [Subscribe and watch blocks](./examples/subscriptions/subscribe_blocks.md)
-  - [Watch and poll for contract event logs](./examples/subscriptions/poll_logs.md)
-  - [Subscribe and listen for contract event logs](./examples/subscriptions/subscribe_logs.md)
-  - [Event multiplexer](./examples/subscriptions/event_multiplexer.md)
 - [Providers](./examples/providers/builder.md)
   - [Builder](./examples/providers/builder.md)
+  - [Builtin](./examples/providers/builtin.md)
   - [HTTP](./examples/providers/http.md)
   - [IPC](./examples/providers/ipc.md)
-  - [WS](./examples/providers/ws.md)
+  - [WebSocket](./examples/providers/ws.md)
+  - [WebSocket with authentication](./examples/providers/ws_with_auth.md)
 - [Queries](./examples/queries/query_contract_storage.md)
-  - [Contract storage](./examples/queries/query_contract_storage.md)
-  - [Contract deployed bytecode](./examples/queries/query_deployed_bytecode.md)
-  - [Logs](./examples/queries/query_logs.md)
+  - [Query contract storage](./examples/queries/query_contract_storage.md)
+  - [Query contract deployed bytecode](./examples/queries/query_deployed_bytecode.md)
+  - [Query logs](./examples/queries/query_logs.md)
+- [Subscriptions](./examples/subscriptions/subscribe_blocks.md)
+  - [Watch and poll for contract event logs](./examples/subscriptions/poll_logs.md)
+  - [Subscribe and watch blocks](./examples/subscriptions/subscribe_blocks.md)
+  - [Subscribe and listen for contract event logs](./examples/subscriptions/subscribe_logs.md)
+  - [Event multiplexer](./examples/subscriptions/event_multiplexer.md)
 - [Transactions](./examples/transactions/decode_input.md)
   - [Decode input](./examples/transactions/decode_input.md)
   - [Get gas price in USD](./examples/transactions/gas_price_usd.md)
@@ -54,7 +69,7 @@
   - [Transfer ERC20 token](./examples/transactions/transfer_erc20.md)
   - [Transfer ETH](./examples/transactions/transfer_eth.md)
   - [Sign and send a raw transaction](./examples/transactions/sign_transaction.md) 
-  - [Send transaction with access list](./examples/transactions/with_access_list.md) 
+  - [Send transaction with access list](./examples/transactions/with_access_list.md)
 - [Wallets](./examples/wallets/aws_signer.md)
   - [AWS signer](./examples/wallets/aws_signer.md)
   - [Ledger signer](./examples/wallets/ledger_signer.md)
@@ -67,12 +82,6 @@
   - [Keystore signer](./examples/wallets/keystore_signer.md)
   - [Create keystore](./examples/wallets/create_keystore.md)
 <!-- MANUALLY MAINTAINED -->
-
-# [Migrating from `ethers-rs`](./migrating-from-ethers/reference.md)
-
-- [Reference](./migrating-from-ethers/reference.md)
-
-# Building with Alloy
 
 # Appendix
 

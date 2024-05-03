@@ -2,15 +2,15 @@
 <!-- ANY CHANGES MADE TO THIS FILE WILL BE OVERWRITTEN -->
 <!-- LATEST UPDATE: https://github.com/alloy-rs/examples/tree/18184f3caec922bd5ba358f389b5bfea365ef444 -->
 
-### Example: `query_logs`
+### Example: `builtin`
 
 To run this example:
 
 - Clone the [examples](https://github.com/alloy-rs/examples) repository: `git clone git@github.com:alloy-rs/examples.git`
-- Run: `cargo run --example query_logs`
+- Run: `cargo run --example builtin`
 
 ```rust,ignore
-{{#include ../../../lib/examples/examples/queries/examples/query_logs.rs}}
+{{#include ../../../lib/examples/examples/providers/examples/builtin.rs}}
 ```
 
-Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/18184f3caec922bd5ba358f389b5bfea365ef444/examples/queries/examples/query_logs.rs).
+Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/18184f3caec922bd5ba358f389b5bfea365ef444/examples/providers/examples/builtin.rs).
