@@ -1,4 +1,4 @@
-## Http
+### Http
 
 The `Http` provider establishes an HTTP connection with a node, allowing you to send RPC requests to the node to fetch data, simulate calls, send transactions and much more.
 

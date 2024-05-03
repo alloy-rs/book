@@ -51,13 +51,15 @@ function main () {
     mkdir $BOOK_DIRNAME
 
     for EXAMPLE_FILEPATH in $EXAMPLE_DIRPATH/examples/*.rs; do
-      REFERENCE_FILEPATH="../../../lib/examples/examples/$EXAMPLE_DIRNAME/examples/$(basename $EXAMPLE_FILEPATH)"
       EXAMPLE_FILENAME=$(basename $EXAMPLE_FILEPATH .rs)
+
+      REFERENCE_FILEPATH="../../../lib/examples/examples/$EXAMPLE_DIRNAME/examples/$(basename $EXAMPLE_FILEPATH)"
+      TEMPLATE_FILEPATH="../../templates/$EXAMPLE_DIRNAME/$EXAMPLE_FILENAME.md"
       BOOK_FILEPATH="./src/examples/$EXAMPLE_DIRNAME/$EXAMPLE_FILENAME.md"
 
-      # Read in the template content if it exists
-      TEMPLATE_FILEPATH="./src/templates/$EXAMPLE_DIRNAME/$EXAMPLE_FILENAME.md"
-      TEMPLATE_CONTENT=$([ -f "$TEMPLATE_FILEPATH" ] && cat $TEMPLATE_FILEPATH || echo "")
+      # Create the template file if it doesn't exist
+      mkdir -p ./src/templates/$EXAMPLE_DIRNAME
+      touch ./src/templates/$EXAMPLE_DIRNAME/$EXAMPLE_FILENAME.md
 
       echo "Creating $BOOK_FILEPATH"
 
@@ -68,7 +70,7 @@ cat << EOF > "$BOOK_FILEPATH"
 <!-- LATEST UPDATE: https://github.com/alloy-rs/examples/tree/$EXAMPLES_COMMIT_HASH -->
 
 ## Example: \`$EXAMPLE_FILENAME\`
-$TEMPLATE_CONTENT
+{{#include $TEMPLATE_FILEPATH}}
 ### Usage
 
 To run this example:

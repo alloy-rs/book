@@ -3,7 +3,7 @@
 <!-- LATEST UPDATE: https://github.com/alloy-rs/examples/tree/18184f3caec922bd5ba358f389b5bfea365ef444 -->
 
 ## Example: `trace_transaction`
-
+{{#include ../../templates/transactions/trace_transaction.md}}
 ### Usage
 
 To run this example:

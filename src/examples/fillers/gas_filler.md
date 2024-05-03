@@ -3,7 +3,7 @@
 <!-- LATEST UPDATE: https://github.com/alloy-rs/examples/tree/18184f3caec922bd5ba358f389b5bfea365ef444 -->
 
 ## Example: `gas_filler`
-
+{{#include ../../templates/fillers/gas_filler.md}}
 ### Usage
 
 To run this example:

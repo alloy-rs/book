@@ -3,7 +3,7 @@
 <!-- LATEST UPDATE: https://github.com/alloy-rs/examples/tree/18184f3caec922bd5ba358f389b5bfea365ef444 -->
 
 ## Example: `interact_with_abi`
-
+{{#include ../../templates/contracts/interact_with_abi.md}}
 ### Usage
 
 To run this example:
