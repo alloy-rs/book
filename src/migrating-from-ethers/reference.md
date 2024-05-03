@@ -51,14 +51,26 @@ https://github.com/alloy-rs/core/tree/main/crates/json-abi -->
 - U128 [`ethers::types::U128`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::U128`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
 - U256 [`ethers::types::U256`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::U256`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
 - U512 [`ethers::types::U512`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::U512`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
-- H32 [`ethers::types::H32`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` ?
+- H32 [`ethers::types::H32`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::aliases::B32`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
 - H64 [`ethers::types::H64`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::B64`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
 - H128 [`ethers::types::H128`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::B128`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
 - H160 [`ethers::types::H160`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::B160`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
 - H256 [`ethers::types::H256`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::B256`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
 - H512 [`ethers::types::H512`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::B512`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
 - Bloom [`ethers::types::Bloom`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` [`alloy::primitives::Bloom`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/lib.rs)
-- BigEndianHash [`ethers::types::BigEndianHash`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) `->` ?
+
+BigEndianHash [`ethers::types::BigEndianHash`](https://github.com/gakonst/ethers-rs/blob/master/ethers-core/src/types/mod.rs) can be expressed as follows:
+
+```rust,ignore
+// SEE: https://github.com/alloy-rs/core/issues/554
+
+// `U256` => `B256`
+let x = B256::from(u256);
+
+// `B256` => `U256`
+let x: U256 = b256.into();
+let x = U256::from_be_bytes(b256.to_be_bytes())
+```
 
 #### RPC
 
