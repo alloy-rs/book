@@ -17,6 +17,10 @@
 
 - [Basic building blocks](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
   - [Using big numbers](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
+  - [Basic hash and address types](./building-with-alloy/basic-building-blocks/basic-hash-and-address-types.md)
+  - [Common conversions](./building-with-alloy/basic-building-blocks/common-conversions.md)
+  - [Creating instances](./building-with-alloy/basic-building-blocks/creating-instances.md)
+  - [Comparisons and equivalence](./building-with-alloy/basic-building-blocks/comparisons-and-equivalence.md)
 
 # Examples
 

@@ -6,15 +6,7 @@ It is worth noting that Ethereum is not the only blockchain or cryptocurrency th
 
 ### Utilities
 
-In order to create an application, it is often necessary to convert between the representation of values that is easily understood by humans (such as ether) and the machine-readable form that is used by contracts and math functions (such as wei). This is particularly important when working with Ethereum, as certain values, such as balances and gas prices, must be expressed in wei when sending transactions, even if they are displayed to the user in a different format, such as ether or gwei. To help with this conversion, `alloy` provides two functions, [`parse_units`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/utils/units.rs) and [`format_units`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/utils/units.rs), which allow you to easily convert between human-readable and machine-readable forms of values. parse_units can be used to convert a string representing a value in ether, such as "1.1", into a big number in wei, which can be used in contracts and math functions. format_units can be used to convert a big number value into a human-readable string, which is useful for displaying values to users.
-
-### Examples
-
-{{#include ../../examples/big-numbers/comparison_equivalence.md}}
-
-{{#include ../../examples/big-numbers/conversion.md}}
-
-{{#include ../../examples/big-numbers/create_instances.md}}
+In order to create an application, it is often necessary to convert between the representation of values that is easily understood by humans (such as ether) and the machine-readable form that is used by contracts and math functions (such as wei). This is particularly important when working with Ethereum, as certain values, such as balances and gas prices, must be expressed in wei when sending transactions, even if they are displayed to the user in a different format, such as ether or gwei. To help with this conversion, `alloy::primitives::utils` provides two functions, [`parse_units`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/utils/units.rs) and [`format_units`](https://github.com/alloy-rs/core/blob/main/crates/primitives/src/utils/units.rs), which allow you to easily convert between human-readable and machine-readable forms of values. parse_units can be used to convert a string representing a value in ether, such as "1.1", into a big number in wei, which can be used in contracts and math functions. format_units can be used to convert a big number value into a human-readable string, which is useful for displaying values to users.
 
 {{#include ../../examples/big-numbers/math_operations.md}}
 
