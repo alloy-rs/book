@@ -56,7 +56,11 @@ function main () {
       BOOK_FILEPATH="./src/examples/$EXAMPLE_DIRNAME/$EXAMPLE_FILENAME.md"
 
       # Read in the template content if it exists
-      TEMPLATE_CONTENT=$([ -f $TEMPLATE_FILEPATH ] && echo "{{#include ../../templates/$EXAMPLE_DIRNAME/$EXAMPLE_FILENAME.md}}" || echo "")
+      TEMPLATE_CONTENT=$(
+        [ -f $TEMPLATE_FILEPATH ] && \
+        echo "{{#include ../../templates/$EXAMPLE_DIRNAME/$EXAMPLE_FILENAME.md}}" || \
+        echo ""
+      )
 
       echo "Creating $BOOK_FILEPATH"
 
