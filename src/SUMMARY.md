@@ -13,10 +13,10 @@
 
 - [Reference](./migrating-from-ethers/reference.md)
 
-<!-- # [Building with Alloy](./building-with-alloy/basic-building-blocks/primitives.md)
+# [Building with Alloy](./building-with-alloy/basic-building-blocks/using-big-numbers)
 
-- [Basic building blocks](./building-with-alloy/basic-building-blocks/primitives.md)
-  - [Primitives](./building-with-alloy/basic-building-blocks/primitives.md) -->
+- [Basic building blocks](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
+  - [Using big numbers](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
 
 # Examples
 
