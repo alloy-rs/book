@@ -105,7 +105,7 @@ git clone --recurse-submodules $FORK_URL
 
 The book is build with [`mdbook`](https://github.com/rust-lang/mdBook), which you can get by running `cargo install mdbook`.
 
-The book also requires [`mdbook-external-links`](https://github.com/jonahgoldwastaken/mdbook-external-links): `cargo install mdbook-external-links`.
+The book requires [`mdbook-external-links`](https://github.com/jonahgoldwastaken/mdbook-external-links): `cargo install mdbook-external-links` and [`mdbook-linkcheck`](https://github.com/Michael-F-Bryan/mdbook-linkcheck): `cargo install mdbook-linkcheck`.
 
 To see the book change live run:
 
@@ -120,6 +120,8 @@ docker run -p 3000:3000 -v `pwd`:/book peaceiris/mdbook serve
 ```
 
 To perform an update of generated output inspect and run `./scripts/update.sh`.
+
+To add a new section (file) to the book, add it to [`SUMMARY.md`](./src/SUMMARY.md).
 
 ### Discuss and update
 
