@@ -55,7 +55,7 @@ function main () {
 
       # Read in the template content if it exists
       TEMPLATE_FILEPATH="./src/templates/$EXAMPLE_DIRNAME/$EXAMPLE_FILENAME.md"
-      TEMPLATE_CONTENT=$([ -f "$TEMPLATE_FILEPATH" ] && echo -e "$(cat $TEMPLATE_FILEPATH)\n\n---\n" || echo "")
+      TEMPLATE_CONTENT=$([ -f "$TEMPLATE_FILEPATH" ] && cat $TEMPLATE_FILEPATH || echo "")
 
       echo "Creating $BOOK_FILEPATH"
 
@@ -67,6 +67,8 @@ cat << EOF > "$BOOK_FILEPATH"
 
 ## Example: \`$EXAMPLE_FILENAME\`
 $TEMPLATE_CONTENT
+### Usage
+
 To run this example:
 
 - Clone the [examples](https://github.com/alloy-rs/examples) repository: \`git clone git@github.com:alloy-rs/examples.git\`

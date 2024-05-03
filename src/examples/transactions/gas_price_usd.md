@@ -4,6 +4,8 @@
 
 ## Example: `gas_price_usd`
 
+### Usage
+
 To run this example:
 
 - Clone the [examples](https://github.com/alloy-rs/examples) repository: `git clone git@github.com:alloy-rs/examples.git`
