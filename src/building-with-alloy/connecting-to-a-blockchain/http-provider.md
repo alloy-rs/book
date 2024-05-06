@@ -1,8 +1,8 @@
-### Http Provider
+## Http Provider
 
 The `Http` provider establishes an HTTP connection with a node, allowing you to send JSON-RPC requests to the node to fetch data, simulate calls, send transactions and much more.
 
-#### Initializing an Http Provider
+### Initializing an Http Provider
 
 The recommended way of initializing a `Http` provider is by using the [`on_http`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html#method.on_http) method on the [`ProviderBuilder`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html).
 

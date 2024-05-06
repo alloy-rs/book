@@ -1,8 +1,8 @@
-### WebSocket Provider
+## WebSocket Provider
 
 The `Ws` provider establishes an WebSocket connection with a node, allowing you to send JSON-RPC requests to the node to fetch data, simulate calls, send transactions and much more. The `Ws` provider can be used with any Ethereum node that supports WebSocket connections. This allows programs to interact with the network in real-time without the need for HTTP polling for things like new block headers and filter logs.
 
-#### Initializing a `Ws` Provider
+### Initializing a `Ws` Provider
 
 The recommended way of initializing a `Ws` provider is by using the [`on_ws`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html#method.on_ws) method on the [`ProviderBuilder`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html) with a [`WsConnect`](https://alloy-rs.github.io/alloy/alloy/rpc/client/struct.WsConnect.html) configuration.
 
