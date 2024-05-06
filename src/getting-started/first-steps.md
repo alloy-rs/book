@@ -16,6 +16,8 @@ After [installing](./installation.md) `alloy` let's create an example of using t
 Install [`tokio`](https://crates.io/crates/tokio) and [`eyre`](https://crates.io/crates/eyre) as dependencies and define the body as follows:
 
 ```rust,ignore
+//! Example of creating an HTTP provider using the `on_http` method on the `ProviderBuilder`.
+
 use alloy::providers::{Provider, ProviderBuilder};
 use eyre::Result;
 

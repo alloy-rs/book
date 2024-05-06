@@ -66,7 +66,7 @@ let x = B256::from(u256);
 
 // `B256` => `U256`
 let x: U256 = b256.into();
-let x = U256::from_be_bytes(b256.to_be_bytes())
+let x = U256::from_be_bytes(b256.into())
 ```
 
 #### RPC

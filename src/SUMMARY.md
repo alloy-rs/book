@@ -21,6 +21,11 @@
   - [Common conversions](./building-with-alloy/basic-building-blocks/common-conversions.md)
   - [Creating instances](./building-with-alloy/basic-building-blocks/creating-instances.md)
   - [Comparisons and equivalence](./building-with-alloy/basic-building-blocks/comparisons-and-equivalence.md)
+- [Connecting to a blockchain](./building-with-alloy/connecting-to-a-blockchain/setting-up-a-provider.md)
+  - [Setting up a Provider](./building-with-alloy/connecting-to-a-blockchain/setting-up-a-provider.md)
+  - [HTTP provider](./building-with-alloy/connecting-to-a-blockchain/http-provider.md)
+  - [WS provider](./building-with-alloy/connecting-to-a-blockchain/ws-provider.md)
+  - [IPC provider](./building-with-alloy/connecting-to-a-blockchain/ipc-provider.md)
 
 # Examples
 
@@ -52,9 +57,9 @@
   - [Builder](./examples/providers/builder.md)
   - [Builtin](./examples/providers/builtin.md)
   - [HTTP](./examples/providers/http.md)
+  - [WS](./examples/providers/ws.md)
+  - [WS with authentication](./examples/providers/ws_with_auth.md)
   - [IPC](./examples/providers/ipc.md)
-  - [WebSocket](./examples/providers/ws.md)
-  - [WebSocket with authentication](./examples/providers/ws_with_auth.md)
 - [Queries](./examples/queries/query_contract_storage.md)
   - [Query contract storage](./examples/queries/query_contract_storage.md)
   - [Query contract deployed bytecode](./examples/queries/query_deployed_bytecode.md)
