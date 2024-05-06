@@ -45,8 +45,9 @@ async fn main() -> eyre::Result<()> {
 }
 ```
 
+Similar to the other providers, you can also establish an authorized connection with a node via websockets.
+
 {{#include ../../examples/providers/ws.md}}
 
-Similar to the other providers, you can also establish an authorized connection with a node via websockets.
 
 {{#include ../../examples/providers/ws_with_auth.md}}
