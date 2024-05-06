@@ -21,24 +21,24 @@ features.
 
 To get started with Alloy, install Alloy and take your first steps.
 
-### Tutorials
+### [Migrating from Ethers](./migrating-from-ethers/reference.md)
+
+A practical guide to migrate from Ethers to Alloy.
+
+### [Building with Alloy](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
+
+A walkthrough of building with Alloy.
 
 ### [Examples](./examples/anvil/deploy_contract_anvil.md)
 
 This section will give you practical examples of how Alloy can be used in your codebase.
 
-### [Migrating from Ethers](./migrating-from-ethers/reference.md)
+### [Appendix](./appendix/glossary.md)
 
-A practical guide to migrate from Ethers to Alloy.
-
-### Building with Alloy
+Glossary, references, troubleshooting, and more.
 
 ### [Contributing](https://github.com/alloy-rs/book/tree/main/CONTRIBUTING.md)
 
 Thanks for your help improving the project! We are so happy to have you! We have
 [a contributing guide](https://github.com/alloy-rs/book/tree/main/CONTRIBUTING.md) to help you get involved in the
 Alloy project.
-
-### [Appendix](./appendix/glossary.md)
-
-Glossary, references, troubleshooting, and more.
