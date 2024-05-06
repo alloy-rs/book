@@ -5,6 +5,7 @@ set -eo pipefail
 
 # Utilities
 GREEN="\033[00;32m"
+YELLOW="\033[00;33m"
 
 function log () {
   echo -e "$1"
@@ -86,6 +87,8 @@ done
   # If there are differences, print them
   UPDATED_EXAMPLE_FILES=$(find ./src/examples -type f)
   diff <(echo "$CURRENT_EXAMPLE_FILES") <(echo "$UPDATED_EXAMPLE_FILES") || true
+
+  log $YELLOW "Make sure to update SUMMARY.md if necessary."
 
   log $GREEN "Done"
 }
