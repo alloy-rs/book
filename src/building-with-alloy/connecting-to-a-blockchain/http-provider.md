@@ -1,4 +1,4 @@
-## Http Provider
+## HTTP `Provider`
 
 The `Http` provider establishes an HTTP connection with a node, allowing you to send JSON-RPC requests to the node to fetch data, simulate calls, send transactions and much more.
 

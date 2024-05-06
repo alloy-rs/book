@@ -1,4 +1,4 @@
-## WebSocket Provider
+## WS `Provider`
 
 The `Ws` provider establishes an WebSocket connection with a node, allowing you to send JSON-RPC requests to the node to fetch data, simulate calls, send transactions and much more. The `Ws` provider can be used with any Ethereum node that supports WebSocket connections. This allows programs to interact with the network in real-time without the need for HTTP polling for things like new block headers and filter logs.
 

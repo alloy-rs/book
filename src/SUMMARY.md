@@ -23,9 +23,18 @@
   - [Comparisons and equivalence](./building-with-alloy/basic-building-blocks/comparisons-and-equivalence.md)
 - [Connecting to a blockchain](./building-with-alloy/connecting-to-a-blockchain/setting-up-a-provider.md)
   - [Setting up a Provider](./building-with-alloy/connecting-to-a-blockchain/setting-up-a-provider.md)
-  - [HTTP provider](./building-with-alloy/connecting-to-a-blockchain/http-provider.md)
-  - [WS provider](./building-with-alloy/connecting-to-a-blockchain/ws-provider.md)
-  - [IPC provider](./building-with-alloy/connecting-to-a-blockchain/ipc-provider.md)
+  - [Creating an HTTP provider](./building-with-alloy/connecting-to-a-blockchain/http-provider.md)
+  - [Creating a WS provider](./building-with-alloy/connecting-to-a-blockchain/ws-provider.md)
+  - [Creating an IPC provider](./building-with-alloy/connecting-to-a-blockchain/ipc-provider.md)
+- [Understanding Fillers](./building-with-alloy/understanding-fillers.md)
+- [The Network abstraction](./building-with-alloy/the-network-abstraction.md)
+- [Queries](./building-with-alloy/queries.md)
+- [Transactions](./building-with-alloy/transactions/using-the-transaction-builder.md)
+  - [Sending a legacy transaction](./building-with-alloy/transactions/sending-a-legacy-transaction.md)
+  - [Sending an EIP-1559 transaction](./building-with-alloy/transactions/sending-an-EIP-1559-transaction.md)
+  - [Using access lists](./building-with-alloy/transactions/using-access-lists.md)
+  - [Sending an EIP-4844 transaction](./building-with-alloy/transactions/sending-an-EIP-4844-transaction.md)
+  - [Awaiting for receipts](./building-with-alloy/transactions/awaiting-for-receipts.md)
 
 # Examples
 
