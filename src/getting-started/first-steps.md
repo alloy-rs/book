@@ -16,6 +16,8 @@ After [installing](./installation.md) `alloy` let's create an example of using t
 Install [`tokio`](https://crates.io/crates/tokio) and [`eyre`](https://crates.io/crates/eyre) as dependencies and define the body as follows:
 
 ```rust,ignore
+//! Example of creating an HTTP provider using the `on_http` method on the `ProviderBuilder`.
+
 use alloy::providers::{Provider, ProviderBuilder};
 use eyre::Result;
 
@@ -49,4 +51,4 @@ Finally we fetch the latest block number using the provider:
 
 The complete and runnable example can be found [here](https://github.com/alloy-rs/examples/blob/main/examples/providers/examples/http.rs), one of the [many runnable examples of Alloy](https://github.com/alloy-rs/examples/blob/main/README.md#overview) to explore.
 
-To get familiar with the terminology used by Alloy it is recommended to have a brief look at the [glossary](../appendix/glossary.md).
+<!-- To get familiar with the terminology used by Alloy it is recommended to have a brief look at the [glossary](../appendix/glossary.md). -->

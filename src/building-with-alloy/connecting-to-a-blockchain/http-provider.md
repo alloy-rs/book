@@ -7,6 +7,8 @@ The `Http` provider establishes an HTTP connection with a node, allowing you to 
 The recommended way of initializing a `Http` provider is by using the [`on_http`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html#method.on_http) method on the [`ProviderBuilder`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html).
 
 ```rust,ignore
+//! Example of creating an HTTP provider using the `on_http` method on the `ProviderBuilder`.
+
 use alloy::providers::{Provider, ProviderBuilder};
 use eyre::Result;
 
@@ -25,6 +27,8 @@ async fn main() -> eyre::Result<()> {
 An alternative way of initializing is to use the [`on_builtin`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html#method.on_builtin) method on the [`ProviderBuilder`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html). This method will automatically determine the connection type (`Http`, `Ws` or `Ipc`) depending on the format of the URL. This method is particularly useful if you need a boxed transport.
 
 ```rust,ignore
+//! Example of creating an HTTP provider using the `on_builtin` method on the `ProviderBuilder`.
+
 use alloy::providers::{Provider, ProviderBuilder};
 use eyre::Result;
 

@@ -7,6 +7,8 @@ The `Ws` provider establishes an WebSocket connection with a node, allowing you 
 The recommended way of initializing a `Ws` provider is by using the [`on_ws`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html#method.on_ws) method on the [`ProviderBuilder`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html) with a [`WsConnect`](https://alloy-rs.github.io/alloy/alloy/rpc/client/struct.WsConnect.html) configuration.
 
 ```rust,ignore
+//! Example of creating an WS provider using the `on_ws` method on the `ProviderBuilder`.
+
 use alloy::{
     providers::{Provider, ProviderBuilder},
     rpc::client::WsConnect,
@@ -29,12 +31,14 @@ async fn main() -> eyre::Result<()> {
 An alternative way of initializing is to use the [`on_builtin`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html#method.on_builtin) method on the [`ProviderBuilder`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html). This method will automatically determine the connection type (`Http`, `Ws` or `Ipc`) depending on the format of the URL. This method is particularly useful if you need a boxed transport.
 
 ```rust,ignore
+//! Example of creating an WS provider using the `on_builtin` method on the `ProviderBuilder`.
+
 use alloy::providers::{Provider, ProviderBuilder};
 use eyre::Result;
 
 #[tokio::main]
 async fn main() -> eyre::Result<()> {
-    // Create a provider with the WS transport using the `reqwest` crate.
+    // Create a provider with the WS transport.
     let provider = ProviderBuilder::new().on_builtin("wss://eth-mainnet.g.alchemy.com/v2/your-api-key").await?;
 
     Ok(())
