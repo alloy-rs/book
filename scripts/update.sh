@@ -5,6 +5,7 @@ set -eo pipefail
 
 # Utilities
 GREEN="\033[00;32m"
+YELLOW="\033[00;33m"
 
 function log () {
   echo -e "$1"
@@ -30,7 +31,8 @@ function main () {
 
   # Update submodules
   git submodule update --recursive --remote
-  git submodule foreach git pull origin
+  git submodule foreach git checkout main
+  git submodule foreach git pull origin main
 
   # Get the commit hash of the latest commit in the examples repository
   EXAMPLES_COMMIT_HASH=$(git -C ./lib/examples rev-parse HEAD)
@@ -85,6 +87,8 @@ done
   # If there are differences, print them
   UPDATED_EXAMPLE_FILES=$(find ./src/examples -type f)
   diff <(echo "$CURRENT_EXAMPLE_FILES") <(echo "$UPDATED_EXAMPLE_FILES") || true
+
+  log $YELLOW "Make sure to update `src/SUMMARY.md` if necessary."
 
   log $GREEN "Done"
 }

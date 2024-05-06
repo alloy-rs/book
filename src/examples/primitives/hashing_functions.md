@@ -2,15 +2,15 @@
 <!-- ANY CHANGES MADE TO THIS FILE WILL BE OVERWRITTEN -->
 <!-- LATEST UPDATE: https://github.com/alloy-rs/examples/tree/52a7c26c03ea845bd81076995f63fe6b31606dad -->
 
-### Example: `subscribe_logs`
+### Example: `hashing_functions`
 
 To run this example:
 
 - Clone the [examples](https://github.com/alloy-rs/examples) repository: `git clone git@github.com:alloy-rs/examples.git`
-- Run: `cargo run --example subscribe_logs`
+- Run: `cargo run --example hashing_functions`
 
 ```rust,ignore
-{{#include ../../../lib/examples/examples/subscriptions/examples/subscribe_logs.rs}}
+{{#include ../../../lib/examples/examples/primitives/examples/hashing_functions.rs}}
 ```
 
-Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/52a7c26c03ea845bd81076995f63fe6b31606dad/examples/subscriptions/examples/subscribe_logs.rs).
+Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/52a7c26c03ea845bd81076995f63fe6b31606dad/examples/primitives/examples/hashing_functions.rs).
