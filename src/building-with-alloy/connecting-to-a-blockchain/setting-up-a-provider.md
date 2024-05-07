@@ -1,4 +1,4 @@
-## Setting up a Provider
+## Setting up a `Provider`
 
 A [`Provider`](https://alloy-rs.github.io/alloy/alloy_provider/provider/trait/trait.Provider.html) is an abstraction of a connection to the Ethereum network, providing a concise, consistent interface to standard Ethereum node functionality.
 
@@ -26,39 +26,4 @@ async fn main() -> eyre::Result<()> {
 }
 ```
 
-### Fillers
-
-[Fillers](https://alloy-rs.github.io/alloy/alloy_provider/fillers/index.html) decorate a [`Provider`](https://alloy-rs.github.io/alloy/alloy_provider/provider/trait/trait.Provider.html), filling transaction details before they are sent to the network. Fillers are used to set the nonce, gas price, gas limit, and other transaction details, and are called before any other layer.
-
-```rust,ignore
-//! Example of using the `.with_recommended_fillers()` method in the provider.
-
-use alloy::{
-    network::EthereumSigner, node_bindings::Anvil, providers::ProviderBuilder,
-    signers::wallet::LocalWallet,
-};
-use eyre::Result;
-
-#[tokio::main]
-async fn main() -> Result<()> {
-    // Spin up a local Anvil node.
-    // Ensure `anvil` is available in $PATH.
-    let anvil = Anvil::new().try_spawn()?;
-
-    // Set up signer from the first default Anvil account (Alice).
-    let signer: LocalWallet = anvil.keys()[0].clone().into();
-
-    // Create a provider with the signer.
-    let rpc_url = anvil.endpoint().parse()?;
-    let provider = ProviderBuilder::new()
-        // Adds the `ChainIdFiller`, `GasFiller` and the `NonceFiller` layers.
-        .with_recommended_fillers()
-        .signer(EthereumSigner::from(signer))
-        .on_http(rpc_url);
-
-    // ...
-
-    Ok(())
-}
-
-```
+Next, lets look at the [HTTP Provider](./http-provider.md).
