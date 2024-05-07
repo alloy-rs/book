@@ -1,1 +1,0 @@
-## Awaiting for receipts

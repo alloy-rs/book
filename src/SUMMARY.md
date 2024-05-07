@@ -27,14 +27,13 @@
   - [Creating a WS provider](./building-with-alloy/connecting-to-a-blockchain/ws-provider.md)
   - [Creating an IPC provider](./building-with-alloy/connecting-to-a-blockchain/ipc-provider.md)
 - [Understanding Fillers](./building-with-alloy/understanding-fillers.md)
-- [The Network abstraction](./building-with-alloy/the-network-abstraction.md)
 - [Queries](./building-with-alloy/queries.md)
 - [Transactions](./building-with-alloy/transactions/using-the-transaction-builder.md)
-  - [Sending a legacy transaction](./building-with-alloy/transactions/sending-a-legacy-transaction.md)
+  - [Using the Transaction Builder](./building-with-alloy/transactions/using-the-transaction-builder.md)
   - [Sending an EIP-1559 transaction](./building-with-alloy/transactions/sending-an-EIP-1559-transaction.md)
-  - [Using access lists](./building-with-alloy/transactions/using-access-lists.md)
+  - [Sending a legacy transaction](./building-with-alloy/transactions/sending-a-legacy-transaction.md)
   - [Sending an EIP-4844 transaction](./building-with-alloy/transactions/sending-an-EIP-4844-transaction.md)
-  - [Awaiting for receipts](./building-with-alloy/transactions/awaiting-for-receipts.md)
+  - [Using access lists](./building-with-alloy/transactions/using-access-lists.md)
 
 # Examples
 
