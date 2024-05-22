@@ -8,7 +8,7 @@ A book on all things Alloy.
 [telegram-badge]: https://img.shields.io/endpoint?color=neon&style=for-the-badge&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2Fethers_rs
 [telegram-url]: https://t.me/ethers_rs
 
-View the online book [here](https://alloy-rs.github.io/book/).
+View the online book [here](https://alloy.rs/).
 
 ## Contributing
 
