@@ -2,15 +2,15 @@
 <!-- ANY CHANGES MADE TO THIS FILE WILL BE OVERWRITTEN -->
 <!-- LATEST UPDATE: https://github.com/alloy-rs/examples/tree/c4ad571c02498c58812e1a3e51c75edc36caa120 -->
 
-### Example: `ws_with_auth`
+### Example: `deploy_from_bytecode`
 
 To run this example:
 
 - Clone the [examples](https://github.com/alloy-rs/examples) repository: `git clone git@github.com:alloy-rs/examples.git`
-- Run: `cargo run --example ws_with_auth`
+- Run: `cargo run --example deploy_from_bytecode`
 
 ```rust,ignore
-{{#include ../../../lib/examples/examples/providers/examples/ws_with_auth.rs}}
+{{#include ../../../lib/examples/examples/contracts/examples/deploy_from_bytecode.rs}}
 ```
 
-Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/c4ad571c02498c58812e1a3e51c75edc36caa120/examples/providers/examples/ws_with_auth.rs).
+Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/c4ad571c02498c58812e1a3e51c75edc36caa120/examples/contracts/examples/deploy_from_bytecode.rs).
