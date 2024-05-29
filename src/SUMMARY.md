@@ -51,6 +51,7 @@
   - [Math utilities](./examples/big-numbers/math_utilities.md)
 - [Contracts](./examples/contracts/deploy_from_artifact.md)
   - [Deploy from artifact](./examples/contracts/deploy_from_artifact.md)
+  - [Deploy from bytecode](./examples/contracts/deploy_from_bytecode.md)
   - [Deploy from contract](./examples/contracts/deploy_from_contract.md)
   - [Interact with ABI](./examples/contracts/interact_with_abi.md)
 - [Fillers](./examples/fillers/gas_filler.md)
