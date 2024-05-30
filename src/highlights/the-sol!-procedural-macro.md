@@ -4,7 +4,7 @@ The `sol!` procedural macro, parses Solidity syntax to generate types that imple
 
 In its most basic form `sol!` is used like this:
 
-```rust
+```rust,ignore
 use alloy::{primitives::U256, sol};
 
 // Declare a Solidity type in standard Solidity
@@ -33,7 +33,7 @@ There are multiple ways to use the `sol!` macro.
 
 You can write Solidity code:
 
-```rust
+```rust,ignore
 sol! {
     contract Counter {
         uint256 public number;
@@ -51,7 +51,7 @@ sol! {
 
 Or provide a path to a Solidity file.
 
-```rust
+```rust,ignore
 sol!(
     #[sol(rpc)]
     Counter,
@@ -61,7 +61,7 @@ sol!(
 
 Or alternatively, if you enable the `json` feature flag, you can provide an ABI, or a path to one, in JSON format.
 
-```rust
+```rust,ignore
 sol!(
    ICounter,
    r#"[
@@ -104,7 +104,7 @@ sol!(
 
 This is the same as:
 
-```rust
+```rust,ignore
 sol! {
     interface ICounter {
         uint256 public number;
@@ -118,7 +118,7 @@ sol! {
 
 You can load an ABI by file:
 
-```rust
+```rust,ignore
 sol!(
     ICounter,
     "abi/Counter.json"
@@ -127,7 +127,7 @@ sol!(
 
 You can also use functions directly:
 
-```rust
+```rust,ignore
 sol!(
     function swapExactTokensForTokens(
         uint256 amountIn,
