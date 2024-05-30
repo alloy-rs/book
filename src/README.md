@@ -29,6 +29,10 @@ A practical guide to migrate from Ethers to Alloy.
 
 A walkthrough of building with Alloy.
 
+### [Highlights](./highlights/the-sol!-procedural-macro.md)
+
+Highlighted features of Alloy.
+
 ### [Examples](./examples/anvil/deploy_contract_anvil.md)
 
 This section will give you practical examples of how Alloy can be used in your codebase.
