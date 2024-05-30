@@ -155,5 +155,6 @@ that returns a `CallBuilder` for that function.
 If `#[sol(bytecode = "0x...")]` is provided, the contract can be deployed with `Counter::deploy` and a new instance will be created.
 
 ```rust,ignore
-{{#include ../../lib/examples/examples/contracts/examples/deploy_from_contract.rs}}
+//! Example showing how to use the `#[sol(rpc)]` and #[sol(bytecode = "0x...")] attributes
+{{#include ../../lib/examples/examples/contracts/examples/deploy_from_contract.rs:2:}}
 ```
