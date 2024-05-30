@@ -2,15 +2,15 @@
 <!-- ANY CHANGES MADE TO THIS FILE WILL BE OVERWRITTEN -->
 <!-- LATEST UPDATE: https://github.com/alloy-rs/examples/tree/25733676f2b47c9fcad04d9326c6a81f8ac7c0e5 -->
 
-### Example: `interact_with_abi`
+### Example: `verify_message`
 
 To run this example:
 
 - Clone the [examples](https://github.com/alloy-rs/examples) repository: `git clone git@github.com:alloy-rs/examples.git`
-- Run: `cargo run --example interact_with_abi`
+- Run: `cargo run --example verify_message`
 
 ```rust,ignore
-{{#include ../../../lib/examples/examples/contracts/examples/interact_with_abi.rs}}
+{{#include ../../../lib/examples/examples/wallets/examples/verify_message.rs}}
 ```
 
-Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/25733676f2b47c9fcad04d9326c6a81f8ac7c0e5/examples/contracts/examples/interact_with_abi.rs).
+Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/25733676f2b47c9fcad04d9326c6a81f8ac7c0e5/examples/wallets/examples/verify_message.rs).
