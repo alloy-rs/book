@@ -77,7 +77,7 @@
   - [Watch and poll for contract event logs](./examples/subscriptions/poll_logs.md)
   - [Subscribe and watch blocks](./examples/subscriptions/subscribe_blocks.md)
   - [Subscribe and listen for specific contract event logs](./examples/subscriptions/subscribe_logs.md)
-  - [Subscribe and listen for all contract event logs](./examples/subscriptions/examples/subscribe_all_logs.md)
+  - [Subscribe and listen for all contract event logs](./examples/subscriptions/subscribe_all_logs.md)
   - [Event multiplexer](./examples/subscriptions/event_multiplexer.md)
 - [Transactions](./examples/transactions/decode_input.md)
   - [Decode input](./examples/transactions/decode_input.md)
