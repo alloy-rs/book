@@ -35,6 +35,10 @@
   - [Sending an EIP-4844 transaction](./building-with-alloy/transactions/sending-an-EIP-4844-transaction.md)
   - [Using access lists](./building-with-alloy/transactions/using-access-lists.md)
 
+# [Highlights](./highlights/the-sol!-procedural-macro.md)
+
+- [The `sol!` procedural macro](./highlights/the-sol!-procedural-macro.md)
+
 # Examples
 
 <!-- MANUALLY MAINTAINED -->
