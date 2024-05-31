@@ -1,6 +1,6 @@
 ## The `sol!` procedural macro
 
-The `sol!` procedural macro, parses Solidity syntax to generate types that implement [alloy-sol-types](https://github.com/alloy-rs/core/tree/main/crates/sol-types) traits.
+The `sol!` procedural macro parses Solidity syntax to generate types that implement [alloy-sol-types](https://github.com/alloy-rs/core/tree/main/crates/sol-types) traits. It uses [`syn-solidity`](https://github.com/alloy-rs/core/tree/main/crates/syn-solidity), a [syn](https://github.com/dtolnay/syn)-powered Solidity parser. It aims to mimic the behavior of the official Solidity compiler (`solc`) when it comes to parsing valid Solidity code. This means that all valid Solidity code, as recognized by `solc` `0.5.0` and above is supported.
 
 In its most basic form `sol!` is used like this:
 
@@ -25,13 +25,13 @@ sol! {
 let foo = Foo { bar: U256::from(42), baz: true };
 ```
 
-The `sol!` macro uses [`syn-solidity`](https://github.com/alloy-rs/core/tree/main/crates/syn-solidity), a [syn](https://github.com/dtolnay/syn)-powered Solidity parser. It aims to mimic the behavior of the official Solidity compiler (`solc`) when it comes to parsing valid Solidity code. This means that all valid Solidity code, as recognized by `solc` `0.5.0` and above is supported.
+
 
 ### Usage
 
 There are multiple ways to use the `sol!` macro.
 
-You can write Solidity code:
+You can directly write Solidity code:
 
 ```rust,ignore
 sol! {
@@ -49,7 +49,7 @@ sol! {
 }
 ```
 
-Or provide a path to a Solidity file.
+Or provide a path to a Solidity file:
 
 ```rust,ignore
 sol!(
@@ -59,7 +59,7 @@ sol!(
 );
 ```
 
-Or alternatively, if you enable the `json` feature flag, you can provide an ABI, or a path to one, in JSON format.
+Alternatively, if you enable the `json` feature flag, you can provide an ABI, or a path to one, in JSON format:
 
 ```rust,ignore
 sol!(
@@ -116,7 +116,7 @@ sol! {
 }
 ```
 
-You can load an ABI by file:
+Alternatively you can load an ABI by file:
 
 ```rust,ignore
 sol!(
