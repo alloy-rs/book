@@ -7,13 +7,11 @@
 - [Installation](./getting-started/installation.md)
 - [First steps with Alloy](./getting-started/first-steps.md)
 
-# Tutorials
-
-# [Migrating from `ethers-rs`](./migrating-from-ethers/reference.md)
+# Migrating from `ethers-rs`
 
 - [Reference](./migrating-from-ethers/reference.md)
 
-# [Building with Alloy](./building-with-alloy/basic-building-blocks/using-big-numbers)
+# Building with Alloy
 
 - [Basic building blocks](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
   - [Using big numbers](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
@@ -35,7 +33,7 @@
   - [Sending an EIP-4844 transaction](./building-with-alloy/transactions/sending-an-EIP-4844-transaction.md)
   - [Using access lists](./building-with-alloy/transactions/using-access-lists.md)
 
-# [Highlights](./highlights/the-sol!-procedural-macro.md)
+# Highlights
 
 - [The `sol!` procedural macro](./highlights/the-sol!-procedural-macro.md)
 
