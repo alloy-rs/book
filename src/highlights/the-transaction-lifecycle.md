@@ -99,8 +99,38 @@ Because of we are using `RecommendedFillers` our `TransactionRequest` we only ne
 
 Much better!
 
-### Signing the transaction
+### Signing and broadcasting the transaction
 
-In order to submit our transaction to the network we need to sign our 
+Now that we have a `TransactionRequest` we can simply:
 
-Now that we have a `TransactionRequest`
+```rust,ignore
+    // Send the transaction and wait for the receipt.
+    let pending_tx = provider.send_transaction(tx).await?;
+```
+
+Depending on whether we have the private key of the signer available locally we 
+
+The primary difference between `eth_sendTransaction` and `eth_sendRawTransaction` lies in how the transaction is signed and sent to the Ethereum network.
+
+`eth_sendTransaction` is typically used with an Ethereum node that has access to the user's private keys. This could be a development node (Anvil), a local node (like Geth or Reth) or a node managed by a service (like Infura) that has access to a key management service.
+
+Let's break
+
+
+`eth_sendRawTransaction` is used to send a transaction that has already been signed. This method does not require the node to have access to the user's private keys.
+
+```rust,ignore
+    // Build the transaction using the `EthereumSigner` with the provided signer.
+    let signer: EthereumSigner = wallet.into();
+    let tx_envelope = tx.build(&signer).await?;
+```
+
+```rust,ignore
+    // Encode the transaction using EIP-2718 encoding.
+    let tx_encoded = tx_envelope.encoded_2718();
+```
+
+```rust,ignore
+    // Send the raw transaction and retrieve the transaction receipt.
+    let receipt = provider.send_raw_transaction(&tx_encoded).await?.get_receipt().await?;
+```
