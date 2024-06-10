@@ -128,5 +128,4 @@
 
 # Appendix
 
-- [Glossary](./appendix/glossary.md)
 - [Help us improve Alloy](./appendix/contributing.md)
