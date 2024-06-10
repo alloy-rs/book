@@ -95,6 +95,9 @@ EOF
   done
 done
 
+  # Duplicate specific examples that symlink to other examples
+  cp ./src/examples/contracts/deploy_from_contract.md ./src/examples/sol-macro/contract.md
+
   # Match the current example files list with the updated example files list
   # If there are differences, print them
   UPDATED_EXAMPLE_FILES=$(find ./src/examples -type f)
