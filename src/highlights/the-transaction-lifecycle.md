@@ -2,7 +2,7 @@
 
 Let us walk through the process of creating a transaction to send `100 wei` from `Alice` to `Bob`, signing the transaction and broadcasting the signed transaction to the Ethereum network.
 
-Expressing our intend as a [`TransactionRequest`](https://alloy-rs.github.io/alloy/alloy/rpc/types/eth/struct.TransactionRequest.html):
+Expressing our intent as a [`TransactionRequest`](https://alloy-rs.github.io/alloy/alloy/rpc/types/eth/struct.TransactionRequest.html):
 
 ```rust,ignore
     // Build a transaction to send 100 wei from Alice to Bob.
@@ -101,34 +101,21 @@ Much better!
 
 ### Signing and broadcasting the transaction
 
-Depending on whether we have the private key of the signer available locally, we can choose between two methods: `eth_sendTransaction` or `eth_sendRawTransaction`.
+Given that we have configured a signer on our `Provider` we can sign the transaction locally and broadcast in a single line:
 
-- `eth_sendTransaction`: This method sends the transaction data to the Ethereum node, which then signs the transaction using the private key stored on the node. This approach is simpler but requires trusting the node with the private key.
-
-- `eth_sendRawTransaction`: This method involves signing the transaction offline using the private key and then sending the signed transaction to the node. This method ensures that the private key never leaves the user's control, providing enhanced security.
-
-Given that we have configured a signer on our `Provider` we can sign and broadcast in a single line:
+There are three ways to listen for transaction inclusion after broadcasting the transaction, depending on your requirements:
 
 ```rust,ignore
-    // Send the transaction and wait for the receipt.
-    let pending_tx = provider.send_transaction(tx).await?;
+    // Send the transaction and listen for the transaction to be broadcasted.
+    let pending_tx = provider.send_transaction(tx).await?.register().await?;
 ```
 
-Alternatively we could
+```rust,ignore
+    // Send the transaction and listen for the transaction to be included.
+    let tx_hash = provider.send_transaction(tx).await?.watch().await?;
+```
 
 ```rust,ignore
-    // Build the transaction using the `EthereumSigner` with the provided signer.
-    // Flashbots Protect requires the transaction to be signed locally and send using
-    // `eth_sendRawTransaction`.
-    let tx_envelope = tx.build(&EthereumSigner::from(signer)).await?;
-
-    // Encode the transaction using EIP-2718 encoding.
-    let tx_encoded = tx_envelope.encoded_2718();
-
-    // Send the raw transaction. The transaction is sent to the Flashbots relay and, if valid, will
-    // be included in a block by a Flashbots builder. Note that the transaction request, as defined,
-    // is invalid and will not be included in the blockchain.
-    let pending = provider.send_raw_transaction(&tx_encoded).await?.register().await?;
-
-    println!("Send transaction: {}", pending.tx_hash());
+    // Send the transaction and fetch the receipt after the transaction was included.
+    let tx_receipt = provider.send_transaction(tx).await?.get_receipt().await?;
 ```

@@ -36,6 +36,7 @@
 # Highlights
 
 - [The `sol!` procedural macro](./highlights/the-sol!-procedural-macro.md)
+- [The transaction lifecycle](./highlights/the-transaction-lifecycle.md)
 
 # Examples
 
