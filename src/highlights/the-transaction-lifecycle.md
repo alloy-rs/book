@@ -119,3 +119,84 @@ There are three ways to listen for transaction inclusion after broadcasting the 
     // Send the transaction and fetch the receipt after the transaction was included.
     let tx_receipt = provider.send_transaction(tx).await?.get_receipt().await?;
 ```
+
+Let's dive deeper into what we just did.
+
+By calling:
+
+```rust,ignore
+    let tx_builder = provider.send_transaction(tx).await?;
+```
+
+[`Provider::send_transaction`](https://alloy-rs.github.io/alloy/alloy_provider/provider/trait/trait.Provider.html#method.send_transaction) returns a [`PendingTransactionBuilder`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html) for configuring the pending transaction watcher.
+
+On it we can for example, set the [`required_confirmations`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html#method.set_required_confirmations) or set a [`timeout`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html#method.set_timeout):
+
+```rust,ignore
+    // Configure the pending transaction.
+    let pending_tx_builder = provider.send_transaction(tx)
+        .await?
+        .with_required_confirmations(2)
+        .with_timeout(Some(std::time::Duration::from_secs(60)));
+```
+
+By passing the `TransactionRequest`, we populate any missing fields. This involves filling in details such as the nonce, chain ID, gas price, and gas limit:
+
+```diff
+    // Build a transaction to send 100 wei from Alice to Bob.
+    let tx = TransactionRequest::default()
+        .with_from(alice)
+        .with_to(bob)
++       .with_nonce(nonce)
++       .with_chain_id(chain_id)
+        .with_value(U256::from(100))
++       .with_gas_price(gas_price)
++       .with_gas_limit(gas_limit);
+```
+
+As part [Signers' `fill`](https://alloy-rs.github.io/alloy/alloy/providers/fillers/trait.TxFiller.html#tymethod.fill) registered on the `Provider` we build a signed transaction from the populated `TransactionRequest` using our signer, Alice.
+
+At this point, the `TransactionRequest` becomes a `TransactionEnvelope`, ready to send across the network. By calling [`register`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html#method.register), [`watch`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html#method.watch) or [`get_receipt`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html#method.get_receipt), we can send and track the transaction.
+
+For instance:
+
+```rust,ignore
+    // Send the transaction and fetch the receipt after the transaction was included.
+    let tx_receipt = provider.send_transaction(tx).await?.get_receipt().await?;
+```
+
+The [`TransactionReceipt`](https://alloy-rs.github.io/alloy/alloy/rpc/types/struct.TransactionReceipt.html) provides a comprehensive record of the transaction's journey and outcome, including the transaction hash, block details, gas used, and addresses involved.
+
+```rust,ignore
+pub struct TransactionReceipt {
+    // ...
+
+    /// Transaction Hash.
+    pub transaction_hash: TxHash,
+
+    /// Index within the block.
+    pub transaction_index: Option<TxIndex>,
+
+    /// Hash of the block this transaction was included within.
+    pub block_hash: Option<BlockHash>,
+
+    /// Number of the block this transaction was included within.
+    pub block_number: Option<BlockNumber>,
+
+    /// Gas used by this transaction alone.
+    pub gas_used: u128,
+
+    /// Address of the sender.
+    pub from: Address,
+
+    /// Address of the receiver. None when its a contract creation transaction.
+    pub to: Option<Address>,
+
+    /// Contract address created, or None if not a deployment.
+    pub contract_address: Option<Address>,
+
+    // ...
+}
+```
+
+This completes the journey of broadcasting a signed transaction. Once the transaction is included in a block, it becomes an immutable part of the blockchain, ensuring that the transfer of 100 wei from Alice to Bob is recorded permanently.
