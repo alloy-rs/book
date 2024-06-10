@@ -17,7 +17,7 @@ It is generally recommended to use the builder pattern, as shown, rather than di
 
 ```rust,ignore
 //! Example showing how to build a transaction using the `TransactionBuilder`
-{{#include ../../../lib/examples/examples/transactions/examples/send_eip1559_tx.rs:2:}}
+{{#include ../../../lib/examples/examples/transactions/examples/send_eip1559_transaction.rs:2:}}
 ```
 
 It is recommended to use the `.with_recommended_fillers()` method on the [ProviderBuilder](../connecting-to-a-blockchain/setting-up-a-provider.md) to automatically [fill fields](../understanding-fillers.md) for you.

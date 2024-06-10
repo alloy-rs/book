@@ -1,3 +1,3 @@
 ## Sending a legacy transaction
 
-{{#include ../../examples/transactions/send_legacy_tx.md}}
+{{#include ../../examples/transactions/send_legacy_transaction.md}}
