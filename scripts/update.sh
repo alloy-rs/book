@@ -51,6 +51,7 @@ function main () {
 
     # Populate the `src/examples` directory with the example category directory
     mkdir ./src/examples/$EXAMPLE_DIRNAME
+    touch ./src/examples/$EXAMPLE_DIRNAME/README.md
 
     # For every example file in the examples directory
     # - Create a markdown file in the src/examples directory
