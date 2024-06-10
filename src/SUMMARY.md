@@ -7,35 +7,33 @@
 - [Installation](./getting-started/installation.md)
 - [First steps with Alloy](./getting-started/first-steps.md)
 
-# Tutorials
-
-# [Migrating from `ethers-rs`](./migrating-from-ethers/reference.md)
+# Migrating from `ethers-rs`
 
 - [Reference](./migrating-from-ethers/reference.md)
 
-# [Building with Alloy](./building-with-alloy/basic-building-blocks/using-big-numbers)
+# Building with Alloy
 
-- [Basic building blocks](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
+- [Basic building blocks](./building-with-alloy/basic-building-blocks/README.md)
   - [Using big numbers](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
   - [Basic hash and address types](./building-with-alloy/basic-building-blocks/basic-hash-and-address-types.md)
   - [Common conversions](./building-with-alloy/basic-building-blocks/common-conversions.md)
   - [Creating instances](./building-with-alloy/basic-building-blocks/creating-instances.md)
   - [Comparisons and equivalence](./building-with-alloy/basic-building-blocks/comparisons-and-equivalence.md)
-- [Connecting to a blockchain](./building-with-alloy/connecting-to-a-blockchain/setting-up-a-provider.md)
+- [Connecting to a blockchain](./building-with-alloy/connecting-to-a-blockchain/README.md)
   - [Setting up a Provider](./building-with-alloy/connecting-to-a-blockchain/setting-up-a-provider.md)
   - [Creating an HTTP provider](./building-with-alloy/connecting-to-a-blockchain/http-provider.md)
   - [Creating a WS provider](./building-with-alloy/connecting-to-a-blockchain/ws-provider.md)
   - [Creating an IPC provider](./building-with-alloy/connecting-to-a-blockchain/ipc-provider.md)
 - [Understanding Fillers](./building-with-alloy/understanding-fillers.md)
 - [Queries](./building-with-alloy/queries.md)
-- [Transactions](./building-with-alloy/transactions/using-the-transaction-builder.md)
+- [Transactions](./building-with-alloy/transactions/README.md)
   - [Using the Transaction Builder](./building-with-alloy/transactions/using-the-transaction-builder.md)
   - [Sending an EIP-1559 transaction](./building-with-alloy/transactions/sending-an-EIP-1559-transaction.md)
   - [Sending a legacy transaction](./building-with-alloy/transactions/sending-a-legacy-transaction.md)
   - [Sending an EIP-4844 transaction](./building-with-alloy/transactions/sending-an-EIP-4844-transaction.md)
   - [Using access lists](./building-with-alloy/transactions/using-access-lists.md)
 
-# [Highlights](./highlights/the-sol!-procedural-macro.md)
+# Highlights
 
 - [The `sol!` procedural macro](./highlights/the-sol!-procedural-macro.md)
 
