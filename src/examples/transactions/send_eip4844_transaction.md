@@ -2,15 +2,15 @@
 <!-- ANY CHANGES MADE TO THIS FILE WILL BE OVERWRITTEN -->
 <!-- LATEST UPDATE: https://github.com/alloy-rs/examples/tree/c793470e97b7173e571905fb2cdc610d8d59733a -->
 
-### Example: `decode_input`
+### Example: `send_eip4844_transaction`
 
 To run this example:
 
 - Clone the [examples](https://github.com/alloy-rs/examples) repository: `git clone git@github.com:alloy-rs/examples.git`
-- Run: `cargo run --example decode_input`
+- Run: `cargo run --example send_eip4844_transaction`
 
 ```rust,ignore
-{{#include ../../../lib/examples/examples/transactions/examples/decode_input.rs}}
+{{#include ../../../lib/examples/examples/transactions/examples/send_eip4844_transaction.rs}}
 ```
 
-Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/c793470e97b7173e571905fb2cdc610d8d59733a/examples/transactions/examples/decode_input.rs).
+Find the source code on Github [here](https://github.com/alloy-rs/examples/tree/c793470e97b7173e571905fb2cdc610d8d59733a/examples/transactions/examples/send_eip4844_transaction.rs).
