@@ -7,13 +7,11 @@
 - [Installation](./getting-started/installation.md)
 - [First steps with Alloy](./getting-started/first-steps.md)
 
-# Tutorials
-
-# [Migrating from `ethers-rs`](./migrating-from-ethers/reference.md)
+# Migrating from `ethers-rs`
 
 - [Reference](./migrating-from-ethers/reference.md)
 
-# [Building with Alloy](./building-with-alloy/basic-building-blocks/using-big-numbers)
+# Building with Alloy
 
 - [Basic building blocks](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
   - [Using big numbers](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
@@ -35,9 +33,10 @@
   - [Sending an EIP-4844 transaction](./building-with-alloy/transactions/sending-an-EIP-4844-transaction.md)
   - [Using access lists](./building-with-alloy/transactions/using-access-lists.md)
 
-# [Highlights](./highlights/the-sol!-procedural-macro.md)
+# Highlights
 
 - [The `sol!` procedural macro](./highlights/the-sol!-procedural-macro.md)
+- [The transaction lifecycle](./highlights/the-transaction-lifecycle.md)
 
 # Examples
 
@@ -83,12 +82,17 @@
   - [Structs and enums](./examples/sol-macro/structs_enums.md)
   - [User defined types](./examples/sol-macro/user_defined_types.md)
 - [Subscriptions](./examples/subscriptions/subscribe_blocks.md)
-  - [Watch and poll for contract event logs](./examples/subscriptions/poll_logs.md)
   - [Subscribe and watch blocks](./examples/subscriptions/subscribe_blocks.md)
+  - [Watch and poll for contract event logs](./examples/subscriptions/poll_logs.md)
   - [Subscribe and listen for specific contract event logs](./examples/subscriptions/subscribe_logs.md)
   - [Subscribe and listen for all contract event logs](./examples/subscriptions/subscribe_all_logs.md)
   - [Subscribe and listen to pending transactions in the public mempool](./examples/subscriptions/subscribe_pending_transactions.md)
   - [Event multiplexer](./examples/subscriptions/event_multiplexer.md)
+- [`sol!` macro](./examples/contracts/deploy_from_contract.md)
+  - [Contracts](./examples/contracts/deploy_from_contract.md)
+  - [Events and errors](./examples/sol-macro/events_errors.md)
+  - [Structs and enums](./examples/sol-macro/structs_enums.md)
+  - [User defined types](./examples/sol-macro/user_defined_types.md)
 - [Transactions](./examples/transactions/decode_input.md)
   - [Decode input](./examples/transactions/decode_input.md)
   - [Encode and decode EIP-1559 transaction](./examples/transactions/encode_decode_eip1559.md)
@@ -101,8 +105,13 @@
   - [Send transaction with access list](./examples/transactions/with_access_list.md)
   - [Send EIP-1559 transaction](./examples/transactions/send_eip1559_transaction.md)
   - [Send legacy transaction](./examples/transactions/send_legacy_transaction.md)
+<<<<<<< HEAD
+  - [Send EIP-4844 transaction](./examples/transactions/send_eip4844_transaction.md)
+  - [Send private transaction using Flashbots Protect](./examples/transactions/send_private_transaction.md)
+=======
   - [Send private transaction using Flashbots Protect](./examples/transactions/send_private_transaction.md)
   - [Send EIP-4844 transaction](./examples/transactions/send_eip4844_transaction.md)
+>>>>>>> main
 - [Wallets](./examples/wallets/aws_signer.md)
   - [AWS signer](./examples/wallets/aws_signer.md)
   - [Ledger signer](./examples/wallets/ledger_signer.md)
@@ -119,5 +128,4 @@
 
 # Appendix
 
-- [Glossary](./appendix/glossary.md)
 - [Help us improve Alloy](./appendix/contributing.md)

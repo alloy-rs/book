@@ -50,5 +50,3 @@ Finally we fetch the latest block number using the provider:
 ```
 
 The complete and runnable example can be found [here](https://github.com/alloy-rs/examples/blob/main/examples/providers/examples/http.rs), one of the [many runnable examples of Alloy](https://github.com/alloy-rs/examples/blob/main/README.md#overview) to explore.
-
-To get familiar with the terminology used by Alloy it is recommended to have a brief look at the [glossary](../appendix/glossary.md).
