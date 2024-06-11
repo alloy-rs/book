@@ -51,6 +51,7 @@ function main () {
 
     # Populate the `src/examples` directory with the example category directory
     mkdir ./src/examples/$EXAMPLE_DIRNAME
+    cp ./src/templates/$EXAMPLE_DIRNAME/README.md ./src/examples/$EXAMPLE_DIRNAME/README.md
 
     # For every example file in the examples directory
     # - Create a markdown file in the src/examples directory
@@ -103,7 +104,7 @@ done
   UPDATED_EXAMPLE_FILES=$(find ./src/examples -type f)
   diff <(echo "$CURRENT_EXAMPLE_FILES") <(echo "$UPDATED_EXAMPLE_FILES") || true
 
-  log $YELLOW "Make sure to update \`src/SUMMARY.md\` if necessary."
+  log $YELLOW "Update \`src/SUMMARY.md\` and \`src/templates/*/README.md\` if necessary!"
 
   log $GREEN "Done"
 }

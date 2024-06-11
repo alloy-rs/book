@@ -1,0 +1,15 @@
+## Transactions
+
+- [Decode input](decode_input.md)
+- [Encode and decode EIP-1559 transaction](encode_decode_eip1559.md)
+- [Get gas price in USD](gas_price_usd.md)
+- [Trace call](trace_call.md)
+- [Trace transaction](trace_transaction.md)
+- [Transfer ERC20 token](transfer_erc20.md)
+- [Transfer ETH](transfer_eth.md)
+- [Sign and send a raw transaction](send_raw_transaction.md)
+- [Send transaction with access list](with_access_list.md)
+- [Send EIP-1559 transaction](send_eip1559_transaction.md)
+- [Send legacy transaction](send_legacy_transaction.md)
+- [Send EIP-4844 transaction](send_eip4844_transaction.md)
+- [Send private transaction using Flashbots Protect](send_private_transaction.md)
