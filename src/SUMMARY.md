@@ -96,7 +96,7 @@
   - [Trace transaction](./examples/transactions/trace_transaction.md)
   - [Transfer ERC20 token](./examples/transactions/transfer_erc20.md)
   - [Transfer ETH](./examples/transactions/transfer_eth.md)
-  - [Sign and send a raw transaction](./examples/transactions/send_raw_transaction.md) 
+  - [Sign and send a raw transaction](./examples/transactions/send_raw_transaction.md)
   - [Send transaction with access list](./examples/transactions/with_access_list.md)
   - [Send EIP-1559 transaction](./examples/transactions/send_eip1559_transaction.md)
   - [Send legacy transaction](./examples/transactions/send_legacy_transaction.md)
