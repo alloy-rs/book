@@ -28,7 +28,7 @@ If you do not have `Anvil` installed see the [Foundry](https://github.com/foundr
     // Ensure `anvil` is available in $PATH.
     let anvil = Anvil::new().try_spawn()?;
 
-    // Create a provider with a signer and the network.
+    // Get the RPC URL.
     let rpc_url = anvil.endpoint().parse()?;
 ```
 
@@ -57,6 +57,7 @@ Next lets grab the address of our users `Alice` and `Bob`:
 Next we can build the `Provider` using the `ProviderBuilder`.
 
 ```rust,ignore
+    // Create a provider with a signer and the network.
     let provider = ProviderBuilder::new()
         .with_recommended_fillers()
         .signer(EthereumSigner::from(wallet))
@@ -200,3 +201,9 @@ pub struct TransactionReceipt {
 ```
 
 This completes the journey of broadcasting a signed transaction. Once the transaction is included in a block, it becomes an immutable part of the Ethereum blockchain, ensuring that the transfer of `100 wei` from `Alice` to `Bob` is recorded permanently.
+
+## Putting it all together
+
+```rust,ignore
+{{#include ../../lib/examples/examples/transactions/examples/transfer_eth.rs}}
+```
