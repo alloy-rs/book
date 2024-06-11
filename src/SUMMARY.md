@@ -36,6 +36,7 @@
 # Highlights
 
 - [The `sol!` procedural macro](./highlights/the-sol!-procedural-macro.md)
+- [The transaction lifecycle](./highlights/the-transaction-lifecycle.md)
 
 # Examples
 
@@ -99,8 +100,8 @@
   - [Send transaction with access list](./examples/transactions/with_access_list.md)
   - [Send EIP-1559 transaction](./examples/transactions/send_eip1559_transaction.md)
   - [Send legacy transaction](./examples/transactions/send_legacy_transaction.md)
-  - [Send private transaction using Flashbots Protect](./examples/transactions/send_private_transaction.md)
   - [Send EIP-4844 transaction](./examples/transactions/send_eip4844_transaction.md)
+  - [Send private transaction using Flashbots Protect](./examples/transactions/send_private_transaction.md)
 - [Wallets](./examples/wallets/README.md)
   - [AWS signer](./examples/wallets/aws_signer.md)
   - [Ledger signer](./examples/wallets/ledger_signer.md)
@@ -117,5 +118,4 @@
 
 # Appendix
 
-- [Glossary](./appendix/glossary.md)
 - [Help us improve Alloy](./appendix/contributing.md)

@@ -37,11 +37,7 @@ Highlighted features of Alloy.
 
 This section will give you practical examples of how Alloy can be used in your codebase.
 
-### [Appendix](./appendix/glossary.md)
-
-Glossary, references, troubleshooting, and more.
-
-### [Contributing](https://github.com/alloy-rs/book/tree/main/CONTRIBUTING.md)
+### [Contributing](./appendix/contributing.md)
 
 Thanks for your help improving the project! We are so happy to have you! We have
 [a contributing guide](https://github.com/alloy-rs/book/tree/main/CONTRIBUTING.md) to help you get involved in the
