@@ -78,15 +78,15 @@ The `RecommendedFillers` includes the following fillers:
 Because of we are using `RecommendedFillers` our `TransactionRequest` we only need a subset of the original fields:
 
 ```diff
-    // Build a transaction to send 100 wei from Alice to Bob.
-    let tx = TransactionRequest::default()
--       .with_from(alice)
-        .with_to(bob)
--       .with_nonce(nonce)
--       .with_chain_id(chain_id)
-        .with_value(U256::from(100))
--       .with_gas_price(gas_price)
--       .with_gas_limit(gas_limit);
+// Build a transaction to send 100 wei from Alice to Bob.
+let tx = TransactionRequest::default()
+-   .with_from(alice)
+    .with_to(bob)
+-   .with_nonce(nonce)
+-   .with_chain_id(chain_id)
+    .with_value(U256::from(100))
+-   .with_gas_price(gas_price)
+-   .with_gas_limit(gas_limit);
 ```
 
 Changes to:
@@ -145,15 +145,15 @@ let pending_tx_builder = provider.send_transaction(tx)
 By passing the `TransactionRequest`, we populate any missing fields. This involves filling in details such as the nonce, chain ID, gas price, and gas limit:
 
 ```diff
-    // Build a transaction to send 100 wei from Alice to Bob.
-    let tx = TransactionRequest::default()
-        .with_from(alice)
-        .with_to(bob)
-+       .with_nonce(nonce)
-+       .with_chain_id(chain_id)
-        .with_value(U256::from(100))
-+       .with_gas_price(gas_price)
-+       .with_gas_limit(gas_limit);
+// Build a transaction to send 100 wei from Alice to Bob.
+let tx = TransactionRequest::default()
++   .with_from(alice)
+    .with_to(bob)
++   .with_nonce(nonce)
++   .with_chain_id(chain_id)
+    .with_value(U256::from(100))
++   .with_gas_price(gas_price)
++   .with_gas_limit(gas_limit);
 ```
 
 As part [Wallet's `fill` method](https://alloy-rs.github.io/alloy/alloy/providers/fillers/trait.TxFiller.html#tymethod.fill), registered on the `Provider`, we build a signed transaction from the populated `TransactionRequest` using our signer, Alice.
