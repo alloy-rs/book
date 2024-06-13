@@ -9,9 +9,7 @@ The recommended way of initializing a `Ws` provider is by using the [`on_ws`](ht
 ```rust,ignore
 //! Example of creating an WS provider using the `on_ws` method on the `ProviderBuilder`.
 
-use alloy::{
-    providers::{Provider, ProviderBuilder, WsConnect},
-};
+use alloy::providers::{Provider, ProviderBuilder, WsConnect};
 use eyre::Result;
 
 #[tokio::main]

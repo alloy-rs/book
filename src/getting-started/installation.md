@@ -40,12 +40,11 @@ After `alloy` as a dependency you can now import `alloy` as follows:
 
 ```rust,ignore
 use alloy::{
-    network::{eip2718::Encodable2718, EthereumSigner, TransactionBuilder},
-    node_bindings::Anvil,
+    network::{eip2718::Encodable2718, EthereumWallet, TransactionBuilder},
     primitives::U256,
     providers::{Provider, ProviderBuilder},
-    rpc::types::eth::TransactionRequest,
-    signers::wallet::LocalWallet,
+    rpc::types::TransactionRequest,
+    signers::local::PrivateKeySigner,
 };
 ```
 
