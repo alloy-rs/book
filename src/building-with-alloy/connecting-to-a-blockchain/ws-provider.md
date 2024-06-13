@@ -10,8 +10,7 @@ The recommended way of initializing a `Ws` provider is by using the [`on_ws`](ht
 //! Example of creating an WS provider using the `on_ws` method on the `ProviderBuilder`.
 
 use alloy::{
-    providers::{Provider, ProviderBuilder},
-    rpc::client::WsConnect,
+    providers::{Provider, ProviderBuilder, WsConnect},
 };
 use eyre::Result;
 
