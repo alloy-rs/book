@@ -37,30 +37,31 @@ If you do not have `Anvil` installed see the [Foundry](https://github.com/foundr
     let rpc_url = "https://eth.merkle.io".parse()?;
 ```
 
-Next let's define a `signer` for Alice. By default `Anvil` defines a mnemonic phrase: `"test test test test test test test test test test test junk"`. Make sure to not use this mnemonic phrase outside of testing environments.
+Next let's define a `signer` for Alice. By default `Anvil` defines a mnemonic phrase: `"test test test test test test test test test test test junk"`. Make sure to not use this mnemonic phrase outside of testing environments. We register the signer in an [`EthereumWallet`](https://alloy-rs.github.io/alloy/alloy_network/struct.EthereumWallet.html) to be used in the `Provider` to sign our future transaction.
 
 Derive the first key of the mnemonic phrase for `Alice`:
 
 ```rust,ignore
-    // Set up wallet from the first default Anvil account (Alice).
-    let wallet: LocalWallet = anvil.keys()[0].clone().into();
+    // Set up signer from the first default Anvil account (Alice).
+    let signer: PrivateKeySigner = anvil.keys()[0].clone().into();
+    let wallet = EthereumWallet::from(signer);
 ```
 
 Next lets grab the address of our users `Alice` and `Bob`:
 
 ```rust,ignore
     // Create two users, Alice and Bob.
-    let alice = wallet.address();
+    let alice = anvil.addresses()[0];
     let bob = anvil.addresses()[1];
 ```
 
 Next we can build the `Provider` using the `ProviderBuilder`.
 
 ```rust,ignore
-    // Create a provider with a signer and the network.
+    // Create a provider with the wallet.
     let provider = ProviderBuilder::new()
         .with_recommended_fillers()
-        .signer(EthereumSigner::from(wallet))
+        .wallet(wallet)
         .on_http(rpc_url);
 ```
 
@@ -79,7 +80,7 @@ Because of we are using `RecommendedFillers` our `TransactionRequest` we only ne
 ```diff
     // Build a transaction to send 100 wei from Alice to Bob.
     let tx = TransactionRequest::default()
-        .with_from(alice)
+-       .with_from(alice)
         .with_to(bob)
 -       .with_nonce(nonce)
 -       .with_chain_id(chain_id)
@@ -92,8 +93,8 @@ Changes to:
 
 ```rust,ignore
     // Build a transaction to send 100 wei from Alice to Bob.
+    // The `from` field is automatically filled to the first signer's address (Alice).
     let tx = TransactionRequest::default()
-        .with_from(alice)
         .with_to(bob)
         .with_value(U256::from(100));
 ```
@@ -155,7 +156,7 @@ By passing the `TransactionRequest`, we populate any missing fields. This involv
 +       .with_gas_limit(gas_limit);
 ```
 
-As part [Signers' `fill` method](https://alloy-rs.github.io/alloy/alloy/providers/fillers/trait.TxFiller.html#tymethod.fill), registered on the `Provider`, we build a signed transaction from the populated `TransactionRequest` using our signer, Alice.
+As part [Wallet's `fill` method](https://alloy-rs.github.io/alloy/alloy/providers/fillers/trait.TxFiller.html#tymethod.fill), registered on the `Provider`, we build a signed transaction from the populated `TransactionRequest` using our signer, Alice.
 
 At this point, the `TransactionRequest` becomes a `TransactionEnvelope`, ready to send across the network. By calling either [`register`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html#method.register), [`watch`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html#method.watch) or [`get_receipt`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html#method.get_receipt) we can broadcast the transaction and track the status of the transaction.
 
