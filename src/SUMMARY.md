@@ -78,6 +78,7 @@
   - [Query logs](./examples/queries/query_logs.md)
 - [The `sol!` macro](./examples/sol-macro/README.md)
   - [Contract](./examples/sol-macro/contract.md)
+  - [Decode returns](./examples/sol-macro/decode_returns.md)
   - [Events and errors](./examples/sol-macro/events_errors.md)
   - [Structs and enums](./examples/sol-macro/structs_enums.md)
   - [User defined types](./examples/sol-macro/user_defined_types.md)
