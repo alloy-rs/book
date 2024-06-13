@@ -11,11 +11,9 @@ The recommended way of initializing an `Ipc` provider is by using the [`on_ipc`]
 ```rust,ignore
 //! Example of creating an IPC provider using the `on_ipc` method on the `ProviderBuilder`.
 
-use alloy::{
-    providers::{Provider, ProviderBuilder},
-    rpc::client::IpcConnect,
-};
+use alloy::providers::{IpcConnect, Provider, ProviderBuilder};
 use eyre::Result;
+
 #[tokio::main]
 async fn main() -> eyre::Result<()> {
     // Set up the IPC transport which is consumed by the RPC client.
