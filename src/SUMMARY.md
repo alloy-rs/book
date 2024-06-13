@@ -61,7 +61,7 @@
   - [Gas estimation filler](./examples/fillers/gas_filler.md)
   - [Nonce management filler](./examples/fillers/nonce_filler.md)
   - [Recommended fillers](./examples/fillers/recommended_fillers.md)
-  - [Signer management filler](./examples/fillers/signer_filler.md)
+  - [Wallet management filler](./examples/fillers/wallet_filler.md)
 - [Primitives](./examples/primitives/README.md)
   - [Bytes and address types](./examples/primitives/bytes_and_address_types.md)
   - [Hashing functions](./examples/primitives/hashing_functions.md)

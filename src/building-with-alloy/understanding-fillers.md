@@ -8,4 +8,4 @@
 
 {{#include ../examples/fillers/nonce_filler.md}}
 
-{{#include ../examples/fillers/signer_filler.md}}
+{{#include ../examples/fillers/wallet_filler.md}}

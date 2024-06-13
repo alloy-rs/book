@@ -42,8 +42,9 @@ Next let's define a `signer` for Alice. By default `Anvil` defines a mnemonic ph
 Derive the first key of the mnemonic phrase for `Alice`:
 
 ```rust,ignore
-    // Set up wallet from the first default Anvil account (Alice).
-    let wallet: LocalWallet = anvil.keys()[0].clone().into();
+    // Set up signer from the first default Anvil account (Alice).
+    let signer: PrivateKeySigner = anvil.keys()[0].clone().into();
+    let wallet = EthereumWallet::from(signer);
 ```
 
 Next lets grab the address of our users `Alice` and `Bob`:
@@ -79,7 +80,7 @@ Because of we are using `RecommendedFillers` our `TransactionRequest` we only ne
 ```diff
     // Build a transaction to send 100 wei from Alice to Bob.
     let tx = TransactionRequest::default()
-        .with_from(alice)
+-       .with_from(alice)
         .with_to(bob)
 -       .with_nonce(nonce)
 -       .with_chain_id(chain_id)
@@ -93,7 +94,6 @@ Changes to:
 ```rust,ignore
     // Build a transaction to send 100 wei from Alice to Bob.
     let tx = TransactionRequest::default()
-        .with_from(alice)
         .with_to(bob)
         .with_value(U256::from(100));
 ```
