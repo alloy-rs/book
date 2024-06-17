@@ -1,42 +1,22 @@
 ## Installation
 
-To install [`alloy`](https://github.com/alloy-rs/alloy) run the following command:
+[Alloy](https://github.com/alloy-rs/alloy) consists of a number of crates that provide a range of functionality essential for interfacing with any Ethereum-based blockchain.
+
+The easiest way to get started is to add the `alloy` crate with the `full` feature flag from the command-line using Cargo:
 
 ```sh
-cargo add --git https://github.com/alloy-rs/alloy
+cargo add alloy --features full
 ```
 
-For most use cases it is recommended to use the [`alloy`](https://github.com/alloy-rs/alloy/tree/main/crates/alloy) meta-crate and enabling feature flags.
-
-It is recommended to pin to a specific commit hash as follows until `alloy` releases its first official version of all crates:
+Alternatively, you can add the following to your `Cargo.toml` file:
 
 ```toml
-alloy = {
-  git = "https://github.com/alloy-rs/alloy",
-  rev = "<COMMIT_HASH>",
-  features = [
-    "contract",
-    "providers",
-    "..."
-  ]
-}
+alloy = { version = "0.1", features = ["full"] }
 ```
 
-Alternatively one can directly use individual crates as follows:
+For a more fine-grained control over the features you wish to include, you can add the individual crates to your `Cargo.toml` file, or use the `alloy` crate with the features you need.
 
-```toml
-alloy-provider = {
-  git = "https://github.com/alloy-rs/alloy",
-  rev = "<COMMIT_HASH>"
-  features = [
-    "ws",
-    "ipc",
-    "..."
-  ]
-}
-```
-
-After `alloy` as a dependency you can now import `alloy` as follows:
+After `alloy` is added as a dependency you can now import `alloy` as follows:
 
 ```rust,ignore
 use alloy::{
@@ -109,7 +89,7 @@ Signers
 By default `alloy` uses [`reqwest`](https://crates.io/crates/reqwest) as HTTP client. Alternatively one can switch to [`hyper`](https://crates.io/crates/hyper).
 The `reqwest` and `hyper` feature flags are mutually exclusive.
   
-For a complete overview of `alloy` feature flags refer to [`alloy's Cargo.toml`](https://github.com/alloy-rs/alloy/blob/main/crates/alloy/Cargo.toml)
+A complete list of available features can be found on [docs.rs](https://docs.rs/crate/alloy/latest/features) or in the [`alloy` crate's `Cargo.toml`](https://github.com/alloy-rs/alloy/blob/main/crates/alloy/Cargo.toml).
 
 The feature flags largely correspond with and enable features from the following individual crates.
 
@@ -129,14 +109,14 @@ The feature flags largely correspond with and enable features from the following
 - [alloy-pubsub](https://github.com/alloy-rs/alloy/tree/main/crates/pubsub) - Ethereum JSON-RPC [publish-subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) tower service and type definitions
 - [alloy-rpc-client](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-client) - Low-level Ethereum JSON-RPC client implementation
 - [alloy-rpc-types](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types) - Meta-crate for all Ethereum JSON-RPC types
-  - [alloy-rpc-types-admin](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-admin) - Ethereum RPC admin types
-  - [alloy-rpc-types-anvil](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-anvil) - RPC types for the Anvil development node
-  - [alloy-rpc-types-beacon](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-beacon) - Ethereum RPC-related types for the Beacon API
-  - [alloy-rpc-types-engine](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-engine) - Ethereum execution-consensus layer (engine) API RPC types
-  - [alloy-rpc-types-eth](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-eth) - Ethereum RPC-related types for Alloy
-  - [alloy-rpc-types-trace](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-trace) - Ethereum RPC trace types
-  - [alloy-rpc-types-txpool](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-txpool) - Ethereum RPC txpool types
-- [alloy-serde](https://github.com/alloy-rs/alloy/tree/main/crates/serde) - Serde related helpers for Alloy
+  - [alloy-rpc-types-admin](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-admin) - Types for the `admin` Ethereum JSON-RPC namespace
+  - [alloy-rpc-types-anvil](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-anvil) - Types for the [Anvil](https://github.com/foundry-rs/foundry) development node's Ethereum JSON-RPC namespace
+  - [alloy-rpc-types-beacon](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-beacon) - Types for the [Ethereum Beacon Node API](https://ethereum.github.io/beacon-APIs)
+  - [alloy-rpc-types-engine](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-engine) - Types for the `engine` Ethereum JSON-RPC namespace
+  - [alloy-rpc-types-eth](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-eth) - Types for the `eth` Ethereum JSON-RPC namespace
+  - [alloy-rpc-types-trace](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-trace) - Types for the `trace` Ethereum JSON-RPC namespace
+  - [alloy-rpc-types-txpool](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-txpool) - Types for the `txpool` Ethereum JSON-RPC namespace
+- [alloy-serde](https://github.com/alloy-rs/alloy/tree/main/crates/serde) - [Serde](https://serde.rs)-related utilities
 - [alloy-signer](https://github.com/alloy-rs/alloy/tree/main/crates/signer) - Ethereum signer abstraction
   - [alloy-signer-aws](https://github.com/alloy-rs/alloy/tree/main/crates/signer-aws) - [AWS KMS](https://aws.amazon.com/kms) signer implementation
   - [alloy-signer-gcp](https://github.com/alloy-rs/alloy/tree/main/crates/signer-gcp) - [GCP KMS](https://cloud.google.com/kms) signer implementation
