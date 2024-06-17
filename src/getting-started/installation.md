@@ -65,8 +65,8 @@ General
 - `consensus`
 - `contract`
 - `eips`
-- `network`
 - `genesis`
+- `network`
 - `node-bindings`
 
 Providers
@@ -82,12 +82,15 @@ RPC
 - `rpc-client-ipc`
 - `rpc-client-ws`
 - `rpc-types`
+- `rpc-types-admin`
 - `rpc-types-anvil`
 - `rpc-types-beacon`
+- `rpc-types-debug`
 - `rpc-types-engine`
 - `rpc-types-eth`
 - `rpc-types-json`
 - `rpc-types-trace`
+- `rpc-types-txpool`
 
 Signers
 - `signers`
@@ -96,8 +99,8 @@ Signers
 - `signer-ledger`
 - `signer-ledger-browser`
 - `signer-ledger-node`
+- `signer-local`
 - `signer-trezor`
-- `signer-wallet`
 - `signer-keystore`
 - `signer-mnemonic`
 - `signer-mnemonic-all-languages`
@@ -126,18 +129,20 @@ The feature flags largely correspond with and enable features from the following
 - [alloy-pubsub](https://github.com/alloy-rs/alloy/tree/main/crates/pubsub) - Ethereum JSON-RPC [publish-subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) tower service and type definitions
 - [alloy-rpc-client](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-client) - Low-level Ethereum JSON-RPC client implementation
 - [alloy-rpc-types](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types) - Meta-crate for all Ethereum JSON-RPC types
+  - [alloy-rpc-types-admin](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-admin) - Ethereum RPC admin types
   - [alloy-rpc-types-anvil](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-anvil) - RPC types for the Anvil development node
   - [alloy-rpc-types-beacon](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-beacon) - Ethereum RPC-related types for the Beacon API
   - [alloy-rpc-types-engine](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-engine) - Ethereum execution-consensus layer (engine) API RPC types
   - [alloy-rpc-types-eth](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-eth) - Ethereum RPC-related types for Alloy
   - [alloy-rpc-types-trace](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-trace) - Ethereum RPC trace types
+  - [alloy-rpc-types-txpool](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-txpool) - Ethereum RPC txpool types
 - [alloy-serde](https://github.com/alloy-rs/alloy/tree/main/crates/serde) - Serde related helpers for Alloy
 - [alloy-signer](https://github.com/alloy-rs/alloy/tree/main/crates/signer) - Ethereum signer abstraction
   - [alloy-signer-aws](https://github.com/alloy-rs/alloy/tree/main/crates/signer-aws) - [AWS KMS](https://aws.amazon.com/kms) signer implementation
   - [alloy-signer-gcp](https://github.com/alloy-rs/alloy/tree/main/crates/signer-gcp) - [GCP KMS](https://cloud.google.com/kms) signer implementation
   - [alloy-signer-ledger](https://github.com/alloy-rs/alloy/tree/main/crates/signer-ledger) - [Ledger](https://www.ledger.com) signer implementation
+  - [alloy-signer-local](https://github.com/alloy-rs/alloy/tree/main/crates/signer-local) - Local (private key, keystore, mnemonic, YubiHSM) signer implementations
   - [alloy-signer-trezor](https://github.com/alloy-rs/alloy/tree/main/crates/signer-trezor) - [Trezor](https://trezor.io) signer implementation
-  - [alloy-signer-wallet](https://github.com/alloy-rs/alloy/tree/main/crates/signer-wallet) - Local wallet (Keystore/Mnemonic/Yubihsm) signer implementation
 - [alloy-transport](https://github.com/alloy-rs/alloy/tree/main/crates/transport) - Low-level Ethereum JSON-RPC transport abstraction
   - [alloy-transport-http](https://github.com/alloy-rs/alloy/tree/main/crates/transport-http) - HTTP transport implementation
   - [alloy-transport-ipc](https://github.com/alloy-rs/alloy/tree/main/crates/transport-ipc) - IPC transport implementation
