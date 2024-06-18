@@ -62,6 +62,8 @@
   - [Nonce management filler](./examples/fillers/nonce_filler.md)
   - [Recommended fillers](./examples/fillers/recommended_fillers.md)
   - [Wallet management filler](./examples/fillers/wallet_filler.md)
+- [Layers](./examples/layers/README.md)
+  - [Request / response logging layer](./examples/layers/logging_layer.md)
 - [Primitives](./examples/primitives/README.md)
   - [Bytes and address types](./examples/primitives/bytes_and_address_types.md)
   - [Hashing functions](./examples/primitives/hashing_functions.md)
