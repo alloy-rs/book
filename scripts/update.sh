@@ -50,7 +50,11 @@ function main () {
     EXAMPLE_DIRNAME=$(basename $CODE_DIRPATH)
 
     # Populate the `src/examples` directory with the example category directory
-    mkdir ./src/examples/$EXAMPLE_DIRNAME
+    mkdir -p ./src/examples/$EXAMPLE_DIRNAME
+
+    # Populate the `src/templates` directory with the example category directory if it doesn't exist
+    mkdir -p ./src/templates/$EXAMPLE_DIRNAME
+    touch ./src/templates/$EXAMPLE_DIRNAME/README.md
     cp ./src/templates/$EXAMPLE_DIRNAME/README.md ./src/examples/$EXAMPLE_DIRNAME/README.md
 
     # For every example file in the examples directory
