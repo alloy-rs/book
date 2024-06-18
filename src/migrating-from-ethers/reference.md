@@ -1,6 +1,6 @@
 ## Reference
 
-[ethers-rs](https://github.com/gakonst/ethers-rs/) is in the process of being deprecated in favor of [Alloy](https://github.com/alloy-rs/) and [Foundry](https://github.com/foundry-rs/).
+[ethers-rs](https://github.com/gakonst/ethers-rs/) has been deprecated in favor of [Alloy](https://github.com/alloy-rs/) and [Foundry](https://github.com/foundry-rs/).
 
 The following is a reference guide for finding the migration path for your specific crate, dependency or information source.
 
