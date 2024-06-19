@@ -148,7 +148,7 @@ let decoded = swapExactTokensForTokensCall::abi_decode(&input, false);
 
 ### Attributes
 
-Combined with the `sol!` macro's `#[sol(rpc)]` attribute, [`CallBuilder`](https://alloy-rs.github.io/alloy/alloy/contract/struct.CallBuilder.html) can be used to interact with
+Combined with the `sol!` macro's `#[sol(rpc)]` attribute, [`CallBuilder`](https://docs.rs/alloy/latest/alloy/contract/struct.CallBuilder.html) can be used to interact with
 on-chain contracts. The `#[sol(rpc)]` attribute generates a method for each function in a contract
 that returns a `CallBuilder` for that function.
 

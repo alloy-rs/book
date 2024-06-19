@@ -6,7 +6,7 @@ Using the IPC transport allows the ethers library to send JSON-RPC requests to t
 
 ### Initializing an `Ipc` Provider
 
-The recommended way of initializing an `Ipc` provider is by using the [`on_ipc`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html#method.on_ipc) method on the [`ProviderBuilder`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html) with an [`IpcConnect`](https://alloy-rs.github.io/alloy/alloy/rpc/client/struct.IpcConnect.html) configuration.
+The recommended way of initializing an `Ipc` provider is by using the [`on_ipc`](https://docs.rs/alloy/latest/alloy/providers/struct.ProviderBuilder.html#method.on_ipc) method on the [`ProviderBuilder`](https://docs.rs/alloy/latest/alloy/providers/struct.ProviderBuilder.html) with an [`IpcConnect`](https://docs.rs/alloy/latest/alloy/providers/struct.IpcConnect.html) configuration.
 
 ```rust,ignore
 //! Example of creating an IPC provider using the `on_ipc` method on the `ProviderBuilder`.
@@ -27,7 +27,7 @@ async fn main() -> eyre::Result<()> {
 }
 ```
 
-An alternative way of initializing is to use the [`on_builtin`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html#method.on_builtin) method on the [`ProviderBuilder`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html). This method will automatically determine the connection type (`Http`, `Ws` or `Ipc`) depending on the format of the URL. This method is particularly useful if you need a boxed transport.
+An alternative way of initializing is to use the [`on_builtin`](https://docs.rs/alloy/latest/alloy/providers/struct.ProviderBuilder.html#method.on_builtin) method on the [`ProviderBuilder`](https://docs.rs/alloy/latest/alloy/providers/struct.ProviderBuilder.html). This method will automatically determine the connection type (`Http`, `Ws` or `Ipc`) depending on the format of the URL. This method is particularly useful if you need a boxed transport.
 
 ```rust,ignore
 //! Example of creating an IPC provider using the `on_builtin` method on the `ProviderBuilder`.

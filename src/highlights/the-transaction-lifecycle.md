@@ -2,7 +2,7 @@
 
 This article will walk you through the process of defining a transaction to send `100 wei` from `Alice` to `Bob`, signing the transaction and broadcasting the signed transaction to the Ethereum network.
 
-Let's express our intent in the form of a [`TransactionRequest`](https://alloy-rs.github.io/alloy/alloy/rpc/types/eth/struct.TransactionRequest.html):
+Let's express our intent in the form of a [`TransactionRequest`](https://docs.rs/alloy/latest/alloy/rpc/types/eth/struct.TransactionRequest.html):
 
 ```rust,ignore
 // Build a transaction to send 100 wei from Alice to Bob.
@@ -37,7 +37,7 @@ let rpc_url = anvil.endpoint().parse()?;
 let rpc_url = "https://eth.merkle.io".parse()?;
 ```
 
-Next let's define a `signer` for Alice. By default `Anvil` defines a mnemonic phrase: `"test test test test test test test test test test test junk"`. Make sure to not use this mnemonic phrase outside of testing environments. We register the signer in an [`EthereumWallet`](https://alloy-rs.github.io/alloy/alloy_network/struct.EthereumWallet.html) to be used in the `Provider` to sign our future transaction.
+Next let's define a `signer` for Alice. By default `Anvil` defines a mnemonic phrase: `"test test test test test test test test test test test junk"`. Make sure to not use this mnemonic phrase outside of testing environments. We register the signer in an [`EthereumWallet`](https://docs.rs/alloy/latest/alloy/network/struct.EthereumWallet.html) to be used in the `Provider` to sign our future transaction.
 
 Derive the first key of the mnemonic phrase for `Alice`:
 
@@ -55,7 +55,7 @@ let alice = anvil.addresses()[0];
 let bob = anvil.addresses()[1];
 ```
 
-Next we can build the `Provider` using the `ProviderBuilder`.
+Next we can build the [`Provider`](https://docs.rs/alloy/latest/alloy/providers/trait.Provider.html) using the [`ProviderBuilder`](https://docs.rs/alloy/latest/alloy/providers/struct.ProviderBuilder.html).
 
 ```rust,ignore
 // Create a provider with the wallet.
@@ -67,13 +67,13 @@ let provider = ProviderBuilder::new()
 
 Note that we use `.with_recommended_fillers()` method on the [ProviderBuilder](../building-with-alloy/connecting-to-a-blockchain/setting-up-a-provider.md) to automatically [fill fields](../building-with-alloy/understanding-fillers.md). 
 
-Let's modify our original `TransactionRequest` to make use of the [RecommendedFillers](https://alloy-rs.github.io/alloy/alloy/providers/fillers/type.RecommendedFiller.html) installed on the `Provider` to automatically fill out transaction details.
+Let's modify our original `TransactionRequest` to make use of the [RecommendedFiller](https://docs.rs/alloy/latest/alloy/providers/fillers/type.RecommendedFiller.html) installed on the `Provider` to automatically fill out transaction details.
 
 The `RecommendedFillers` includes the following fillers:
 
-- [GasFiller](https://alloy-rs.github.io/alloy/alloy/providers/fillers/struct.GasFiller.html)
-- [NonceFiller](https://alloy-rs.github.io/alloy/alloy/providers/fillers/struct.NonceFiller.html)
-- [ChainIdFiller](https://alloy-rs.github.io/alloy/alloy/providers/fillers/struct.ChainIdFiller.html)
+- [GasFiller](https://docs.rs/alloy/latest/alloy/providers/fillers/struct.GasFiller.html)
+- [NonceFiller](https://docs.rs/alloy/latest/alloy/providers/fillers/struct.NonceFiller.html)
+- [ChainIdFiller](https://docs.rs/alloy/latest/alloy/providers/fillers/struct.ChainIdFiller.html)
 
 Because of we are using `RecommendedFillers` our `TransactionRequest` we only need a subset of the original fields:
 
@@ -130,9 +130,9 @@ By calling:
 let tx_builder = provider.send_transaction(tx).await?;
 ```
 
-The [`Provider::send_transaction`](https://alloy-rs.github.io/alloy/alloy_provider/provider/trait/trait.Provider.html#method.send_transaction) method returns a [`PendingTransactionBuilder`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html) for configuring the pending transaction watcher.
+The [`Provider::send_transaction`](https://docs.rs/alloy/latest/alloy/providers/trait.Provider.html#method.send_transaction) method returns a [`PendingTransactionBuilder`](https://docs.rs/alloy/latest/alloy/providers/struct.PendingTransactionBuilder.html) for configuring the pending transaction watcher.
 
-On it we can for example, set the [`required_confirmations`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html#method.set_required_confirmations) or set a [`timeout`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html#method.set_timeout):
+On it we can for example, set the [`required_confirmations`](https://docs.rs/alloy/latest/alloy/providers/struct.PendingTransactionBuilder.html#method.set_required_confirmations) or set a [`timeout`](https://docs.rs/alloy/latest/alloy/providers/struct.PendingTransactionBuilder.html#method.set_timeout):
 
 ```rust,ignore
 // Configure the pending transaction.
@@ -156,9 +156,9 @@ let tx = TransactionRequest::default()
 +   .with_gas_limit(gas_limit);
 ```
 
-As part [Wallet's `fill` method](https://alloy-rs.github.io/alloy/alloy/providers/fillers/trait.TxFiller.html#tymethod.fill), registered on the `Provider`, we build a signed transaction from the populated `TransactionRequest` using our signer, Alice.
+As part [Wallet's `fill` method](https://docs.rs/alloy/latest/alloy/providers/fillers/trait.TxFiller.html#tymethod.fill), registered on the `Provider`, we build a signed transaction from the populated `TransactionRequest` using our signer, Alice.
 
-At this point, the `TransactionRequest` becomes a `TransactionEnvelope`, ready to send across the network. By calling either [`register`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html#method.register), [`watch`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html#method.watch) or [`get_receipt`](https://alloy-rs.github.io/alloy/alloy_provider/heart/struct.PendingTransactionBuilder.html#method.get_receipt) we can broadcast the transaction and track the status of the transaction.
+At this point, the `TransactionRequest` becomes a `TransactionEnvelope`, ready to send across the network. By calling either [`register`](https://docs.rs/alloy/latest/alloy/providers/struct.PendingTransactionBuilder.html#method.register), [`watch`](https://docs.rs/alloy/latest/alloy/providers/struct.PendingTransactionBuilder.html#method.watch) or [`get_receipt`](https://docs.rs/alloy/latest/alloy/providers/struct.PendingTransactionBuilder.html#method.get_receipt) we can broadcast the transaction and track the status of the transaction.
 
 For instance:
 
@@ -167,7 +167,7 @@ For instance:
 let tx_receipt = provider.send_transaction(tx).await?.get_receipt().await?;
 ```
 
-The [`TransactionReceipt`](https://alloy-rs.github.io/alloy/alloy/rpc/types/struct.TransactionReceipt.html) provides a comprehensive record of the transaction's journey and outcome, including the transaction hash, block details, gas used, and addresses involved.
+The [`TransactionReceipt`](https://docs.rs/alloy/latest/alloy/rpc/types/struct.TransactionReceipt.html) provides a comprehensive record of the transaction's journey and outcome, including the transaction hash, block details, gas used, and addresses involved.
 
 ```rust,ignore
 pub struct TransactionReceipt {
