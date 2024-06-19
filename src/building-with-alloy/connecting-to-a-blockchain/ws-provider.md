@@ -4,7 +4,7 @@ The `Ws` provider establishes an WebSocket connection with a node, allowing you 
 
 ### Initializing a `Ws` Provider
 
-The recommended way of initializing a `Ws` provider is by using the [`on_ws`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html#method.on_ws) method on the [`ProviderBuilder`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html) with a [`WsConnect`](https://alloy-rs.github.io/alloy/alloy/rpc/client/struct.WsConnect.html) configuration.
+The recommended way of initializing a `Ws` provider is by using the [`on_ws`](https://docs.rs/alloy/latest/alloy/providers/struct.ProviderBuilder.html#method.on_ws) method on the [`ProviderBuilder`](https://docs.rs/alloy/latest/alloy/providers/struct.ProviderBuilder.html) with a [`WsConnect`](https://docs.rs/alloy/latest/alloy/providers/struct.WsConnect.html) configuration.
 
 ```rust,ignore
 //! Example of creating an WS provider using the `on_ws` method on the `ProviderBuilder`.
@@ -25,7 +25,7 @@ async fn main() -> eyre::Result<()> {
 }
 ```
 
-An alternative way of initializing is to use the [`on_builtin`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html#method.on_builtin) method on the [`ProviderBuilder`](https://alloy-rs.github.io/alloy/alloy_provider/builder/struct.ProviderBuilder.html). This method will automatically determine the connection type (`Http`, `Ws` or `Ipc`) depending on the format of the URL. This method is particularly useful if you need a boxed transport.
+An alternative way of initializing is to use the [`on_builtin`](https://docs.rs/alloy/latest/alloy/providers/struct.ProviderBuilder.html#method.on_builtin) method on the [`ProviderBuilder`](https://docs.rs/alloy/latest/alloy/providers/struct.ProviderBuilder.html). This method will automatically determine the connection type (`Http`, `Ws` or `Ipc`) depending on the format of the URL. This method is particularly useful if you need a boxed transport.
 
 ```rust,ignore
 //! Example of creating an WS provider using the `on_builtin` method on the `ProviderBuilder`.
