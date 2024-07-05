@@ -57,6 +57,8 @@
   - [Deploy from bytecode](./examples/contracts/deploy_from_bytecode.md)
   - [Deploy from contract](./examples/contracts/deploy_from_contract.md)
   - [Interact with ABI](./examples/contracts/interact_with_abi.md)
+  - [Interact with contract instance](./examples/contracts/interact_with_contract_instance.md)
+  - [Handling unknown return types](./examples/contracts/unknown_return_types.md)
 - [Fillers](./examples/fillers/README.md)
   - [Gas estimation filler](./examples/fillers/gas_filler.md)
   - [Nonce management filler](./examples/fillers/nonce_filler.md)
@@ -117,6 +119,8 @@
   - [Yubi signer](./examples/wallets/yubi_signer.md)
   - [Keystore signer](./examples/wallets/keystore_signer.md)
   - [Create keystore](./examples/wallets/create_keystore.md)
+- [Advanced](./examples/advanced/README.md)
+  - [Using `AnyNetwork`](./examples/advanced/any_network.md)
 <!-- MANUALLY MAINTAINED -->
 
 # Appendix
