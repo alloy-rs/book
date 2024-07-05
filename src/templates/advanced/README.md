@@ -1,3 +1,3 @@
 ## Advanced
 
-- [Any network](any_network.md)
+- [Using `AnyNetwork`](any_network.md)

@@ -5,4 +5,4 @@
 - [Deploy from contract](deploy_from_contract.md)
 - [Interact with ABI](interact_with_abi.md)
 - [Interact with contract instance](interact_with_contract_instance.md)
-- [Unknown return types](unknown_return_types.md)
+- [Handling unknown return types](unknown_return_types.md)
