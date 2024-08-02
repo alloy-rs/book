@@ -121,6 +121,9 @@
   - [Create keystore](./examples/wallets/create_keystore.md)
 - [Advanced](./examples/advanced/README.md)
   - [Using `AnyNetwork`](./examples/advanced/any_network.md)
+  - [Decoding with `json_abi`](./examples/advanced/decoding_json_abi.md)
+  - [Encoding with `dyn_abi`](./examples/advanced/encoding_dyn_abi.md)
+  - [Static encoding with `sol!`](./examples/advanced/encoding_sol_static.md)
 <!-- MANUALLY MAINTAINED -->
 
 # Appendix
