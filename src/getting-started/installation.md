@@ -69,6 +69,7 @@ RPC
 - `rpc-types-engine`
 - `rpc-types-eth`
 - `rpc-types-json`
+- `rpc-types-mev`
 - `rpc-types-trace`
 - `rpc-types-txpool`
 
