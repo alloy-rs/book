@@ -11,7 +11,7 @@ cargo add alloy --features full
 Alternatively, you can add the following to your `Cargo.toml` file:
 
 ```toml
-alloy = { version = "0.1", features = ["full"] }
+alloy = { version = "0.2", features = ["full"] }
 ```
 
 For a more fine-grained control over the features you wish to include, you can add the individual crates to your `Cargo.toml` file, or use the `alloy` crate with the features you need.
@@ -104,6 +104,7 @@ The feature flags largely correspond with and enable features from the following
 - [alloy-genesis](https://github.com/alloy-rs/alloy/tree/main/crates/genesis) - Ethereum genesis file definitions
 - [alloy-json-rpc](https://github.com/alloy-rs/alloy/tree/main/crates/json-rpc) - Core data types for JSON-RPC 2.0 clients
 - [alloy-network](https://github.com/alloy-rs/alloy/tree/main/crates/network) - Network abstraction for RPC types
+  - [alloy-network-primitives](https://github.com/alloy-rs/alloy/tree/main/crates/network-primitives) - Primitive types for the network abstraction
 - [alloy-node-bindings](https://github.com/alloy-rs/alloy/tree/main/crates/node-bindings) - Ethereum execution-layer client bindings
 - [alloy-provider](https://github.com/alloy-rs/alloy/tree/main/crates/provider) - Interface with an Ethereum blockchain
 - [alloy-pubsub](https://github.com/alloy-rs/alloy/tree/main/crates/pubsub) - Ethereum JSON-RPC [publish-subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) tower service and type definitions
@@ -114,6 +115,7 @@ The feature flags largely correspond with and enable features from the following
   - [alloy-rpc-types-beacon](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-beacon) - Types for the [Ethereum Beacon Node API](https://ethereum.github.io/beacon-APIs)
   - [alloy-rpc-types-engine](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-engine) - Types for the `engine` Ethereum JSON-RPC namespace
   - [alloy-rpc-types-eth](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-eth) - Types for the `eth` Ethereum JSON-RPC namespace
+  - [alloy-rpc-types-mev](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-mev) - Types for the MEV bundle JSON-RPC namespace.
   - [alloy-rpc-types-trace](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-trace) - Types for the `trace` Ethereum JSON-RPC namespace
   - [alloy-rpc-types-txpool](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-txpool) - Types for the `txpool` Ethereum JSON-RPC namespace
 - [alloy-serde](https://github.com/alloy-rs/alloy/tree/main/crates/serde) - [Serde](https://serde.rs)-related utilities
