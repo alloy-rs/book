@@ -69,7 +69,7 @@ let x: U256 = b256.into();
 let x = U256::from_be_bytes(b256.into())
 ```
 
-Due to a [Rust issue #50133](https://github.com/rust-lang/rust/issues/50133), the native `TryFrom` trait is not supported for uints. Instead, use `UintTryFrom` as follows:
+Due to [Rust issue #50133](https://github.com/rust-lang/rust/issues/50133), the native `TryFrom` trait is not supported for `Uint`s. Instead, use [`UintTryFrom`](https://docs.rs/alloy/latest/alloy/primitives/ruint/trait.UintTryFrom.html) as follows:
 
 ```rust,ignore
 use alloy_primitives::ruint::UintTryFrom;
