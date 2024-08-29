@@ -69,6 +69,15 @@ let x: U256 = b256.into();
 let x = U256::from_be_bytes(b256.into())
 ```
 
+Due to a [Rust issue #50133](https://github.com/rust-lang/rust/issues/50133), the native `TryFrom` trait is not supported for uints. Instead, use `UintTryFrom` as follows:
+
+```rust,ignore
+use alloy_primitives::ruint::UintTryFrom;
+
+let x: U512 = uint!(1234_U512);
+let y: U256 = U256::uint_try_from(x).unwrap();
+```
+
 #### RPC
 
 - Bytes: [`ethers::types::bytes::*`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core/src/types/bytes.rs) `->` [`alloy::primitives::Bytes`](https://github.com/alloy-rs/core/tree/main/crates/primitives/src/lib.rs)
