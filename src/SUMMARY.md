@@ -59,7 +59,7 @@
   - [Deploy from contract](./examples/contracts/deploy_from_contract.md)
   - [Interact with ABI](./examples/contracts/interact_with_abi.md)
   - [Interact with contract instance](./examples/contracts/interact_with_contract_instance.md)
-  - [JSON-RPC error decoding](jsonrpc_error_decoding.md)
+  - [JSON-RPC error decoding](./examples/contracts/jsonrpc_error_decoding.md)
   - [Handling unknown return types](./examples/contracts/unknown_return_types.md)
 - [Fillers](./examples/fillers/README.md)
   - [Gas estimation filler](./examples/fillers/gas_filler.md)
