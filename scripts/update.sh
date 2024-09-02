@@ -30,9 +30,13 @@ function main () {
   cd "$SCRIPT_PATH/.." || exit
 
   # Update submodules
+  git submodule init
   git submodule update --recursive --remote
   git submodule foreach git checkout main
   git submodule foreach git pull origin main
+
+  # Create the `src/examples` directory if it doesn't exist
+  mkdir -p ./src/examples
 
   # Get the commit hash of the latest commit in the examples repository
   EXAMPLES_COMMIT_HASH=$(git -C ./lib/examples rev-parse HEAD)

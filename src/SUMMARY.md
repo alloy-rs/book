@@ -31,6 +31,7 @@
   - [Sending an EIP-1559 transaction](./building-with-alloy/transactions/sending-an-EIP-1559-transaction.md)
   - [Sending a legacy transaction](./building-with-alloy/transactions/sending-a-legacy-transaction.md)
   - [Sending an EIP-4844 transaction](./building-with-alloy/transactions/sending-an-EIP-4844-transaction.md)
+  - [Sending an EIP-7702 transaction](./building-with-alloy/transactions/sending-an-EIP-7702-transaction.md)
   - [Using access lists](./building-with-alloy/transactions/using-access-lists.md)
 
 # Highlights
@@ -58,6 +59,7 @@
   - [Deploy from contract](./examples/contracts/deploy_from_contract.md)
   - [Interact with ABI](./examples/contracts/interact_with_abi.md)
   - [Interact with contract instance](./examples/contracts/interact_with_contract_instance.md)
+  - [JSON-RPC error decoding](./examples/contracts/jsonrpc_error_decoding.md)
   - [Handling unknown return types](./examples/contracts/unknown_return_types.md)
 - [Fillers](./examples/fillers/README.md)
   - [Gas estimation filler](./examples/fillers/gas_filler.md)
@@ -106,6 +108,7 @@
   - [Send EIP-1559 transaction](./examples/transactions/send_eip1559_transaction.md)
   - [Send legacy transaction](./examples/transactions/send_legacy_transaction.md)
   - [Send EIP-4844 transaction](./examples/transactions/send_eip4844_transaction.md)
+  - [Send EIP-7702 transaction](./examples/transactions/send_eip7702_transaction.md)
   - [Send private transaction using Flashbots Protect](./examples/transactions/send_private_transaction.md)
 - [Wallets](./examples/wallets/README.md)
   - [AWS signer](./examples/wallets/aws_signer.md)
