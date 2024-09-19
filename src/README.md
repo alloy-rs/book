@@ -33,7 +33,7 @@ A walkthrough of building with Alloy.
 
 Highlighted features of Alloy.
 
-### [Examples](./examples/anvil/deploy_contract_anvil.md)
+### [Examples](./examples/big-numbers/comparison_equivalence.md)
 
 This section will give you practical examples of how Alloy can be used in your codebase.
 
