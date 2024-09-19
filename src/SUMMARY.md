@@ -10,6 +10,7 @@
 # Migrating from `ethers-rs`
 
 - [Reference](./migrating-from-ethers/reference.md)
+- [Conversions](./migrating-from-ethers/conversions.md)
 
 # Building with Alloy
 
