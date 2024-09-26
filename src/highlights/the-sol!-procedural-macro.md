@@ -49,7 +49,7 @@ sol! {
 }
 ```
 
-Or provide a path to a Solidity file:
+Or provide a path to a Solidity artifact file generated with [`forge build` command](https://book.getfoundry.sh/reference/forge/forge-build):
 
 ```rust,ignore
 sol!(
