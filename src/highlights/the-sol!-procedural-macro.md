@@ -9,22 +9,23 @@ use alloy::{primitives::U256, sol};
 
 // Declare a Solidity type in standard Solidity
 sol! {
+    #[derive(Debug)] // ... with attributes too!
     struct Foo {
         uint256 bar;
         bool baz;
     }
 }
 
-// A corresponding Rust struct is generated!
-
+// A corresponding Rust struct is generated:
+// #[derive(Debug)]
 // pub struct Foo {
-//     pub bar: Uint<256, 4>,
+//     pub bar: U256,
 //     pub baz: bool,
 // }
 
 let foo = Foo { bar: U256::from(42), baz: true };
+println!("{foo:#?}");
 ```
-
 
 
 ### Usage
@@ -49,13 +50,12 @@ sol! {
 }
 ```
 
-Or provide a path to a Solidity artifact file generated with [`forge build` command](https://book.getfoundry.sh/reference/forge/forge-build):
+Or provide a path to a Solidity file:
 
 ```rust,ignore
 sol!(
-    #[sol(rpc)]
     Counter,
-    "artifacts/Counter.json"
+    "artifacts/Counter.sol"
 );
 ```
 
@@ -116,7 +116,8 @@ sol! {
 }
 ```
 
-Alternatively you can load an ABI by file:
+Alternatively you can load an ABI by file; the format is either a JSON ABI array,
+or an object containing an `"abi"` key. It supports common artifact formats like Foundry's:
 
 ```rust,ignore
 sol!(
@@ -135,7 +136,7 @@ sol!(
         address[] calldata path,
         address to,
         uint256 deadline
-      ) external returns (uint256[] memory amounts);
+    ) external returns (uint256[] memory amounts);
 );
 
 println!("Decoding https://etherscan.io/tx/0xd1b449d8b1552156957309bffb988924569de34fbf21b51e7af31070cc80fe9a");
@@ -153,6 +154,7 @@ on-chain contracts. The `#[sol(rpc)]` attribute generates a method for each func
 that returns a `CallBuilder` for that function.
 
 If `#[sol(bytecode = "0x...")]` is provided, the contract can be deployed with `Counter::deploy` and a new instance will be created.
+The bytecode is also loaded from Foundry-style JSON artifact files.
 
 ```rust,ignore
 //! Example showing how to use the `#[sol(rpc)]` and #[sol(bytecode = "0x...")] attributes
