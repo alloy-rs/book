@@ -73,6 +73,7 @@
   - [Local provider on Anvil](./examples/node-bindings/anvil_local_provider.md)
   - [Local provider on Geth](./examples/node-bindings/geth_local_instance.md)
   - [Local provider on Reth](./examples/node-bindings/reth_local_instance.md)
+  - [Mock WETH balance with Anvil](./examples/node-bindings/anvil_set_storage_at.md)
 - [Primitives](./examples/primitives/README.md)
   - [Bytes and address types](./examples/primitives/bytes_and_address_types.md)
   - [Hashing functions](./examples/primitives/hashing_functions.md)
@@ -132,6 +133,7 @@
   - [Decoding with `json_abi`](./examples/advanced/decoding_json_abi.md)
   - [Encoding with `dyn_abi`](./examples/advanced/encoding_dyn_abi.md)
   - [Static encoding with `sol!`](./examples/advanced/encoding_sol_static.md)
+  - [Using `foundry-fork-db`](./examples/advanced/foundry_fork_db.md)
 <!-- MANUALLY MAINTAINED -->
 
 # Appendix

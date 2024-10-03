@@ -7,3 +7,4 @@
 - [Local provider on Anvil](anvil_local_provider.md)
 - [Local provider on Geth](geth_local_instance.md)
 - [Local provider on Reth](reth_local_instance.md)
+- [Mock WETH balance with Anvil](anvil_set_storage_at.md)
