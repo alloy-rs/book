@@ -134,6 +134,10 @@
   - [Encoding with `dyn_abi`](./examples/advanced/encoding_dyn_abi.md)
   - [Static encoding with `sol!`](./examples/advanced/encoding_sol_static.md)
   - [Using `foundry-fork-db`](./examples/advanced/foundry_fork_db.md)
+  - [Wrapping `Provider` trait over `reth-db`](./examples/advanced/reth_db_provider.md)
+- [Comparison](./examples/comparison/README.md)
+  - [Compare block headers between providers](./examples/comparison/compare_new_heads.md)
+  - [Compare pending transactions between providers](./examples/comparison/compare_pending_txs.md)
 <!-- MANUALLY MAINTAINED -->
 
 # Appendix
