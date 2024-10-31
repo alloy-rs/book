@@ -54,7 +54,6 @@ Or provide a path to a Solidity file:
 
 ```rust,ignore
 sol!(
-    Counter,
     "artifacts/Counter.sol"
 );
 ```
@@ -116,7 +115,7 @@ sol! {
 }
 ```
 
-Alternatively you can load an ABI by file; the format is either a JSON ABI array,
+Alternatively, you can load an ABI by file; the format is either a JSON ABI array
 or an object containing an `"abi"` key. It supports common artifact formats like Foundry's:
 
 ```rust,ignore
