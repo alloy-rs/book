@@ -1,3 +1,4 @@
 ## Layers
 
-- [Logging layer](logging_layer.md)
+- [Request / response logging layer](logging_layer.md)
+- [Retry-backoff layer](retry_layer.md)
