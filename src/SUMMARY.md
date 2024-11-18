@@ -64,6 +64,7 @@
   - [Recommended fillers](./examples/fillers/recommended_fillers.md)
   - [Wallet management filler](./examples/fillers/wallet_filler.md)
 - [Layers](./examples/layers/README.md)
+  - [Hyper transport layer](./examples/layers/hyper_http_layer.md)
   - [Request / response logging layer](./examples/layers/logging_layer.md)
   - [Retry-backoff layer](./examples/layers/retry_layer.md)
 - [Node bindings](./examples/node-bindings/README.md)
