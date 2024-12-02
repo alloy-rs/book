@@ -143,7 +143,8 @@
 - [Comparison](./examples/comparison/README.md)
   - [Compare block headers between providers](./examples/comparison/compare_new_heads.md)
   - [Compare pending transactions between providers](./examples/comparison/compare_pending_txs.md)
-  <!-- MANUALLY MAINTAINED -->
+
+<!-- MANUALLY MAINTAINED -->
 
 # Appendix
 
