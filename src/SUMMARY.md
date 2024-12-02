@@ -44,6 +44,7 @@
 
 <!-- MANUALLY MAINTAINED -->
 <!-- TO UPDATE EXAMPLES RUN: `./scripts/update.sh` AND MAKE MODIFICATIONS IF NECESSARY -->
+
 - [Big numbers](./examples/big-numbers/README.md)
   - [Comparison and equivalence](./examples/big-numbers/comparison_equivalence.md)
   - [Conversion](./examples/big-numbers/conversion.md)
@@ -87,6 +88,7 @@
   - [WS](./examples/providers/ws.md)
   - [WS with authentication](./examples/providers/ws_with_auth.md)
   - [IPC](./examples/providers/ipc.md)
+  - [Batch RPC](./examples/providers/batch_rpc.md)
 - [Queries](./examples/queries/README.md)
   - [Query contract storage](./examples/queries/query_contract_storage.md)
   - [Query contract deployed bytecode](./examples/queries/query_deployed_bytecode.md)
@@ -141,7 +143,7 @@
 - [Comparison](./examples/comparison/README.md)
   - [Compare block headers between providers](./examples/comparison/compare_new_heads.md)
   - [Compare pending transactions between providers](./examples/comparison/compare_pending_txs.md)
-<!-- MANUALLY MAINTAINED -->
+  <!-- MANUALLY MAINTAINED -->
 
 # Appendix
 
