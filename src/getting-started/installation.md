@@ -11,7 +11,7 @@ cargo add alloy --features full
 Alternatively, you can add the following to your `Cargo.toml` file:
 
 ```toml
-alloy = { version = "0.6", features = ["full"] }
+alloy = { version = "0.7", features = ["full"] }
 ```
 
 For a more fine-grained control over the features you wish to include, you can add the individual crates to your `Cargo.toml` file, or use the `alloy` crate with the features you need.
@@ -37,12 +37,25 @@ Default
 
 - `std`
 - `reqwest`
+- `alloy-core/default`
 
 Full, a set of the most commonly used flags to get started with `alloy`.
 
-- `full`
+- `full`:
+  - `consensus`
+  - `contract`
+  - `eips`
+  - `k256`
+  - `kzg`
+  - `network`
+  - `provider-http`
+  - `provider-ws`
+  - `provider-ipc`
+  - `rpc-types`
+  - `signer-local`
 
 General
+
 - `consensus`
 - `contract`
 - `eips`
@@ -51,12 +64,14 @@ General
 - `node-bindings`
 
 Providers
+
 - `providers`
 - `provider-http`
 - `provider-ipc`
 - `provider-ws`
 
 RPC
+
 - `rpc`
 - `json-rpc`
 - `rpc-client`
@@ -75,6 +90,7 @@ RPC
 - `rpc-types-txpool`
 
 Signers
+
 - `signers`
 - `signer-aws`
 - `signer-gcp`
@@ -90,7 +106,7 @@ Signers
 
 By default `alloy` uses [`reqwest`](https://crates.io/crates/reqwest) as HTTP client. Alternatively one can switch to [`hyper`](https://crates.io/crates/hyper).
 The `reqwest` and `hyper` feature flags are mutually exclusive.
-  
+
 A complete list of available features can be found on [docs.rs](https://docs.rs/crate/alloy/latest/features) or in the [`alloy` crate's `Cargo.toml`](https://github.com/alloy-rs/alloy/blob/main/crates/alloy/Cargo.toml).
 
 The feature flags largely correspond with and enable features from the following individual crates.
@@ -115,6 +131,7 @@ The feature flags largely correspond with and enable features from the following
   - [alloy-rpc-types-admin](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-admin) - Types for the `admin` Ethereum JSON-RPC namespace
   - [alloy-rpc-types-anvil](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-anvil) - Types for the [Anvil](https://github.com/foundry-rs/foundry) development node's Ethereum JSON-RPC namespace
   - [alloy-rpc-types-beacon](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-beacon) - Types for the [Ethereum Beacon Node API](https://ethereum.github.io/beacon-APIs)
+  - [alloy-rpc-types-debug](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-debug) - Types for the `debug` Ethereum JSON-RPC namespace
   - [alloy-rpc-types-engine](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-engine) - Types for the `engine` Ethereum JSON-RPC namespace
   - [alloy-rpc-types-eth](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-eth) - Types for the `eth` Ethereum JSON-RPC namespace
   - [alloy-rpc-types-mev](https://github.com/alloy-rs/alloy/tree/main/crates/rpc-types-mev) - Types for the MEV bundle JSON-RPC namespace.

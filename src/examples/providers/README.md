@@ -7,3 +7,4 @@
 - [WS](ws.md)
 - [WS with authentication](ws_with_auth.md)
 - [IPC](ipc.md)
+- [Batch RPC](batch_rpc.md)
