@@ -117,6 +117,8 @@
   - [Send EIP-7702 transaction](./examples/transactions/send_eip7702_transaction.md)
   - [Send legacy transaction](./examples/transactions/send_legacy_transaction.md)
   - [Send private transaction using Flashbots Protect](./examples/transactions/send_private_transaction.md)
+  - [Simulate using `debug_traceCallMany`](./examples/transactions/debug_trace_call_many.md)
+  - [Simulate using `trace_callMany`](./examples/transactions/trace_call_many.md)
   - [Trace call](./examples/transactions/trace_call.md)
   - [Trace transaction](./examples/transactions/trace_transaction.md)
   - [Transfer ERC20 token](./examples/transactions/transfer_erc20.md)
