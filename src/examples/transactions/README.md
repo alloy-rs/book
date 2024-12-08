@@ -9,6 +9,7 @@
 - [Send legacy transaction](send_legacy_transaction.md)
 - [Send private transaction using Flashbots Protect](send_private_transaction.md)
 - [Sign and send a raw transaction](send_raw_transaction.md)
+- [Encode and decode a raw transaction](encode_and_decode_raw_transaction.md)
 - [Simulate using `debug_traceCallMany`](debug_trace_call_many.md)
 - [Simulate using `trace_callMany`](trace_call_many.md)
 - [Trace call](trace_call.md)

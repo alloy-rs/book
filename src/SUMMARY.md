@@ -111,6 +111,7 @@
   - [Encode and decode EIP-1559 transaction](./examples/transactions/encode_decode_eip1559.md)
   - [Get gas price in USD](./examples/transactions/gas_price_usd.md)
   - [Sign and send a raw transaction](./examples/transactions/send_raw_transaction.md)
+  - [Encode and decode a raw transaction](./examples/transactions/encode_and_decode_raw_transaction.md)
   - [Send transaction with access list](./examples/transactions/with_access_list.md)
   - [Send EIP-1559 transaction](./examples/transactions/send_eip1559_transaction.md)
   - [Send EIP-4844 transaction](./examples/transactions/send_eip4844_transaction.md)
