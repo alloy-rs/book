@@ -125,6 +125,7 @@
   - [Transfer ETH](./examples/transactions/transfer_eth.md)
 - [Wallets](./examples/wallets/README.md)
   - [AWS signer](./examples/wallets/aws_signer.md)
+  - [GCP signer](./examples/wallets/gcp_signer.md)
   - [Ledger signer](./examples/wallets/ledger_signer.md)
   - [Private key signer](./examples/wallets/private_key_signer.md)
   - [Mnemonic signer](./examples/wallets/mnemonic_signer.md)

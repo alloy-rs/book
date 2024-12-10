@@ -11,7 +11,7 @@ cargo add alloy --features full
 Alternatively, you can add the following to your `Cargo.toml` file:
 
 ```toml
-alloy = { version = "0.7", features = ["full"] }
+alloy = { version = "0.8", features = ["full"] }
 ```
 
 For a more fine-grained control over the features you wish to include, you can add the individual crates to your `Cargo.toml` file, or use the `alloy` crate with the features you need.
@@ -69,6 +69,13 @@ Providers
 - `provider-http`
 - `provider-ipc`
 - `provider-ws`
+- `provider-admin-api`
+- `provider-anvil-api`
+- `provider-debug-api`
+- `provider-engine-api`
+- `provider-net-api`
+- `provider-txpool-api`
+- `provider-anvil-node`
 
 RPC
 

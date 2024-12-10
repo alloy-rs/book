@@ -1,6 +1,7 @@
 ## Wallets
 
 - [AWS signer](aws_signer.md)
+- [GCP signer](gcp_signer.md)
 - [Ledger signer](ledger_signer.md)
 - [Private key signer](private_key_signer.md)
 - [Mnemonic signer](mnemonic_signer.md)
