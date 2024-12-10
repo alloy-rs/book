@@ -88,7 +88,7 @@
   - [WS](./examples/providers/ws.md)
   - [WS with authentication](./examples/providers/ws_with_auth.md)
   - [IPC](./examples/providers/ipc.md)
-  - [Batch RPC](./examples/providers/batch_rpc.md)
+  - [JSON-RPC Batch Request](./examples/providers/batch_rpc.md)
 - [Queries](./examples/queries/README.md)
   - [Query contract storage](./examples/queries/query_contract_storage.md)
   - [Query contract deployed bytecode](./examples/queries/query_deployed_bytecode.md)
