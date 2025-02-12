@@ -11,7 +11,7 @@ cargo add alloy --features full
 Alternatively, you can add the following to your `Cargo.toml` file:
 
 ```toml
-alloy = { version = "0.9", features = ["full"] }
+alloy = { version = "0.11", features = ["full"] }
 ```
 
 For a more fine-grained control over the features you wish to include, you can add the individual crates to your `Cargo.toml` file, or use the `alloy` crate with the features you need.
@@ -38,78 +38,32 @@ Default
 - `std`
 - `reqwest`
 - `alloy-core/default`
+- `essentials`
+
+Essentials
+
+- `essentials`:
+  - `contract`
+  - `provider-http`
+  - `rpc-types`
+  - `signer-local`
 
 Full, a set of the most commonly used flags to get started with `alloy`.
 
 - `full`:
   - `consensus`
-  - `contract`
   - `eips`
+  - `essentials`
   - `k256`
   - `kzg`
   - `network`
-  - `provider-http`
   - `provider-ws`
   - `provider-ipc`
-  - `rpc-types`
-  - `signer-local`
-
-General
-
-- `consensus`
-- `contract`
-- `eips`
-- `genesis`
-- `network`
-- `node-bindings`
-
-Providers
-
-- `providers`
-- `provider-http`
-- `provider-ipc`
-- `provider-ws`
-- `provider-admin-api`
-- `provider-anvil-api`
-- `provider-debug-api`
-- `provider-engine-api`
-- `provider-net-api`
-- `provider-txpool-api`
-- `provider-anvil-node`
-
-RPC
-
-- `rpc`
-- `json-rpc`
-- `rpc-client`
-- `rpc-client-ipc`
-- `rpc-client-ws`
-- `rpc-types`
-- `rpc-types-admin`
-- `rpc-types-anvil`
-- `rpc-types-beacon`
-- `rpc-types-debug`
-- `rpc-types-engine`
-- `rpc-types-eth`
-- `rpc-types-json`
-- `rpc-types-mev`
-- `rpc-types-trace`
-- `rpc-types-txpool`
-
-Signers
-
-- `signers`
-- `signer-aws`
-- `signer-gcp`
-- `signer-ledger`
-- `signer-ledger-browser`
-- `signer-ledger-node`
-- `signer-local`
-- `signer-trezor`
-- `signer-keystore`
-- `signer-mnemonic`
-- `signer-mnemonic-all-languages`
-- `signer-yubihsm`
+  - `provider-trace-api`
+  - `provider-txpool-api`
+  - `provider-debug-api`
+  - `provider-anvil-api`
+  - `pubsub`
 
 By default `alloy` uses [`reqwest`](https://crates.io/crates/reqwest) as HTTP client. Alternatively one can switch to [`hyper`](https://crates.io/crates/hyper).
 The `reqwest` and `hyper` feature flags are mutually exclusive.
