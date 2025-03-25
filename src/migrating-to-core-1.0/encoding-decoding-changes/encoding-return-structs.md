@@ -4,7 +4,7 @@
 
 Consider the following:
 
-```rust,no_run,ignore
+```rust,ignore
 sol! {
     function something() returns (uint256, address);
 }
