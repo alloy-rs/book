@@ -2,8 +2,8 @@
 
 With [core#884](https://github.com/alloy-rs/core/pull/884) the form of the generated call type (used for abi-encoding) is now dependent upon two factors:
 
-    1. How many parameters/args does the function take?
-    2. Whether the parameter is named or unnamed in case it has only param?
+1. Number of parameters/args does the function take
+2. Whether the parameter is named or unnamed in case it has only **one** param
 
 Consider the following:
 
