@@ -7,7 +7,7 @@
 
 Conside the following example:
 
-```rust,no_run
+```rust,ignore
 sol! {
    // No params/args
    error Some();
@@ -22,7 +22,7 @@ sol! {
 
 All of the above were generated as regular structs.
 
-```rust,no_run
+```rust,ignore
 // Empty struct
 pub struct SomeError { };
 
@@ -37,7 +37,7 @@ pub struct YetAnotherError {
 
 ## After
 
-```rust,no_run
+```rust,ignore
 
 // Unit struct for error with no params
 pub struct SomeError;

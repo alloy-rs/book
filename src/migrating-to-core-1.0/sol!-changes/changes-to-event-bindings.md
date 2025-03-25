@@ -5,7 +5,7 @@ It changes the bindings for **only** events with no parameters
 
 Consider the following event:
 
-```rust,no_run
+```rust,ignore
 sol! {
     event Incremented();
 }
@@ -15,7 +15,7 @@ sol! {
 
 The generated struct was an empty struct like below:
 
-```rust,no_run
+```rust,ignore
 pub struct Incremented { };
 ```
 
@@ -23,7 +23,7 @@ pub struct Incremented { };
 
 A unit struct is generated like below:
 
-```rust,no_run
+```rust,ignore
 pub struct Incremented;
 ```
 

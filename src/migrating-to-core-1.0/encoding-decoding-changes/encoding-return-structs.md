@@ -4,7 +4,7 @@
 
 Conside the following:
 
-```rust,no_run
+```rust,no_run,ignore
 sol! {
     function something() returns (uint256, address);
 }
@@ -14,7 +14,7 @@ sol! {
 
 A tuple would need to passed of the fields from return type, `somethingReturn`
 
-```rust,no_run
+```rust,ignore
 let encoding = somethingCall::abi_encode_returns(&(somethingReturn._0, somethingReturn._1));
 ```
 
@@ -22,6 +22,6 @@ let encoding = somethingCall::abi_encode_returns(&(somethingReturn._0, something
 
 One can now pass the return struct directly without deconstructing it as a tuple.
 
-```rust,no_run
+```rust,ignore
 let encoding = somethingCall::abi_encode_returns(&somethingReturn);
 ```

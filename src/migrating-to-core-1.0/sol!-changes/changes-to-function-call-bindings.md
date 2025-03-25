@@ -7,7 +7,7 @@ With [core#884](https://github.com/alloy-rs/core/pull/884) the form of the gener
 
 Consider the following:
 
-```rust,no_run
+```rust,ignore
 sol! {
     // No params/args
     function totalSupply() returns (uint256)
@@ -22,7 +22,7 @@ sol! {
 
 Generated bindings were independent of the number of parameters and names, and the following struct were generated for the above function calls
 
-```rust,no_run
+```rust,ignore
 // A struct with no fields as there are no parameters.
 pub struct totalSupplyCall { };
 let encoding = totalSupplyCall { }.abi_encode();
@@ -33,7 +33,7 @@ let encoding = balanceOfCall { _0: Address::ZERO }.abi_encode();
 
 ### After
 
-```rust,no_run
+```rust,ignore
 // A unit struct is generated when there are no parameters.
 pub struct totalSupplyCall;
 let encoding = totalSupplyCall.abi_encode();
@@ -45,7 +45,7 @@ let encoding = balanceOfCall(Address::ZERO).abi_encode();
 
 Now if the parameter in `balanceOf` was named like so:
 
-```rust,no_run
+```rust,ignore
 sol! {
     function balanceOf(address owner) returns (uint256);
 }
@@ -53,7 +53,7 @@ sol! {
 
 Then a regular struct would be generated like before:
 
-```rust, no_run
+```rust, ignore
 pub struct balanceOfCall { owner: Address };
 ```
 
