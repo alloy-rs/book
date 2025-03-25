@@ -151,6 +151,20 @@
 
 <!-- MANUALLY MAINTAINED -->
 
+# Migrating to `alloy-core` v1.0
+
+- [Highlights](./migrating-to-core-1.0/README.md)
+- [sol! macro changes](./migrating-to-core-1.0/sol!-changes/README.md)
+  - [Removing the `T` transport generic](./migrating-to-core-1.0/sol!-changes/removing-T-generic.md)
+  - [Improving function return type](./migrating-to-core-1.0/sol!-changes/improving-function-return-types.md)
+  - [Changes to function call bindings](./migrating-to-core-1.0/sol!-changes/changes-to-function-call-bindings.md)
+  - [Changes to event bindings](./migrating-to-core-1.0/sol!-changes/changes-to-event-bindings.md)
+  - [Changes to error bindings](./migrating-to-core-1.0/sol!-changes/changes-to-error-bindings.md)
+- [Simplify ABI encoding and decoding](./migrating-to-core-1.0/encoding-decoding-changes/README.md)
+  - [Encoding function return structs](./migrating-to-core-1.0/encoding-decoding-changes/encoding-return-structs.md)
+  - [Removing `validate: bool` from the `abi_decode` methods](./migrating-to-core-1.0/encoding-decoding-changes/removing-validate-bool.md)
+- [Other breaking changes](./migrating-to-core-1.0/other-breaking-changes.md)
+
 # Appendix
 
 - [Help us improve Alloy](./appendix/contributing.md)
