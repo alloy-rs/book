@@ -2,7 +2,7 @@
 
 ### Revamping the `sol!` macro bindings
 
-- [Contract and RPC codegen made cleaner by removal of the `T` tranport generic](./sol!-changes/removing-T-generic.md)
+- [Contract and RPC codegen made cleaner by removal of the `T` transport generic](./sol!-changes/removing-T-generic.md)
 - [Improving the function return types by removing the need for `_0`](./sol!-changes/improving-function-return-types.md)
 - [Changes to function call bindings e.g `pub struct balanceOfCall { _0: Address }` to `pub struct balanceOfCall(pub Address)`](./sol!-changes/changes-to-function-call-bindings.md)
 - [Changes to event bindings](./sol!-changes/changes-to-event-bindings.md)

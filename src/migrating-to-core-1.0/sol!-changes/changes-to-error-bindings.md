@@ -5,7 +5,7 @@
 1. Number of parameters the error has.
 2. Whether the parameter is named or unnamed in case it has only **one** param
 
-Conside the following example:
+Consider the following example:
 
 ```rust,ignore
 sol! {
