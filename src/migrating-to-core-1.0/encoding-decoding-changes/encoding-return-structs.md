@@ -2,7 +2,7 @@
 
 [core#909](https://github.com/alloy-rs/core/pull/909) improves return type encoding by allowing to pass the return struct directly into `SolCall::abi_encode_returns`.
 
-Conside the following:
+Consider the following:
 
 ```rust,no_run,ignore
 sol! {
