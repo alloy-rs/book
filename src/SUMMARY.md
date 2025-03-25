@@ -161,8 +161,8 @@
   - [Changes to event bindings](./migrating-to-core-1.0/sol!-changes/changes-to-event-bindings.md)
   - [Changes to error bindings](./migrating-to-core-1.0/sol!-changes/changes-to-error-bindings.md)
 - [Simplify ABI encoding and decoding](./migrating-to-core-1.0/encoding-decoding-changes/README.md)
-  - [Encoding function return structs](./migrating-to-core-1.0/encoding-function-return-structs.md)
-  - [Removing `validate: bool` from the `abi_decode` methods](./migrating-to-core-1.0/removing-validate-bool-from-the-abi-decode-methods.md)
+  - [Encoding function return structs](./migrating-to-core-1.0/encoding-decoding-changes/encoding-return-structs.md)
+  - [Removing `validate: bool` from the `abi_decode` methods](./migrating-to-core-1.0/encoding-decoding-changes/removing-validate-bool.md)
 - [Other breaking changes](./migrating-to-core-1.0/other-breaking-changes.md)
 
 # Appendix
