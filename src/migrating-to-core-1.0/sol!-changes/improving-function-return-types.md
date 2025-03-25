@@ -31,7 +31,7 @@ Calling the `balanceOf` fn would now yield the balance directly instead of a str
 
 ```rust,no_run
 // .. snip ..
-let balance = erc20.balanceOf(owner).await?;
+let balance: U256 = erc20.balanceOf(owner).await?;
 ```
 
 It is important to note that this change only applies to function calls that have a **singular** return value.
