@@ -6,9 +6,7 @@ Alloy provides two ways in which a user can make multicalls to the [Multicall3 c
 
 Accessed via the `provider.multicall()` method works hand in hand with the bindings returned by the `sol!` macro to stack up multiple calls.
 
-```rust,ignore
-{{#include ../../../lib/examples/examples/providers/examples/multicall.rs}}
-```
+{{#include ../../examples/providers/multicall.md}}
 
 2. `MulticallBatchingLayer`
 

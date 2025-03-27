@@ -7,17 +7,13 @@ There are multiple ways in which a provider can be wrapped.
 
 The ideal way is by using the `P: Provider` generic on the encapsulating type. This is depicted by the following [example](https://github.com/alloy-rs/examples/tree/cb2cd9483cfdb8e54744131b34451c996dcc240c/examples/providers/examples/wrapped_provider.rs)
 
-```rust,ignore
-{{#include ../../../lib/examples/examples/providers/examples/wrapped_provider.rs}}
-```
+{{#include ../../examples/providers/wrapped_provider.md}}
 
 Sometimes, you're okay with type erasure and don't want to use generics. In those cases, one should use the `DynProvider`.
 
 `DynProvider` erases the type of a provider while maintaining its core functionality.
 
-```rust,ignore
-{{#include ../../../lib/examples/examples/providers/examples/dyn_provider.rs}}
-```
+{{#include ../../examples/providers/dyn_provider.md}}
 
 One might be tempted to `Arc` a `Provider` to enable `Clone` on the struct.
 
