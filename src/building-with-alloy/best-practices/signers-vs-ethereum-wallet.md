@@ -1,4 +1,4 @@
-# Signers vs Ethereum Wallet
+## Signers vs Ethereum Wallet
 
 Signers implement the [`Signer` trait](https://github.com/alloy-rs/alloy/blob/main/crates/signer/src/signer.rs) which enables them to sign hashes, messages and typed data.
 
