@@ -18,6 +18,7 @@
 
   - [Wrapping a Provider](./building-with-alloy/best-practices/wrapping-a-provider.md)
   - [Interacting with multiple networks](./building-with-alloy/best-practices/interacting-with-multiple-networks.md)
+  - [Signers vs EthereumWallet](./building-with-alloy/best-practices/signers-vs-ethereum-wallet.md)
 
 - [Basic building blocks](./building-with-alloy/basic-building-blocks/README.md)
   - [Using big numbers](./building-with-alloy/basic-building-blocks/using-big-numbers.md)
