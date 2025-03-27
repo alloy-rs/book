@@ -24,7 +24,7 @@ One might be tempted to `Arc` a `Provider` to enable `Clone` on the struct.
 ```rust,ignore
 #[derive(Clone)]
 struct MyProvider<P: Provider> {
-    inner: Arc<P>,
+    inner: Arc<P>, // Not required
 }
 ```
 
