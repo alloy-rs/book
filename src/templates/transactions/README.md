@@ -3,6 +3,7 @@
 - [Decode input](decode_input.md)
 - [Encode and decode EIP-1559 transaction](encode_decode_eip1559.md)
 - [Get gas price in USD](gas_price_usd.md)
+- [Decode logs from transaction receipt](decode_receipt_log.md)
 - [Send EIP-1559 transaction](send_eip1559_transaction.md)
 - [Send EIP-4844 transaction](send_eip4844_transaction.md)
 - [Send EIP-7702 transaction](send_eip7702_transaction.md)
@@ -16,3 +17,4 @@
 - [Transfer ERC20 token](transfer_erc20.md)
 - [Transfer ETH](transfer_eth.md)
 - [Send transaction with access list](with_access_list.md)
+- [Transfer ERC20 token using a signed permit](permit2_signature_transfer.md)

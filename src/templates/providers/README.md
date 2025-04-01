@@ -10,3 +10,4 @@
 - [Multicall Builder](multicall.md)
 - [WS with authentication](ws_with_auth.md)
 - [JSON-RPC Batch Request](batch_rpc.md)
+- [DynProvider](dyn_provider.md)
