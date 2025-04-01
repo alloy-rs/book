@@ -6,7 +6,7 @@ Alloy provides access to various signers out of the box such as [`PrivateKeySign
 
 These signers can directly be passed to a `Provider` using the `ProviderBuilder`. These signers are housed in the [`WalletFiller`](https://github.com/alloy-rs/alloy/blob/main/crates/provider/src/fillers/wallet.rs), which is responsible for signing transactions in the provider stack.
 
-For e.g
+For example:
 
 ```rust,ignore
 
@@ -20,7 +20,7 @@ let provider = ProviderBuilder::new()
 
 EthereumWallet is a type that can hold multiple different signers such `PrivateKeySigner`, `AwsSigner`, `LedgerSigner` etc and also be passed to the `Provider` using the `ProviderBuilder`.
 
-For e.g
+For example:
 
 ```rust,ignore
 let ledger_signer = LedgerSigner::new(HDPath::LedgerLive(0), Some(1)).await?;
