@@ -20,7 +20,7 @@ let provider = ProviderBuilder::new()
 
 EthereumWallet is a type that can hold multiple different signers such `PrivateKeySigner`, `AwsSigner`, `LedgerSigner` etc and also be passed to the `Provider` using the `ProviderBuilder`.
 
-The signer the wallet is instantiated with is set as the default signer.This signer is used to sign [`TransactionRequest`] and [`TypedTransaction`] objects that do not specify a signer address in the `from` field.
+The signer that instantiates `EthereumWallet` is set as the default signer. This signer is used to sign [`TransactionRequest`] and [`TypedTransaction`] objects that do not specify a signer address in the `from` field.
 
 For example:
 
