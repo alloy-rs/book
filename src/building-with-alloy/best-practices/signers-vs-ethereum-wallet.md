@@ -20,15 +20,17 @@ let provider = ProviderBuilder::new()
 
 EthereumWallet is a type that can hold multiple different signers such `PrivateKeySigner`, `AwsSigner`, `LedgerSigner` etc and also be passed to the `Provider` using the `ProviderBuilder`.
 
+The signer that instantiates `EthereumWallet` is set as the default signer. This signer is used to sign [`TransactionRequest`] and [`TypedTransaction`] objects that do not specify a signer address in the `from` field.
+
 For example:
 
 ```rust,ignore
 let ledger_signer = LedgerSigner::new(HDPath::LedgerLive(0), Some(1)).await?;
-let pk_signer = AwsSigner::new(client, key_id, Some(1)).await?;
+let aws_signer = AwsSigner::new(client, key_id, Some(1)).await?;
 let pk_signer: PrivateKeySigner = "0x...".parse()?;
 
 let mut wallet = EthereumWallet::from(pk_signer) // pk_signer will be registered as the default signer.
-    .register_signer(pk_signer)
+    .register_signer(aws_signer)
     .register_signer(ledger_signer);
 
 let provider = ProviderBuilder::new()
@@ -37,3 +39,12 @@ let provider = ProviderBuilder::new()
 ```
 
 The `PrivateKeySigner` will set to the default signer if the `from` field is not specified. One can hint the `WalletFiller` which signer to use by setting its corresponding address in the `from` field of the `TransactionRequest`.
+
+If you wish to change the default signer after instantiating `EthereumWallet`, you can do so by using the `register_default_signer` method.
+
+```rust,ignore
+let mut wallet = EthereumWallet::from(pk_signer) // pk_signer will be registered as the default signer.
+    .register_signer(ledger_signer);
+
+wallet.register_default_signer(aws_signer);
+```
