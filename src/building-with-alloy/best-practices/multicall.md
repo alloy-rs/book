@@ -2,13 +2,26 @@
 
 Alloy provides two ways in which a user can make multicalls to the [Multicall3 contract](https://www.multicall3.com/), both of which tightly integrated with the `Provider` to make usage as easy as possible.
 
-1. `MulticallBuilder`
+### Multicall Builder
 
 Accessed via the `provider.multicall()` method works hand in hand with the bindings returned by the `sol!` macro to stack up multiple calls.
 
-{{#include ../../examples/providers/multicall.md}}
+```rust,ignore
+let multicall = provider
+        .multicall()
+        // Set the address of the Multicall3 contract. If unset it uses the default address from <https://github.com/mds1/multicall>: 0xcA11bde05977b3631167028862bE2a173976CA11
+        // .address(multicall3)
+        // Get the total supply of WETH on our anvil fork.
+        .add(weth.totalSupply())
+        // Get Alice's WETH balance.
+        .add(weth.balanceOf(alice))
+        // Also fetch Alice's ETH balance.
+        .get_eth_balance(alice);
+```
 
-2. `MulticallBatchingLayer`
+You can find the complete example [here](https://github.com/alloy-rs/examples/blob/main/examples/providers/examples/multicall.rs)
+
+### Multicall Batching Layer
 
 Append a batching layer to the provider enabling `EthCall`'s to be automatically aggregated under the hood.
 
