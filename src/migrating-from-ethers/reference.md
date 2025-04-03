@@ -76,6 +76,18 @@ use alloy_primitives::ruint::UintTryFrom;
 
 let x: U512 = uint!(1234_U512);
 let y: U256 = U256::uint_try_from(x).unwrap();
+
+let num = U16::from(300);
+// Wraps around the U16 value to fit it in the u8 type.
+let x = num.wrapping_to::<u8>();
+assert_eq!(x, 44);
+
+// Saturates the expected type and returns the maximum value if the number is too large.
+let y = num.saturating_to::<u8>();
+assert_eq!(y, 255);
+
+// Attempts to convert and panics if number is too large for the expected type.
+let z = num.to::<u8>();
 ```
 
 #### RPC
