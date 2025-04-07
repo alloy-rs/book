@@ -18,7 +18,7 @@ For a more fine-grained control over the features you wish to include, you can a
 
 After `alloy` is added as a dependency you can now import `alloy` as follows:
 
-```rust,ignore
+```rust
 use alloy::{
     network::EthereumWallet,
     node_bindings::Anvil,

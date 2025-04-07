@@ -1,4 +1,4 @@
-## First steps
+## Quick Start
 
 Alloy allows applications to connect the blockchain using providers. Providers act as an interface between applications and an Ethereum node, allowing you to send requests and receive responses via JSON-RPC messages.
 
@@ -15,7 +15,7 @@ After [installing](./installation.md) `alloy` let's create an example of using t
 
 Install [`tokio`](https://crates.io/crates/tokio) and [`eyre`](https://crates.io/crates/eyre) as dependencies and define the body as follows:
 
-```rust,ignore
+```rust
 //! Example of creating an HTTP provider using the `on_http` method on the `ProviderBuilder`.
 
 use alloy::providers::{Provider, ProviderBuilder};
@@ -31,7 +31,7 @@ async fn main() -> Result<()> {
 
 Next, add the following section to the body to create a provider with HTTP transport:
 
-```rust,ignore
+```rust
 // Set up the HTTP transport which is consumed by the RPC client.
 let rpc_url = "https://eth.merkle.io".parse()?;
 
@@ -41,7 +41,7 @@ let provider = ProviderBuilder::new().on_http(rpc_url);
 
 Finally we fetch the latest block number using the provider:
 
-```rust,ignore
+```rust
 // Get latest block number.
 let latest_block = provider.get_block_number().await?;
 
