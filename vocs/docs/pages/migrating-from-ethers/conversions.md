@@ -2,7 +2,7 @@
 
 You can use the following traits to easily convert between ethers-rs and Alloy types.
 
-```rust,ignore
+```rust
 use alloy_primitives::{Address, Bloom, Bytes, B256, B64, I256, U256, U64};
 use alloy_rpc_types::{AccessList, AccessListItem, BlockNumberOrTag};
 use alloy_signer_wallet::LocalWallet;

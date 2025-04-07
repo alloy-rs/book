@@ -60,7 +60,8 @@ The following is a reference guide for finding the migration path for your speci
 
 Due to a [limitation](https://github.com/alloy-rs/core/issues/554#issuecomment-1978620017) in `ruint`, BigEndianHash [`ethers::types::BigEndianHash`](https://github.com/gakonst/ethers-rs/tree/master/ethers-core/src/types/mod.rs) can be expressed as follows:
 
-```rust,ignore
+```rust
+use alloy_primitives::{U256, B256};
 // `U256` => `B256`
 let x = B256::from(u256);
 
@@ -71,7 +72,7 @@ let x = U256::from_be_bytes(b256.into())
 
 Due to [Rust issue #50133](https://github.com/rust-lang/rust/issues/50133), the native `TryFrom` trait is not supported for `Uint`s. Instead, use [`UintTryFrom`](https://docs.rs/alloy/latest/alloy/primitives/ruint/trait.UintTryFrom.html) as follows:
 
-```rust,ignore
+```rust
 use alloy_primitives::ruint::UintTryFrom;
 
 let x: U512 = uint!(1234_U512);
