@@ -1,4 +1,4 @@
-## The `sol!` procedural macro
+## The sol! macro
 
 The `sol!` procedural macro parses Solidity syntax to generate types that implement [alloy-sol-types](https://github.com/alloy-rs/core/tree/main/crates/sol-types) traits. It uses [`syn-solidity`](https://github.com/alloy-rs/core/tree/main/crates/syn-solidity), a [syn](https://github.com/dtolnay/syn)-powered Solidity parser. It aims to mimic the behavior of the official Solidity compiler (`solc`) when it comes to parsing valid Solidity code. This means that all valid Solidity code, as recognized by `solc` `0.5.0` and above is supported.
 
@@ -26,7 +26,6 @@ sol! {
 let foo = Foo { bar: U256::from(42), baz: true };
 println!("{foo:#?}");
 ```
-
 
 ### Usage
 
