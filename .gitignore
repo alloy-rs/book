@@ -11,7 +11,7 @@ bench
 cache
 coverage
 vocs/node_modules
-vocs/dist
+vocs/docs/dist
 tsconfig*.tsbuildinfo
 wagmi
 src/node/trustedSetups_esm.ts
