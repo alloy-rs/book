@@ -32,7 +32,7 @@ export default defineConfig({
         <meta name="twitter:card" content="summary"/>
         <meta property="og:title" content="Alloy Docs" />
         <meta property="og:description" content="All things Alloy" />
-        <meta property="og:image" content="https://raw.githubusercontent.com/alloy-rs/book/master/src/images/banner.jpg" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/alloy-rs/book/master/vocs/docs/publics/banner.jpg" />
       </>
     )
   },
