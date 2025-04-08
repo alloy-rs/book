@@ -24,15 +24,15 @@ jobs:
 
       # Only prepare for deploy if a push to main
       - name: Setup Pages
-        if: github.ref_name == 'main' && github.event_name == 'push'
+        # if: github.ref_name == 'main' && github.event_name == 'push'
         uses: actions/configure-pages@v5
 
       # Only prepare for deploy if a push to main
       - name: Upload artifact
-        if: github.ref_name == 'main' && github.event_name == 'push'
+        # if: github.ref_name == 'main' && github.event_name == 'push'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "book/html"
+          path: "vocs/docs/dist"
 
   deploy:
     # Only deploy if a push to main
