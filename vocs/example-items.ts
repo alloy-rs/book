@@ -11,18 +11,18 @@ export const exampleItems: SidebarItem[] = [
         { text: 'Reth DB Layer', link: '/examples/advanced/reth_db_layer' },
         { text: 'Reth DB Provider', link: '/examples/advanced/reth_db_provider' }
     ]},
-    { text: 'Big Numbers', collapsed: true, items: [
+    { text: 'Big Numbers', collapsed: true, link: '/examples/big-numbers/README', items: [
         { text: 'Comparison & Equivalence', link: '/examples/big-numbers/comparison_equivalence' },
         { text: 'Conversion', link: '/examples/big-numbers/conversion' },
         { text: 'Create Instances', link: '/examples/big-numbers/create_instances' },
         { text: 'Math Operations', link: '/examples/big-numbers/math_operations' },
         { text: 'Math Utilities', link: '/examples/big-numbers/math_utilities' }
     ]},
-    { text: 'Comparison', collapsed: true, items: [
+    { text: 'Comparison', collapsed: true, link: '/examples/comparison/README', items: [
         { text: 'Compare New Heads', link: '/examples/comparison/compare_new_heads' },
         { text: 'Compare Pending Transactions', link: '/examples/comparison/compare_pending_txs' }
     ]},
-    { text: 'Contracts', collapsed: true, items: [
+    { text: 'Contracts', collapsed: true, link: '/examples/contracts/README', items: [
         { text: 'Deploy and Link Library', link: '/examples/contracts/deploy_and_link_library' },
         { text: 'Deploy From Artifact', link: '/examples/contracts/deploy_from_artifact' },
         { text: 'Deploy From Bytecode', link: '/examples/contracts/deploy_from_bytecode' },
@@ -33,19 +33,19 @@ export const exampleItems: SidebarItem[] = [
         { text: 'Revert Decoding', link: '/examples/contracts/revert_decoding' },
         { text: 'Unknown Return Types', link: '/examples/contracts/unknown_return_types' }
     ]},
-    { text: 'Fillers', collapsed: true, items: [
+    { text: 'Fillers', collapsed: true, link: '/examples/fillers/README', items: [
         { text: 'Gas Filler', link: '/examples/fillers/gas_filler' },
         { text: 'Nonce Filler', link: '/examples/fillers/nonce_filler' },
         { text: 'Recommended Fillers', link: '/examples/fillers/recommended_fillers' },
         { text: 'Wallet Filler', link: '/examples/fillers/wallet_filler' }
     ]},
-    { text: 'Layers', collapsed: true, items: [
+    { text: 'Layers', collapsed: true, link: '/examples/layers/README', items: [
         { text: 'Fallback Layer', link: '/examples/layers/fallback_layer' },
         { text: 'Hyper HTTP Layer', link: '/examples/layers/hyper_http_layer' },
         { text: 'Logging Layer', link: '/examples/layers/logging_layer' },
         { text: 'Retry Layer', link: '/examples/layers/retry_layer' }
     ]},
-    { text: 'Node Bindings', collapsed: true, items: [
+    { text: 'Node Bindings', collapsed: true, link: '/examples/node-bindings/README', items: [
         { text: 'Anvil Deploy Contract', link: '/examples/node-bindings/anvil_deploy_contract' },
         { text: 'Anvil Fork Instance', link: '/examples/node-bindings/anvil_fork_instance' },
         { text: 'Anvil Fork Provider', link: '/examples/node-bindings/anvil_fork_provider' },
@@ -55,11 +55,11 @@ export const exampleItems: SidebarItem[] = [
         { text: 'Geth Local Instance', link: '/examples/node-bindings/geth_local_instance' },
         { text: 'Reth Local Instance', link: '/examples/node-bindings/reth_local_instance' }
     ]},
-    { text: 'Primitives', collapsed: true, items: [
+    { text: 'Primitives', collapsed: true, link: '/examples/primitives/README', items: [
         { text: 'Bytes and Address Types', link: '/examples/primitives/bytes_and_address_types' },
         { text: 'Hashing Functions', link: '/examples/primitives/hashing_functions' }
     ]},
-    { text: 'Providers', collapsed: true, items: [
+    { text: 'Providers', collapsed: true, link: '/examples/providers/README', items: [
         { text: 'Batch RPC', link: '/examples/providers/batch_rpc' },
         { text: 'Builder', link: '/examples/providers/builder' },
         { text: 'Built-in', link: '/examples/providers/builtin' },
@@ -74,12 +74,12 @@ export const exampleItems: SidebarItem[] = [
         { text: 'WebSocket with Auth', link: '/examples/providers/ws_with_auth' },
         { text: 'Wrapped Provider', link: '/examples/providers/wrapped_provider' }
     ]},
-    { text: 'Queries', collapsed: true, items: [
+    { text: 'Queries', collapsed: true, link: '/examples/queries/README', items: [
         { text: 'Query Contract Storage', link: '/examples/queries/query_contract_storage' },
         { text: 'Query Deployed Bytecode', link: '/examples/queries/query_deployed_bytecode' },
         { text: 'Query Logs', link: '/examples/queries/query_logs' }
     ]},
-    { text: 'Sol Macro', collapsed: true, items: [
+    { text: 'Sol Macro', collapsed: true, link: '/examples/sol-macro/README', items: [
         { text: 'Contract', link: '/examples/sol-macro/contract'},
         { text: 'All Derives', link: '/examples/sol-macro/all_derives' },
         { text: 'Decode Returns', link: '/examples/sol-macro/decode_returns' },
@@ -88,7 +88,7 @@ export const exampleItems: SidebarItem[] = [
         { text: 'Structs & Enums', link: '/examples/sol-macro/structs_enums' },
         { text: 'User Defined Types', link: '/examples/sol-macro/user_defined_types' }
     ]},
-    { text: 'Subscriptions', collapsed: true, items: [
+    { text: 'Subscriptions', collapsed: true, link: '/examples/subscriptions/README', items: [
         { text: 'Event Multiplexer', link: '/examples/subscriptions/event_multiplexer' },
         { text: 'Poll Logs', link: '/examples/subscriptions/poll_logs' },
         { text: 'Subscribe All Logs', link: '/examples/subscriptions/subscribe_all_logs' },
@@ -96,7 +96,7 @@ export const exampleItems: SidebarItem[] = [
         { text: 'Subscribe Logs', link: '/examples/subscriptions/subscribe_logs' },
         { text: 'Subscribe Pending Transactions', link: '/examples/subscriptions/subscribe_pending_transactions' }
     ]},
-    { text: 'Transactions', collapsed: true, items: [
+    { text: 'Transactions', collapsed: true, link: '/examples/transactions/README', items: [
         { text: 'Debug Trace Call Many', link: '/examples/transactions/debug_trace_call_many' },
         { text: 'Decode Input', link: '/examples/transactions/decode_input' },
         { text: 'Decode Receipt Log', link: '/examples/transactions/decode_receipt_log' },
@@ -116,7 +116,7 @@ export const exampleItems: SidebarItem[] = [
         { text: 'Transfer ETH', link: '/examples/transactions/transfer_eth' },
         { text: 'With Access List', link: '/examples/transactions/with_access_list' }
     ]},
-    { text: 'Wallets', collapsed: true, items: [
+    { text: 'Wallets', collapsed: true, link: '/examples/wallets/README', items: [
         { text: 'AWS Signer', link: '/examples/wallets/aws_signer' },
         { text: 'Create Keystore', link: '/examples/wallets/create_keystore' },
         { text: 'Ethereum Wallet', link: '/examples/wallets/ethereum_wallet' },
