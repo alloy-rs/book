@@ -20,7 +20,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
 
       - name: Build Vocs
-        run: cd vocs && bun install && bun build
+        run: cd vocs && bun install && bun run build
 
       # Only prepare for deploy if a push to main
       - name: Setup Pages
