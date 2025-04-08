@@ -1,4 +1,5 @@
 import { Sidebar } from "vocs";
+import { exampleItems } from "./example-items";
 
 export const sidebar: Sidebar = [
     {
@@ -76,6 +77,10 @@ export const sidebar: Sidebar = [
        { text: 'Transaction Lifecycle', link: '/building-with-alloy/transaction-lifecycle' },
        { text: 'Querying chain data', link: '/building-with-alloy/queries' }
       ],
+    },
+    {
+      text: 'Examples',
+      items: exampleItems,
     },
     {
       text: 'Migrating from ethers-rs',
