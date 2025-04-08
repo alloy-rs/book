@@ -31,9 +31,13 @@ export default defineConfig({
       <>
         <meta name="twitter:card" content="summary"/>
         <meta property="og:title" content="Alloy Docs" />
-        <meta property="og:description" content="All things Alloy" />
+        <meta property="og:description" content="Connect Applications to Blockchains" />
         <meta property="og:image" content="https://raw.githubusercontent.com/alloy-rs/book/master/vocs/docs/publics/banner.jpg" />
       </>
     )
   },
+  socials: [
+    { icon: 'github', link: "https://github.com/alloy-rs/alloy" },
+    { icon: 'telegram', link: "https://t.me/ethers_rs" },
+  ]
 })
