@@ -8,7 +8,7 @@ These signers can directly be passed to a `Provider` using the `ProviderBuilder`
 
 For example:
 
-```rust,ignore
+```rust
 
 let signer: PrivateKeySigner = "0x...".parse()?;
 
@@ -24,7 +24,7 @@ The signer that instantiates `EthereumWallet` is set as the default signer. This
 
 For example:
 
-```rust,ignore
+```rust
 let ledger_signer = LedgerSigner::new(HDPath::LedgerLive(0), Some(1)).await?;
 let aws_signer = AwsSigner::new(client, key_id, Some(1)).await?;
 let pk_signer: PrivateKeySigner = "0x...".parse()?;
@@ -42,7 +42,7 @@ The `PrivateKeySigner` will set to the default signer if the `from` field is not
 
 If you wish to change the default signer after instantiating `EthereumWallet`, you can do so by using the `register_default_signer` method.
 
-```rust,ignore
+```rust
 let mut wallet = EthereumWallet::from(pk_signer) // pk_signer will be registered as the default signer.
     .register_signer(ledger_signer);
 

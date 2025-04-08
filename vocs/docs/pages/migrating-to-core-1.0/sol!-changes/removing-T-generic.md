@@ -8,7 +8,7 @@ This can be demonstrated using a simple example that wraps an `ERC20Instance` ty
 
 ### Before
 
-```rust,ignore
+```rust
 struct Erc20<P: Provider> {
     instance: ERC20Instance<(), P>,
 }
@@ -16,7 +16,7 @@ struct Erc20<P: Provider> {
 
 ### After
 
-```rust,ignore
+```rust
 struct Erc20<P: Provider> {
     instance: ERC20Instance<P>,
 }

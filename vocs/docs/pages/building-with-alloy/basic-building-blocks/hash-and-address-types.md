@@ -1,5 +1,13 @@
 ## Basic hash and address types
 
-{{#include ../../examples/primitives/bytes_and_address_types.md}}
+### Bytes and Address
 
-{{#include ../../examples/primitives/hashing_functions.md}}
+```rust
+// [!include ~/snippets/primitives/examples/bytes_and_address_types.rs]
+```
+
+### Hashing
+
+```rust
+// [!include ~/snippets/primitives/examples/hashing_functions.rs]
+```

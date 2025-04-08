@@ -4,7 +4,7 @@ The `sol!` procedural macro parses Solidity syntax to generate types that implem
 
 In its most basic form `sol!` is used like this:
 
-```rust,ignore
+```rust
 use alloy::{primitives::U256, sol};
 
 // Declare a Solidity type in standard Solidity
@@ -33,7 +33,7 @@ There are multiple ways to use the `sol!` macro.
 
 You can directly write Solidity code:
 
-```rust,ignore
+```rust
 sol! {
     contract Counter {
         uint256 public number;
@@ -51,7 +51,7 @@ sol! {
 
 Or provide a path to a Solidity file:
 
-```rust,ignore
+```rust
 sol!(
     "artifacts/Counter.sol"
 );
@@ -59,7 +59,7 @@ sol!(
 
 Alternatively, if you enable the `json` feature flag, you can provide an ABI, or a path to one, in JSON format:
 
-```rust,ignore
+```rust
 sol!(
    ICounter,
    r#"[
@@ -102,7 +102,7 @@ sol!(
 
 This is the same as:
 
-```rust,ignore
+```rust
 sol! {
     interface ICounter {
         uint256 public number;
@@ -117,7 +117,7 @@ sol! {
 Alternatively, you can load an ABI by file; the format is either a JSON ABI array
 or an object containing an `"abi"` key. It supports common artifact formats like Foundry's:
 
-```rust,ignore
+```rust
 sol!(
     ICounter,
     "abi/Counter.json"
@@ -126,7 +126,7 @@ sol!(
 
 You can also use functions directly:
 
-```rust,ignore
+```rust
 sol!(
     function swapExactTokensForTokens(
         uint256 amountIn,
@@ -154,7 +154,6 @@ that returns a `CallBuilder` for that function.
 If `#[sol(bytecode = "0x...")]` is provided, the contract can be deployed with `Counter::deploy` and a new instance will be created.
 The bytecode is also loaded from Foundry-style JSON artifact files.
 
-```rust,ignore
-//! Example showing how to use the `#[sol(rpc)]` and #[sol(bytecode = "0x...")] attributes
-{{#include ../../lib/examples/examples/contracts/examples/deploy_from_contract.rs:2:}}
+```rust
+// [!include ~/snippets/contracts/examples/deploy_from_contract.rs]
 ```

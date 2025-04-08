@@ -1,3 +1,5 @@
 ## Initializing Big Numbers
 
-{{#include ../../examples/big-numbers/create_instances.md}}
+```rust
+// [!include ~/snippets/big-numbers/examples/create_instances.rs]
+```

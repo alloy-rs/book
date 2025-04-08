@@ -6,7 +6,7 @@ Alloy provides two ways in which a user can make multicalls to the [Multicall3 c
 
 Accessed via the `provider.multicall()` method works hand in hand with the bindings returned by the `sol!` macro to stack up multiple calls.
 
-```rust,ignore
+```rust
 let multicall = provider
         .multicall()
         // Set the address of the Multicall3 contract. If unset it uses the default address from <https://github.com/mds1/multicall>: 0xcA11bde05977b3631167028862bE2a173976CA11
@@ -30,7 +30,7 @@ However, this only works when requests are made in parallel, for example when us
 [`tokio::join!`] macro or in multiple threads/tasks, as otherwise the requests will be sent one
 by one as normal, but with an added delay.
 
-```rust,ignore
+```rust
 use alloy_provider::{layers::CallBatchLayer, Provider, ProviderBuilder};
 use std::time::Duration;
 

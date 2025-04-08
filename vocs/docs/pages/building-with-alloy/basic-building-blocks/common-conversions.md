@@ -1,3 +1,5 @@
 ## Common conversions
 
-{{#include ../../examples/big-numbers/conversion.md}}
+```rust
+// [!include ~/snippets/big-numbers/examples/conversion.rs]
+```

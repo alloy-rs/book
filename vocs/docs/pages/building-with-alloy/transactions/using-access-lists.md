@@ -1,3 +1,5 @@
 ## Using access lists
 
-{{#include ../../examples/transactions/with_access_list.md}}
+```rust
+// [!include ~/snippets/transactions/examples/with_access_list.rs]
+```

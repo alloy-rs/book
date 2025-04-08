@@ -1,3 +1,5 @@
 ## Comparisons and equivalence
 
-{{#include ../../examples/big-numbers/comparison_equivalence.md}}
+```rust
+// [!include ~/snippets/big-numbers/examples/comparison_equivalence.rs]
+```

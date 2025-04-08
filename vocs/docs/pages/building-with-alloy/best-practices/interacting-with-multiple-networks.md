@@ -8,7 +8,7 @@ This removes the need for implementing the `Provider` trait for each network typ
 
 Following is the [`Ethereum` network implementation](https://github.com/alloy-rs/alloy/blob/main/crates/network/src/ethereum/mod.rs) which defines the structure of the network and its RPC types.
 
-```rust,ignore
+```rust
 impl Network for Ethereum {
     type TxType = alloy_consensus::TxType;
 
@@ -34,7 +34,7 @@ impl Network for Ethereum {
 
 The `Provider` defaults to the ethereum network type, but one can easily switch to another network while building the provider like so:
 
-```rust,ignore
+```rust
 let provider = ProviderBuilder::new()
     .network::<AnyNetwork>()
     .connect_http("http://localhost:8545");
@@ -44,7 +44,7 @@ The [`AnyNetwork` type](https://github.com/alloy-rs/alloy/blob/main/crates/netwo
 
 The [`Optimism` network](https://github.com/alloy-rs/op-alloy/blob/main/crates/network/src/lib.rs) type has been created to interact with OP-stack chains such as Base.
 
-```rust,ignore
+```rust
 let provider = ProviderBuilder::new()
     .network::<op_alloy_network::Optimism>()
     .connect_http("http://localhost:8545");

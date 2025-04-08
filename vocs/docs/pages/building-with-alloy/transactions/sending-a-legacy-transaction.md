@@ -1,3 +1,5 @@
 ## Sending a legacy transaction
 
-{{#include ../../examples/transactions/send_legacy_transaction.md}}
+```rust
+// [!include ~/snippets/transactions/examples/send_legacy_transaction.rs]
+```

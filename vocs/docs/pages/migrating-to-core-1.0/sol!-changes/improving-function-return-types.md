@@ -4,7 +4,7 @@ With the inclusion of [core#855](https://github.com/alloy-rs/core/pull/855) retu
 
 Consider the following example of reading the balance of an ERC20:
 
-```rust,ignore
+```rust
 sol! {
     #[sol(rpc)]
     contract ERC20 {
@@ -18,7 +18,7 @@ sol! {
 
 Calling the `balanceOf` fn would return a struct `balanceOfReturn` which encapsulated the actual balance value.
 
-```rust,ignore
+```rust
 // .. snip ..
 let balance_return: balanceOfReturn = erc20.balanceOf(owner).await?;
 
@@ -29,7 +29,7 @@ let actual_balance = balance_return._0;
 
 Calling the `balanceOf` fn would now yield the balance directly instead of a struct wrapping it.
 
-```rust,ignore
+```rust
 // .. snip ..
 let balance: U256 = erc20.balanceOf(owner).await?;
 ```
@@ -38,7 +38,7 @@ It is important to note that this change only applies to function calls that hav
 
 Function calls that **return multiple values** have their return types **unchanged**, i.e they still return a struct with values inside it.
 
-```rust,ignore
+```rust
 sol! {
     function multiValues() returns (uint256 a, address b, bytes c);
 }

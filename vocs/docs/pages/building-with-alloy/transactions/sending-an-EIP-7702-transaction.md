@@ -1,3 +1,5 @@
 ## Sending an EIP-7702 transaction
 
-{{#include ../../examples/transactions/send_eip7702_transaction.md}}
+```rust
+// [!include ~/snippets/transactions/examples/send_eip7702_transaction.rs]
+```

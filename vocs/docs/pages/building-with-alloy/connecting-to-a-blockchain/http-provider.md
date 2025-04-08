@@ -23,5 +23,3 @@ async fn main() -> eyre::Result<()> {
     Ok(())
 }
 ```
-
-{{#include ../../examples/providers/http.md}}

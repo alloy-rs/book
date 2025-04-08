@@ -1,7 +1,19 @@
 ## Queries
 
-{{#include ../examples/queries/query_contract_storage.md}}
+### Query Contract Storage
 
-{{#include ../examples/queries/query_deployed_bytecode.md}}
+```rust
+// [!include ~/snippets/queries/examples/query_contract_storage.rs]
+```
 
-{{#include ../examples/queries/query_logs.md}}
+### Query Contract Code
+
+```rust
+// [!include ~/snippets/queries/examples/query_deployed_bytecode.rs]
+```
+
+### Query Logs
+
+```rust
+// [!include ~/snippets/queries/examples/query_logs.rs]
+```

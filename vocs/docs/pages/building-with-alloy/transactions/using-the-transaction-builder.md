@@ -15,11 +15,14 @@ Common fields one can configure are:
 
 It is generally recommended to use the builder pattern, as shown, rather than directly setting values (`with_to` versus `set_to`).
 
-```rust,ignore
-//! Example showing how to build a transaction using the `TransactionBuilder`
-{{#include ../../../lib/examples/examples/transactions/examples/send_eip1559_transaction.rs:2:}}
+```rust
+// Build a transaction to send 100 wei from Alice to Bob.
+let tx = TransactionRequest::default()
+        .with_to(bob)
+        .with_nonce(0)
+        .with_chain_id(provider.get_chain_id().await?)
+        .with_value(U256::from(100))
+        .with_gas_limit(21_000)
+        .with_max_priority_fee_per_gas(1_000_000_000)
+        .with_max_fee_per_gas(20_000_000_000);
 ```
-
-It is recommended to use the `.with_recommended_fillers()` method on the [ProviderBuilder](../connecting-to-a-blockchain/setting-up-a-provider.md) to automatically [fill fields](../understanding-fillers.md) for you.
-
-{{#include ../../examples/fillers/recommended_fillers.md}}
