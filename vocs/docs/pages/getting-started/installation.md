@@ -2,7 +2,7 @@
 
 [Alloy](https://github.com/alloy-rs/alloy) consists of a number of crates that provide a range of functionality essential for interfacing with any Ethereum-based blockchain.
 
-The easiest way to get started is to add the `alloy` crate with the `full` feature flag from the command-line using Cargo:
+The easiest way to get started is to add the `alloy` crate from the command-line using Cargo:
 
 ```sh
 cargo add alloy
