@@ -1,0 +1,22 @@
+---
+layout: landing
+---
+
+import { HomePage, Sponsors } from "vocs/components";
+import Tab from "../components/Tab";
+
+<HomePage.Root>
+  <HomePage.Logo />
+  <HomePage.Tagline>Connect Applications to Blockchains</HomePage.Tagline>
+  <Tab />
+  <HomePage.Description></HomePage.Description>
+  <HomePage.Buttons>
+    <HomePage.Button href="/getting-started/installation/" variant="accent">
+      Get started
+    </HomePage.Button>
+    <HomePage.Button href="https://github.com/alloy-rs/alloy">
+      GitHub
+    </HomePage.Button>
+  </HomePage.Buttons>
+  <Sponsors />
+</HomePage.Root>

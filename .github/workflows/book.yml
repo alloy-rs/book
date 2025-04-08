@@ -17,33 +17,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+      - uses: oven-sh/setup-bun@v2
 
-      - uses: dtolnay/rust-toolchain@stable
-      - name: Install mdbook-external-links
-        run: cargo install mdbook-external-links
-
-      - name: Install mdbook
-        run: |
-          mkdir mdbook
-          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.37/mdbook-v0.4.37-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=./mdbook
-          echo $(pwd)/mdbook >> $GITHUB_PATH
-
-      - name: Install mdbook-linkcheck
-        run: |
-          mkdir mdbook-linkcheck
-          curl -sSL -o mdbook-linkcheck.zip https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/latest/download/mdbook-linkcheck.x86_64-unknown-linux-gnu.zip
-          unzip mdbook-linkcheck.zip -d ./mdbook-linkcheck
-          chmod +x $(pwd)/mdbook-linkcheck/mdbook-linkcheck
-          echo $(pwd)/mdbook-linkcheck >> $GITHUB_PATH
-
-      - name: Run linkcheck
-        run: mdbook-linkcheck --standalone
-
-      - name: Run tests
-        run: mdbook test
-
-      - name: Build book
-        run: mdbook build
+      - name: Build Vocs
+        run: cd vocs && bun install && bun run build
 
       # Only prepare for deploy if a push to main
       - name: Setup Pages
@@ -55,7 +32,7 @@ jobs:
         if: github.ref_name == 'main' && github.event_name == 'push'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "book/html"
+          path: "vocs/docs/dist"
 
   deploy:
     # Only deploy if a push to main
