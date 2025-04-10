@@ -16,7 +16,7 @@ After [installing](./installation.md) `alloy` let's create an example of using t
 Install [`tokio`](https://crates.io/crates/tokio) and [`eyre`](https://crates.io/crates/eyre) as dependencies and define the body as follows:
 
 ```rust
-//! Example of creating an HTTP provider using the `on_http` method on the `ProviderBuilder`.
+//! Example of creating an HTTP provider using the `connect_http` method on the `ProviderBuilder`.
 
 use alloy::providers::{Provider, ProviderBuilder};
 use eyre::Result;
@@ -36,7 +36,7 @@ Next, add the following section to the body to create a provider with HTTP trans
 let rpc_url = "https://eth.merkle.io".parse()?;
 
 // Create a provider with the HTTP transport using the `reqwest` crate.
-let provider = ProviderBuilder::new().on_http(rpc_url);
+let provider = ProviderBuilder::new().connect_http(rpc_url);
 ```
 
 Finally we fetch the latest block number using the provider:
