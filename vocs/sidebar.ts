@@ -3,37 +3,11 @@ import { exampleItems } from "./example-items";
 
 export const sidebar: Sidebar = [
     {
-      text: 'Getting Started',
+      text: 'Introduction',
       items: [
-        { text: 'Installation', link: '/getting-started/installation' },
-        { text: 'Quick Start', link: '/getting-started/quick-start' },
+        { text: 'Installation', link: '/introduction/installation' },
+        { text: 'Getting Started', link: '/introduction/getting-started' },
       ]
-    },
-    {
-        text: 'Migrating to 1.0',
-        collapsed: false,
-        items: [
-            {
-                text: 'sol! macro changes',
-                collapsed: true,
-                items: [
-                  { text: 'Removing T generic', link: '/migrating-to-core-1.0/sol!-changes/removing-T-generic' },
-                  { text: 'Improving function return types', link: '/migrating-to-core-1.0/sol!-changes/improving-function-return-types' },
-                    { text: 'Function call bindings', link: '/migrating-to-core-1.0/sol!-changes/changes-to-function-call-bindings' },
-                    { text: 'Event bindings', link: '/migrating-to-core-1.0/sol!-changes/changes-to-event-bindings' },
-                    { text: 'Error bindings', link: '/migrating-to-core-1.0/sol!-changes/changes-to-error-bindings' },
-                ]
-            },
-            {
-                text: 'ABI encoding and decoding',
-                collapsed: true,
-                items: [
-                    { text: 'Encoding return structs', link: '/migrating-to-core-1.0/encoding-decoding-changes/encoding-return-structs' },
-                    { text: 'Removing validate arg', link: '/migrating-to-core-1.0/encoding-decoding-changes/removing-validate-bool' },
-                ]
-            },
-            { text: 'Other breaking changes', link: '/migrating-to-core-1.0/other-breaking-changes' },
-        ]
     },
     {
       text: 'Building with alloy',
@@ -53,7 +27,7 @@ export const sidebar: Sidebar = [
             { text: 'WS provider', link: '/building-with-alloy/connecting-to-a-blockchain/ws-provider' },
             { text: 'IPC provider', link: '/building-with-alloy/connecting-to-a-blockchain/ipc-provider' },
           ]
-       },
+      },
        {
         text: 'Best Practices', collapsed: true, items: [
           { text: 'Wrapping a provider', link: '/building-with-alloy/best-practices/wrapping-a-provider' },
@@ -63,7 +37,7 @@ export const sidebar: Sidebar = [
         ]
        },
        {
-        text: 'Sending Transactions', collapsed: true, items: [
+        text: 'Submitting Transactions', collapsed: true, items: [
           { text: 'Using the Transaction Builder', link: '/building-with-alloy/transactions/using-the-transaction-builder' },
           { text: 'Legacy Transaction', link: '/building-with-alloy/transactions/sending-a-legacy-transaction' },
           { text: 'EIP-1559 Transaction', link: '/building-with-alloy/transactions/sending-an-EIP-1559-transaction' },
@@ -81,6 +55,32 @@ export const sidebar: Sidebar = [
     {
       text: 'Examples',
       items: exampleItems,
+    },
+    {
+      text: 'Migrating to 1.0',
+      collapsed: false,
+      items: [
+          {
+              text: 'sol! macro changes',
+              collapsed: true,
+              items: [
+                { text: 'Removing T generic', link: '/migrating-to-core-1.0/sol!-changes/removing-T-generic' },
+                { text: 'Improving function return types', link: '/migrating-to-core-1.0/sol!-changes/improving-function-return-types' },
+                  { text: 'Function call bindings', link: '/migrating-to-core-1.0/sol!-changes/changes-to-function-call-bindings' },
+                  { text: 'Event bindings', link: '/migrating-to-core-1.0/sol!-changes/changes-to-event-bindings' },
+                  { text: 'Error bindings', link: '/migrating-to-core-1.0/sol!-changes/changes-to-error-bindings' },
+              ]
+          },
+          {
+              text: 'ABI encoding and decoding',
+              collapsed: true,
+              items: [
+                  { text: 'Encoding return structs', link: '/migrating-to-core-1.0/encoding-decoding-changes/encoding-return-structs' },
+                  { text: 'Removing validate arg', link: '/migrating-to-core-1.0/encoding-decoding-changes/removing-validate-bool' },
+              ]
+          },
+          { text: 'Other breaking changes', link: '/migrating-to-core-1.0/other-breaking-changes' },
+      ]
     },
     {
       text: 'Migrating from ethers-rs',
