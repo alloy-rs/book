@@ -39,5 +39,28 @@ export default defineConfig({
   socials: [
     { icon: 'github', link: "https://github.com/alloy-rs/alloy" },
     { icon: 'telegram', link: "https://t.me/ethers_rs" },
+  ],
+  topNav: [
+    { 
+      text: 'Docs',
+      link: '/getting-started/quick-start',
+    },
+    {
+      text: 'Examples',
+      link: 'https://github.com/alloy-rs/examples',
+    },
+    { 
+      text: '0.14.0', 
+      items: [ 
+        { 
+          text: 'Changelog', 
+          link: 'https://github.com/alloy-rs/alloy/blob/main/CHANGELOG.md', 
+        }, 
+        { 
+          text: 'Contributing', 
+          link: 'https://github.com/alloy-rs/alloy/blob/main/CONTRIBUTING.md', 
+        }, 
+      ], 
+    }, 
   ]
 })
