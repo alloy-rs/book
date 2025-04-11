@@ -1,24 +1,41 @@
 ---
+title: alloy · TypeScript Interface for Ethereum
+content:
+  width: 100%
 layout: landing
+logo: false
 ---
 
 import { HomePage, Sponsors } from "vocs/components";
 import Tab from "../components/Tab";
 
-<HomePage.Root>
-  <HomePage.Logo />
-  <HomePage.Tagline>Connect Applications to Blockchains</HomePage.Tagline>
-  <Tab />
-  <HomePage.Description></HomePage.Description>
-  <HomePage.Buttons>
-    <HomePage.Button href="/getting-started/installation" variant="accent">
-      Get started
-    </HomePage.Button>
-    <HomePage.Button href="https://github.com/alloy-rs/alloy">
-      GitHub
-    </HomePage.Button>
-  </HomePage.Buttons>
-</HomePage.Root>
+<div className="max-w-[1120px] mx-auto vp-doc relative px-[24px] mb-[96px] mt-[32px] md:px-0 md:mb-[64px]">
+  <div className="pt-[48px] max-sm:pt-0">
+    <div className="max-sm:px-0 flex justify-between z-0 max-md:justify-center">
+      <div className="space-y-8 max-w-[400px] flex flex-col items-start max-md:items-center">
+        <div className="space-x-8 flex flex-row">
+        <img className="h-[72px] max-sm:h-[60px]" src="/favicon.png" alt="alloy logo" />
+        <HomePage.Logo />
+        </div>
+        <div className="font-regular text-[21px] max-sm:text-[18px] text-[#919193] max-md:text-center">Build reliable apps & libraries with <span className="text-black dark:text-white">lightweight</span>, <span className="text-black dark:text-white">composable</span>, and <span className="text-black dark:text-white">type-safe</span> modules that interface with Ethereum</div>
+        <div className="flex justify-center space-x-2">
+          <HomePage.Button href="/getting-started/quick-start" variant="accent">Get started</HomePage.Button>
+          <HomePage.Button href="https://github.com/alloy-rs/alloy">GitHub</HomePage.Button>
+        </div>
+      </div>
+      <div id="home-install" className="w-[400px] space-y-10 max-lg:w-[300px]">        
+        ```bash [cargo]
+        cargo add alloy
+        ```
+        </div>
+    </div>
+
+  </div>
+</div>
+
+<article className="vocs_Content max-w-5xl mx-auto">
+
+# Common Actions
 
 :::code-group
 
@@ -160,4 +177,48 @@ async fn main() -> Result<()> {
 
 :::
 
-<Sponsors />
+# Features
+
+viem supports all these features out-of-the-box:
+
+- Abstractions over the [JSON-RPC API](https://ethereum.org/en/developers/docs/apis/json-rpc/) to make your life easier
+- First-class APIs for interacting with [Smart Contracts](https://ethereum.org/en/glossary/#smart-contract)
+- Language closely aligned to official [Ethereum terminology](https://ethereum.org/en/glossary/)
+- Import your Browser Extension, WalletConnect or Private Key Wallet
+- Browser native [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), instead of large BigNumber libraries
+- Utilities for working with [ABIs](https://ethereum.org/en/glossary/#abi) (encoding/decoding/inspection)
+- TypeScript ready ([infer types](/docs/typescript) from ABIs and EIP-712 Typed Data)
+- First-class support for [Anvil](https://book.getfoundry.sh/), [Hardhat](https://hardhat.org/) & [Ganache](https://trufflesuite.com/ganache/)
+- Test suite running against [forked](https://ethereum.org/en/glossary/#fork) Ethereum network
+
+# Community
+
+Check out the following places for more wagmi-related content:
+
+- Follow [@wevm_dev](https://twitter.com/wevm_dev), [@\_jxom](https://twitter.com/_jxom), and [@awkweb](https://twitter.com/awkweb) on Twitter for project updates
+- Join the [discussions on GitHub](https://github.com/wevm/viem/discussions)
+- [Share your project/organization](https://github.com/wevm/viem/discussions/104) that uses viem
+
+# Support
+
+Help support future development and make wagmi a sustainable open-source project:
+
+- [GitHub Sponsors](https://github.com/sponsors/wevm?metadata_campaign=docs_support)
+- [Gitcoin Grant](https://wagmi.sh/gitcoin)
+- [wevm.eth](https://etherscan.io/enslookup-search?search=wevm.eth)
+
+# Sponsors
+
+::sponsors
+
+<div className="flex justify-center mt-10">
+  <a href="https://vercel.com/?utm_source=wevm&utm_campaign=oss">
+    <img
+      className="h-8"
+      src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg"
+      alt="Powered by Vercel"
+    />
+  </a>
+</div>
+
+</article>
