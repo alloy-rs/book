@@ -10,32 +10,6 @@ export const sidebar: Sidebar = [
       ]
     },
     {
-        text: 'Migrating to 1.0',
-        collapsed: false,
-        items: [
-            {
-                text: 'sol! macro changes',
-                collapsed: true,
-                items: [
-                  { text: 'Removing T generic', link: '/migrating-to-core-1.0/sol!-changes/removing-T-generic' },
-                  { text: 'Improving function return types', link: '/migrating-to-core-1.0/sol!-changes/improving-function-return-types' },
-                    { text: 'Function call bindings', link: '/migrating-to-core-1.0/sol!-changes/changes-to-function-call-bindings' },
-                    { text: 'Event bindings', link: '/migrating-to-core-1.0/sol!-changes/changes-to-event-bindings' },
-                    { text: 'Error bindings', link: '/migrating-to-core-1.0/sol!-changes/changes-to-error-bindings' },
-                ]
-            },
-            {
-                text: 'ABI encoding and decoding',
-                collapsed: true,
-                items: [
-                    { text: 'Encoding return structs', link: '/migrating-to-core-1.0/encoding-decoding-changes/encoding-return-structs' },
-                    { text: 'Removing validate arg', link: '/migrating-to-core-1.0/encoding-decoding-changes/removing-validate-bool' },
-                ]
-            },
-            { text: 'Other breaking changes', link: '/migrating-to-core-1.0/other-breaking-changes' },
-        ]
-    },
-    {
       text: 'Building with alloy',
       items: [
         { text: 'Basic building blocks', collapsed: true, items: [
@@ -82,6 +56,32 @@ export const sidebar: Sidebar = [
       text: 'Examples',
       items: exampleItems,
     },
+    {
+      text: 'Migrating to 1.0',
+      collapsed: false,
+      items: [
+          {
+              text: 'sol! macro changes',
+              collapsed: true,
+              items: [
+                { text: 'Removing T generic', link: '/migrating-to-core-1.0/sol!-changes/removing-T-generic' },
+                { text: 'Improving function return types', link: '/migrating-to-core-1.0/sol!-changes/improving-function-return-types' },
+                  { text: 'Function call bindings', link: '/migrating-to-core-1.0/sol!-changes/changes-to-function-call-bindings' },
+                  { text: 'Event bindings', link: '/migrating-to-core-1.0/sol!-changes/changes-to-event-bindings' },
+                  { text: 'Error bindings', link: '/migrating-to-core-1.0/sol!-changes/changes-to-error-bindings' },
+              ]
+          },
+          {
+              text: 'ABI encoding and decoding',
+              collapsed: true,
+              items: [
+                  { text: 'Encoding return structs', link: '/migrating-to-core-1.0/encoding-decoding-changes/encoding-return-structs' },
+                  { text: 'Removing validate arg', link: '/migrating-to-core-1.0/encoding-decoding-changes/removing-validate-bool' },
+              ]
+          },
+          { text: 'Other breaking changes', link: '/migrating-to-core-1.0/other-breaking-changes' },
+      ]
+    },  
     {
       text: 'Migrating from ethers-rs',
       items: [
