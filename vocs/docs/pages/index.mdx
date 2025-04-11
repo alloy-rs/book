@@ -18,5 +18,146 @@ import Tab from "../components/Tab";
       GitHub
     </HomePage.Button>
   </HomePage.Buttons>
-  <Sponsors />
 </HomePage.Root>
+
+:::code-group
+
+```rust [read_contract.rs]
+//! Demonstrates reading a contract by fetching the WETH balance of an address.
+use alloy::{primitives::address, providers::ProviderBuilder, sol};
+use eyre::Result;
+
+// Generate the contract bindings for the ERC20 interface.
+sol! {
+   // The `rpc` attribute enables contract interaction via the provider.
+   #[sol(rpc)]
+   contract ERC20 {
+        function balanceOf(address owner) public view returns (uint256);
+   }
+}
+
+#[tokio::main]
+async fn main() -> Result<()> {
+    // Initialize the provider.
+    let provider = ProviderBuilder::new().connect("https://eth.llamarpc.com").await?;
+
+    // Instantiate the contract instance.
+    let weth = address!("0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2");
+    let erc20 = ERC20::new(weth, provider);
+
+    // Fetch the balance of WETH for a given address.
+    let owner = address!("0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045");
+    let balance = erc20.balanceOf(owner).call().await?;
+
+    println!("WETH Balance of {owner}: {balance}");
+
+    Ok(())
+}
+```
+
+```rust [write_contract.rs]
+//! Demonstrates writing to a contract by depositing ETH to the WETH contract.
+use alloy::{
+    primitives::{
+        address,
+        utils::{format_ether, Unit},
+        U256,
+    },
+    providers::ProviderBuilder,
+    signers::local::PrivateKeySigner,
+    sol,
+};
+use eyre::Result;
+
+// Generate bindings for the WETH9 contract.
+// WETH9: <https://etherscan.io/token/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2>
+sol! {
+    #[sol(rpc)]
+    contract WETH9 {
+        function deposit() public payable;
+        function balanceOf(address) public view returns (uint256);
+    }
+}
+
+#[tokio::main]
+async fn main() -> Result<()> {
+    // Initialize a signer with a private key.
+    let signer: PrivateKeySigner =
+        "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80".parse()?;
+
+    // Instantiate a provider with the signer.
+    let provider = ProviderBuilder::new()
+        // Signs transactions before dispatching them.
+        .wallet(signer)
+        // Forking mainnet using anvil to avoid spending real ETH.
+        .on_anvil_with_config(|a| a.fork("https://eth.llamarpc.com"));
+
+    // Setup WETH contract instance.
+    let weth = address!("0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2");
+    let weth = WETH9::new(weth, provider);
+
+    // Prepare deposit transaction.
+    let amt = Unit::ETHER.wei().saturating_mul(U256::from(100));
+    let deposit = weth.deposit().value(amt);
+
+    // Send the transaction and wait for it to be included.
+    let deposit_tx = deposit.send().await?;
+    let receipt = deposit_tx.get_receipt().await?;
+
+    // Check balance by verifying the deposit.
+    let balance = weth.balanceOf(receipt.from).call().await?;
+    println!("Verified balance of {:.3} WETH for {}", format_ether(balance), receipt.from);
+    Ok(())
+}
+```
+
+```rust [send_transaction.rs]
+//! Send a transaction transferring ETH.
+use alloy::{
+    network::TransactionBuilder,
+    primitives::{
+        address,
+        utils::{format_ether, Unit},
+        U256,
+    },
+    providers::{Provider, ProviderBuilder},
+    rpc::types::TransactionRequest,
+    signers::local::PrivateKeySigner,
+};
+use eyre::Result;
+
+#[tokio::main]
+async fn main() -> Result<()> {
+    // Initialize a signer with a private key.
+    let signer: PrivateKeySigner =
+        "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80".parse()?;
+
+    // Instantiate a provider with the signer.
+    // This example uses a local Anvil node.
+    let provider = ProviderBuilder::new().wallet(signer).connect("http://localhost:8545").await?;
+
+    // Prepare a transaction request to send 100 ETH to Alice.
+    let alice = address!("0x70997970C51812dc3A010C7d01b50e0d17dc79C8");
+    let value = Unit::ETHER.wei().saturating_mul(U256::from(100));
+    let tx = TransactionRequest::default().with_to(alice).with_value(value);
+
+    // Send the transaction and wait for the broadcast.
+    let pending_tx = provider.send_transaction(tx).await?;
+    println!("Pending transaction... {}", pending_tx.tx_hash());
+
+    // Wait for the transaction to be included and get the receipt.
+    let receipt = pending_tx.get_receipt().await?;
+    println!(
+        "Transaction included in block {}",
+        receipt.block_number.expect("Failed to get block number")
+    );
+
+    println!("Transferred {:.5} ETH to {alice}", format_ether(value));
+
+    Ok(())
+}
+```
+
+:::
+
+<Sponsors />

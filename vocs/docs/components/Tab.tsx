@@ -1,5 +1,3 @@
-import * as React from 'react'
- 
 export default function Tab() {
   return (
     <div className='vocs_HomePage_tabs vocs_Tabs vocs_HomePage_tabsContent vocs_Tabs_content'>
