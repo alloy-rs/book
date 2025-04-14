@@ -4,7 +4,7 @@ A book on all things Alloy.
 
 [![Telegram chat][telegram-badge]][telegram-url]
 
-[`ethers-rs`]: https://github.com/gakonst/ethers-rs
+[`alloy-rs`]: https://github.com/gakonst/ethers-rs
 [telegram-badge]: https://img.shields.io/endpoint?color=neon&style=for-the-badge&url=https%3A%2F%2Ftg.sumanjay.workers.dev%2Fethers_rs
 [telegram-url]: https://t.me/ethers_rs
 
