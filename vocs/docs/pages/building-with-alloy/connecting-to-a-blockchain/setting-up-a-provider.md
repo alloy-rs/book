@@ -19,7 +19,7 @@ use eyre::Result;
 #[tokio::main]
 async fn main() -> eyre::Result<()> {
     // Set up the RPC URL.
-    let rpc_url = "https://eth.merkle.io";
+    let rpc_url = "https://reth-ethereum.ithaca.xyz/rpc";
 
     // Instanties a provider using a rpc_url string.
     let provider = ProviderBuilder::new().connect(rpc_url).await?;
