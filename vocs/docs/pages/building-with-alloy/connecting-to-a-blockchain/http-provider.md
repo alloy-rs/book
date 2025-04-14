@@ -15,7 +15,7 @@ use eyre::Result;
 #[tokio::main]
 async fn main() -> eyre::Result<()> {
     // Set up the HTTP transport which is consumed by the RPC client.
-    let rpc_url = "https://eth.merkle.io".parse()?;
+    let rpc_url = "https://reth-ethereum.ithaca.xyz/rpc".parse()?;
 
     // Create a provider with the HTTP transport using the `reqwest` crate.
     let provider = ProviderBuilder::new().connect_http(rpc_url);
