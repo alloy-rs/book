@@ -30,46 +30,44 @@ import { HomePage, Sponsors } from "vocs/components";
         </div>
     </div>
   </div>
-
+ 
   <div className="flex justify-between flex-wrap mt-10">
-      <a href="/building-with-alloy/best-practices/wrapping-a-provider" className="pr-2 w-1/4 max-lg:pb-3 max-sm:px-0 max-lg:w-1/2 max-sm:w-full z-0">
+      <div className="pr-2 w-1/4 max-lg:pb-3 max-sm:px-0 max-lg:w-1/2 max-sm:w-full z-0">
         <div className="relative w-full h-[168px] max-lg:h-[142px] overflow-hidden">
-          <div className="border-black/10 dark:border-white/10 border border-solid rounded-lg h-full px-5 py-6 absolute z-10 flex flex-col justify-between w-full">
+          <a a href="/building-with-alloy/best-practices/wrapping-a-provider" className="hover:bg-black/2 dark:hover:bg-white/2 border-black/10 dark:border-white/10 border border-solid rounded-lg h-full px-5 py-6 absolute z-10 flex flex-col justify-between w-full">
             <div className="text-xl font-medium text-black dark:text-white">Simple Provider Interface</div>
             <div className="text-[17px] text-[#919193]">Wrap and pass `Provider` instances seamlessly</div>
-          </div>
+          </a>
           <div className="absolute left-0 right-0 top-0 bottom-0 dark:bg-[#313136] opacity-20 z-0" />
           <div className="absolute left-0 right-0 top-0 bottom-0 backdrop-filter backdrop-blur-[2px] z-0" />
         </div>
-      </a>
-      <a href="/building-with-alloy/best-practices/signers-vs-ethereum-wallet" className="pl-2 pr-2 max-sm:px-0 max-lg:pb-3 max-lg:pr-0 w-1/4 max-lg:w-1/2 max-sm:w-full z-0">
+      </div>
+      <div href="/building-with-alloy/best-practices/signers-vs-ethereum-wallet" className="pl-2 pr-2 max-sm:px-0 max-lg:pb-3 max-lg:pr-0 w-1/4 max-lg:w-1/2 max-sm:w-full z-0">
         <div className="relative w-full h-[168px] max-lg:h-[142px]">
-          <div className="border-black/10 dark:border-white/10 border border-solid rounded-lg h-full px-5 py-6 absolute z-10 flex flex-col justify-between w-full">
+          <a a href="/building-with-alloy/best-practices/wrapping-a-provider" className="hover:bg-black/2 dark:hover:bg-white/2 border-black/10 dark:border-white/10 border border-solid rounded-lg h-full px-5 py-6 absolute z-10 flex flex-col justify-between w-full">
             <div className="text-xl font-medium text-black dark:text-white">Handle Signers</div>
-            <div>
             <div className="text-[17px] text-[#919193]">House different signer types in one `EthereumWallet`</div>
-            </div>
-          </div>
+          </a>
           <div className="absolute left-0 right-0 top-0 bottom-0 dark:bg-[#313136] opacity-20 z-0" />
           <div className="absolute left-0 right-0 top-0 bottom-0 backdrop-filter backdrop-blur-[2px] z-0" />
         </div>
-      </a>
+      </div>
       <a href="/building-with-alloy/best-practices/interacting-with-multiple-networks" className="pl-2 pr-2 max-lg:pb-3 max-sm:px-0 max-lg:pl-0 w-1/4 max-lg:w-1/2 max-sm:w-full z-0">
         <div className="relative w-full h-[168px] max-lg:h-[142px]">
-          <div className="border-black/10 dark:border-white/10 border border-solid rounded-lg h-full px-5 py-6 absolute z-10 flex flex-col justify-between w-full">
+          <a a href="/building-with-alloy/best-practices/wrapping-a-provider" className="hover:bg-black/2 dark:hover:bg-white/2 border-black/10 dark:border-white/10 border border-solid rounded-lg h-full px-5 py-6 absolute z-10 flex flex-col justify-between w-full">
             <div className="text-xl font-medium text-black dark:text-white">Network Abstraction</div>
             <div className="text-[17px] text-[#919193]">Absorb RPC differences using the `Network` trait</div>
-          </div>
+          </a>
           <div className="absolute left-0 right-0 top-0 bottom-0 dark:bg-[#313136] opacity-20 z-0" />
           <div className="absolute left-0 right-0 top-0 bottom-0 backdrop-filter backdrop-blur-[2px] z-0" />
         </div>
       </a>
       <a href="/building-with-alloy/best-practices/multicall" className="pl-2 w-1/4 max-sm:px-0 max-lg:w-1/2 max-sm:w-full z-0">
         <div className="relative w-full h-[168px] max-lg:h-[142px]">
-          <div className="border-black/10 dark:border-white/10 border border-solid rounded-lg h-full px-5 py-6 absolute z-10 flex flex-col justify-between w-full">
+          <a a href="/building-with-alloy/best-practices/wrapping-a-provider" className="hover:bg-black/2 dark:hover:bg-white/2 border-black/10 dark:border-white/10 border border-solid rounded-lg h-full px-5 py-6 absolute z-10 flex flex-col justify-between w-full">
             <div className="text-xl font-medium text-black dark:text-white">Multicall Support</div>
             <div className="text-[17px] text-[#919193]">Optimize RPC usage using Multicall Builder and Layer</div>
-          </div>
+          </a>
           <div className="absolute left-0 right-0 top-0 bottom-0 dark:bg-[#313136] opacity-20 z-0" />
           <div className="absolute left-0 right-0 top-0 bottom-0 backdrop-filter backdrop-blur-[2px] z-0" />
         </div>
@@ -77,19 +75,17 @@ import { HomePage, Sponsors } from "vocs/components";
     </div>
     </div>
 </div>
- 
- 
 <article className="vocs_Content max-w-5xl mx-auto">
- 
+
 # Common Actions
- 
+
 :::code-group
- 
+
 ```rust [read_contract.rs]
 //! Demonstrates reading a contract by fetching the WETH balance of an address.
 use alloy::{primitives::address, providers::ProviderBuilder, sol};
 use eyre::Result;
- 
+
 // Generate the contract bindings for the ERC20 interface.
 sol! {
    // The `rpc` attribute enables contract interaction via the provider.
@@ -98,26 +94,26 @@ sol! {
         function balanceOf(address owner) public view returns (uint256);
    }
 }
- 
+
 #[tokio::main]
 async fn main() -> Result<()> {
     // Initialize the provider.
     let provider = ProviderBuilder::new().connect("https://reth-ethereum.ithaca.xyz/rpc").await?;
- 
+
     // Instantiate the contract instance.
     let weth = address!("0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2");
     let erc20 = ERC20::new(weth, provider);
- 
+
     // Fetch the balance of WETH for a given address.
     let owner = address!("0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045");
     let balance = erc20.balanceOf(owner).call().await?;
- 
+
     println!("WETH Balance of {owner}: {balance}");
- 
+
     Ok(())
 }
 ```
- 
+
 ```rust [write_contract.rs]
 //! Demonstrates writing to a contract by depositing ETH to the WETH contract.
 use alloy::{
@@ -131,7 +127,7 @@ use alloy::{
     sol,
 };
 use eyre::Result;
- 
+
 // Generate bindings for the WETH9 contract.
 // WETH9: <https://etherscan.io/token/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2>
 sol! {
@@ -141,39 +137,39 @@ sol! {
         function balanceOf(address) public view returns (uint256);
     }
 }
- 
+
 #[tokio::main]
 async fn main() -> Result<()> {
     // Initialize a signer with a private key.
     let signer: PrivateKeySigner =
         "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80".parse()?;
- 
+
     // Instantiate a provider with the signer.
     let provider = ProviderBuilder::new()
         // Signs transactions before dispatching them.
         .wallet(signer)
         // Forking mainnet using anvil to avoid spending real ETH.
         .on_anvil_with_config(|a| a.fork("https://reth-ethereum.ithaca.xyz/rpc"));
- 
+
     // Setup WETH contract instance.
     let weth = address!("0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2");
     let weth = WETH9::new(weth, provider);
- 
+
     // Prepare deposit transaction.
     let amt = Unit::ETHER.wei().saturating_mul(U256::from(100));
     let deposit = weth.deposit().value(amt);
- 
+
     // Send the transaction and wait for it to be included.
     let deposit_tx = deposit.send().await?;
     let receipt = deposit_tx.get_receipt().await?;
- 
+
     // Check balance by verifying the deposit.
     let balance = weth.balanceOf(receipt.from).call().await?;
     println!("Verified balance of {:.3} WETH for {}", format_ether(balance), receipt.from);
     Ok(())
 }
 ```
- 
+
 ```rust [send_transaction.rs]
 //! Send a transaction transferring ETH.
 use alloy::{
@@ -188,40 +184,113 @@ use alloy::{
     signers::local::PrivateKeySigner,
 };
 use eyre::Result;
- 
+
 #[tokio::main]
 async fn main() -> Result<()> {
     // Initialize a signer with a private key.
     let signer: PrivateKeySigner =
         "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80".parse()?;
- 
+
     // Instantiate a provider with the signer.
     // This example uses a local Anvil node.
     let provider = ProviderBuilder::new().wallet(signer).connect("http://localhost:8545").await?;
- 
+
     // Prepare a transaction request to send 100 ETH to Alice.
     let alice = address!("0x70997970C51812dc3A010C7d01b50e0d17dc79C8");
     let value = Unit::ETHER.wei().saturating_mul(U256::from(100));
     let tx = TransactionRequest::default().with_to(alice).with_value(value);
- 
+
     // Send the transaction and wait for the broadcast.
     let pending_tx = provider.send_transaction(tx).await?;
     println!("Pending transaction... {}", pending_tx.tx_hash());
- 
+
     // Wait for the transaction to be included and get the receipt.
     let receipt = pending_tx.get_receipt().await?;
     println!(
         "Transaction included in block {}",
         receipt.block_number.expect("Failed to get block number")
     );
- 
+
     println!("Transferred {:.5} ETH to {alice}", format_ether(value));
- 
+
     Ok(())
 }
 ```
- 
+
 :::
+
+# Used By the Best
+
+<div
+  class="vocs_Sponsors_row"
+  classname="--vocs_Sponsors_columns:4;--vocs_Sponsors_height:40px"
+>
+  <a
+    class="vocs_Sponsors_column vocs_Sponsors_sponsor vocs_Link vocs_Link_styleless"
+    href="https://github.com/paradigmxyz/reth"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      class="vocs_Sponsors_image"
+      className="filter:none"
+      src="/reth.png"
+      alt="Family"
+    />
+  </a>
+  <a
+    class="vocs_Sponsors_column vocs_Sponsors_sponsor vocs_Link vocs_Link_styleless"
+    href="https://github.com/foundry-rs/foundry?tab=readme-ov-file"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      class="vocs_Sponsors_image"
+      className="filter:none"
+      src="/foundry.png"
+      alt="Context"
+    />
+  </a>
+  <a
+    class="vocs_Sponsors_column vocs_Sponsors_sponsor vocs_Link vocs_Link_styleless"
+    href="https://github.com/bluealloy/revm/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      class="vocs_Sponsors_image"
+      className="filter:none"
+      src="/revm.png"
+      alt="WalletConnect"
+    />
+  </a>
+  <a
+    class="vocs_Sponsors_column vocs_Sponsors_sponsor vocs_Link vocs_Link_styleless"
+    href="https://arbitrum.io/stylus"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      class="vocs_Sponsors_image"
+      className="filter:none"
+      src="/stylus.png"
+      alt="PartyDAO"
+    />
+  </a>
+  <a
+    class="vocs_Sponsors_column vocs_Sponsors_sponsor vocs_Link vocs_Link_styleless"
+    href="https://github.com/op-rs/kona"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      class="vocs_Sponsors_image"
+      className="filter:none"
+      src="/kona.png"
+      alt="PartyDAO"
+    />
+  </a>
+</div>
 
 # Features
 
