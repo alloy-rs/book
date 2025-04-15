@@ -44,7 +44,7 @@ export default defineConfig({
   topNav: [
     { 
       text: 'Docs',
-      link: '/getting-started/quick-start',
+      link: '/introduction/getting-started',
     },
     {
       text: 'Examples',
