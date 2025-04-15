@@ -13,6 +13,10 @@ export const sidebar: Sidebar = [
     {
       text: 'Guides',
       items: [
+        { text: 'Wrapping a provider', link: '/guides/wrapping-a-provider' },
+        { text: 'Interacting with multiple networks', link: '/guides/interacting-with-multiple-networks' },
+        { text: 'Signers vs Ethereum Wallet', link: '/guides/signers-vs-ethereum-wallet' },
+        { text: 'Multicall', link: '/guides/multicall' },
         { text: 'Performant Static and Dynamic ABIs Encoding with Alloy', link: '/guides/static-dynamic-abi-in-alloy' },
         { text: 'Build a fast MEV bot with Alloy\'s Primitive Types', link: '/guides/speed-up-using-u256' },
         { text: 'Building a High-Priority Transaction Queue with Alloy Fillers', link: '/guides/fillers' },
@@ -51,25 +55,12 @@ export const sidebar: Sidebar = [
     ]
    },
    {
-    text: 'Interacting with smart contracts', 
+    text: 'Interact with the chain', 
     items: [
-      { text: 'The sol! macro', link: '/interacting-smart-contracts/the-sol!-macro' },
+      { text: 'Using sol!', link: '/interacting-with-chain/the-sol!-macro' },
+      { text: 'Query data', link: '/interacting-with-chain/queries' },
     ]
    },
-    {
-      text: 'Miscellaneous',
-      items: [
-       {
-        text: 'Best Practices', collapsed: true, items: [
-          { text: 'Wrapping a provider', link: '/misc/best-practices/wrapping-a-provider' },
-          { text: 'Interacting with multiple networks', link: '/misc/best-practices/interacting-with-multiple-networks' },
-          { text: 'Signers vs Ethereum Wallet', link: '/misc/best-practices/signers-vs-ethereum-wallet' },
-          { text: 'Multicall', link: '/misc/best-practices/multicall' },
-        ]
-       },
-       { text: 'Querying chain data', link: '/misc/queries' }
-      ],
-    },
     {
       text: 'Examples',
       items: exampleItems,
