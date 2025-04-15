@@ -3,55 +3,64 @@ import { exampleItems } from "./example-items";
 
 export const sidebar: Sidebar = [
     {
-      text: 'Getting Started',
+      text: 'Introduction',
       items: [
-        { text: 'Installation', link: '/getting-started/installation' },
-        { text: 'Quick Start', link: '/getting-started/quick-start' },
+        { text: 'Installation', link: '/introduction/installation' },
+        { text: 'Why Alloy', link: '/introduction/why-alloy' },
+        { text: 'Getting Started', link: '/introduction/getting-started' },
       ]
     },
     {
-      text: 'Building with alloy',
+      text: 'Guides',
       items: [
-        { text: 'Basic building blocks', collapsed: true, items: [
-          { text: 'Hash and Address types', link: '/building-with-alloy/basic-building-blocks/hash-and-address-types' },
-          { text: 'Initializing big numbers', link: '/building-with-alloy/basic-building-blocks/big-numbers' },
-          { text: 'Using big numbers', link: '/building-with-alloy/basic-building-blocks/using-big-numbers' },
-          { text: 'Common conversions', link: '/building-with-alloy/basic-building-blocks/common-conversions' },
-          { text: 'Comparisons and equivalence', link: '/building-with-alloy/basic-building-blocks/comparisons-and-equivalence' },
-        ]
-       },
-       {
-          text: 'Connecting to a blockchain', collapsed: true, items: [
-            { text: 'Setting up a provider', link: '/building-with-alloy/connecting-to-a-blockchain/setting-up-a-provider' },
-            { text: 'HTTP provider', link: '/building-with-alloy/connecting-to-a-blockchain/http-provider' },
-            { text: 'WS provider', link: '/building-with-alloy/connecting-to-a-blockchain/ws-provider' },
-            { text: 'IPC provider', link: '/building-with-alloy/connecting-to-a-blockchain/ipc-provider' },
-          ]
-       },
-       {
-        text: 'Best Practices', collapsed: true, items: [
-          { text: 'Wrapping a provider', link: '/building-with-alloy/best-practices/wrapping-a-provider' },
-          { text: 'Interacting with multiple networks', link: '/building-with-alloy/best-practices/interacting-with-multiple-networks' },
-          { text: 'Signers vs Ethereum Wallet', link: '/building-with-alloy/best-practices/signers-vs-ethereum-wallet' },
-          { text: 'Multicall', link: '/building-with-alloy/best-practices/multicall' },
-        ]
-       },
-       {
-        text: 'Sending Transactions', collapsed: true, items: [
-          { text: 'Using the Transaction Builder', link: '/building-with-alloy/transactions/using-the-transaction-builder' },
-          { text: 'Legacy Transaction', link: '/building-with-alloy/transactions/sending-a-legacy-transaction' },
-          { text: 'EIP-1559 Transaction', link: '/building-with-alloy/transactions/sending-an-EIP-1559-transaction' },
-          { text: 'EIP-4844 Transaction', link: '/building-with-alloy/transactions/sending-an-EIP-4844-transaction' },
-          { text: 'EIP-7702 Transaction', link: '/building-with-alloy/transactions/sending-an-EIP-7702-transaction' },
-          { text: 'Using Access Lists', link: '/building-with-alloy/transactions/using-access-lists' },
-        ]
-       },
-       { text: 'The sol! macro', link: '/building-with-alloy/the-sol!-macro' },
-       { text: 'Understanding Fillers', link: '/building-with-alloy/understanding-fillers' },
-       { text: 'Transaction Lifecycle', link: '/building-with-alloy/transaction-lifecycle' },
-       { text: 'Querying chain data', link: '/building-with-alloy/queries' }
-      ],
+        { text: 'Wrapping a provider', link: '/guides/wrapping-a-provider' },
+        { text: 'Interacting with multiple networks', link: '/guides/interacting-with-multiple-networks' },
+        { text: 'Signers vs Ethereum Wallet', link: '/guides/signers-vs-ethereum-wallet' },
+        { text: 'Multicall', link: '/guides/multicall' },
+        { text: 'Performant Static and Dynamic ABIs Encoding with Alloy', link: '/guides/static-dynamic-abi-in-alloy' },
+        { text: 'Build a fast MEV bot with Alloy\'s Primitive Types', link: '/guides/speed-up-using-u256' },
+        { text: 'Building a High-Priority Transaction Queue with Alloy Fillers', link: '/guides/fillers' },
+        { text: 'Customizing RPC Communication with Alloy\'s Layers', link: '/guides/layers' },
+      ]
     },
+    { text: 'Using Primitives Types',
+      items: [
+      { text: 'Hash and Address types', link: '/using-primitive-types/hash-and-address-types' },
+      { text: 'Initializing big numbers', link: '/using-primitive-types/big-numbers' },
+      { text: 'Using big numbers', link: '/using-primitive-types/using-big-numbers' },
+      { text: 'Common conversions', link: '/using-primitive-types/common-conversions' },
+      { text: 'Comparisons and equivalence', link: '/using-primitive-types/comparisons-and-equivalence' },
+    ]
+   },
+    { 
+      text: 'RPC Providers', 
+      items: [
+      { text: 'Setting up a provider', link: '/rpc-providers/setting-up-a-provider' },
+      { text: 'HTTP provider', link: '/rpc-providers/http-provider' },
+      { text: 'WS provider', link: '/rpc-providers/ws-provider' },
+      { text: 'IPC provider', link: '/rpc-providers/ipc-provider' },
+      { text: 'Understanding Fillers', link: '/rpc-providers/understanding-fillers'}
+    ]
+   },
+   {
+    text: 'Submitting Transactions', 
+    items: [
+      { text: 'Transaction Lifecycle', link: '/transactions/transaction-lifecycle' },
+      { text: 'Using the Transaction Builder', link: '/transactions/using-the-transaction-builder' },
+      { text: 'Legacy Transaction', link: '/transactions/sending-a-legacy-transaction' },
+      { text: 'EIP-1559 Transaction', link: '/transactions/sending-an-EIP-1559-transaction' },
+      { text: 'EIP-4844 Transaction', link: '/transactions/sending-an-EIP-4844-transaction' },
+      { text: 'EIP-7702 Transaction', link: '/transactions/sending-an-EIP-7702-transaction' },
+      { text: 'Using Access Lists', link: '/transactions/using-access-lists' },
+    ]
+   },
+   {
+    text: 'Interact with the chain', 
+    items: [
+      { text: 'Using sol!', link: '/interacting-with-chain/the-sol!-macro' },
+      { text: 'Query data', link: '/interacting-with-chain/queries' },
+    ]
+   },
     {
       text: 'Examples',
       items: exampleItems,
@@ -81,7 +90,7 @@ export const sidebar: Sidebar = [
           },
           { text: 'Other breaking changes', link: '/migrating-to-core-1.0/other-breaking-changes' },
       ]
-    },  
+    },
     {
       text: 'Migrating from ethers-rs',
       items: [

@@ -1,4 +1,4 @@
-## Quick Start
+## Getting Started
 
 Alloy allows applications to connect the blockchain using providers. Providers act as an interface between applications and an Ethereum node, allowing you to send requests and receive responses via JSON-RPC messages.
 
