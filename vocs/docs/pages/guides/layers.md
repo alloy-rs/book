@@ -1,6 +1,6 @@
 # Customizing RPC Communication with Alloy's Layers
 
-In the [previous post](/fillers.html), we covered [Alloy fillers](https://alloy.rs/building-with-alloy/understanding-fillers.html). This time we'll discuss how to use [Alloy layers](https://alloy.rs/examples/layers/index.html) to customize HTTP-related aspects of RPC client communication.
+In the [previous post](./fillers.md), we covered [Alloy fillers](https://alloy.rs/rpc-providers/understanding-fillers). This time we'll discuss how to use [Alloy layers](https://alloy.rs/examples/layers/README) to customize HTTP-related aspects of RPC client communication.
 
 ## Layers 101
 
@@ -8,7 +8,7 @@ To better understand layers, we first have to explore the [Tower crate](https://
 
 What all these crates have in common is that they work with HTTP request/response communication. That's where Tower comes into play. It's an opinionated framework for constructing pipelines for `Request -> Response` transformations. Tower also comes with a set of built-in layers that add functionality like rate limiting, compression, retry logic, logging, etc.
 
-Check out [this classic blog post](https://tokio.rs/blog/2021-05-14-inventing-the-service-trait) for a more in-depth explanation of the origins of the Tower `Service` trait. To better understand `Service` and `Layer` traits, let's implement a barebones `Request/Response` processing pipeline using Tower. 
+Check out [this classic blog post](https://tokio.rs/blog/2021-05-14-inventing-the-service-trait) for a more in-depth explanation of the origins of the Tower `Service` trait. To better understand `Service` and `Layer` traits, let's implement a barebones `Request/Response` processing pipeline using Tower.
 
 ### Basic tower service and layer implementation
 
@@ -103,11 +103,12 @@ where
 }
 ```
 
-It's also a bit verbose, but this overhead is necessary to make the compiler happy. A core functionality of our layer is implemented in the `call` method. You can see that it wraps the unresolved future and delays it by calling `sleep`. This implementation is similar to how we can modify the Alloy `Request/Response` cycle.  It's worth noting that while `MyService` defines a specific `Type = String` type, `DelayLayer` is generic. It will come in handy very soon.
+It's also a bit verbose, but this overhead is necessary to make the compiler happy. A core functionality of our layer is implemented in the `call` method. You can see that it wraps the unresolved future and delays it by calling `sleep`. This implementation is similar to how we can modify the Alloy `Request/Response` cycle. It's worth noting that while `MyService` defines a specific `Type = String` type, `DelayLayer` is generic. It will come in handy very soon.
 
 Here's our delay layer in action:
 
 [ `examples/tower_basic.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/layers/examples/tower_basic.rs)
+
 ```rust
 #[tokio::main]
 async fn main() {
@@ -138,12 +139,13 @@ Now that we've covered the basics let's see how layers fit within the Alloy stac
 Let's start with a simple example of reusing our `DelayLayer` for Alloy providers. This particular example does not have the best practical use case, but it shows that some generic layers can be reused regardless of the underlying `Service` `Request` type:
 
 [ `examples/alloy_delay.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/layers/examples/alloy_delay.rs)
+
 ```rust
 #[tokio::main]
 async fn main() -> Result<()> {
     let anvil = Anvil::new().try_spawn()?;
     let signer: PrivateKeySigner = anvil.keys()[0].clone().into();
-    
+
     let client = ClientBuilder::default()
         .layer(DelayLayer::new(Duration::from_secs(1)))
         .http(anvil.endpoint().parse()?);
@@ -233,6 +235,7 @@ You can notice that it's very similar to the `DelayLayer`. Core logic lives in t
 Here's how you can connect it to the provider:
 
 [ `examples/alloy_logging.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/layers/examples/alloy_logging.rs)
+
 ```rust
 let client = ClientBuilder::default()
     .layer(DelayLayer::new(Duration::from_secs(1)))
@@ -251,7 +254,7 @@ RUST_LOG=info cargo run --example alloy_logging
 
 ![Alloy logging](images/layers/alloy_logs.png)
 
-You can see that our simple example triggered various RPC requests: `eth_blockNumber`, `eth_getBlockByNumber`, `eth_chainId`, `eth_transactionCount`, `eth_getBalance`, and more. 
+You can see that our simple example triggered various RPC requests: `eth_blockNumber`, `eth_getBlockByNumber`, `eth_chainId`, `eth_transactionCount`, `eth_getBalance`, and more.
 
 Thanks to the custom layer we can fine-tune the `LoggingLayer` policy and for example only log RPC calls sending transactions:
 
