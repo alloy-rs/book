@@ -1,6 +1,6 @@
 # Customizing RPC Communication with Alloy's Layers
 
-In the [previous post](./fillers.md), we covered [Alloy fillers](https://alloy.rs/rpc-providers/understanding-fillers). This time we'll discuss how to use [Alloy layers](https://alloy.rs/examples/layers/README) to customize HTTP-related aspects of RPC client communication.
+In the [previous guide](/guides/fillers.md), we covered [Alloy fillers](/rpc-providers/understanding-fillers). This time we'll discuss how to use [Alloy layers](https://alloy.rs/examples/layers/README) to customize HTTP-related aspects of RPC client communication.
 
 ## Layers 101
 
@@ -252,7 +252,7 @@ Now run this example:
 RUST_LOG=info cargo run --example alloy_logging
 ```
 
-![Alloy logging](images/layers/alloy_logs.png)
+![Alloy logging](/guides-images/layers/alloy_logs.png)
 
 You can see that our simple example triggered various RPC requests: `eth_blockNumber`, `eth_getBlockByNumber`, `eth_chainId`, `eth_transactionCount`, `eth_getBalance`, and more.
 
@@ -274,7 +274,7 @@ fn call(&mut self, req: RequestPacket) -> Self::Future {
 
 Running this reworked example produces a much cleaner output:
 
-![Alloy logging txs](images/layers/alloy_logs_tx.png)
+![Alloy logging txs](/guides-images/layers/alloy_logs_tx.png)
 
 You can see that layers provide powerful low-level control over how the provider handles RPC calls.
 

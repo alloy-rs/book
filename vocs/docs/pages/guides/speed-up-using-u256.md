@@ -12,7 +12,7 @@ To execute an atomic arbitrage swap, you have to calculate the required input an
 
 Most publicly available bots use an iterative search function to find an optimal amount of input value. However, UniswapV2 constant product formula makes it possible to calculate a profitable input amount without multiple iterations. We will borrow the implementation of this formula [from Flashbots simple-blind-arbitrage repo](https://github.com/flashbots/simple-blind-arbitrage). You can find a step-by-step explanation of how to derive the formula [in this YouTube video](https://www.youtube.com/watch?v=9EKksG-fF1k).
 
-All the code examples for this post are available in [this repo](https://github.com/alloy-rs/blog-posts/tree/main/alloy_u256). 
+All the code examples for this post are available in [this repo](https://github.com/alloy-rs/blog-posts/tree/main/alloy_u256).
 
 Let's start with implementing a struct representing a Uniswap pool and a few helper functions in Alloy:
 
@@ -69,9 +69,9 @@ pub fn get_amount_in(
 
 _Implemenation details are omitted for brevity._
 
-`UniV2Pair` struct represents pools that we will be working with. `get_amount_out` is a standard calculation for determining how much of a given ERC20 you can buy from the pool after paying the protocol fees. `get_amount_in` is the profitable input amount formula that we borrow from Flashbots repo. 
+`UniV2Pair` struct represents pools that we will be working with. `get_amount_out` is a standard calculation for determining how much of a given ERC20 you can buy from the pool after paying the protocol fees. `get_amount_in` is the profitable input amount formula that we borrow from Flashbots repo.
 
-It's worth noting that we use handy `address!` and `uint!` macros to generate the compile time constant `Address` and `U256` types. 
+It's worth noting that we use handy `address!` and `uint!` macros to generate the compile time constant `Address` and `U256` types.
 
 ### Iterative UniswapV2 profit algorithm
 
@@ -79,7 +79,7 @@ Let's consider the following example: your MEV bot wants to score an arbitrage b
 
 - calculate how much DAI you can buy from the UniswapV2 pool for a sample WETH input amount
 - calculate how much WETH you can buy back from Sushi pool for the previously calculated DAI amount
-- repeat the process for multiple values to determine which yields the best profit 
+- repeat the process for multiple values to determine which yields the best profit
 
 The above algorithm is iterative. There are ways to minimize the number of iterations, but this topic is outside the scope of this tutorial.
 
@@ -136,7 +136,7 @@ WETH amount in 2.166958497387277956
 WETH profit: 0.006142751241793559
 ```
 
-We've calculated a profitable Arbitrage for our mocked Uniswap pool reserves! 
+We've calculated a profitable Arbitrage for our mocked Uniswap pool reserves!
 
 ## "ethers-rs good, Alloy better!"
 
@@ -153,17 +153,18 @@ get_amount_out/Ethers time:  [65.102 ns 65.533 ns 65.992 ns]
 get_amount_out/Alloy  time:  [23.157 ns 23.275 ns 23.431 ns]
 ```
 
-We compare the performance of both `get_amount_in` and `get_amount_out`. Benchmark indicates **~35-60% improvement** when using Alloy types! 
+We compare the performance of both `get_amount_in` and `get_amount_out`. Benchmark indicates **~35-60% improvement** when using Alloy types!
 
-![U256 performance comparison](images/alloy_u256/u256_bench_chart.png)
+![U256 performance comparison](/guides-images/alloy_u256/u256_bench_chart.png)
 
 On the above charts generated with criterion.rs you can see that Alloy is consistently faster for both methods and has less variation in execution time.
 
-This means that you can significantly improve the performance of your ethers-rs project by switching to the new U256 type. 
+This means that you can significantly improve the performance of your ethers-rs project by switching to the new U256 type.
 
 Here's how you can convert between the two types:
 
 [ `src/alloy_helpers.rs`](https://github.com/alloy-rs/blog-posts/blob/77b99f4531b59d25f9154e4a04e48362dfd044d7/alloy_u256/src/alloy_helpers.rs#L47)
+
 ```rust
 use alloy::primitives::U256;
 use ethers::types::U256 as EthersU256;
@@ -182,6 +183,7 @@ impl ToEthers for U256 {
     }
 }
 ```
+
 [ `src/ethers_helpers.rs`](https://github.com/alloy-rs/blog-posts/blob/77b99f4531b59d25f9154e4a04e48362dfd044d7/alloy_u256/src/ethers_helpers.rs#L40)
 
 ```rust
@@ -214,6 +216,7 @@ Mocking the forked blockchain storage slots is an insanely useful technique. It 
 Here are the helper methods that we'll use:
 
 [ `src/alloy_helpers.rs`](https://github.com/alloy-rs/blog-posts/blob/77b99f4531b59d25f9154e4a04e48362dfd044d7/alloy_u256/src/alloy_helpers.rs#L153)
+
 ```rust
 pub async fn set_hash_storage_slot<P: Provider>(
     anvil_provider: &P,
@@ -234,7 +237,7 @@ pub async fn set_hash_storage_slot<P: Provider>(
 
 We will leverage a custom Anvil RPC method, `anvil_setStorageAt`, to mock EVM storage values. `set_hash_storage_slot` method is used to overwrite values inside mappings. It implements a Solidity convention where the storage slot of a mapping value is `keccak256` of the storage slot of the mapping and the key.
 
-And here's our simulation: 
+And here's our simulation:
 
 [ `examples/alloy_simulation.rs`](https://github.com/alloy-rs/blog-posts/blob/main/alloy_u256/examples/alloy_simulation.rs)
 
@@ -411,15 +414,15 @@ You can execute this simulation by running:
 cargo run --example alloy_simulation
 ```
 
-It should produce: 
+It should produce:
 
 ```
 Before - WETH balance of executor 5000000000000000000
 After - WETH balance of executor 5006142751241793559
 ```
 
-We've managed to simulate exactly the same profit of ~`0.00614` ETH that we've calculated before. 
+We've managed to simulate exactly the same profit of ~`0.00614` ETH that we've calculated before.
 
 ## Summary
 
-Rewriting your ethers-rs project could be a significant time investment. But Alloy is here to stay. Starting a migration from the calculations layer will let you reap performance benefits with minimal development effort. Stay tuned for the next posts, where we will describe other parts of the new Alloy stack in much more detail.
+Rewriting your ethers-rs project could be a significant time investment. But Alloy is here to stay. Starting a migration from the calculations layer will let you reap performance benefits with minimal development effort.
