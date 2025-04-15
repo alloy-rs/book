@@ -65,7 +65,7 @@ let provider = ProviderBuilder::new()
     .on_http(rpc_url);
 ```
 
-Note that we use `.with_recommended_fillers()` method on the [ProviderBuilder](../building-with-alloy/connecting-to-a-blockchain/setting-up-a-provider.md) to automatically [fill fields](../building-with-alloy/understanding-fillers.md).
+Note that we use `.with_recommended_fillers()` method on the [ProviderBuilder](../rpc-providers/setting-up-a-provider.md) to automatically [fill fields](../rpc-providers/understanding-fillers.md).
 
 Let's modify our original `TransactionRequest` to make use of the [RecommendedFiller](https://docs.rs/alloy/latest/alloy/providers/fillers/type.RecommendedFiller.html) installed on the `Provider` to automatically fill out transaction details.
 
