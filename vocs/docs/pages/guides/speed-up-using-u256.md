@@ -155,7 +155,7 @@ get_amount_out/Alloy  time:  [23.157 ns 23.275 ns 23.431 ns]
 
 We compare the performance of both `get_amount_in` and `get_amount_out`. Benchmark indicates **~35-60% improvement** when using Alloy types!
 
-![U256 performance comparison](images/alloy_u256/u256_bench_chart.png)
+![U256 performance comparison](/guides-images/alloy_u256/u256_bench_chart.png)
 
 On the above charts generated with criterion.rs you can see that Alloy is consistently faster for both methods and has less variation in execution time.
 

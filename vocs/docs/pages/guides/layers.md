@@ -252,7 +252,7 @@ Now run this example:
 RUST_LOG=info cargo run --example alloy_logging
 ```
 
-![Alloy logging](images/layers/alloy_logs.png)
+![Alloy logging](/guides-images/layers/alloy_logs.png)
 
 You can see that our simple example triggered various RPC requests: `eth_blockNumber`, `eth_getBlockByNumber`, `eth_chainId`, `eth_transactionCount`, `eth_getBalance`, and more.
 
@@ -274,7 +274,7 @@ fn call(&mut self, req: RequestPacket) -> Self::Future {
 
 Running this reworked example produces a much cleaner output:
 
-![Alloy logging txs](images/layers/alloy_logs_tx.png)
+![Alloy logging txs](/guides-images/layers/alloy_logs_tx.png)
 
 You can see that layers provide powerful low-level control over how the provider handles RPC calls.
 

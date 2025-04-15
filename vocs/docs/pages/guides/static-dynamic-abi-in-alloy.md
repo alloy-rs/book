@@ -121,7 +121,7 @@ cargo bench
 
 It looks like Alloy is **~10x faster** than ethers-rs! And here's a chart:
 
-![Static ABI encoding performance comparison](images/alloy_abi/static_encoding_bench.png)
+![Static ABI encoding performance comparison](/guides-images/alloy_abi/static_encoding_bench.png)
 
 ## Interacting with on-chain contracts
 
@@ -292,7 +292,7 @@ cargo bench
 
 And a chart:
 
-![Dynamic ABI encoding performance comparison](images/alloy_abi/dyn_encoding_bench.png)
+![Dynamic ABI encoding performance comparison](/guides-images/alloy_abi/dyn_encoding_bench.png)
 
 This time difference is not as dramatic as in static encoding. But Alloy is still ~10% faster than ethers-rs.
 
