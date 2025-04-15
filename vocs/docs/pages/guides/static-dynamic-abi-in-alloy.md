@@ -38,6 +38,7 @@ sol! {
 Alloy introduces the `sol!` macro that allows to embed compile-time-safe Solidity code directly in your Rust project. In the example, we use it to encode calldata needed for executing `swap` methods for our arbitrage. Here's how you can encode calldata:
 
 [ `examples/sol_encode_calldata.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/alloy_abi/examples/sol_encode_calldata.rs)
+
 ```rust
 let swap_calldata = swapCall {
     amount0Out: U256::from(1000000000000000000_u128)
@@ -53,6 +54,7 @@ As a result, you'll get a `Vec<u8>` type that you can assign to an `input` field
 It's worth noting that `sol!` macro works with any semantically correct Solidity snippets. Here's how you can generate a calldata for a method that accepts a struct.
 
 [ `examples/sol_encode_struct.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/alloy_abi/examples/sol_encode_struct.rs)
+
 ```rust
 sol! {
     struct MyStruct {
@@ -80,6 +82,7 @@ We've just imported a Solidity struct straight into the Rust code. You can use [
 ```bash
 cast interface 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2 --etherscan-api-key API_KEY
 ```
+
 it produces:
 
 ```solidity
@@ -99,7 +102,7 @@ interface WETH9 {
     function balanceOf(address) external view returns (uint256);
     function decimals() external view returns (uint8);
     function deposit() external payable;
-    // ... 
+    // ...
 }
 ```
 
@@ -125,6 +128,7 @@ It looks like Alloy is **~10x faster** than ethers-rs! And here's a chart:
 Using `#[sol(rpc)]` marco, you can easily generate an interface to an on-chain contract. Let's see it in action:
 
 [ `examples/sol_weth_interface.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/alloy_abi/examples/sol_weth_interface.rs)
+
 ```rust
 sol!(
     #[sol(rpc)]
@@ -163,20 +167,20 @@ To deploy a smart contract, you must use its _"build artifact file"_. It's a JSO
 forge build contracts/FlashBotsMultiCall.sol
 ```
 
-It produces a file containing contract's ABI, bytecode, deployed bytecode, and other metadata. 
+It produces a file containing contract's ABI, bytecode, deployed bytecode, and other metadata.
 
-Alternatively, you can use a recently added [`cast artifact` method](https://book.getfoundry.sh/reference/cli/cast/artifact
-):
+Alternatively, you can use a recently added [`cast artifact` method](https://book.getfoundry.sh/reference/cli/cast/artifact):
 
 ```bash
 cast artifact 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2 --etherscan-api-key $API_KEY --rpc-url $ETH_RPC_URL -o weth.json
 ```
 
-It generates a minimal artifact file containing contract's bytecode and ABI based on Etherscan and RPC data. Contrary to `forge build`, you don't have to compile contracts locally to use it. 
+It generates a minimal artifact file containing contract's bytecode and ABI based on Etherscan and RPC data. Contrary to `forge build`, you don't have to compile contracts locally to use it.
 
 You can later use an artifact file with the `sol!` macro like this:
 
 [ `examples/sol_deploy_contract.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/alloy_abi/examples/sol_deploy_contract.rs)
+
 ```rust
 sol!(
     #[sol(rpc)]
@@ -206,7 +210,7 @@ We've only discussed a few common ways to use ABI and `sol!` macro in Alloy. Mak
 
 ## How to use dynamic ABI encoding?
 
-All the previous examples were using so-called static ABIs, i.e., with format known at the compile time. However, there are use cases where you'll have to work with ABI formats interpreted in the runtime. 
+All the previous examples were using so-called static ABIs, i.e., with format known at the compile time. However, there are use cases where you'll have to work with ABI formats interpreted in the runtime.
 
 One practical example is a backend for a web3 wallet. It's not possible to include all the possible ABIs in the binary. So you'll have to work with JSON ABI files downloaded from the Etherscan API based on a user-provided address.
 
@@ -221,6 +225,7 @@ But, for the following example, we'll skip the ABI downloading part. Otherwise, 
 Let's assume that we want to generate a calldata for a [UniswapV2 WETH/DAI pair](https://etherscan.io/address/0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11) `swap` method with arguments provided by a user:
 
 [ `examples/dyn_abi_encoding.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/alloy_abi/examples/dyn_abi_encoding.rs)
+
 ```rust
 fn main() -> Result<()> {
     let input = vec![
@@ -268,9 +273,9 @@ fn encode_calldata(
 }
 ```
 
-In the above example, the `encode_calldata` method accepts an address, method name string and vector of `DynSolValue`. We read the local ABI file based on its address and later use it to instantiate the `Function` object based on its string name. Please notice that compared to the previous examples none of these types are compile-time static. We don't use macros or structs, only types that we can dynamically construct from user-provided data. 
+In the above example, the `encode_calldata` method accepts an address, method name string and vector of `DynSolValue`. We read the local ABI file based on its address and later use it to instantiate the `Function` object based on its string name. Please notice that compared to the previous examples none of these types are compile-time static. We don't use macros or structs, only types that we can dynamically construct from user-provided data.
 
-This approach offers flexibility for interacting with virtually any ABIs that can be defined in a runtime. 
+This approach offers flexibility for interacting with virtually any ABIs that can be defined in a runtime.
 
 ### Performance benchmark for dynamic vs static ABI encoding
 
@@ -293,4 +298,4 @@ This time difference is not as dramatic as in static encoding. But Alloy is stil
 
 ## Summary
 
-We've discussed common ways to interact with smart contracts ABI using the new Alloy stack. Stay tuned for upcoming posts where we will cover more advanced Rust web3 APIs fresh out of beta.
+We've discussed common ways to interact with smart contracts ABI using the new Alloy stack.
