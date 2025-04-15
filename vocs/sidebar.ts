@@ -19,7 +19,7 @@ export const sidebar: Sidebar = [
         { text: 'Customizing RPC Communication with Alloy\'s Layers', link: '/guides/layers' },
       ]
     },
-    { text: 'Using Primitives & Types',
+    { text: 'Using Primitives Types',
       items: [
       { text: 'Hash and Address types', link: '/using-primitive-types/hash-and-address-types' },
       { text: 'Initializing big numbers', link: '/using-primitive-types/big-numbers' },
