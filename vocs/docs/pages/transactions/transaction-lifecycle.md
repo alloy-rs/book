@@ -37,14 +37,13 @@ let rpc_url = anvil.endpoint().parse()?;
 let rpc_url = "https://reth-ethereum.ithaca.xyz/rpc".parse()?;
 ```
 
-Next let's define a `signer` for Alice. By default `Anvil` defines a mnemonic phrase: `"test test test test test test test test test test test junk"`. Make sure to not use this mnemonic phrase outside of testing environments. We register the signer in an [`EthereumWallet`](https://docs.rs/alloy/latest/alloy/network/struct.EthereumWallet.html) to be used in the `Provider` to sign our future transaction.
+Next let's define a `signer` for Alice. By default `Anvil` defines a mnemonic phrase: `"test test test test test test test test test test test junk"`. Make sure to not use this mnemonic phrase outside of testing environments. We add a signer to the `Provider` using the `.wallet` method which is responsible for signing the transactions.s
 
 Derive the first key of the mnemonic phrase for `Alice`:
 
 ```rust
 // Set up signer from the first default Anvil account (Alice).
 let signer: PrivateKeySigner = anvil.keys()[0].clone().into();
-let wallet = EthereumWallet::from(signer);
 ```
 
 Next lets grab the address of our users `Alice` and `Bob`:
@@ -58,26 +57,28 @@ let bob = anvil.addresses()[1];
 Next we can build the [`Provider`](https://docs.rs/alloy/latest/alloy/providers/trait.Provider.html) using the [`ProviderBuilder`](https://docs.rs/alloy/latest/alloy/providers/struct.ProviderBuilder.html).
 
 ```rust
-// Create a provider with the wallet.
+// Create a provider with the signer.
+// `ProviderBuilder::new` initializes the recommended fillers.
 let provider = ProviderBuilder::new()
-    .with_recommended_fillers()
-    .wallet(wallet)
-    .on_http(rpc_url);
+    .wallet(signer)
+    // Previously, on_http
+    .connect_http(rpc_url);
 ```
 
-Note that we use `.with_recommended_fillers()` method on the [ProviderBuilder](../rpc-providers/setting-up-a-provider.md) to automatically [fill fields](../rpc-providers/understanding-fillers.md).
+Note that the [ProviderBuilder](/rpc-providers/setting-up-a-provider.md) constructor `new` initializes the [RecommendedFillers](/rpc-providers/understanding-fillers).
 
 Let's modify our original `TransactionRequest` to make use of the [RecommendedFiller](https://docs.rs/alloy/latest/alloy/providers/fillers/type.RecommendedFiller.html) installed on the `Provider` to automatically fill out transaction details.
 
 The `RecommendedFillers` includes the following fillers:
 
 - [GasFiller](https://docs.rs/alloy/latest/alloy/providers/fillers/struct.GasFiller.html)
+- [BlobGasFiller](https://docs.rs/alloy-provider/latest/alloy_provider/fillers/struct.BlobGasFiller.html)
 - [NonceFiller](https://docs.rs/alloy/latest/alloy/providers/fillers/struct.NonceFiller.html)
 - [ChainIdFiller](https://docs.rs/alloy/latest/alloy/providers/fillers/struct.ChainIdFiller.html)
 
 Because of we are using `RecommendedFillers` our `TransactionRequest` we only need a subset of the original fields:
 
-```diff
+```diff showLineNumbers
 // Build a transaction to send 100 wei from Alice to Bob.
 let tx = TransactionRequest::default()
 -   .with_from(alice)
@@ -91,7 +92,7 @@ let tx = TransactionRequest::default()
 
 Changes to:
 
-```rust
+```rust showLineNumbers
 // Build a transaction to send 100 wei from Alice to Bob.
 // The `from` field is automatically filled to the first signer's address (Alice).
 let tx = TransactionRequest::default()
