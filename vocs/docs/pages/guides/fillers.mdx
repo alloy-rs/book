@@ -16,55 +16,20 @@ These core fillers are termed as [`RecommendedFillers`](https://docs.rs/alloy-pr
 
 In a world without the above fillers, sending a simple transfer transaction looks like the following:
 
-[ `examples/basic.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/fillers/examples/basic.rs)
+[ `examples/basic_provider.rs`](/examples/providers/basic_provider)
 
-```rust
-#[tokio::main]
-async fn main() -> Result<()> {
-    let anvil = Anvil::new().try_spawn()?;
-    let signer: PrivateKeySigner = anvil.keys()[0].clone().into();
-    let alice = signer.address();
+:::code-group
 
-    let provider = ProviderBuilder::new()
-        .disable_recommended_fillers()
-        .wallet(wallet)
-        .on_http(anvil.endpoint().parse()?);
-
-    let alice = signer.address();
-    let bob = Address::from([0x42; 20]);
-    let fees = provider.estimate_eip1559_fees().await?;
-    let nonce = provider.get_transaction_count(alice).await?;
-    let chain_id = provider.get_chain_id().await?;
-
-    let tx = TransactionRequest::default()
-        .with_value(U256::from(1))
-        .with_chain_id(chain_id)
-        .with_from(alice)
-        .with_nonce(nonce)
-        .with_max_fee_per_gas(fees.max_fee_per_gas)
-        .with_max_priority_fee_per_gas(fees.max_priority_fee_per_gas)
-        .with_gas_limit(21000)
-        .with_to(bob)
-        .with_value(U256::from(1));
-
-    let bob_balance_before = provider.get_balance(bob).await?;
-    _ = provider.send_transaction(tx).await?.get_receipt().await?;
-    let bob_balance_after = provider.get_balance(bob).await?;
-    println!(
-        "Balance before: {}\nBalance after: {}",
-        bob_balance_before, bob_balance_after
-    );
-
-    Ok(())
-}
+```rust [basic_provider.rs]
+// [!include ~/snippets/providers/examples/basic_provider.rs]
 ```
 
-Running the above produces:
-
-```text
+```bash [output]
 Balance before: 0
 Balance after: 1
 ```
+
+:::
 
 In this example, we sent 1 wei from `alice` (default anvil account) to `bob`. You can see that a lot of boilerplate is involved in building the transaction data. We must manually check the account's current `nonce`, network fees, `gas_limit`, and `chain_id`.
 

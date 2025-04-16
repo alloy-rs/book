@@ -199,7 +199,7 @@ async fn main() -> Result<()> {
 
 Check out our Guides to see more practical use cases, including:
 
-- [Building MEV bots with Alloy primitives](/guides/speed-up-using-u256.md)
-- [Seamless contract interaction with the sol! macro](/guides/static-dynamic-abi-in-alloy.md)
-- [Creating custom transaction fillers for setting priority fees](/guides/fillers.md)
-- [Using multicall for aggregating RPC requests](/guides/multicall.md)
+- [Building MEV bots with Alloy primitives](/guides/speed-up-using-u256)
+- [Seamless contract interaction with the sol! macro](/guides/static-dynamic-abi-in-alloy)
+- [Creating custom transaction fillers for setting priority fees](/guides/fillers)
+- [Using multicall for aggregating RPC requests](/guides/multicall)

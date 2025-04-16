@@ -1,6 +1,6 @@
 # Customizing RPC Communication with Alloy's Layers
 
-In the [previous guide](/guides/fillers.md), we covered [Alloy fillers](/rpc-providers/understanding-fillers). This time we'll discuss how to use [Alloy layers](https://alloy.rs/examples/layers/README) to customize HTTP-related aspects of RPC client communication.
+In the [previous guide](/guides/fillers), we covered [Alloy fillers](/rpc-providers/understanding-fillers). This time we'll discuss how to use [Alloy layers](https://alloy.rs/examples/layers/README) to customize HTTP-related aspects of RPC client communication.
 
 ## Layers 101
 
