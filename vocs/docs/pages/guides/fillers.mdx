@@ -42,7 +42,7 @@ Caused by:
 
 Now, let's see how using `RecommendedFillers` improves this:
 
-[ `examples/recommended.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/fillers/examples/recommended.rs)
+[ `examples/recommended.rs`](/examples/fillers/recommended_fillers)
 
 ```rust
 #[tokio::main]
@@ -85,7 +85,7 @@ Alloy comes with builder methods for automatically applying fillers to providers
 
 Let's go beyond the basics and implement a custom filler to better understand the inner workings.
 
-## Implementing a custom Alloy filler
+## Implementing a custom filler
 
 Submitting txs with a high-enough gas price, to land in the next block is a common use case. We will implement a custom filler to automatically check and fill the correct gas price.
 
@@ -93,11 +93,13 @@ We will query the free [Blocknative Gas API](https://docs.blocknative.com/gas-pr
 
 We will be working with the following API output:
 
-```bash
+:::code-group
+
+```bash [request]
 curl https://api.blocknative.com/gasprices/blockprices
 ```
 
-```json
+```json [response]
 {
   "system": "ethereum",
   "network": "main",
@@ -148,11 +150,13 @@ curl https://api.blocknative.com/gasprices/blockprices
 }
 ```
 
+:::
+
 It shows gas prices needed to commit tx in the next block, with a specified confidence.
 
 To build a custom filler, you have to implement a [`TxFiller`](https://docs.rs/alloy-provider/latest/alloy_provider/fillers/trait.TxFiller.html) trait. Here's a sample implementation for our `UrgentQueue` filler:
 
-[`src/lib.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/fillers/src/lib.rs)
+[`examples/urgent_filler.rs`](/examples/fillers/urgent_filler)
 
 ```rust
 #[derive(Clone, Debug, Default)]
@@ -242,9 +246,9 @@ impl<N: Network> TxFiller<N> for UrgentQueue {
 }
 ```
 
-The above implementation fetches gas prices from the Blocknative API and injects them into our transaction. With this implementation, we'll have 99% confidence that our transaction will land in the next block. Here's how you can use it:
+The above implementation fetches gas prices from the Blocknative API and injects them into our transaction. With this implementation, we'll have 99% confidence that our transaction will land in the next block. Here's how you can build the provider with the `UrgentQueue` filler:
 
-[ `examples/urgent.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/fillers/examples/urgent.rs)
+[ `examples/urgent_filler.rs`](/examples/fillers/urgent_filler)
 
 ```rust
 let provider = ProviderBuilder::new()
