@@ -14,10 +14,10 @@ The [`connect`](https://docs.rs/alloy/latest/alloy/providers/struct.ProviderBuil
 //! Example of `.connect` to setup a simple provider
 
 use alloy::providers::{Provider, ProviderBuilder};
-use eyre::Result;
+use std::error::Error;
 
 #[tokio::main]
-async fn main() -> eyre::Result<()> {
+async fn main() -> Result<(), Box<dyn Error>> {
     // Set up the RPC URL.
     let rpc_url = "https://reth-ethereum.ithaca.xyz/rpc";
 

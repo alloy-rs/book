@@ -35,10 +35,10 @@ use alloy::{
     rpc::types::TransactionRequest,
     signers::local::PrivateKeySigner,
 };
-use eyre::Result;
+use std::error::Error;
 
 #[tokio::main]
-async fn main() -> Result<()> {
+async fn main() -> Result<(), Box<dyn Error>> {
     // Initialize a signer with a private key
     let signer: PrivateKeySigner =
         "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80".parse()?;
@@ -89,7 +89,7 @@ use alloy::{
     signers::local::PrivateKeySigner,
     sol,
 };
-use eyre::Result;
+use std::error::Error;
 
 // Generate bindings for the WETH9 contract
 sol! {
@@ -102,7 +102,7 @@ sol! {
 }
 
 #[tokio::main]
-async fn main() -> Result<()> {
+async fn main() -> Result<(), Box<dyn Error>> {
     // Initialize a signer with a private key
     let signer: PrivateKeySigner =
         "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80".parse()?;
@@ -160,11 +160,11 @@ use alloy::{
     primitives::{Address, utils::format_ether},
     providers::{Provider, ProviderBuilder},
 };
-use eyre::Result;
+use std::error::Error;
 use futures::StreamExt;
 
 #[tokio::main]
-async fn main() -> Result<()> {
+async fn main() -> Result<(), Box<dyn Error>> {
     // Connect to an Ethereum node via WebSocket
     let provider = ProviderBuilder::new()
         .connect_ws("wss://ethereum.ithaca.xyz/ws")

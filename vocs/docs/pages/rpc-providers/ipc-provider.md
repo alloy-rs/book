@@ -12,10 +12,10 @@ The recommended way of initializing an `Ipc` provider is by using the [`connect_
 //! Example of creating an IPC provider using the `connect_ipc` method on the `ProviderBuilder`.
 
 use alloy::providers::{IpcConnect, Provider, ProviderBuilder};
-use eyre::Result;
+use std::error::Error;
 
 #[tokio::main]
-async fn main() -> eyre::Result<()> {
+async fn main() -> Result<(), Box<dyn Error>> {
     // Set up the IPC transport which is consumed by the RPC client.
     let ipc_path = "/tmp/reth.ipc";
 
