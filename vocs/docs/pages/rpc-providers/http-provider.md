@@ -10,10 +10,10 @@ The recommended way of initializing a `Http` provider is by using the [`connect_
 //! Example of creating an HTTP provider using the `connect_http` method on the `ProviderBuilder`.
 
 use alloy::providers::{Provider, ProviderBuilder};
-use eyre::Result;
+use std::error::Error;
 
 #[tokio::main]
-async fn main() -> eyre::Result<()> {
+async fn main() -> Result<(), Box<dyn Error>> {
     // Set up the HTTP transport which is consumed by the RPC client.
     let rpc_url = "https://reth-ethereum.ithaca.xyz/rpc".parse()?;
 

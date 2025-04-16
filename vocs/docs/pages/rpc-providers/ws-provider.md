@@ -10,10 +10,10 @@ The recommended way of initializing a `Ws` provider is by using the [`connect_ws
 //! Example of creating an WS provider using the `connect_ws` method on the `ProviderBuilder`.
 
 use alloy::providers::{Provider, ProviderBuilder, WsConnect};
-use eyre::Result;
+use std::error::Error;
 
 #[tokio::main]
-async fn main() -> eyre::Result<()> {
+async fn main() -> eyre::Result<(), Box<dyn Error>> {
     // Set up the WS transport which is consumed by the RPC client.
     let rpc_url = "wss://eth-mainnet.g.alchemy.com/v2/your-api-key";
 
