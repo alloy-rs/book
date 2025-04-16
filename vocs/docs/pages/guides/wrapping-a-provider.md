@@ -1,6 +1,11 @@
 # Wrapping a Provider
 
-There are multiple ways in which a provider can be wrapped.
+A common pattern is to create abstractions over the `Provider` type to add additional functionality or to bake in a more
+user-friendly API on top. The goal of this is to have the more verbose part API or error handling done under the hood.
+
+For example, creating a `Deployer` struct that ingests the `Provider` and the bytecode to deploy contracts and interact with them. More on this in the example snippets below.
+
+There are multiple ways in which a provider can be wrapped:
 
 1. Using the `P: Provider`.
 2. Wrapping the `DynProvider` when you're okay with erasing the type information.
