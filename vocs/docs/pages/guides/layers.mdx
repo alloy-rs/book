@@ -12,44 +12,11 @@ Check out [this classic blog post](https://tokio.rs/blog/2021-05-14-inventing-th
 
 ### Basic tower service and layer implementation
 
-Here's a barebones service that prepends `"Hello "` to its argument:
+For the sake of simplicity, we're implementing a basic tower service that prepends a "Hello " to the incoming request message.
 
-```rust
-struct MyService;
+A custom `DelayLayer` will be added to this service using the [`ServiceBuilder`](https://docs.rs/tower/latest/tower/struct.ServiceBuilder.html).
 
-impl Service<String> for MyService {
-    type Response = String;
-    type Error = ();
-    type Future = Ready<Result<Self::Response, Self::Error>>;
-
-    fn poll_ready(&mut self, _cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
-        Poll::Ready(Ok(()))
-    }
-
-    fn call(&mut self, req: String) -> Self::Future {
-        ready(Ok(format!("Hello {}!", req)))
-    }
-}
-```
-
-It's a bit verbose for its minimal functionality. Please refer to the [_inventing the service layer_ post](https://tokio.rs/blog/2021-05-14-inventing-the-service-trait) understand the origin of this boilerplate better.
-
-Here's how you can use it:
-
-```rust
-#[tokio::main]
-async fn main() {
-    let mut service = ServiceBuilder::new().service(MyService);
-
-    let response = service.call("Alice".to_string()).await;
-    match response {
-        Ok(msg) => println!("{}", msg),
-        Err(_) => eprintln!("An error occurred!"),
-    }
-}
-```
-
-Let's make it a bit more interesting by implementing a custom layer:
+Here's the implementation of our [`DelayLayer`](/examples/layers/delay_layer):
 
 ```rust
 struct DelayLayer {
@@ -103,13 +70,15 @@ where
 }
 ```
 
-It's also a bit verbose, but this overhead is necessary to make the compiler happy. A core functionality of our layer is implemented in the `call` method. You can see that it wraps the unresolved future and delays it by calling `sleep`. This implementation is similar to how we can modify the Alloy `Request/Response` cycle. It's worth noting that while `MyService` defines a specific `Type = String` type, `DelayLayer` is generic. It will come in handy very soon.
+It's a bit verbose for its minimal functionality. Please refer to the [_inventing the service layer_ post](https://tokio.rs/blog/2021-05-14-inventing-the-service-trait) to understand the origin of this boilerplate better.
 
-Here's our delay layer in action:
+The core functionality of our layer is implemented in the `call` method. You can see that it wraps the unresolved future and delays it by calling `sleep`. This implementation is similar to how we can modify the alloy `Request/Response` cycle. It's worth noting that the `DelayLayer` is generic over the `Service` allowing composibilty/layering with other services.
 
-[ `examples/tower_basic.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/layers/examples/tower_basic.rs)
+Here's our `DelayLayer` being added added to a basic tower service:
 
-```rust
+:::code-group
+
+```rust [tower_basic.rs]
 #[tokio::main]
 async fn main() {
     let mut service = ServiceBuilder::new()
@@ -124,11 +93,27 @@ async fn main() {
 }
 ```
 
-Running this example outputs _"Hello Alice!"_ after a 5-second delay:
+```rust [my_service.rs]
+struct MyService;
 
-```bash
-cargo run --example tower_basic
+impl Service<String> for MyService {
+    type Response = String;
+    type Error = ();
+    type Future = Ready<Result<Self::Response, Self::Error>>;
+
+    fn poll_ready(&mut self, _cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
+        Poll::Ready(Ok(()))
+    }
+
+    fn call(&mut self, req: String) -> Self::Future {
+        ready(Ok(format!("Hello {}!", req)))
+    }
+}
 ```
+
+:::
+
+Running this example outputs _"Hello Alice!"_ after a 5-second delay.
 
 Layers might sound similar to the fillers, but there's a crucial difference. Fillers can be used to modify the `TransactionRequest` object before it is submitted. Layers work within the `Request/Response` scope, allowing us to customize logic before and after sending the RPC request. If you're familiar with the Alloy predecessor Ethers.rs, you've probably noticed that it used [middleware](https://www.gakonst.com/ethers-rs/middleware/middleware.html) to achieve the same result.
 
@@ -138,7 +123,7 @@ Now that we've covered the basics let's see how layers fit within the Alloy stac
 
 Let's start with a simple example of reusing our `DelayLayer` for Alloy providers. This particular example does not have the best practical use case, but it shows that some generic layers can be reused regardless of the underlying `Service` `Request` type:
 
-[ `examples/alloy_delay.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/layers/examples/alloy_delay.rs)
+[ `examples/alloy_delay.rs`](/examples/layers/delay_layer)
 
 ```rust
 #[tokio::main]
@@ -171,19 +156,17 @@ async fn main() -> Result<()> {
 }
 ```
 
-Execute it like this:
+Running this example would output:
 
-```bash
-cargo run --example alloy_delay
-# Balance before: 0
-# Balance after: 1
+```text
+# After a 1 second delay
+Balance before: 0
+Balance after: 1
 ```
 
 You'll notice a considerable delay before it executes. Let's add logging to better understand where it's coming from.
 
 ### Using logging layer for Alloy provider
-
-We will use a popular [Tracing crate](https://github.com/tokio-rs/tracing) to display logs on each RPC request. Here's the implementation:
 
 ```rust
 struct LoggingLayer;
@@ -217,13 +200,13 @@ where
     }
 
     fn call(&mut self, req: RequestPacket) -> Self::Future {
-        tracing::info!("Request: {req:?}");
+        println!("Request: {req:?}");
 
         let fut = self.inner.call(req);
 
         Box::pin(async move {
             let res = fut.await;
-            tracing::info!("Response: {res:?}");
+            println!("Response: {res:?}");
             res
         })
     }
@@ -234,22 +217,18 @@ You can notice that it's very similar to the `DelayLayer`. Core logic lives in t
 
 Here's how you can connect it to the provider:
 
-[ `examples/alloy_logging.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/layers/examples/alloy_logging.rs)
+[ `examples/alloy_logging.rs`](/examples/layers/logging_layer)
 
 ```rust
+// Request/Response modifying layers should be added to the RPC-client
 let client = ClientBuilder::default()
     .layer(DelayLayer::new(Duration::from_secs(1)))
     .layer(LoggingLayer)
-    .http(anvil.endpoint().parse()?);
+    // Previously, on_http
+    .connect_http(anvil.endpoint().parse()?);
 let provider = ProviderBuilder::new()
     .wallet(signer)
     .on_client(client);
-```
-
-Now run this example:
-
-```bash
-RUST_LOG=info cargo run --example alloy_logging
 ```
 
 ![Alloy logging](/guides-images/layers/alloy_logs.png)
