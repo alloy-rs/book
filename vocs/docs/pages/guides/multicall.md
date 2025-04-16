@@ -1,8 +1,8 @@
-## Multicall and Multicall Batching layer
+# Multicall and Multicall Batching layer
 
 Alloy provides two ways in which a user can make multicalls to the [Multicall3 contract](https://www.multicall3.com/), both of which tightly integrated with the `Provider` to make usage as easy as possible.
 
-### Multicall Builder
+## Multicall Builder
 
 Accessed via the `provider.multicall()` method works hand in hand with the bindings returned by the `sol!` macro to stack up multiple calls.
 
@@ -19,9 +19,9 @@ let multicall = provider
         .get_eth_balance(alice);
 ```
 
-You can find the complete example [here](https://github.com/alloy-rs/examples/blob/main/examples/providers/examples/multicall.rs)
+You can find the complete example [here](/examples/providers/multicall)
 
-### Multicall Batching Layer
+## Multicall Batching Layer
 
 Append a batching layer to the provider enabling `EthCall`'s to be automatically aggregated under the hood.
 
@@ -30,7 +30,7 @@ However, this only works when requests are made in parallel, for example when us
 [`tokio::join!`] macro or in multiple threads/tasks, as otherwise the requests will be sent one
 by one as normal, but with an added delay.
 
-```rust
+```rust [multicall_batching.rs]
 use alloy_provider::{layers::CallBatchLayer, Provider, ProviderBuilder};
 use std::time::Duration;
 
@@ -53,3 +53,5 @@ async fn f(url: &str) -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 ```
+
+Find the complete example [here](/examples/providers/multicall_batching)

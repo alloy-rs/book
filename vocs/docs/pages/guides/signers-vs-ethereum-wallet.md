@@ -1,4 +1,6 @@
-## Signers vs Ethereum Wallet
+# Signers vs Ethereum Wallet
+
+## Signer
 
 Signers implement the [`Signer` trait](https://github.com/alloy-rs/alloy/blob/main/crates/signer/src/signer.rs) which enables them to sign hashes, messages and typed data.
 
@@ -17,6 +19,8 @@ let provider = ProviderBuilder::new()
     .connect_http("http://localhost:8545")?;
 
 ```
+
+## `EthereumWallet`
 
 EthereumWallet is a type that can hold multiple different signers such `PrivateKeySigner`, `AwsSigner`, `LedgerSigner` etc and also be passed to the `Provider` using the `ProviderBuilder`.
 
@@ -43,8 +47,10 @@ The `PrivateKeySigner` will set to the default signer if the `from` field is not
 If you wish to change the default signer after instantiating `EthereumWallet`, you can do so by using the `register_default_signer` method.
 
 ```rust
-let mut wallet = EthereumWallet::from(pk_signer) // pk_signer will be registered as the default signer.
+// `pk_signer` will be registered as the default signer
+let mut wallet = EthereumWallet::from(pk_signer)
     .register_signer(ledger_signer);
 
+// Changes the default signer to `aws_signer`
 wallet.register_default_signer(aws_signer);
 ```

@@ -1,21 +1,25 @@
-## Wrapping a Provider
+# Wrapping a Provider
 
 There are multiple ways in which a provider can be wrapped.
 
 1. Using the `P: Provider`.
 2. Wrapping the `DynProvider` when you're okay with erasing the type information.
 
-The ideal way is by using the `P: Provider` generic on the encapsulating type. This is depicted by the following [example](https://github.com/alloy-rs/examples/tree/cb2cd9483cfdb8e54744131b34451c996dcc240c/examples/providers/examples/wrapped_provider.rs)
+## Using generics `P: Provider`
 
-```rust
+The ideal way is by using the `P: Provider` generic on the encapsulating type. This is depicted by the following [example](/examples/providers/wrapped_provider).
+
+```rust [wrapped_provider.rs]
 // [!include ~/snippets/providers/examples/wrapped_provider.rs]
 ```
 
+## DynProvider
+
 Sometimes, you're okay with type erasure and don't want to use generics. In those cases, one should use the `DynProvider`.
 
-`DynProvider` erases the type of a provider while maintaining its core functionality.
+[`DynProvider`](/examples/providers/dyn_provider) erases the type of a provider while maintaining its core functionality.
 
-```rust
+```rust [dyn_provider.rs]
 // [!include ~/snippets/providers/examples/dyn_provider.rs]
 ```
 
