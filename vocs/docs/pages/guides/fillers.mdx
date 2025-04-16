@@ -16,55 +16,20 @@ These core fillers are termed as [`RecommendedFillers`](https://docs.rs/alloy-pr
 
 In a world without the above fillers, sending a simple transfer transaction looks like the following:
 
-[ `examples/basic.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/fillers/examples/basic.rs)
+[ `examples/basic_provider.rs`](/examples/providers/basic_provider)
 
-```rust
-#[tokio::main]
-async fn main() -> Result<()> {
-    let anvil = Anvil::new().try_spawn()?;
-    let signer: PrivateKeySigner = anvil.keys()[0].clone().into();
-    let alice = signer.address();
+:::code-group
 
-    let provider = ProviderBuilder::new()
-        .disable_recommended_fillers()
-        .wallet(wallet)
-        .on_http(anvil.endpoint().parse()?);
-
-    let alice = signer.address();
-    let bob = Address::from([0x42; 20]);
-    let fees = provider.estimate_eip1559_fees().await?;
-    let nonce = provider.get_transaction_count(alice).await?;
-    let chain_id = provider.get_chain_id().await?;
-
-    let tx = TransactionRequest::default()
-        .with_value(U256::from(1))
-        .with_chain_id(chain_id)
-        .with_from(alice)
-        .with_nonce(nonce)
-        .with_max_fee_per_gas(fees.max_fee_per_gas)
-        .with_max_priority_fee_per_gas(fees.max_priority_fee_per_gas)
-        .with_gas_limit(21000)
-        .with_to(bob)
-        .with_value(U256::from(1));
-
-    let bob_balance_before = provider.get_balance(bob).await?;
-    _ = provider.send_transaction(tx).await?.get_receipt().await?;
-    let bob_balance_after = provider.get_balance(bob).await?;
-    println!(
-        "Balance before: {}\nBalance after: {}",
-        bob_balance_before, bob_balance_after
-    );
-
-    Ok(())
-}
+```rust [basic_provider.rs]
+// [!include ~/snippets/providers/examples/basic_provider.rs]
 ```
 
-Running the above produces:
-
-```text
+```bash [output]
 Balance before: 0
 Balance after: 1
 ```
+
+:::
 
 In this example, we sent 1 wei from `alice` (default anvil account) to `bob`. You can see that a lot of boilerplate is involved in building the transaction data. We must manually check the account's current `nonce`, network fees, `gas_limit`, and `chain_id`.
 
@@ -77,7 +42,7 @@ Caused by:
 
 Now, let's see how using `RecommendedFillers` improves this:
 
-[ `examples/recommended.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/fillers/examples/recommended.rs)
+[ `examples/recommended.rs`](/examples/fillers/recommended_fillers)
 
 ```rust
 #[tokio::main]
@@ -120,7 +85,7 @@ Alloy comes with builder methods for automatically applying fillers to providers
 
 Let's go beyond the basics and implement a custom filler to better understand the inner workings.
 
-## Implementing a custom Alloy filler
+## Implementing a custom filler
 
 Submitting txs with a high-enough gas price, to land in the next block is a common use case. We will implement a custom filler to automatically check and fill the correct gas price.
 
@@ -128,11 +93,13 @@ We will query the free [Blocknative Gas API](https://docs.blocknative.com/gas-pr
 
 We will be working with the following API output:
 
-```bash
+:::code-group
+
+```bash [request]
 curl https://api.blocknative.com/gasprices/blockprices
 ```
 
-```json
+```json [response]
 {
   "system": "ethereum",
   "network": "main",
@@ -183,11 +150,13 @@ curl https://api.blocknative.com/gasprices/blockprices
 }
 ```
 
+:::
+
 It shows gas prices needed to commit tx in the next block, with a specified confidence.
 
 To build a custom filler, you have to implement a [`TxFiller`](https://docs.rs/alloy-provider/latest/alloy_provider/fillers/trait.TxFiller.html) trait. Here's a sample implementation for our `UrgentQueue` filler:
 
-[`src/lib.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/fillers/src/lib.rs)
+[`examples/urgent_filler.rs`](/examples/fillers/urgent_filler)
 
 ```rust
 #[derive(Clone, Debug, Default)]
@@ -277,9 +246,9 @@ impl<N: Network> TxFiller<N> for UrgentQueue {
 }
 ```
 
-The above implementation fetches gas prices from the Blocknative API and injects them into our transaction. With this implementation, we'll have 99% confidence that our transaction will land in the next block. Here's how you can use it:
+The above implementation fetches gas prices from the Blocknative API and injects them into our transaction. With this implementation, we'll have 99% confidence that our transaction will land in the next block. Here's how you can build the provider with the `UrgentQueue` filler:
 
-[ `examples/urgent.rs`](https://github.com/alloy-rs/writeups/blob/main/code_examples/fillers/examples/urgent.rs)
+[ `examples/urgent_filler.rs`](/examples/fillers/urgent_filler)
 
 ```rust
 let provider = ProviderBuilder::new()
