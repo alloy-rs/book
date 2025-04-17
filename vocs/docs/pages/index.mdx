@@ -81,7 +81,7 @@ import { HomePage, Sponsors } from "vocs/components";
 
 :::code-group
 
-```rust [read_contract.rs]
+```rust showLineNumbers [read_contract.rs]
 //! Demonstrates reading a contract by fetching the WETH balance of an address.
 use alloy::{primitives::address, providers::ProviderBuilder, sol};
 use std::error::Error;
@@ -114,7 +114,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 }
 ```
 
-```rust [write_contract.rs]
+```rust showLineNumbers [write_contract.rs]
 //! Demonstrates writing to a contract by depositing ETH to the WETH contract.
 use alloy::{
     primitives::{
@@ -170,7 +170,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 }
 ```
 
-```rust [send_transaction.rs]
+```rust showLineNumbers [send_transaction.rs]
 //! Send a transaction transferring ETH.
 use alloy::{
     network::TransactionBuilder,
