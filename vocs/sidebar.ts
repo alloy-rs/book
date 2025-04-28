@@ -13,12 +13,12 @@ export const sidebar: Sidebar = [
     {
       text: 'Guides',
       items: [
-        { text: 'Wrapping a provider', link: '/guides/wrapping-a-provider' },
+        { text: 'Fast Primitives', link: '/guides/speed-up-using-u256' },
+        { text: 'Performant ABI Encoding', link: '/guides/static-dynamic-abi-in-alloy' },
+        { text: 'Multicall', link: '/guides/multicall' },
         { text: 'Interacting with multiple networks', link: '/guides/interacting-with-multiple-networks' },
         { text: 'Signers vs Ethereum Wallet', link: '/guides/signers-vs-ethereum-wallet' },
-        { text: 'Multicall', link: '/guides/multicall' },
-        { text: 'Performant ABI Encoding', link: '/guides/static-dynamic-abi-in-alloy' },
-        { text: 'Fast Primitives', link: '/guides/speed-up-using-u256' },
+        { text: 'Custom RPC provider', link: '/guides/custom-rpc-provider' },
         { text: 'High-Priority Transaction Queue with Fillers', link: '/guides/fillers' },
         { text: 'Overriding Transport behaviour with Layers', link: '/guides/layers' },
       ]

@@ -1,19 +1,20 @@
 # Why Alloy?
 
 Alloy is the next-generation Rust toolkit for Ethereum development and a complete rewrite of [ethers-rs](https://www.gakonst.com/ethers-rs/getting-started/intro.html). Alloy offers a modular, high-performance, and developer-friendly experience for building on EVM-compatible chains.
-
-It addresses the various pain points of existing tooling in the Rust Ethereum ecosystem, such as perfomance bottlenecks, cumbersome APIs and having to deal with feature flag that bloat your application. Alloy turns directly addresses these challenges with:
+It addresses the various pain points of existing tooling in the Rust Ethereum ecosystem, such as perfomance bottlenecks, cumbersome APIs and having to deal with feature flag that bloat your application. 
 
 ---
 
-- **Layered Architecture**: Replaces monolithic middleware with composable layers and fillers, enhancing modularity and clarity.
+It provides a complete toolkit for Ethereum development in Rust:
 
-- **Multi-Chain Support**: The `Network` trait allows seamless integration with any EVM-compatible chain without feature flags.
+- **Seamless smart contract interactions**: The `sol!` macro enables you to parse Solidity syntax directly in Rust code, simplifying contract interactions.
+
+- **Simplified RPC Provider Usage**: Alloy enables you to connect to an EVM node in a simple and intuitive way. 
 
 - **Optimized Primitives**: Achieves up to 60% faster U256 operations and 10x faster ABI encoding through rewritten core components.
 
-- **Simplified Provider Usage**: Eliminates the need for Arc wrapping with cleaner, more intuitive provider and signer implementations.
+- **Multi-Chain Support**: The `Network` trait allows seamless integration with any EVM-compatible chain without feature flags.
 
-- **First-class contract interactions**: The `sol!` macro enables writing Solidity directly in Rust code, simplifying contract interactions and reducing context switching.
+- **Layered Architecture**: Replaces monolithic middleware with composable layers and fillers, enhancing modularity and clarity.
 
-Alloy is already powering major projects like [Foundry](https://github.com/foundry-rs/foundry), Reth(https://github.com/paradigmxyz/reth), [Arbitrum Stylus](https://github.com/OffchainLabs/stylus-sdk-rs), [OP Kona](https://github.com/op-rs/kona) and many more. It's designed to be the performant and stable foundation for the Rust Ethereum ecosystem.
+Alloy is already powering major projects like [Foundry](https://github.com/foundry-rs/foundry), [Reth](https://github.com/paradigmxyz/reth), [Arbitrum Stylus](https://github.com/OffchainLabs/stylus-sdk-rs), [OP Kona](https://github.com/op-rs/kona) and many more. It's designed to be the performant and stable foundation for the Rust Ethereum ecosystem.
