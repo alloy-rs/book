@@ -1,4 +1,4 @@
-# Getting Started [Quickly connect to a blockchain using alloy]
+# Getting Started [The simplest, fastest Rust toolkit to interact with any EVM chain]
 
 ## Overview
 
@@ -19,9 +19,9 @@ cargo add alloy
 
 ## Quick Start
 
-### 1. Sending ETH
+### 1. Sending Transactions
 
-This example shows how to send 100 ETH using the [`TransactionBuilder`](/transactions/using-the-transaction-builder)
+This example shows how to send 100 ETH using the [`TransactionBuilder`](/transactions/using-the-transaction-builder) on a local anvil node
 
 ```rust
 use alloy::{
@@ -43,11 +43,10 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let signer: PrivateKeySigner =
         "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80".parse()?;
 
-    // Instantiate a provider with the signer
-    // This example uses a local Anvil node
+    // Instantiate a provider with the signer and a local anvil node
     let provider = ProviderBuilder::new()
         .wallet(signer)
-        .connect("https://reth-ethereum.ithaca.xyz/rpc")
+        .connect("http://127.0.0.1:8545")
         .await?;
 
     // Prepare a transaction request to send 100 ETH to Alice
