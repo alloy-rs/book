@@ -157,7 +157,7 @@ This example shows how to monitor blocks and track the balance of a famous contr
 ```rust
 use alloy::{
     primitives::{Address, utils::format_ether},
-    providers::{Provider, ProviderBuilder},
+    providers::{Provider, ProviderBuilder, WsConnect},
 };
 use std::error::Error;
 use futures::StreamExt;
@@ -165,8 +165,9 @@ use futures::StreamExt;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
     // Connect to an Ethereum node via WebSocket
+    let ws = WsConnect::new("wss://reth-ethereum.ithaca.xyz/ws");
     let provider = ProviderBuilder::new()
-        .connect_ws("wss://ethereum.ithaca.xyz/ws")
+        .connect_ws(ws)
         .await?;
 
     // Uniswap V3 ETH-USDC Pool address
@@ -178,12 +179,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     // Process each new block as it arrives
     while let Some(block) = block_stream.next().await {
-        println!("🧱 Block #{}: {}", block.header.number, block.header.hash);
+        println!("🧱 Block #{}: {}", block.number, block.hash);
 
         // Get contract balance at this block
         let balance = provider
             .get_balance(uniswap_pool)
-            .block_id(block.header.number.into())
+            .block_id(block.number.into())
             .await?;
 
         // Format the balance in ETH
