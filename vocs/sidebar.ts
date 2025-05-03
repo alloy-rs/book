@@ -18,7 +18,7 @@ export const sidebar: Sidebar = [
         { text: 'Multicall', link: '/guides/multicall' },
         { text: 'Interacting with multiple networks', link: '/guides/interacting-with-multiple-networks' },
         { text: 'Signers vs Ethereum Wallet', link: '/guides/signers-vs-ethereum-wallet' },
-        { text: 'Custom RPC provider', link: '/guides/custom-rpc-provider' },
+        { text: 'RPC provider Abstraction', link: '/guides/rpc-provider-abstraction' },
         { text: 'High-Priority Transaction Queue with Fillers', link: '/guides/fillers' },
         { text: 'Overriding Transport behaviour with Layers', link: '/guides/layers' },
       ]

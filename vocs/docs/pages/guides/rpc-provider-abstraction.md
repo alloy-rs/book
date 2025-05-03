@@ -1,4 +1,4 @@
-# Custom RPC Provider Abstractions
+# RPC Provider Abstractions
 
 Alloy offers *Provider Wrapping* as a design pattern that lets you extend or customize the behavior of a Provider by encapsulating it inside another object. 
 
@@ -38,7 +38,7 @@ Use DynProvider when you prioritize simplicity and flexibility, such as in appli
 With `DynProvider` we use dynamic dispatch, accept a slightly slower runtime overhead but can avoid dealing with generics. 
 Use this approach when you prefer simplicity over speed speed, minimise compile and binary size or want to create heterogeneous collections. 
 
-### `DynProvider` does not require `Arc` 
+## `Provider` does not require `Arc` 
 
 You might be tempted to wrap a `Provider` in `Arc` to enable sharing and cloning:
 
