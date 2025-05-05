@@ -1,7 +1,7 @@
 # Why Alloy?
 
 Alloy is the next-generation Rust toolkit for Ethereum development and a complete rewrite of [ethers-rs](https://www.gakonst.com/ethers-rs/getting-started/intro.html). Alloy offers a modular, high-performance, and developer-friendly experience for building on EVM-compatible chains.
-It addresses the various pain points of existing tooling in the Rust Ethereum ecosystem, such as perfomance bottlenecks, cumbersome APIs and having to deal with feature flag that bloat your application. 
+It addresses the various pain points of existing tooling in the Rust Ethereum ecosystem, such as perfomance bottlenecks, cumbersome APIs and having to deal with feature flag that bloat your application.
 
 ---
 
@@ -9,12 +9,46 @@ It provides a complete toolkit for Ethereum development in Rust:
 
 - **Seamless smart contract interactions**: The `sol!` macro enables you to parse Solidity syntax directly in Rust code, simplifying contract interactions.
 
-- **Simplified RPC Provider Usage**: Alloy enables you to connect to an EVM node in a simple and intuitive way. 
-
-- **Optimized Primitives**: Achieves up to 60% faster U256 operations and 10x faster ABI encoding through rewritten core components.
+- **Simplified RPC Provider Usage**: Alloy enables you to connect to an EVM node in a simple and intuitive way.
 
 - **Multi-Chain Support**: The `Network` trait allows seamless integration with any EVM-compatible chain without feature flags.
 
 - **Layered Architecture**: Replaces monolithic middleware with composable layers and fillers, enhancing modularity and clarity.
+
+- **Optimized Primitives**: Alloy's rewritten core components deliver major performance gains across key Ethereum operations. For example, for ABI encoding, U256 operation, and RLP encoding/decoding:
+
+  <br />
+
+  **ABI Encoding**
+
+  <br />
+  <br />
+
+  |             | Ethers    | Alloy      | Speedup       |
+  | :---------- | :-------- | :--------- | :------------ |
+  | **Static**  | `1.12 μs` | `90.89 ns` | 🚀 **12.32x** |
+  | **Dynamic** | `2.20 μs` | `1.88 μs`  | ✅ **1.17x**  |
+
+  **U256 Operations: Uniswap V2 Swap Calculations**
+
+  <br />
+  <br />
+
+  |               | Ethers      | Alloy       | Speedup      |
+  | :------------ | :---------- | :---------- | :----------- |
+  | **amountIn**  | `512.47 ns` | `216.32 ns` | 🚀 **2.37x** |
+  | **amountOut** | `53.82 ns`  | `18.19 ns`  | 🚀 **2.96x** |
+
+  **RLP Encoding/Decoding**
+
+  <br />
+  <br />
+
+  |              | Parity-Rlp | Alloy-Rlp  | Speedup      |
+  | :----------- | :--------- | :--------- | :----------- |
+  | **Encoding** | `86.70 ns` | `26.88 ns` | 🚀 **3.23x** |
+  | **Decoding** | `88.79 ns` | `21.43 ns` | 🚀 **4.14x** |
+
+  Complete benchmarks and their source code can be found [here](https://github.com/alloy-rs/examples/tree/main/benches).
 
 Alloy is already powering major projects like [Foundry](https://github.com/foundry-rs/foundry), [Reth](https://github.com/paradigmxyz/reth), [Arbitrum Stylus](https://github.com/OffchainLabs/stylus-sdk-rs), [OP Kona](https://github.com/op-rs/kona) and many more. It's designed to be the performant and stable foundation for the Rust Ethereum ecosystem.
