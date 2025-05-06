@@ -15,40 +15,62 @@ It provides a complete toolkit for Ethereum development in Rust:
 
 - **Layered Architecture**: Replaces monolithic middleware with composable layers and fillers, enhancing modularity and clarity.
 
-- **Optimized Primitives**: Alloy's rewritten core components deliver major performance gains across key Ethereum operations such as ABI encoding/decoding, U256 operations, and RLP encoding and decoding:
+- **Optimized Primitives**: Alloy's rewritten core components deliver major performance gains across key Ethereum operations such as ABI encoding/decoding, U256 operations, and RLP encoding and decoding.
 
-  <br />
+## Benchmarks
 
-  **ABI Encoding**
+Alloy's performance improvements are demonstrated through several key benchmarks.
 
-  <br />
-  <br />
+1. **ABI Encoding**: Measures the speed of encoding Solidity contract data (both static and dynamic types) into the Ethereum ABI format, which is required for making contract calls and sending transactions. For the purpose of this benchmark, we are encoding the Uniswap V2 `swap` function.
 
-  |             | Ethers    | Alloy      | Speedup       |
-  | :---------- | :-------- | :--------- | :------------ |
-  | **Static**  | `1.12 μs` | `90.89 ns` | 🚀 **12.32x** |
-  | **Dynamic** | `2.20 μs` | `1.88 μs`  | ✅ **1.17x**  |
+   {" "}
 
-  **U256 Operations: Uniswap V2 Swap Calculations**
+   <br />
 
-  <br />
-  <br />
+   ```solidity
+   // Benchmarks encode the calldata for this method
+   function swap(uint amount0Out, uint amount1Out, address to, bytes
+   calldata data) external;
 
-  |               | Ethers      | Alloy       | Speedup      |
-  | :------------ | :---------- | :---------- | :----------- |
-  | **amountIn**  | `512.47 ns` | `216.32 ns` | 🚀 **2.37x** |
-  | **amountOut** | `53.82 ns`  | `18.19 ns`  | 🚀 **2.96x** |
+   ```
 
-  **RLP Encoding/Decoding**
+   <br />
 
-  <br />
-  <br />
+   |             | Ethers    | Alloy      | Speedup       |
+   | :---------- | :-------- | :--------- | :------------ |
+   | **Static**  | `1.12 μs` | `90.89 ns` | 🚀 **12.32x** |
+   | **Dynamic** | `2.20 μs` | `1.88 μs`  | ✅ **1.17x**  |
 
-  |              | Parity-Rlp | Alloy-Rlp  | Speedup      |
-  | :----------- | :--------- | :--------- | :----------- |
-  | **Encoding** | `86.70 ns` | `26.88 ns` | 🚀 **3.23x** |
-  | **Decoding** | `88.79 ns` | `21.43 ns` | 🚀 **4.14x** |
+2. **U256 Operations: Uniswap V2 Swap Calculations**: U256 Math is fairly common in EVM land, specially when interacting with DeFi protocols. For this benchmark we shall calculate the token `amountIn` and `amountOut` necessary for swapping.
 
-  Complete benchmarks and their source code can be found [here](https://github.com/alloy-rs/examples/tree/main/benches).
+   {" "}
+
+   <br />
+
+   |               | Ethers      | Alloy       | Speedup      |
+   | :------------ | :---------- | :---------- | :----------- |
+   | **amountIn**  | `512.47 ns` | `216.32 ns` | 🚀 **2.37x** |
+   | **amountOut** | `53.82 ns`  | `18.19 ns`  | 🚀 **2.96x** |
+
+3. **RLP Encoding/Decoding**: Measures the speed of encoding and decoding data using Recursive Length Prefix (RLP), a serialization method used throughout Ethereum (e.g., for blocks and transactions). For this benchmark, we shall RLP encode and decode a simple struct.
+
+   ```rust
+   // Derive the necessary traits
+   #[derive(alloy_rlp::RlpEncodable, alloy_rlp::RlpDecodable)]
+   #[derive(rlp_derive::RlpDecodable, rlp_derive::RlpEncodable)]
+   pub struct MyStruct {
+     a: u128,
+     b: Vec<u8>,
+   }
+   ```
+
+   <br />
+
+   |              | Parity-Rlp | Alloy-Rlp  | Speedup      |
+   | :----------- | :--------- | :--------- | :----------- |
+   | **Encoding** | `86.70 ns` | `26.88 ns` | 🚀 **3.23x** |
+   | **Decoding** | `88.79 ns` | `21.43 ns` | 🚀 **4.14x** |
+
+Complete benchmarks and their source code can be found [here](https://github.com/alloy-rs/examples/tree/main/benches).
 
 Alloy is already powering major projects like [Foundry](https://github.com/foundry-rs/foundry), [Reth](https://github.com/paradigmxyz/reth), [Arbitrum Stylus](https://github.com/OffchainLabs/stylus-sdk-rs), [OP Kona](https://github.com/op-rs/kona) and many more. It's designed to be the performant and stable foundation for the Rust Ethereum ecosystem.
