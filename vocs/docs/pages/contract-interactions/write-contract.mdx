@@ -1,0 +1,59 @@
+## Writing to a contract
+
+The `sol!` macro also helps up building transactions and submit them to the chain seamless.
+Once again, this is enabled via the `rpc` attribute and the [`CallBuilder`](https://docs.rs/alloy/latest/alloy/contract/struct.CallBuilder.html) type similar to how they aided in [`reading a contract`](/contract-interactions/read-contract).
+
+The `CallBuilder` exposes various transaction setting methods such as [`.value(..)`](https://docs.rs/alloy/latest/alloy/contract/struct.CallBuilder.html#method.value) to modify the transaction before sending it. The calldata encoding is handled under the hood.
+
+We'll be forking mainnet using a local anvil node to avoid spending real ETH.
+
+```rust showLineNumbers [write_contract.rs]
+//! Demonstrates writing to a contract by depositing ETH to the WETH contract.
+use alloy::{primitives::{address, utils::{format_ether, Unit}, U256},
+    providers::ProviderBuilder,
+    signers::local::PrivateKeySigner,
+    sol,
+};
+use std::error::Error;
+
+// Generate bindings for the WETH9 contract.
+// WETH9: <https://etherscan.io/token/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2>
+sol! { // [!code focus]
+    #[sol(rpc)] // [!code focus]
+    contract WETH9 { // [!code focus]
+        function deposit() public payable; // [!code focus]
+        function balanceOf(address) public view returns (uint256); // [!code focus]
+    } // [!code focus]
+} // [!code focus]
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn Error>> {
+    // Initialize a signer with a private key.
+    let signer: PrivateKeySigner =
+        "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80".parse()?;
+
+    // Instantiate a provider with the signer.
+    let provider = ProviderBuilder::new() // [!code focus]
+        // Signs transactions before dispatching them.
+        .wallet(signer) // Signs the transactions // [!code focus]
+        // Forking mainnet using anvil to avoid spending real ETH.
+        .on_anvil_with_config(|a| a.fork("https://reth-ethereum.ithaca.xyz/rpc")); [!]
+
+    // Setup WETH contract instance.
+    let weth = address!("0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2");
+    let weth = WETH9::new(weth, provider); // [!code focus]
+
+    // Prepare deposit transaction.
+    let amt = Unit::ETHER.wei().saturating_mul(U256::from(100)); // [!code focus]
+    let deposit = weth.deposit().value(amt); // [!code focus]
+
+    // Send the transaction and wait for it to be included.
+    let deposit_tx = deposit.send().await?; // [!code focus]
+    let receipt = deposit_tx.get_receipt().await?; // [!code focus]
+
+    // Check balance by verifying the deposit.
+    let balance = weth.balanceOf(receipt.from).call().await?;
+    println!("Verified balance of {:.3} WETH for {}", format_ether(balance), receipt.from); // [!code focus]
+    Ok(())
+}
+```

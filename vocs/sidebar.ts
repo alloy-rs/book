@@ -46,10 +46,12 @@ export const sidebar: Sidebar = [
     ]
    },
    {
-    text: 'Chain Interactions', 
+    text: 'Contract Interactions', 
     items: [
-      { text: 'Using sol!', link: '/interacting-with-chain/the-sol!-macro' },
-      { text: 'Query data', link: '/interacting-with-chain/queries' },
+      { text: 'Using the sol!', link: '/contract-interactions/using-sol!'},
+      { text: 'Reading a contract', link: '/contract-interactions/read-contract'},
+      { text: 'Writing to a contract', link: '/contract-interactions/write-contract'},
+      { text: 'Querying contract data', link: '/contract-interactions/queries' },
     ]
    },
    { text: 'Primitive Types',

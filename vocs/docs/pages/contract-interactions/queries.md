@@ -1,4 +1,4 @@
-## Queries
+## Querying Contracts
 
 ### Query Contract Storage
 
