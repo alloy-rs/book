@@ -26,7 +26,7 @@ export const sidebar: Sidebar = [
     { 
       text: 'RPC Providers', 
       items: [
-      { text: 'Setting up a provider', link: '/rpc-providers/setting-up-a-provider' },
+      { text: 'Introduction', link: '/rpc-providers/introduction' },
       { text: 'HTTP provider', link: '/rpc-providers/http-provider' },
       { text: 'WS provider', link: '/rpc-providers/ws-provider' },
       { text: 'IPC provider', link: '/rpc-providers/ipc-provider' },

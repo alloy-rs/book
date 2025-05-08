@@ -11,7 +11,7 @@ The recommended way of initializing an `Ipc` provider is by using the [`connect_
 ```rust
 //! Example of creating an IPC provider using the `connect_ipc` method on the `ProviderBuilder`.
 
-use alloy::providers::{IpcConnect, Provider, ProviderBuilder};
+use alloy::providers::{IpcConnect, Provider, ProviderBuilder}; // [!code focus]
 use std::error::Error;
 
 #[tokio::main]
@@ -20,8 +20,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let ipc_path = "/tmp/reth.ipc";
 
     // Create the provider.
-    let ipc = IpcConnect::new(ipc_path.to_string());
-    let provider = ProviderBuilder::new().connect_ipc(ipc).await?;
+    let ipc = IpcConnect::new(ipc_path.to_string()); // [!code focus]
+    let provider = ProviderBuilder::new().connect_ipc(ipc).await?; // [!code focus]
 
     Ok(())
 }

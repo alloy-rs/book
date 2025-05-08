@@ -9,7 +9,7 @@ The recommended way of initializing a `Ws` provider is by using the [`connect_ws
 ```rust
 //! Example of creating an WS provider using the `connect_ws` method on the `ProviderBuilder`.
 
-use alloy::providers::{Provider, ProviderBuilder, WsConnect};
+use alloy::providers::{Provider, ProviderBuilder, WsConnect}; // [!code focus]
 use std::error::Error;
 
 #[tokio::main]
@@ -18,8 +18,8 @@ async fn main() -> eyre::Result<(), Box<dyn Error>> {
     let rpc_url = "wss://eth-mainnet.g.alchemy.com/v2/your-api-key";
 
     // Create the provider.
-    let ws = WsConnect::new(rpc_url);
-    let provider = ProviderBuilder::new().connect_ws(ws).await?;
+    let ws = WsConnect::new(rpc_url); // [!code focus]
+    let provider = ProviderBuilder::new().connect_ws(ws).await?; // [!code focus]
 
     Ok(())
 }
