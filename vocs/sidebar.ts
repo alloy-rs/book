@@ -23,15 +23,6 @@ export const sidebar: Sidebar = [
         { text: 'Overriding Transport behaviour with Layers', link: '/guides/layers' },
       ]
     },
-    { text: 'Using Primitives Types',
-      items: [
-      { text: 'Hash and Address types', link: '/using-primitive-types/hash-and-address-types' },
-      { text: 'Initializing big numbers', link: '/using-primitive-types/big-numbers' },
-      { text: 'Using big numbers', link: '/using-primitive-types/using-big-numbers' },
-      { text: 'Common conversions', link: '/using-primitive-types/common-conversions' },
-      { text: 'Comparisons and equivalence', link: '/using-primitive-types/comparisons-and-equivalence' },
-    ]
-   },
     { 
       text: 'RPC Providers', 
       items: [
@@ -43,7 +34,7 @@ export const sidebar: Sidebar = [
     ]
    },
    {
-    text: 'Submitting Transactions', 
+    text: 'Transactions', 
     items: [
       { text: 'Transaction Lifecycle', link: '/transactions/transaction-lifecycle' },
       { text: 'Using the Transaction Builder', link: '/transactions/using-the-transaction-builder' },
@@ -55,10 +46,19 @@ export const sidebar: Sidebar = [
     ]
    },
    {
-    text: 'Interact with the chain', 
+    text: 'Chain Interactions', 
     items: [
       { text: 'Using sol!', link: '/interacting-with-chain/the-sol!-macro' },
       { text: 'Query data', link: '/interacting-with-chain/queries' },
+    ]
+   },
+   { text: 'Primitive Types',
+    items: [
+      { text: 'Hash and Address types', link: '/using-primitive-types/hash-and-address-types' },
+      { text: 'Initializing big numbers', link: '/using-primitive-types/big-numbers' },
+      { text: 'Using big numbers', link: '/using-primitive-types/using-big-numbers' },
+      { text: 'Common conversions', link: '/using-primitive-types/common-conversions' },
+      { text: 'Comparisons and equivalence', link: '/using-primitive-types/comparisons-and-equivalence' },
     ]
    },
     {
