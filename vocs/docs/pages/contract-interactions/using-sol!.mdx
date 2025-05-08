@@ -1,20 +1,26 @@
-## The sol! macro
+## Interacting with contracts
 
-The `sol!` procedural macro parses Solidity syntax to generate types that implement [alloy-sol-types](https://github.com/alloy-rs/core/tree/main/crates/sol-types) traits. It uses [`syn-solidity`](https://github.com/alloy-rs/core/tree/main/crates/syn-solidity), a [syn](https://github.com/dtolnay/syn)-powered Solidity parser. It aims to mimic the behavior of the official Solidity compiler (`solc`) when it comes to parsing valid Solidity code. This means that all valid Solidity code, as recognized by `solc` `0.5.0` and above is supported.
+Alloy provides a powerful and intuitive way to read and write to contracts using the `sol!` procedural macro.
+
+The sol! parses Solidity syntax to generate types that implement [alloy-sol-types](https://github.com/alloy-rs/core/tree/main/crates/sol-types) traits.
+It uses [`syn-solidity`](https://github.com/alloy-rs/core/tree/main/crates/syn-solidity), a [syn](https://github.com/dtolnay/syn)-powered Solidity parser.
+It aims to mimic the behavior of the official Solidity compiler (`solc`) when it comes to parsing valid Solidity code. This means that all valid Solidity code, as recognized by `solc` `0.5.0` and above is supported.
 
 In its most basic form `sol!` is used like this:
 
-```rust
+```rust showLineNumbers
 use alloy::{primitives::U256, sol};
 
 // Declare a Solidity type in standard Solidity
-sol! {
-    #[derive(Debug)] // ... with attributes too!
-    struct Foo {
-        uint256 bar;
-        bool baz;
-    }
-}
+// [!code focus]
+sol! { // [!code focus]
+    // ... with attributes too!
+    #[derive(Debug)] // [!code focus]
+    struct Foo { // [!code focus]
+        uint256 bar; // [!code focus]
+        bool baz; // [!code focus]
+    } // [!code focus]
+} // [!code focus]
 
 // A corresponding Rust struct is generated:
 // #[derive(Debug)]
@@ -23,13 +29,15 @@ sol! {
 //     pub baz: bool,
 // }
 
-let foo = Foo { bar: U256::from(42), baz: true };
-println!("{foo:#?}");
+let foo = Foo { bar: U256::from(42), baz: true }; // [!code focus]
+println!("{foo:#?}"); // [!code focus]
 ```
 
-### Usage
+## Generate Rust Bindings
 
-There are multiple ways to use the `sol!` macro.
+The sol! macro comes with the flexibilty of generating rust bindings for your contracts in multiple ways.
+
+### Solidity
 
 You can directly write Solidity code:
 
@@ -57,7 +65,22 @@ sol!(
 );
 ```
 
-Alternatively, if you enable the `json` feature flag, you can provide an ABI, or a path to one, in JSON format:
+### JSON-ABI
+
+By enabling the `json` feature, you can generate rust bindings from ABI compliant strings or abi files directly.
+
+The format is either a JSON ABI array or an object containing an `"abi"` key. It supports common artifact formats like Foundry's:
+
+Using an ABI file:
+
+```rust
+sol!(
+    ICounter,
+    "abi/Counter.json"
+);
+```
+
+Using an ABI compliant string:
 
 ```rust
 sol!(
@@ -100,31 +123,10 @@ sol!(
 );
 ```
 
-This is the same as:
+### Snippets
 
-```rust
-sol! {
-    interface ICounter {
-        uint256 public number;
-
-        function setNumber(uint256 newNumber);
-
-        function increment();
-    }
-}
-```
-
-You can load an ABI by file. the format is either a JSON ABI array
-or an object containing an `"abi"` key. It supports common artifact formats like Foundry's:
-
-```rust
-sol!(
-    ICounter,
-    "abi/Counter.json"
-);
-```
-
-You can also use functions directly:
+At times, you don't want to generate for the complete contract to keep your project light but still want call one or two functions.
+You can generate bindings for valid solidity snippets as well.
 
 ```rust
 sol!(
@@ -145,11 +147,12 @@ let input = hex::decode("0x38ed173900000000000000000000000000000000000000000001a
 let decoded = swapExactTokensForTokensCall::abi_decode(&input);
 ```
 
-### Attributes
+## Attributes
 
-Combined with the `sol!` macro's `#[sol(rpc)]` attribute, [`CallBuilder`](https://docs.rs/alloy/latest/alloy/contract/struct.CallBuilder.html) can be used to interact with
-on-chain contracts. The `#[sol(rpc)]` attribute generates a method for each function in a contract
-that returns a `CallBuilder` for that function.
+One can use the sol attributes to add additional functionality to the generated rust code.
+
+For example, the `#[sol(rpc)]` attribute generates code to enable seamless interaction with the contract over the RPC provider.
+It generates a method for each function in a contract that returns a [`CallBuilder`](https://docs.rs/alloy/latest/alloy/contract/struct.CallBuilder.html) for that function.
 
 If `#[sol(bytecode = "0x...")]` is provided, the contract can be deployed with `Counter::deploy` and a new instance will be created.
 The bytecode is also loaded from Foundry-style JSON artifact files.
@@ -157,3 +160,5 @@ The bytecode is also loaded from Foundry-style JSON artifact files.
 ```rust
 // [!include ~/snippets/contracts/examples/deploy_from_contract.rs]
 ```
+
+You can find a full list of attributes [here](https://docs.rs/alloy-sol-macro/latest/alloy_sol_macro/macro.sol.html#attributes).

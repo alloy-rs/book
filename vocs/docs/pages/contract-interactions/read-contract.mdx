@@ -1,0 +1,38 @@
+## Reading a contract
+
+We shall leverage the `sol!` macro and its `rpc` attribute to get the [WETH](https://etherscan.io/token/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2) balance of an address.
+
+The RPC interaction is enabled via the [`CallBuilder`](https://docs.rs/alloy/latest/alloy/contract/struct.CallBuilder.html) which handles transaction creation, setting fees and inserting the correct calldata.
+
+```rust showLineNumbers [read_contract.rs]
+//! Demonstrates reading a contract by fetching the WETH balance of an address.
+use alloy::{primitives::address, providers::ProviderBuilder, sol};
+use std::error::Error;
+
+// Generate the contract bindings for the ERC20 interface.
+sol! { // [!code focus]
+   // The `rpc` attribute enables contract interaction via the provider. [!code focus]
+   #[sol(rpc)] // [!code focus]
+   contract ERC20 { // [!code focus]
+        function balanceOf(address owner) public view returns (uint256); // [!code focus]
+   } // [!code focus]
+} // [!code focus]
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn Error>> {
+    // Initialize the provider.
+    let provider = ProviderBuilder::new().connect("https://reth-ethereum.ithaca.xyz/rpc").await?;
+
+    // Instantiate the contract instance.
+    let weth = address!("0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2");
+    let erc20 = ERC20::new(weth, provider); // [!code focus]
+
+    // Fetch the balance of WETH for a given address.
+    let owner = address!("0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"); // [!code focus]
+    let balance = erc20.balanceOf(owner).call().await?; // [!code focus]
+
+    println!("WETH Balance of {owner}: {balance}");
+
+    Ok(())
+}
+```
