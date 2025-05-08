@@ -47,8 +47,8 @@ export const sidebar: Sidebar = [
    },
    {
     text: 'Contract Interactions', 
-    link: '/contract-interactions/using-sol!',
     items: [
+      { text: 'Using the sol!', link: '/contract-interactions/using-sol!'},
       { text: 'Reading a contract', link: '/contract-interactions/read-contract'},
       { text: 'Writing to a contract', link: '/contract-interactions/write-contract'},
       { text: 'Querying contract data', link: '/contract-interactions/queries' },
