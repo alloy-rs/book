@@ -65,7 +65,7 @@ let provider = ProviderBuilder::new()
     .connect_http(rpc_url);
 ```
 
-Note that the [ProviderBuilder](/rpc-providers/setting-up-a-provider.md) constructor `new` initializes the [RecommendedFillers](/rpc-providers/understanding-fillers).
+Note that the [ProviderBuilder](/rpc-providers/introduction) constructor `new` initializes the [RecommendedFillers](/rpc-providers/understanding-fillers).
 
 Let's modify our original `TransactionRequest` to make use of the [RecommendedFiller](https://docs.rs/alloy/latest/alloy/providers/fillers/type.RecommendedFiller.html) installed on the `Provider` to automatically fill out transaction details.
 
