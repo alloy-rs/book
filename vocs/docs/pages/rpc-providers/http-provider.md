@@ -9,7 +9,7 @@ The recommended way of initializing a `Http` provider is by using the [`connect_
 ```rust
 //! Example of creating an HTTP provider using the `connect_http` method on the `ProviderBuilder`.
 
-use alloy::providers::{Provider, ProviderBuilder};
+use alloy::providers::{Provider, ProviderBuilder}; // [!code focus]
 use std::error::Error;
 
 #[tokio::main]
@@ -18,7 +18,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let rpc_url = "https://reth-ethereum.ithaca.xyz/rpc".parse()?;
 
     // Create a provider with the HTTP transport using the `reqwest` crate.
-    let provider = ProviderBuilder::new().connect_http(rpc_url);
+    let provider = ProviderBuilder::new().connect_http(rpc_url); // [!code focus]
 
     Ok(())
 }

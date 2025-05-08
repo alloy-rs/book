@@ -1,8 +1,8 @@
-## Setting up a Provider
+## RPC Provider
 
 A [`Provider`](https://docs.rs/alloy/latest/alloy/providers/trait.Provider.html) is an abstraction of a connection to the Ethereum network, providing a concise, consistent interface to standard Ethereum node functionality.
 
-### Builder
+### Provider Builder
 
 The correct way of creating a [`Provider`](https://docs.rs/alloy/latest/alloy/providers/trait.Provider.html) is through the [`ProviderBuilder`](https://docs.rs/alloy/latest/alloy/providers/struct.ProviderBuilder.html), a [builder](https://rust-unofficial.github.io/patterns/patterns/creational/builder.html).
 
@@ -10,19 +10,18 @@ Alloy provides concrete transport implementations for [`HTTP`](/rpc-providers/ht
 
 The [`connect`](https://docs.rs/alloy/latest/alloy/providers/struct.ProviderBuilder.html#method.connect) method on the [`ProviderBuilder`](https://docs.rs/alloy/latest/alloy/providers/struct.ProviderBuilder.html) will automatically determine the connection type (`Http`, `Ws` or `Ipc`) depending on the format of the URL.
 
-```rust
-//! Example of `.connect` to setup a simple provider
+```rust showLineNumbers
+//! Example of setting up a provider using the `.connect` method.
 
-use alloy::providers::{Provider, ProviderBuilder};
+use alloy::providers::{Provider, ProviderBuilder}; // [!code focus]
 use std::error::Error;
 
+const RPC_URL: &str = "https://reth-ethereum.ithaca.xyz/rpc";
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-    // Set up the RPC URL.
-    let rpc_url = "https://reth-ethereum.ithaca.xyz/rpc";
 
-    // Instanties a provider using a rpc_url string.
-    let provider = ProviderBuilder::new().connect(rpc_url).await?;
+    // Instanties a provider using a string.
+    let provider = ProviderBuilder::new().connect(RPC_URL).await?; // [!code focus]
 
     Ok(())
 }

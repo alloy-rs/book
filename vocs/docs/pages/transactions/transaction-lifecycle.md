@@ -76,7 +76,7 @@ The `RecommendedFillers` includes the following fillers:
 - [NonceFiller](https://docs.rs/alloy/latest/alloy/providers/fillers/struct.NonceFiller.html)
 - [ChainIdFiller](https://docs.rs/alloy/latest/alloy/providers/fillers/struct.ChainIdFiller.html)
 
-Because of we are using `RecommendedFillers` our `TransactionRequest` we only need a subset of the original fields:
+Because we are using `RecommendedFillers` for filling the `TransactionRequest` we only need a subset of the original fields:
 
 ```diff showLineNumbers
 // Build a transaction to send 100 wei from Alice to Bob.
