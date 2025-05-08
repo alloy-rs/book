@@ -83,30 +83,30 @@ import { HomePage, Sponsors } from "vocs/components";
 
 ```rust showLineNumbers [read_contract.rs]
 //! Demonstrates reading a contract by fetching the WETH balance of an address.
-use alloy::{primitives::address, providers::ProviderBuilder, sol};
+use alloy::{primitives::address, providers::ProviderBuilder, sol}; // [!code focus]
 use std::error::Error;
 
 // Generate the contract bindings for the ERC20 interface.
-sol! {
-   // The `rpc` attribute enables contract interaction via the provider.
-   #[sol(rpc)]
-   contract ERC20 {
-        function balanceOf(address owner) public view returns (uint256);
-   }
-}
+sol! { // [!code focus]
+   // The `rpc` attribute enables contract interaction via the provider. // [!code focus]
+   #[sol(rpc)] // [!code focus]
+   contract ERC20 { // [!code focus]
+        function balanceOf(address owner) public view returns (uint256); // [!code focus]
+   } // [!code focus]
+} // [!code focus]
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
     // Initialize the provider.
-    let provider = ProviderBuilder::new().connect("https://reth-ethereum.ithaca.xyz/rpc").await?;
+    let provider = ProviderBuilder::new().connect("https://reth-ethereum.ithaca.xyz/rpc").await?; // [!code focus]
 
     // Instantiate the contract instance.
     let weth = address!("0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2");
-    let erc20 = ERC20::new(weth, provider);
+    let erc20 = ERC20::new(weth, provider);// [!code focus]
 
     // Fetch the balance of WETH for a given address.
     let owner = address!("0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045");
-    let balance = erc20.balanceOf(owner).call().await?;
+    let balance = erc20.balanceOf(owner).call().await?;// [!code focus]
 
     println!("WETH Balance of {owner}: {balance}");
 
@@ -116,27 +116,22 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
 ```rust showLineNumbers [write_contract.rs]
 //! Demonstrates writing to a contract by depositing ETH to the WETH contract.
-use alloy::{
-    primitives::{
-        address,
-        utils::{format_ether, Unit},
-        U256,
-    },
-    providers::ProviderBuilder,
-    signers::local::PrivateKeySigner,
-    sol,
-};
+use alloy::{primitives::{address, utils::{format_ether, Unit}, U256}, // [!code focus]
+    providers::ProviderBuilder, // [!code focus]
+    signers::local::PrivateKeySigner, // [!code focus]
+    sol, // [!code focus]
+}; // [!code focus]
 use std::error::Error;
 
 // Generate bindings for the WETH9 contract.
 // WETH9: <https://etherscan.io/token/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2>
-sol! {
-    #[sol(rpc)]
-    contract WETH9 {
-        function deposit() public payable;
-        function balanceOf(address) public view returns (uint256);
-    }
-}
+sol! { // [!code focus]
+    #[sol(rpc)] // [!code focus]
+    contract WETH9 { // [!code focus]
+        function deposit() public payable; // [!code focus]
+        function balanceOf(address) public view returns (uint256); // [!code focus]
+    } // [!code focus]
+} // [!code focus]
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
@@ -145,23 +140,23 @@ async fn main() -> Result<(), Box<dyn Error>> {
         "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80".parse()?;
 
     // Instantiate a provider with the signer.
-    let provider = ProviderBuilder::new()
+    let provider = ProviderBuilder::new() // [!code focus]
         // Signs transactions before dispatching them.
-        .wallet(signer)
+        .wallet(signer) // [!code focus]
         // Forking mainnet using anvil to avoid spending real ETH.
         .on_anvil_with_config(|a| a.fork("https://reth-ethereum.ithaca.xyz/rpc"));
 
     // Setup WETH contract instance.
     let weth = address!("0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2");
-    let weth = WETH9::new(weth, provider);
+    let weth = WETH9::new(weth, provider); // [!code focus]
 
     // Prepare deposit transaction.
     let amt = Unit::ETHER.wei().saturating_mul(U256::from(100));
-    let deposit = weth.deposit().value(amt);
+    let deposit = weth.deposit().value(amt); // [!code focus]
 
     // Send the transaction and wait for it to be included.
     let deposit_tx = deposit.send().await?;
-    let receipt = deposit_tx.get_receipt().await?;
+    let receipt = deposit_tx.get_receipt().await?; // [!code focus]
 
     // Check balance by verifying the deposit.
     let balance = weth.balanceOf(receipt.from).call().await?;
@@ -173,15 +168,15 @@ async fn main() -> Result<(), Box<dyn Error>> {
 ```rust showLineNumbers [send_transaction.rs]
 //! Send a transaction transferring ETH.
 use alloy::{
-    network::TransactionBuilder,
+    network::TransactionBuilder,  // [!code focus]
     primitives::{
         address,
         utils::{format_ether, Unit},
         U256,
     },
-    providers::{Provider, ProviderBuilder},
-    rpc::types::TransactionRequest,
-    signers::local::PrivateKeySigner,
+    providers::{Provider, ProviderBuilder}, // [!code focus]
+    rpc::types::TransactionRequest, // [!code focus]
+    signers::local::PrivateKeySigner, // [!code focus]
 };
 use std::error::Error;
 
@@ -193,19 +188,19 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     // Instantiate a provider with the signer.
     // This example uses a local Anvil node.
-    let provider = ProviderBuilder::new().wallet(signer).connect("http://localhost:8545").await?;
+    let provider = ProviderBuilder::new().wallet(signer).connect("http://localhost:8545").await?; // [!code focus]
 
     // Prepare a transaction request to send 100 ETH to Alice.
     let alice = address!("0x70997970C51812dc3A010C7d01b50e0d17dc79C8");
     let value = Unit::ETHER.wei().saturating_mul(U256::from(100));
-    let tx = TransactionRequest::default().with_to(alice).with_value(value);
+    let tx = TransactionRequest::default().with_to(alice).with_value(value); // [!code focus]
 
     // Send the transaction and wait for the broadcast.
-    let pending_tx = provider.send_transaction(tx).await?;
+    let pending_tx = provider.send_transaction(tx).await?; // [!code focus]
     println!("Pending transaction... {}", pending_tx.tx_hash());
 
     // Wait for the transaction to be included and get the receipt.
-    let receipt = pending_tx.get_receipt().await?;
+    let receipt = pending_tx.get_receipt().await?; // [!code focus]
     println!(
         "Transaction included in block {}",
         receipt.block_number.expect("Failed to get block number")
