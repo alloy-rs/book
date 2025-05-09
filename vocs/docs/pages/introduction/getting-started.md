@@ -227,6 +227,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 💰 Uniswap V3 ETH-USDC Pool balance: 7496.034522333161564023 ETH
 ```
 
+:::
+
 ## Guides
 
 Check out our Guides to see more practical use cases, including:
