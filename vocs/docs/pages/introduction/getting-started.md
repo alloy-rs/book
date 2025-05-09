@@ -44,24 +44,24 @@ async fn main() -> Result<(), Box<dyn Error>> {
         "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80".parse()?;
 
     // Instantiate a provider with the signer and a local anvil node
-    let provider = ProviderBuilder::new()
-        .wallet(signer)
-        .connect("http://127.0.0.1:8545")
+    let provider = ProviderBuilder::new() // [!code focus]
+        .wallet(signer) // [!code focus]
+        .connect("http://127.0.0.1:8545") // [!code focus]
         .await?;
 
     // Prepare a transaction request to send 100 ETH to Alice
-    let alice = address!("0x70997970C51812dc3A010C7d01b50e0d17dc79C8");
-    let value = Unit::ETHER.wei().saturating_mul(U256::from(100));
-    let tx = TransactionRequest::default()
-        .with_to(alice)
-        .with_value(value);
+    let alice = address!("0x70997970C51812dc3A010C7d01b50e0d17dc79C8"); // [!code focus]
+    let value = Unit::ETHER.wei().saturating_mul(U256::from(100)); // [!code focus]
+    let tx = TransactionRequest::default() // [!code focus]
+        .with_to(alice) // [!code focus]
+        .with_value(value); // [!code focus]
 
     // Send the transaction and wait for the broadcast
-    let pending_tx = provider.send_transaction(tx).await?;
+    let pending_tx = provider.send_transaction(tx).await?; // [!code focus]
     println!("Pending transaction... {}", pending_tx.tx_hash());
 
     // Wait for the transaction to be included and get the receipt
-    let receipt = pending_tx.get_receipt().await?;
+    let receipt = pending_tx.get_receipt().await?; // [!code focus]
     println!(
         "Transaction included in block {}",
         receipt.block_number.expect("Failed to get block number")
@@ -91,14 +91,14 @@ use alloy::{
 use std::error::Error;
 
 // Generate bindings for the WETH9 contract
-sol! {
-    #[sol(rpc)]
-    contract WETH9 {
-        function deposit() public payable;
-        function balanceOf(address) public view returns (uint256);
-        function withdraw(uint amount) public;
-    }
-}
+sol! { // [!code focus]
+    #[sol(rpc)] // [!code focus]
+    contract WETH9 { // [!code focus]
+        function deposit() public payable; // [!code focus]
+        function balanceOf(address) public view returns (uint256); // [!code focus]
+        function withdraw(uint amount) public; // [!code focus]
+    } // [!code focus]
+} // [!code focus]
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
@@ -107,23 +107,23 @@ async fn main() -> Result<(), Box<dyn Error>> {
         "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80".parse()?;
 
     // Instantiate a provider with the signer
-    let provider = ProviderBuilder::new()
-        .wallet(signer)
+    let provider = ProviderBuilder::new() // [!code focus]
+        .wallet(signer) // [!code focus]
         .on_anvil_with_config(|a| a.fork("https://reth-ethereum.ithaca.xyz/rpc"));
 
     // Setup WETH contract instance
     let weth_address = address!("0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2");
-    let weth = WETH9::new(weth_address, provider.clone());
+    let weth = WETH9::new(weth_address, provider.clone()); // [!code focus]
 
     // Read initial balance
     let from_address = signer.address();
-    let initial_balance = weth.balanceOf(from_address).call().await?;
+    let initial_balance = weth.balanceOf(from_address).call().await?; // [!code focus]
     println!("Initial WETH balance: {} WETH", format_ether(initial_balance));
 
     // Write: Deposit ETH to get WETH
     let deposit_amount = Unit::ETHER.wei().saturating_mul(U256::from(10));
-    let deposit_tx = weth.deposit().value(deposit_amount).send().await?;
-    let deposit_receipt = deposit_tx.get_receipt().await?;
+    let deposit_tx = weth.deposit().value(deposit_amount).send().await?; // [!code focus]
+    let deposit_receipt = deposit_tx.get_receipt().await?; // [!code focus]
     println!(
         "Deposited ETH in block {}",
         deposit_receipt.block_number.expect("Failed to get block number")
@@ -135,15 +135,15 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     // Write: Withdraw some WETH back to ETH
     let withdraw_amount = Unit::ETHER.wei().saturating_mul(U256::from(5));
-    let withdraw_tx = weth.withdraw(withdraw_amount).send().await?;
-    let withdraw_receipt = withdraw_tx.get_receipt().await?;
+    let withdraw_tx = weth.withdraw(withdraw_amount).send().await?; // [!code focus]
+    let withdraw_receipt = withdraw_tx.get_receipt().await?; // [!code focus]
     println!(
         "Withdrew ETH in block {}",
         withdraw_receipt.block_number.expect("Failed to get block number")
     );
 
     // Read: Final balance check
-    let final_balance = weth.balanceOf(from_address).call().await?;
+    let final_balance = weth.balanceOf(from_address).call().await?; // [!code focus]
     println!("Final WETH balance: {} WETH", format_ether(final_balance));
 
     Ok(())
@@ -152,43 +152,47 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
 ### 3. Monitoring Blockchain Activity
 
-This example shows how to monitor blocks and track the balance of a famous contract in real-time:
+This example shows how to monitor blocks and track the [WETH](https://etherscan.io/token/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2) balance of a [Uniswap V3 WETH-USDC](https://etherscan.io/address/0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8) contract in real-time:
 
 ```rust
 use alloy::{
-    primitives::{Address, utils::format_ether},
+    primitives::{address, utils::format_ether},
     providers::{Provider, ProviderBuilder, WsConnect},
+    sol,
 };
-use std::error::Error;
-use futures::StreamExt;
+use futures_util::StreamExt;
+
+sol! { // [!code focus]
+    #[sol(rpc)] // [!code focus]
+    contract WETH { // [!code focus]
+        function balanceOf(address) external view returns (uint256); // [!code focus]
+    } // [!code focus]
+} // [!code focus]
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn Error>> {
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Connect to an Ethereum node via WebSocket
-    let ws = WsConnect::new("wss://reth-ethereum.ithaca.xyz/ws");
-    let provider = ProviderBuilder::new()
-        .connect_ws(ws)
-        .await?;
+    let ws = WsConnect::new("wss://reth-ethereum.ithaca.xyz/ws"); // [!code focus]
+    let provider = ProviderBuilder::new().connect_ws(ws).await?; // [!code focus]
 
-    // Uniswap V3 ETH-USDC Pool address
-    let uniswap_pool = "0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8".parse::<Address>()?;
+    // Uniswap V3 WETH-USDC Pool address
+    let uniswap_pool = address!("0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8"); // [!code focus]
+
+    // Setup the WETH contract instance
+    let weth_addr = address!("0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2");
+    let weth = WETH::new(weth_addr, &provider); // [!code focus]
 
     // Subscribe to new blocks
-    let mut block_stream = provider.subscribe_blocks().await?.into_stream();
+    let mut block_stream = provider.subscribe_blocks().await?.into_stream(); // [!code focus]
     println!("🔄 Monitoring for new blocks...");
 
     // Process each new block as it arrives
-    while let Some(block) = block_stream.next().await {
+    while let Some(block) = block_stream.next().await { // [!code focus]
         println!("🧱 Block #{}: {}", block.number, block.hash);
-
         // Get contract balance at this block
-        let balance = provider
-            .get_balance(uniswap_pool)
-            .block_id(block.number.into())
-            .await?;
-
+        let balance = weth.balanceOf(uniswap_pool).block(block.number.into()).call().await?; // [!code focus]
         // Format the balance in ETH
-        println!("💰 Uniswap V3 ETH-USDC Pool balance: {} ETH", format_ether(balance));
+        println!("💰 Uniswap V3 WETH-USDC pool balance: {} WETH", format_ether(balance));
     }
 
     Ok(())
