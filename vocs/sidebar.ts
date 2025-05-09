@@ -57,6 +57,7 @@ export const sidebar: Sidebar = [
    },
    { text: 'Primitive Types',
     items: [
+      { text: 'Introduction', link: '/using-primitive-types/introduction' },
       { text: 'Hash and Address types', link: '/using-primitive-types/hash-and-address-types' },
       { text: 'Initializing big numbers', link: '/using-primitive-types/big-numbers' },
       { text: 'Using big numbers', link: '/using-primitive-types/using-big-numbers' },

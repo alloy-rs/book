@@ -1,0 +1,86 @@
+## Alloy Primitives
+
+Alloy provides a set of performant EVM primitive types serving as the building block for crucial off-chain infrastructure and applications. These primitives are aided with various [macros](https://docs.rs/alloy-primitives/latest/alloy_primitives/#macros) and [aliases](https://docs.rs/alloy-primitives/latest/alloy_primitives/#reexports) to make them easier to work with. Here are the most basic ones that you will encounter:
+
+### Address
+
+An Ethereum address, 20 bytes in length.
+
+```rust
+use alloy::primitives::{address, Address};
+
+
+// The address! macro provides an intuitive way to instantiate the Address type from a string literal.
+let expected = address!("0xd8da6bf26964af9d7eed9e03e53415d37aa96045"); // [!code hl]
+
+
+let checksummed = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045";
+//  Parse an Ethereum address, verifying its EIP-55 checksum.
+let address = Address::parse_checksummed(checksummed, None).expect("valid checksum");
+assert_eq!(address, expected);
+```
+
+There are many other ways to instantiate an `Address` type, you can find them [here](https://docs.rs/alloy-primitives/latest/alloy_primitives/struct.Address.html#method.from_word).
+
+### U256
+
+256-bit unsigned integer type. This is a wrapper over [ruint::U256](https://docs.rs/ruint/latest/ruint/struct.Uint.html) with 4, 64 bit limbs.
+
+This is necessary because the EVM operates on a 256-bit word size, which is different from the usual 32-bit or 64-bit of modern machines
+
+`U256` implements the `std::ops::*` traits, meaning it supports all arithmetic operations.
+
+```rust
+use alloy::primitives::U256;
+
+let a = U256::from(10);
+let b = U256::from(2);
+
+// addition
+let sum = a + b;
+assert_eq!(sum, U256::from(12));
+
+// subtraction
+let difference = a - b;
+assert_eq!(difference, U256::from(8));
+
+// multiplication
+let product = a * b;
+assert_eq!(product, U256::from(20));
+
+// division
+let quotient = a / b;
+assert_eq!(quotient, U256::from(5));
+
+// modulo
+let remainder = a % b;
+assert_eq!(remainder, U256::ZERO); // equivalent to `U256::from(0)`
+
+// exponentiation
+let power = a.pow(b);
+assert_eq!(power, U256::from(100));
+```
+
+### FixedBytes
+
+A byte array of fixed length `[u8; N]`.
+
+This type allows us to more tightly control serialization, deserialization. rlp encoding, decoding, and other type-level attributes for fixed-length byte arrays.
+
+Users looking to prevent type-confusion between byte arrays of different lengths should use the `wrap_fixed_bytes!` macro to create a new fixed-length byte array type.
+
+For example the aforementioned `Address` type is a wrapper around `FixedBytes<20>` built using the [wrap_fixed_bytes](https://docs.rs/alloy-primitives/latest/alloy_primitives/macro.wrap_fixed_bytes.html) macro.
+
+```rust
+use alloy::primitives::{FixedBytes, fixed_bytes, b256};
+use alloy_primitives::{fixed_bytes, FixedBytes};
+
+const ZERO: FixedBytes <0> = fixed_bytes!();
+assert_eq!(ZERO, FixedBytes::ZERO);
+
+// 32-bytes tx hash
+let byte_array = fixed_bytes!("0xda7f09ac9b43acb4eb7d7c74dd5de20906ddd33fd4d82d8cb96997694b2d8e79");
+let b256 = b256!("0xda7f09ac9b43acb4eb7d7c74dd5de20906ddd33fd4d82d8cb96997694b2d8e79");
+
+assert_eq!(byte_array, b256);
+```
