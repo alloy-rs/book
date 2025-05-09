@@ -1,0 +1,140 @@
+## Crafting Transactions
+
+The simplest way to craft transactions is by using the [TransactionRequest](https://docs.rs/alloy-rpc-types/latest/alloy_rpc_types/transaction/struct.TransactionRequest.html) builder with the help of the [TransactionBuilder](https://docs.rs/alloy-network/latest/alloy_network/trait.TransactionBuilder.html). The `TransactionBuilder` provides a convenient interface for setting transaction fields such as recipient, value, gas, data and more, allowing you to easily construct different types of transactions whether you're sending ETH, calling a contract, or deploying a new contract.
+
+Here's a short example of crafting a simple ETH transfer request:
+
+```rust showLineNumbers
+use alloy::{
+    rpc::types::TransactionRequest,
+    network::TransactionBuilder,
+    primitives::{address, U256},
+};
+
+let tx = TransactionRequest::default()
+    .with_to(address!("0x1234567890abcdef1234567890abcdef12345678"))
+    .with_value(U256::from(1000));
+```
+
+This approach ensures your transaction is correctly structured and ready to be signed and submitted to the network. Note that we didn't set `from`, `nonce`, `chain_id`, or any gas related fields. These necessary fields are automatically filled by the `RecommendedFillers` before dispatch making our code less verbose. You can find more details about a transactions lifecycle and `RecommendedFillers` in the [Transaction Lifecycle](/transactions/transaction-lifecycle) post.
+
+## Building specific transaction types
+
+Alloy supports building a transaction request for all types of transactions via the same `TransactionRequest` builder we used above for crafting an ETH transfer. By default, the `TransactionRequest` attempts to build an [EIP1559](https://eips.ethereum.org/EIPS/eip-1559) transaction. However, you can also build other types of transactions by specifying the required type-specific fields or using specialized builders:
+
+- **Legacy transactions:** Set the `gas_price` field. Omit EIP-1559 fields like `max_fee_per_gas` and `max_priority_fee_per_gas`.
+- **EIP-2930 transactions:** Set the `access_list` field. This creates an access-list transaction.
+- **EIP-1559 transactions:** Set the `max_fee_per_gas` and `max_priority_fee_per_gas` fields. Omit the `gas_price` field.
+- **EIP-4844 transaction:** Use the `TransactionBuilder4844` to set blob specific fields using the `.with_blob_sidecar(..)` method.
+- **EIP-7702 transaction:** Use the `TransactionBuilder7702` to set the authorization list using the `.with_authorization_list(..)` method.
+
+### Legacy Transactions
+
+Setting the `gas_price` field hints the builder to construct a legacy transaction i.e `TxType = 0`.
+
+```rust showLineNumbers
+use alloy::{
+    rpc::types::TransactionRequest,
+    network::TransactionBuilder,
+    primitives::{address, U256},
+};
+
+let tx = TransactionRequest::default()
+    .with_to(address!("0x1234567890abcdef1234567890abcdef12345678"))
+    .with_value(U256::from(10000))
+    .with_gas_price(U256::from(100));
+```
+
+Find the full example [here](/transactions/sending-a-legacy-transaction).
+
+### EIP-2930 Transaction
+
+[EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) access list transaction (`TxType = 1`) can be built by setting the `access_list` field. You can learn more about the `AccessList` [here](https://docs.rs/alloy-rpc-types-eth/latest/alloy_rpc_types_eth/transaction/struct.AccessList.html).
+
+```rust showLineNumbers
+use alloy::{
+    rpc::types::TransactionRequest,
+    network::TransactionBuilder,
+    primitives::{address, U256},
+};
+
+// ..snip..
+
+let tx = TransactionRequest::default()
+    .with_to(address!("0x1234567890abcdef1234567890abcdef12345678"))
+    .with_value(U256::from(100))
+    .with_input(calldata)
+    .with_access_list(access_list)
+```
+
+Find the full example [here](/transactions/using-access-lists).
+
+### EIP-1559 Transaction
+
+By default the builder attempts to construct an [EIP1559](https://eips.ethereum.org/EIPS/eip-1559) transaction (`TxType = 2`). You can make this explicit by specifiying the priority gas fields.
+
+```rust showLineNumbers
+use alloy::{
+    rpc::types::TransactionRequest,
+    network::TransactionBuilder,
+    primitives::{address, U256},
+};
+
+let tx = TransactionRequest::default()
+    .with_to(address!("0x1234567890abcdef1234567890abcdef12345678"))
+    .with_value(U256::from(10000))
+    .with_max_fee_per_gas(1000)
+    .with_max_priority_fee_per_gas(100);
+```
+
+Find the full example [here](/transactions/sending-an-EIP-1559-transaction).
+
+### EIP-4844 Transaction
+
+EIP-4844 transactions (`TxType = 3`) are specific to Ethereum mainnet. One can build such transactions using the `TransactionBuilder4844` struct. This builder provides methods to set blob specific fields using the `.with_blob_sidecar(..)` method.
+
+```rust showLineNumbers
+use alloy::{
+    rpc::types::TransactionRequest,
+    network::{TransactionBuilder, TransactionBuilder4844},
+    primitives::{address, U256},
+};
+
+// ..snip..
+
+let tx = TransactionRequest::default()
+    .with_to(address!("0x1234567890abcdef1234567890abcdef12345678"))
+    .with_value(U256::from(1000))
+    .with_blob_sidecar(blob_sidecar);
+```
+
+Find the full example [here](/transactions/sending-an-EIP-4844-transaction).
+
+### Example: EIP-7702 Transaction
+
+EIP-7702 transaction (`TxType = 4`)
+
+```rust showLineNumbers
+use alloy::{
+    rpc::types::TransactionRequest,
+    network::{TransactionBuilder, TransactionBuilder7702},
+    primitives::{address, U256},
+};
+
+// .. snip..
+
+let tx = TransactionRequest::default()
+    .with_to(address!("0x1234567890abcdef1234567890abcdef12345678"))
+    .with_value(U256::from(1000))
+    .with_authorization_list(authorization_list);
+```
+
+Find the full example [here](/transactions/sending-an-EIP-7702-transaction).
+
+### Inspecting Transaction Type Output
+
+The `TransactionBuilder` provides methods inspect the transaction type while building it:
+
+- **`.complete_type(tx_type: TxType)`**: Check if all necessary keys are present to build the specified type, returning a list of missing keys.
+- **`.output_tx_type()`**: Returns the transaction type that this builder will attempt to build. This does not imply that the builder is ready to build.
+- **`.output_tx_type_checked()`**: Like `.output_tx_type()`, Returns `None` if the builder is not ready to build.

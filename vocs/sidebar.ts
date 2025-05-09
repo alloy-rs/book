@@ -36,6 +36,7 @@ export const sidebar: Sidebar = [
    {
     text: 'Transactions', 
     items: [
+      { text: 'Introduction', link: '/transactions/introduction' },
       { text: 'Transaction Lifecycle', link: '/transactions/transaction-lifecycle' },
       { text: 'Using the Transaction Builder', link: '/transactions/using-the-transaction-builder' },
       { text: 'Legacy Transaction', link: '/transactions/sending-a-legacy-transaction' },
