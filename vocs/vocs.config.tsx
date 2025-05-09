@@ -50,6 +50,10 @@ export default defineConfig({
       text: 'Examples',
       link: 'https://github.com/alloy-rs/examples',
     },
+    {
+      text: 'docs.rs',
+      link: 'https://docs.rs/alloy/latest/alloy/',
+    },
     { 
       text: '0.15.10', 
       items: [ 
