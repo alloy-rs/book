@@ -20,7 +20,7 @@ export const sidebar: Sidebar = [
         { text: 'Signers vs Ethereum Wallet', link: '/guides/signers-vs-ethereum-wallet' },
         { text: 'RPC provider abstractions', link: '/guides/rpc-provider-abstraction' },
         { text: 'High-Priority Transaction Queue with Fillers', link: '/guides/fillers' },
-        { text: 'Overriding Transport behaviour with Layers', link: '/guides/layers' },
+        { text: 'Overriding Transport behavior with Layers', link: '/guides/layers' },
       ]
     },
     { 
@@ -49,7 +49,7 @@ export const sidebar: Sidebar = [
    {
     text: 'Contract Interactions', 
     items: [
-      { text: 'Using the sol!', link: '/contract-interactions/using-sol!'},
+      { text: 'Using the sol! macro', link: '/contract-interactions/using-sol!'},
       { text: 'Reading a contract', link: '/contract-interactions/read-contract'},
       { text: 'Writing to a contract', link: '/contract-interactions/write-contract'},
       { text: 'Querying contract data', link: '/contract-interactions/queries' },
