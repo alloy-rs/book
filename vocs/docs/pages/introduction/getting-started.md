@@ -229,6 +229,62 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 :::
 
+## Crate Features
+
+Alloy can be consumed in multiple ways with different combinations of features for different use cases.
+
+### Meta crate
+
+The [alloy](https://crates.io/crates/alloy) meta crate is useful when you want to quickly get started without dealing with multiple installations or features.
+
+It comes with the following features as default:
+
+```toml [Cargo.toml]
+default = ["std", "reqwest", "alloy-core/default", "essentials"]
+
+# std
+std = [
+    "alloy-core/std",
+    "alloy-eips?/std",
+    "alloy-genesis?/std",
+    "alloy-serde?/std",
+    "alloy-consensus?/std",
+]
+# enable basic network interactions out of the box.
+essentials = ["contract", "provider-http", "rpc-types", "signer-local"]
+```
+
+Find the full feature list [here](https://github.com/alloy-rs/alloy/blob/main/crates/alloy/Cargo.toml).
+
+### Individual crates
+
+Alloy is a collection of modular crates that can be used independently.
+
+Meta-crates can lead to dependencies bloat increasing compile-time. For large projects where compile time can be an issue, we recommend using crates independently as in when required.
+
+```toml [Cargo.toml]
+[dependencies]
+alloy-primitives = { version = "1.0", default-features = false, features = ["rand", "serde", "map-foldhash"] }
+alloy-provider = { version = "0.15", default-features = false, features = ["ipc"] }
+# ..snip..
+```
+
+This allows you to have granular control over the dependencies and features you use in your project.
+
+Find the full list of the crates [here](/introduction/installation#crates).
+
+### `no_std` crates
+
+Most of the crates in Alloy are not `no_std` as they are primarily network-focused. Having said that we do support `no_std` implementation for crucial crates such as:
+
+1.  [alloy-eips](https://crates.io/crates/alloy-eips): Consists of Ethereum's current and future EIP types and spec implementations.
+
+2.  [alloy-genesis](https://crates.io/crates/alloy-genesis): The Ethereum genesis file definitions.
+
+3.  [alloy-serde](https://crates.io/crates/alloy-serde): Serialization and deserialization of helpers for alloy.
+
+4.  [alloy-consensus](https://crates.io/crates/alloy-consensus): The Ethereum consensus interface. It contains constants, types, and functions for implementing Ethereum EL consensus and communication. This includes headers, blocks, transactions, EIP-2718 envelopes, EIP-2930, EIP-4844, and more.
+
 ## Guides
 
 Check out our Guides to see more practical use cases, including:
@@ -237,3 +293,7 @@ Check out our Guides to see more practical use cases, including:
 - [Seamless contract interaction with the sol! macro](/guides/static-dynamic-abi-in-alloy)
 - [Creating custom transaction fillers for setting priority fees](/guides/fillers)
 - [Using multicall for aggregating RPC requests](/guides/multicall)
+
+```
+
+```
