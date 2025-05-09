@@ -293,7 +293,3 @@ Check out our Guides to see more practical use cases, including:
 - [Seamless contract interaction with the sol! macro](/guides/static-dynamic-abi-in-alloy)
 - [Creating custom transaction fillers for setting priority fees](/guides/fillers)
 - [Using multicall for aggregating RPC requests](/guides/multicall)
-
-```
-
-```
