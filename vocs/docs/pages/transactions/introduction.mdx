@@ -42,7 +42,7 @@ use alloy::{
 let tx = TransactionRequest::default()
     .with_to(address!("0x1234567890abcdef1234567890abcdef12345678"))
     .with_value(U256::from(10000))
-    .with_gas_price(U256::from(100));
+    .with_gas_price(U256::from(100)); // [!code hl]
 ```
 
 Find the full example [here](/transactions/sending-a-legacy-transaction).
@@ -64,7 +64,7 @@ let tx = TransactionRequest::default()
     .with_to(address!("0x1234567890abcdef1234567890abcdef12345678"))
     .with_value(U256::from(100))
     .with_input(calldata)
-    .with_access_list(access_list)
+    .with_access_list(access_list); // [!code hl]
 ```
 
 Find the full example [here](/transactions/using-access-lists).
@@ -83,8 +83,8 @@ use alloy::{
 let tx = TransactionRequest::default()
     .with_to(address!("0x1234567890abcdef1234567890abcdef12345678"))
     .with_value(U256::from(10000))
-    .with_max_fee_per_gas(1000)
-    .with_max_priority_fee_per_gas(100);
+    .with_max_fee_per_gas(1000) // [!code hl]
+    .with_max_priority_fee_per_gas(100); // [!code hl]
 ```
 
 Find the full example [here](/transactions/sending-an-EIP-1559-transaction).
@@ -105,7 +105,7 @@ use alloy::{
 let tx = TransactionRequest::default()
     .with_to(address!("0x1234567890abcdef1234567890abcdef12345678"))
     .with_value(U256::from(1000))
-    .with_blob_sidecar(blob_sidecar);
+    .with_blob_sidecar(blob_sidecar); // [!code hl]
 ```
 
 Find the full example [here](/transactions/sending-an-EIP-4844-transaction).
@@ -126,7 +126,7 @@ use alloy::{
 let tx = TransactionRequest::default()
     .with_to(address!("0x1234567890abcdef1234567890abcdef12345678"))
     .with_value(U256::from(1000))
-    .with_authorization_list(authorization_list);
+    .with_authorization_list(authorization_list); // [!code hl]
 ```
 
 Find the full example [here](/transactions/sending-an-EIP-7702-transaction).
