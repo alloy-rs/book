@@ -34,13 +34,26 @@ impl Network for Ethereum {
 }
 ```
 
+Choosing the wrong network type can lead to unexpected deserialization errors due to differences in RPC types. For example, the using an `Ethereum` network provider to get a full block with transactions can result in the following error:
+
+```rust [base_block.rs]
+let provider = ProviderBuilder::new()
+        .network::<Ethereum>()
+        .connect_http("https://base-sepolia.ithaca.xyz/".parse()?);
+
+// Yields: Error: deserialization error: data did not match any variant of untagged enum BlockTransactions // [!code hl]
+let block_with_txs = provider.get_block(25508329.into()).full().await?;
+```
+
+This is due to the `Deposit` transaction type which is not supported by `Ethereum` network. This can be fixed in two ways either by using the catch-all `AnyNetwork` type or by using the dedicated `Optimism` network implementation from [op-alloy-network](https://crates.io/crates/op-alloy-network).
+
 ## Catch-all network: `AnyNetwork`
 
 The `Provider` defaults to the ethereum network type, but one can easily switch to another network while building the provider like so:
 
 ```rust
 let provider = ProviderBuilder::new()
-    .network::<AnyNetwork>()
+    .network::<AnyNetwork>() // [!code hl]
     .connect_http("http://localhost:8545");
 ```
 
@@ -77,6 +90,6 @@ impl Network for Optimism {
 
 ```rust
 let provider = ProviderBuilder::new()
-    .network::<op_alloy_network::Optimism>()
+    .network::<op_alloy_network::Optimism>() // [!code hl]
     .connect_http("http://localhost:8545");
 ```
