@@ -154,7 +154,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
 This example shows how to monitor blocks and track the [WETH](https://etherscan.io/token/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2) balance of a [Uniswap V3 WETH-USDC](https://etherscan.io/address/0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8) contract in real-time:
 
-```rust
+:::code-group
+
+```rust [subscribe_blocks.rs]
 use alloy::{
     primitives::{address, utils::format_ether},
     providers::{Provider, ProviderBuilder, WsConnect},
@@ -197,6 +199,32 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
+```
+
+```sh [output]
+🔄 Monitoring for new blocks...
+🧱 Block #22445374: 0x8a75355b6efd4890789f60d1d7cb7b6c32c1ce9b0651db779c145217346d2219
+💰 Uniswap V3 ETH-USDC Pool balance: 7496.034522333161564023 ETH
+🧱 Block #22445375: 0xbb6265e4d4e81adfa73afd759d65804756fb83c5a72065b50343f7b10e1dfc47
+💰 Uniswap V3 ETH-USDC Pool balance: 7496.034522333161564023 ETH
+🧱 Block #22445376: 0xb82d720ea7e4b7019e8573d5a01865bbcecb7b8aae3a03d4dae58af1dc7ec026
+💰 Uniswap V3 ETH-USDC Pool balance: 7496.034522333161564023 ETH
+🧱 Block #22445377: 0x7d21a4f3dd376888df8a1ead3c7f0a9c9f7107b0a627795ec2584eeb92f13ce7
+💰 Uniswap V3 ETH-USDC Pool balance: 7496.034522333161564023 ETH
+🧱 Block #22445378: 0xd552c7595c9b2e77b1a9def6d818376ab6eac4c10dfc9d610a91b23894b54fa7
+💰 Uniswap V3 ETH-USDC Pool balance: 7496.034522333161564023 ETH
+🧱 Block #22445379: 0x89190317a8181eedecdddd4551bc9db0267750e659d78aca53f293c774b343b6
+💰 Uniswap V3 ETH-USDC Pool balance: 7496.034522333161564023 ETH
+🧱 Block #22445380: 0xb68a9c344233b598e43c81b14691ff73453d8ad39491a1a0120bed12d8086d11
+💰 Uniswap V3 ETH-USDC Pool balance: 7496.034522333161564023 ETH
+🧱 Block #22445381: 0x547b15a475d5e5316ddac707c37b5275568872531ca17d3022c9130b37fe0b21
+💰 Uniswap V3 ETH-USDC Pool balance: 7496.034522333161564023 ETH
+🧱 Block #22445382: 0xdd3dcf55908e6ae7cc33949952c9383afc91cf7827d5ada715baaf1a018ce050
+💰 Uniswap V3 ETH-USDC Pool balance: 7496.034522333161564023 ETH
+🧱 Block #22445383: 0x4d3a5565b18b896fea580ce94d009b11a8f076c800a3a738b66de16a91d4cd3c
+💰 Uniswap V3 ETH-USDC Pool balance: 7496.034522333161564023 ETH
+🧱 Block #22445384: 0xc29957a5d4d981dfb02416e7bec45546678914b3e9660fcb7635d0a679bce635
+💰 Uniswap V3 ETH-USDC Pool balance: 7496.034522333161564023 ETH
 ```
 
 ## Guides
