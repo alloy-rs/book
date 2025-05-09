@@ -231,7 +231,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ## Crate Features
 
-Alloy can be consumed in multiple ways with different combinations of features for different use cases.
+Alloy can be consumed in multiple ways with numerous combinations of features for different use cases.
 
 ### Meta crate
 
