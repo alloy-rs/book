@@ -49,7 +49,7 @@ participate in the discussion around bugs and participate in reviewing PRs.
 
 ### Contributions Related to Spelling and Grammar
 
-At this time, we will not be accepting contributions that only fix spelling 
+At this time, we will not be accepting contributions that only fix spelling
 or grammatical errors in documentation, code or elsewhere.
 
 ### Asking for General Help
@@ -65,8 +65,8 @@ PR that helps others avoid the problems that you encountered.
 Pull Requests are the way concrete changes are made to the code, documentation,
 and dependencies in the Alloy repository.
 
-Before making a large change, it is  usually a good idea to first open an issue 
-describing the change to solicit feedback and guidance. This will increase the 
+Before making a large change, it is usually a good idea to first open an issue
+describing the change to solicit feedback and guidance. This will increase the
 likelihood of the PR getting merged.
 
 When opening a PR **please select the "Allow Edits From Maintainers" option**.
@@ -106,20 +106,12 @@ Next clone your fork with the `--recurse-submodules` flag:
 git clone --recurse-submodules $FORK_URL
 ```
 
-The book is build with [`mdbook`](https://github.com/rust-lang/mdBook), which you can get by running `cargo install mdbook`.
-
-The book requires [`mdbook-external-links`](https://github.com/jonahgoldwastaken/mdbook-external-links): `cargo install mdbook-external-links` and [`mdbook-linkcheck`](https://github.com/Michael-F-Bryan/mdbook-linkcheck): `cargo install mdbook-linkcheck`.
+The documentation is built with [`vocs`](https://vocs.dev), you can install `vocs` by using any javascript package manager such as `bun` or `npm`. We prefer `bun`.
 
 To see the book change live run:
 
 ```sh
-mdbook serve
-```
-
-To run the book with docker, run:
-
-```sh
-docker run -p 3000:3000 -v `pwd`:/book peaceiris/mdbook serve
+cd vocs && bun dev
 ```
 
 To perform an update of generated output inspect and run `./scripts/update.sh`.
