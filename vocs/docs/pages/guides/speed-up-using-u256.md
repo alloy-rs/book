@@ -2,7 +2,7 @@
 
 [Alloy](https://alloy.rs) is a successor to the deprecated [ethers-rs](https://github.com/gakonst/ethers-rs). In this guide, we will describe how you can reap the benefits of its better performance with minimal codebase changes to ethers-rs project. We will also implement an atomic UniswapV2 arbitrage simulation to showcase how different parts of the Alloy stack fit together.
 
-Read on to learn how to speed up your ethers-rs project calculations by **up to 60%** with a simple type change.
+Read on to learn how to speed up your ethers-rs project calculations by **up to 2x faster%** with a simple type change.
 
 ## How to calculate optimal UniV2 arbitrage profit?
 
@@ -144,7 +144,7 @@ If you compare the implementation of [`alloy_helpers.rs`](https://github.com/all
 
 It's high time to compare the performance of legacy ethers-rs U256 with the brand-new (based on the [ruint crate](https://crates.io/crates/ruint)) Alloy integer type. We will use the [criterion.rs crate](https://github.com/bheisler/criterion.rs). It generates reliable benchmarks by executing millions of iterations and turning off some compiler optimizations.
 
-You can find the source of the benchmark in [`benches/u256.rs`](https://github.com/alloy-rs/examples/blob/main/benches/benches/u256.rs) and execute it by running `cargo bench`
+You can find the source of the benchmark in [`benches/u256.rs`](https://github.com/alloy-rs/examples/blob/main/benches/benches/u256.rs) and execute it by running `cargo bench U256`
 
 We compare the performance of both `get_amount_in` and `get_amount_out`. Benchmark indicates **~1.5x-2x improvement** when using Alloy types!
 
