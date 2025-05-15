@@ -12,11 +12,11 @@ To execute an atomic arbitrage swap, you have to calculate the required input an
 
 Most publicly available bots use an iterative search function to find an optimal amount of input value. However, UniswapV2 constant product formula makes it possible to calculate a profitable input amount without multiple iterations. We will borrow the implementation of this formula [from Flashbots simple-blind-arbitrage repo](https://github.com/flashbots/simple-blind-arbitrage). You can find a step-by-step explanation of how to derive the formula [in this YouTube video](https://www.youtube.com/watch?v=9EKksG-fF1k).
 
-All the code examples for this post are available in [this repo](https://github.com/alloy-rs/blog-posts/tree/main/alloy_u256).
+All the code examples for this post are available in [this repo](https://github.com/alloy-rs/examples/tree/main/examples/advanced/examples/uniswap_u256).
 
 Let's start with implementing a struct representing a Uniswap pool and a few helper functions in Alloy:
 
-[ `src/alloy_helpers.rs`](https://github.com/alloy-rs/blog-posts/blob/main/alloy_u256/src/alloy_helpers.rs)
+[ `alloy_helpers.rs`](https://github.com/alloy-rs/examples/tree/main/examples/advanced/examples/uniswap_u256/helpers)
 
 ```rust
 use alloy::primitives::{address, Address, U256};
@@ -125,7 +125,7 @@ fn main() -> Result<()> {
 You can run it like that:
 
 ```
-cargo run --example alloy_profit
+cargo run --package examples-advanced --bin alloy_profit
 ```
 
 It should produce:
@@ -140,20 +140,13 @@ We've calculated a profitable Arbitrage for our mocked Uniswap pool reserves!
 
 ## "ethers-rs good, Alloy better!"
 
-If you compare the implementation of [`src/alloy_helpers.rs`](https://github.com/alloy-rs/blog-posts/blob/main/alloy_u256/src/alloy_helpers.rs) with [`src/ethers_helpers.rs`](https://github.com/alloy-rs/blog-posts/blob/main/alloy_u256/src/ethers_helpers.rs), you will notice that they are almost identical. Rewriting your project calculations from ethers-rs to Alloy U256 should be possible with a very reasonable development effort. But is it worth it?
+If you compare the implementation of [`alloy_helpers.rs`](https://github.com/alloy-rs/examples/blob/main/examples/advanced/examples/uniswap_u256/helpers/alloy.rs) with [`ethers_helpers.rs`](https://github.com/alloy-rs/examples/blob/main/examples/advanced/examples/uniswap_u256/helpers/ethers.rs), you will notice that they are almost identical. Rewriting your project calculations from ethers-rs to Alloy U256 should be possible with a very reasonable development effort. But is it worth it?
 
-It's high time to compare the performance of legacy ethers-rs U256 with the brand-new (based on the [ruint crate](https://crates.io/crates/ruint)) Alloy integer type. We will use the [cryterion.rs crate](https://github.com/bheisler/criterion.rs). It generates reliable benchmarks by executing millions of iterations and turning off some compiler optimizations.
+It's high time to compare the performance of legacy ethers-rs U256 with the brand-new (based on the [ruint crate](https://crates.io/crates/ruint)) Alloy integer type. We will use the [criterion.rs crate](https://github.com/bheisler/criterion.rs). It generates reliable benchmarks by executing millions of iterations and turning off some compiler optimizations.
 
-You can find the source of the benchmark in [`benches/u256_benchmark.rs`](https://github.com/alloy-rs/blog-posts/blob/main/alloy_u256/benches/u256_benchmark.rs) and execute it by running `cargo bench`:
+You can find the source of the benchmark in [`benches/u256.rs`](https://github.com/alloy-rs/examples/blob/main/benches/benches/u256.rs) and execute it by running `cargo bench`
 
-```
-get_amount_in/Ethers  time:  [519.95 ns 522.40 ns 525.02 ns]
-get_amount_in/Alloy   time:  [332.48 ns 334.06 ns 335.90 ns]
-get_amount_out/Ethers time:  [65.102 ns 65.533 ns 65.992 ns]
-get_amount_out/Alloy  time:  [23.157 ns 23.275 ns 23.431 ns]
-```
-
-We compare the performance of both `get_amount_in` and `get_amount_out`. Benchmark indicates **~35-60% improvement** when using Alloy types!
+We compare the performance of both `get_amount_in` and `get_amount_out`. Benchmark indicates **~1.5x-2x improvement** when using Alloy types!
 
 ![U256 performance comparison](/guides-images/alloy_u256/u256_bench_chart.png)
 
@@ -163,7 +156,7 @@ This means that you can significantly improve the performance of your ethers-rs 
 
 Here's how you can convert between the two types:
 
-[ `src/alloy_helpers.rs`](https://github.com/alloy-rs/blog-posts/blob/77b99f4531b59d25f9154e4a04e48362dfd044d7/alloy_u256/src/alloy_helpers.rs#L47)
+[ `alloy_helpers.rs`](https://github.com/alloy-rs/examples/blob/main/examples/advanced/examples/uniswap_u256/helpers/alloy.rs)
 
 ```rust
 use alloy::primitives::U256;
@@ -184,7 +177,7 @@ impl ToEthers for U256 {
 }
 ```
 
-[ `src/ethers_helpers.rs`](https://github.com/alloy-rs/blog-posts/blob/77b99f4531b59d25f9154e4a04e48362dfd044d7/alloy_u256/src/ethers_helpers.rs#L40)
+[ `ethers_helpers.rs`](https://github.com/alloy-rs/examples/blob/main/examples/advanced/examples/uniswap_u256/helpers/ethers.rs)
 
 ```rust
 use ethers::types::U256;
@@ -205,7 +198,7 @@ impl ToAlloy for U256 {
 }
 ```
 
-This trait can easily be applied to any ethers-rs and Alloy types. You can check out [these Alloy docs](https://alloy.rs/migrating-from-ethers/conversions.html) for details on how to do it.
+This trait can easily be applied to any ethers-rs and Alloy types. You can check out [these conversion docs](/migrating-from-ethers/conversions) for details on how to do it.
 
 ## How to simulate MEV arbitrage with Alloy?
 
@@ -215,7 +208,7 @@ Mocking the forked blockchain storage slots is an insanely useful technique. It 
 
 Here are the helper methods that we'll use:
 
-[ `src/alloy_helpers.rs`](https://github.com/alloy-rs/blog-posts/blob/77b99f4531b59d25f9154e4a04e48362dfd044d7/alloy_u256/src/alloy_helpers.rs#L153)
+[ `alloy_helpers.rs`](https://github.com/alloy-rs/examples/blob/main/examples/advanced/examples/uniswap_u256/helpers/alloy.rs)
 
 ```rust
 pub async fn set_hash_storage_slot<P: Provider>(
@@ -239,7 +232,7 @@ We will leverage a custom Anvil RPC method, `anvil_setStorageAt`, to mock EVM st
 
 And here's our simulation:
 
-[ `examples/alloy_simulation.rs`](https://github.com/alloy-rs/blog-posts/blob/main/alloy_u256/examples/alloy_simulation.rs)
+[ `alloy_simulation.rs`](https://github.com/alloy-rs/examples/blob/main/examples/advanced/examples/uniswap_u256/alloy_simulation.rs)
 
 ```rust
 // imports omitted for brevity
@@ -263,19 +256,12 @@ sol!(
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let anvil = Anvil::new().fork("https://eth.merkle.io").try_spawn()?;
-    let anvil_provider = ProviderBuilder::new().on_http(anvil.endpoint().parse()?);
-
     let uniswap_pair = get_uniswap_pair();
     let sushi_pair = get_sushi_pair();
 
-    let wallet_address: Address = anvil.addresses()[0];
-    let signer: PrivateKeySigner = anvil.keys()[0].clone().into();
-    let wallet = EthereumWallet::from(signer);
+    let wallet_address = address!("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
     let provider = ProviderBuilder::new()
-        .with_recommended_fillers()
-        .wallet(wallet)
-        .on_http(anvil.endpoint().parse()?);
+        .connect_anvil_with_wallet_and_config(|a| a.fork("https://reth-ethereum.ithaca.xyz/rpc"))?;
 
     let executor = FlashBotsMultiCall::deploy(provider.clone(), wallet_address).await?;
     let iweth = IERC20::new(WETH_ADDR, provider.clone());
@@ -408,10 +394,10 @@ async fn main() -> Result<()> {
 
 It uses a `FlashBotsMultiCall` contract from the [Flashbots simple-arbitrage repo](https://github.com/flashbots/simple-arbitrage) to atomically execute a swap between Uniswap and Sushiswap WETH/DAI pools.
 
-You can execute this simulation by running:
+You can execute this simulation by running the following command on the examples repo:
 
 ```
-cargo run --example alloy_simulation
+cargo run --package examples-advanced --bin alloy_simulation
 ```
 
 It should produce:
