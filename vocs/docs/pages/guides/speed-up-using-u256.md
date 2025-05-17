@@ -89,7 +89,7 @@ Instead, we can use the `get_amount_in` method, which does more number crunching
 
 In the following example, we use a mocked pool reserve value for [UniswapV2](https://etherscan.io/address/0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11) and [SushiSwap](https://etherscan.io/address/0xC3D03e4F041Fd4cD388c549Ee2A29a9E5075882f) WETH/DAI Mainnet pools to simulate a profitable arbitrage opportunity.
 
-[ `examples/alloy_profit.rs`](https://github.com/alloy-rs/blog-posts/blob/main/alloy_u256/examples/alloy_profit.rs)
+[ `examples/alloy_profit.rs`](https://github.com/alloy-rs/examples/blob/main/examples/advanced/examples/uniswap_u256/alloy_profit.rs)
 
 ```rust
 fn main() -> Result<()> {
