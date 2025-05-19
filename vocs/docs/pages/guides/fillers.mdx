@@ -47,7 +47,7 @@ Now, let's see how using `RecommendedFillers` improves this:
 ```rust
 #[tokio::main]
 async fn main() -> Result<()> {
-    let provider = ProviderBuilder::new().on_anvil_with_wallet();
+    let provider = ProviderBuilder::new().connect_anvil_with_wallet();
     let bob = Address::from([0x42; 20]);
     let tx = TransactionRequest::default()
         .with_to(bob)
@@ -65,9 +65,9 @@ async fn main() -> Result<()> {
 }
 ```
 
-We've removed ~15 LOC while preserving the same functionality! Most heavy lifting was taken over by recommended fillers that are enabled upon `ProviderBuilder::new()` and the `on_anvil_with_wallet` method.
+We've removed ~15 LOC while preserving the same functionality! Most heavy lifting was taken over by recommended fillers that are enabled upon `ProviderBuilder::new()` and the `connect_anvil_with_wallet` method.
 
-`on_anvil_with_wallet` is a helper method that implicitly spawns the Anvil process and enables the [`WalletFiller`](https://docs.rs/alloy/latest/alloy/providers/fillers/struct.WalletFiller.html) that sets the `from` field based on the wallet's signer address and signs the transaction.
+`connect_anvil_with_wallet` is a helper method that implicitly spawns the Anvil process and enables the [`WalletFiller`](https://docs.rs/alloy/latest/alloy/providers/fillers/struct.WalletFiller.html) that sets the `from` field based on the wallet's signer address and signs the transaction.
 
 This explains why we could omit filling out `nonce`, `chain_id`, `max_fee_per_gas` and `max_priority_fee_per_gas` in the second example.
 
@@ -253,7 +253,7 @@ The above implementation fetches gas prices from the Blocknative API and injects
 ```rust
 let provider = ProviderBuilder::new()
     .filler(UrgentQueue::default())
-    .on_anvil_with_wallet();
+    .connect_anvil_with_wallet();
 ```
 
 The rest of the example remains the same. It shows a great feature of fillers, i.e. composability. They are processed in reverse order, meaning that our `UrgentQueue` filler will take precedence over the built-in `GasFiller`.

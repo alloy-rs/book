@@ -137,7 +137,7 @@ async fn main() -> Result<()> {
 
     let provider = ProviderBuilder::new()
         .wallet(signer)
-        .on_client(client);
+        .connect_client(client);
 
     let bob = Address::from([0x42; 20]);
     let tx = TransactionRequest::default()
@@ -228,7 +228,7 @@ let client = ClientBuilder::default()
     .connect_http(anvil.endpoint().parse()?);
 let provider = ProviderBuilder::new()
     .wallet(signer)
-    .on_client(client);
+    .connect_client(client);
 ```
 
 ![Alloy logging](/guides-images/layers/alloy_logs.png)
