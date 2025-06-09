@@ -1,3 +1,7 @@
+---
+description: Changes to event bindings in Alloy v1.0
+---
+
 ## Changes to event bindings
 
 [core#885](https://github.com/alloy-rs/core/pull/885) makes changes to the event bindings in a breaking but very minimal way.

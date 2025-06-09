@@ -1,3 +1,7 @@
+---
+description: Connect to Ethereum networks using the Provider
+---
+
 ## RPC Provider
 
 A [`Provider`](https://docs.rs/alloy/latest/alloy/providers/trait.Provider.html) is an abstraction of a connection to the Ethereum network, providing a concise, consistent interface to standard Ethereum node functionality.

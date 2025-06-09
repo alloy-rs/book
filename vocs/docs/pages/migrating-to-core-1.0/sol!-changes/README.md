@@ -1,3 +1,7 @@
+---
+description: Overview of changes to the sol! macro bindings in Alloy v1.0
+---
+
 ## sol! changes
 
 - [Removing the `T` transport generic](./removing-T-generic.md)

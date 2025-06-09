@@ -1,3 +1,7 @@
+---
+description: Improvements to function return types by removing the need for _0 field access in Alloy 1.0
+---
+
 ## Improving function call return types
 
 With the inclusion of [core#855](https://github.com/alloy-rs/core/pull/855) return values of function calls with a _singular_ value is more intuitive and easier to work with.

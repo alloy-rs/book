@@ -1,3 +1,7 @@
+---
+description: Learn about other breaking changes in Alloy core v1.0 beyond sol! macro updates
+---
+
 ## Other breaking changes
 
 - [Removal of the deprecated `Signature` type. `PrimitiveSignature` is now aliased to `Signature`](https://github.com/alloy-rs/core/pull/899)

@@ -1,3 +1,7 @@
+---
+description: Use conversion traits to seamlessly convert between ethers-rs and Alloy primitive types
+---
+
 ## Conversions
 
 You can use the following traits to easily convert between ethers-rs and Alloy types.

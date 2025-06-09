@@ -1,3 +1,7 @@
+---
+description: Changes to error bindings and how error handling is updated in Alloy v1.0
+---
+
 ## Changes to error bindings
 
 [core#883](https://github.com/alloy-rs/core/pull/883) makes similar changes to the error bindings that [core#884](https://github.com/alloy-rs/core/pull/884) did to function call bindings in the sense that the form of the generated type is dependent upon two factors:

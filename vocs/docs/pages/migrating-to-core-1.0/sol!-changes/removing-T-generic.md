@@ -1,3 +1,7 @@
+---
+description: Removal of the transport generic T from contract and RPC codegen
+---
+
 ## Removing the `T` transport generic
 
 Since [alloy#1859](https://github.com/alloy-rs/alloy/pull/1859) the `Provider` is independent of the `Transport`, making it easier to roll types that wrap the `Provider`. This improvement was reflected in the [`CallBuilder`](https://docs.rs/alloy-contract/latest/alloy_contract/struct.CallBuilder.html) type but not carried to the `sol!` macro bindings.

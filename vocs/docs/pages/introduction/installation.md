@@ -1,3 +1,7 @@
+---
+description: Install Alloy with cargo and configure the necessary feature flags for your blockchain development needs
+---
+
 ## Installation
 
 [Alloy](https://github.com/alloy-rs/alloy) consists of a number of crates that provide a range of functionality essential for interfacing with any Ethereum-based blockchain.

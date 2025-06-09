@@ -1,3 +1,7 @@
+---
+description: Use the Network trait to seamlessly interact with different blockchain networks and handle varying RPC types
+---
+
 # Interacting with multiple networks
 
 The provider trait is generic over the network type, `Provider<N: Network = Ethereum>`, with the default network set to `Ethereum`.

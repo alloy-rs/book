@@ -1,3 +1,7 @@
+---
+description: Learn about changes to ABI encoding for function return structs in alloy 1.0
+---
+
 ## Encoding return structs
 
 [core#909](https://github.com/alloy-rs/core/pull/909) improves return type encoding by allowing to pass the return struct directly into `SolCall::abi_encode_returns`.

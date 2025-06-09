@@ -1,10 +1,15 @@
+---
+description: Optimize RPC usage by batching multiple smart contract calls using Multicall Builder and Layer
+---
+
 # Multicall and Multicall Batching layer
 
-## What is Multicall? 
+## What is Multicall?
 
-Multicall is a smart contract and pattern that allows you to batch multiple read-only calls to the Ethereum blockchain into a single request. Instead of sending separate RPC requests, Multicall combines them into one transaction, significantly reducing network overhead and latency. This solves various problems such as reduced latency and rate-limiting, network overhead, atomic state reading & offers better UX. 
+Multicall is a smart contract and pattern that allows you to batch multiple read-only calls to the Ethereum blockchain into a single request. Instead of sending separate RPC requests, Multicall combines them into one transaction, significantly reducing network overhead and latency. This solves various problems such as reduced latency and rate-limiting, network overhead, atomic state reading & offers better UX.
 
-## When should I use Multicall ? 
+## When should I use Multicall ?
+
 - To read multiple contract states e.g. fetching balances, allowances, or prices across multiple contracts
 - To reduce request count e.g. working with public RPC endpoints that have rate limits
 - To ensure data consistency e.g. when you need multiple values from the same blockchain state
@@ -13,7 +18,8 @@ Note that Multicall is not suitable for write operations (transactions that chan
 
 ## Multicall with Alloy
 
-Alloy provides two ways in which a user can make multicalls to the [Multicall3 contract](https://www.multicall3.com/), both of which tightly integrated with the `Provider` to make usage as easy as possible: 
+Alloy provides two ways in which a user can make multicalls to the [Multicall3 contract](https://www.multicall3.com/), both of which tightly integrated with the `Provider` to make usage as easy as possible:
+
 1. Multicall Builder: The `multicall()` method gives you explicit control over which calls to batch
 2. Multi-batching Layer: The batching layer automatically batches requests that are made in parallel
 
@@ -36,7 +42,8 @@ let multicall = provider
 
 You can find the complete example [here](/examples/providers/multicall)
 
-This approach is suitable when: 
+This approach is suitable when:
+
 - You know exactly which calls you want to batch together
 - You need to explicitly collect related data in a single request
 - You need fine-grained control over the order of results
@@ -44,7 +51,7 @@ This approach is suitable when:
 
 ### 2. Multicall Batching Layer
 
-The batching layer is especially powerful because it requires no changes to your existing code and reduces the number of network requests. 
+The batching layer is especially powerful because it requires no changes to your existing code and reduces the number of network requests.
 
 However, this only works when requests are made in parallel, for example when using the
 [`tokio::join!`] macro or in multiple threads/tasks, as otherwise the requests will be sent one
@@ -75,5 +82,6 @@ async fn f(url: &str) -> Result<(), Box<dyn std::error::Error>> {
 ```
 
 Find the complete example [here](/examples/providers/multicall_batching). This approach is suitable when:
+
 - You want to optimize existing code without restructuring it
 - You need to batch calls that are made from different parts of your codebase
