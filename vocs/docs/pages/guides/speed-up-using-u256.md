@@ -1,3 +1,7 @@
+---
+description: Achieve up to 2x faster calculations by using Alloy's optimized U256 primitive types in MEV bots
+---
+
 # Build a fast MEV bot with Alloy's Primitive Types
 
 [Alloy](https://alloy.rs) is a successor to the deprecated [ethers-rs](https://github.com/gakonst/ethers-rs). In this guide, we will describe how you can reap the benefits of its better performance with minimal codebase changes to ethers-rs project. We will also implement an atomic UniswapV2 arbitrage simulation to showcase how different parts of the Alloy stack fit together.

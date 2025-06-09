@@ -1,3 +1,7 @@
+---
+description: Changes to function call bindings from named fields to tuple struct format in alloy 1.0
+---
+
 ## Changes to function call bindings
 
 With [core#884](https://github.com/alloy-rs/core/pull/884) the form of the generated call type (used for abi-encoding) is now dependent upon two factors:

@@ -1,3 +1,7 @@
+---
+description: Understand breaking changes in Alloy core v1.0 including sol! macro improvements and ABI encoding updates
+---
+
 # v1.0 Changes
 
 ### Revamping the `sol!` macro bindings

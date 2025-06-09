@@ -1,3 +1,7 @@
+---
+description: Get started with Alloy, the high-performance Rust toolkit for Ethereum and EVM-based blockchains
+---
+
 # Getting Started [The simplest, fastest Rust toolkit to interact with any EVM chain]
 
 ## Overview

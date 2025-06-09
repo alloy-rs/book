@@ -1,3 +1,7 @@
+---
+description: Manage different signer types within a single EthereumWallet for flexible transaction signing strategies
+---
+
 # Signers vs Ethereum Wallet
 
 ## Signer

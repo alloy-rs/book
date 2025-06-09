@@ -1,3 +1,7 @@
+---
+description: Understand how transactions flow through Alloy's filler system from creation to network dispatch
+---
+
 ## The transaction lifecycle
 
 This article will walk you through the process of defining a transaction to send `100 wei` from `Alice` to `Bob`, signing the transaction and broadcasting the signed transaction to the Ethereum network.

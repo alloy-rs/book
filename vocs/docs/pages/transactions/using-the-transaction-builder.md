@@ -1,3 +1,7 @@
+---
+description: Use the TransactionBuilder to construct transactions with a fluent builder pattern interface
+---
+
 ## Using the `TransactionBuilder`
 
 The [`TransactionBuilder`](https://docs.rs/alloy/latest/alloy/network/trait.TransactionBuilder.html) is a network specific transaction builder configurable with `.with_*` methods.

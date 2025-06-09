@@ -1,3 +1,7 @@
+---
+description: Query contract storage, deployed bytecode, and event logs from the blockchain
+---
+
 ## Querying Contracts
 
 ### Query Contract Storage
