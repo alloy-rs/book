@@ -1,6 +1,29 @@
-# Prompting LLMs with Alloy
+# Prompting
 
-A comprehensive guide for using Large Language Models (LLMs) to build Ethereum applications with Alloy.
+Specialized prompt designed to help AI assistants generate high-quality, production-ready Rust code using the Alloy for Ethereum/EVM blockchain development. The prompt combines comprehensive technical context with clear behavioral guidelines to ensure AI-generated code follows Alloy best practices and modern Rust conventions.
+
+### How to Use This Prompt
+
+1. Copy the [Base Prompt](#base-prompt)
+
+2. Add details specific to your use case
+
+Replace the `{user_prompt}` placeholder in the `<user_prompt>` section with your specific request:
+
+```xml
+...base prompt...
+<user_prompt>
+Your question or request goes here
+</user_prompt>
+```
+
+:::tip
+For best results, include the [llms-full.txt](https://alloy.rs/llms-full.txt) file in your prompt.
+:::
+
+## Base Prompt
+
+Use this prompt with your AI assistant:
 
 ````xml
 <system_context>
