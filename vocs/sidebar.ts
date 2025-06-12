@@ -8,6 +8,7 @@ export const sidebar: Sidebar = [
         { text: 'Installation', link: '/introduction/installation' },
         { text: 'Why Alloy', link: '/introduction/why-alloy' },
         { text: 'Getting Started', link: '/introduction/getting-started' },
+        { text: 'Prompting', link: '/introduction/prompting' },
       ]
     },
     {
