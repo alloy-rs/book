@@ -67,5 +67,9 @@ export default defineConfig({
         }, 
       ], 
     }, 
-  ]
+  ],
+  editLink: {
+    pattern: 'https://github.com/alloy-rs/docs/edit/main/vocs/docs/pages/:path',
+    text: 'Suggest changes on GitHub',
+  }
 })
