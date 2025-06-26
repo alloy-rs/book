@@ -24,7 +24,7 @@ async fn main() -> Result<()> {
 
     // Create a provider with the wallet.
     let provider =
-        ProviderBuilder::new().wallet(signer).on_anvil_with_config(|anvil| anvil.block_time(1));
+        ProviderBuilder::new().wallet(signer).connect_anvil_with_config(|anvil| anvil.block_time(1));
 
     // Build a transaction to send 100 wei from Alice to Vitalik.
     // The `from` field is automatically filled to the first signer's address (Alice).
